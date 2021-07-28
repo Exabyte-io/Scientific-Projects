@@ -75,6 +75,26 @@ df = df[df["exfoliation_energy_per_atom (eV/atom)"].apply(lambda exfol: min_exfo
 print(f"Discarding {total - len(df)} entries outside {np.round(min_exfol,3)} < exfoliation energy <= {np.round(max_exfol,3)}. "
       f"Total is now {len(df)}.")
 
+def is_MAX_structure(atoms):
+    formula = set(atoms.get_chemical_symbols())
+    
+    m_symbols = ['Sc', 'Ti', 'V', 'Cr',
+                 'Y', 'Zr', 'Nb', 'Mo',
+                 'Hf', 'Ta', 'W']
+    a_symbols = ['Al', 'Si', 'P,', 'S',
+                 'Zn', 'Ga', 'Ge', 'As', 'Se',
+                 'Cd', 'In', 'Sn', 'Sb', 'Te',
+                 'Hg', 'Tl', 'Pb', 'Bi', 'Po']
+    x_symbols = ['C', 'N', 'O']
+    
+    has_m = any(symbol in m_symbols for symbol in formula)
+    has_a = any(symbol in a_symbols for symbol in formula)
+    has_x = any(symbol in x_symbols for symbol in formula)
+    
+    return has_m and has_a and has_x
+
+df[df["atoms_object (unitless)"].apply(lambda atoms: is_MAX_structure(atoms))]
+
 
 # # Featurization
 
@@ -176,7 +196,7 @@ df["formula"] = df["atoms_object (unitless)"].swifter.apply(lambda atoms: atoms.
 # In[]:
 
 
-df.to_pickle("all_descriptors.pkl")
+#df.to_pickle("all_descriptors.pkl")
 
 object_cols = ["atoms_object (unitless)",
                "ox_struct"]
@@ -192,7 +212,7 @@ regression_irrelevant = object_cols + [
     'energy_vdw_per_atom (eV/atom)',
     'total_magnetization (Bohr Magneton)']
 
-df.drop(columns=object_cols).to_csv("both_extra_descriptors.csv")
+#df.drop(columns=object_cols).to_csv("both_extra_descriptors.csv")
 
 
 # # Chemical Info
@@ -266,15 +286,15 @@ df[df["bandgap (eV)"].swifter.apply(lambda bg: 3.4 < bg < 10)].drop(columns=obje
 import sklearn.model_selection
 import tpot
 
-data_train, data_test = sklearn.model_selection.train_test_split(stable, test_size=0.25, random_state=RANDOM_SEED)
-train_x = data_train.drop(columns="bandgap (eV)").to_numpy()
-train_y = data_train["bandgap (eV)"].to_numpy()
+data_train, data_test = sklearn.model_selection.train_test_split(df.drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']), test_size=0.25, random_state=RANDOM_SEED)
+train_x = data_train.drop(columns="bandgap (eV)").to_numpy().astype(np.float64)
+train_y = data_train["bandgap (eV)"].dropna().to_numpy()
 
-test_x = data_test.drop(columns="bandgap (eV)").to_numpy()
+test_x = data_test.drop(columns="bandgap (eV)").to_numpy().astype(np.float64)
 test_y = data_test["bandgap (eV)"].to_numpy()
 
 
-# In[ ]:
+# In[]:
 
 
 model = tpot.TPOTRegressor(
@@ -292,7 +312,7 @@ model = tpot.TPOTRegressor(
 model.fit(features=train_x, target=train_y)
 
 
-# In[ ]:
+# In[]:
 
 
 train_y_pred = model.predict(train_x)
@@ -317,7 +337,13 @@ masked_df.drop(columns=to_drop + ["2dm_id (unitless)", "formula", "exfoliation_e
 # In[]:
 
 
-df[]
+train_x
+
+
+# In[]:
+
+
+train_x
 
 
 # In[ ]:
