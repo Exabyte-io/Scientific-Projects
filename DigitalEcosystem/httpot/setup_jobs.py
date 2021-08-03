@@ -127,6 +127,7 @@ def write_calculation(row_pathname: str,
                       col_pathname: str,
                       finger_pathname: str,
                       model_pathname: str,
+                      best_k,
                       train: pd.DataFrame,
                       test: pd.DataFrame) -> None:
     csv_data = {
@@ -148,8 +149,7 @@ def write_calculation(row_pathname: str,
     basename = "httpot_runs"
     model_path = os.path.join(".", basename, row_pathname, col_pathname, finger_pathname, model_pathname)
     # First off, generate the runs for the individual K's
-    chosen_k = max(train['k_means_label'].max(), test['k_means_label'].min())
-    for k in range(chosen_k + 1):
+    for k in range(best_k + 1):
         path = os.path.join(model_path, f"k_{k}")
         os.makedirs(path, exist_ok=True)
         print(f"             |---Writing to {path}")
@@ -161,7 +161,7 @@ def write_calculation(row_pathname: str,
                                                         compression="gzip")
         with open(os.path.join(path, "result.csv"), "w") as outp:
             csv_data["setup_date_utc"] = datetime.datetime.utcnow().isoformat()
-            csv_data["K"] = str(chosen_k)
+            csv_data["K"] = str(k)
             outp.write(",".join(csv_data.keys()) + "\n")
             outp.write(",".join(csv_data.values()) + "\n")
 
@@ -229,6 +229,7 @@ for col_pathname, col_selection in column_splits.items():
                               col_pathname=col_pathname,
                               finger_pathname=finger_pathname,
                               model_pathname='tpot',
+                              best_k=best_k,
                               train=filtered_train.drop(columns=cols_to_drop + remove_after_row_selection + atoms_col),
                               test=filtered_test.drop(columns=cols_to_drop + remove_after_row_selection + atoms_col))
 #
