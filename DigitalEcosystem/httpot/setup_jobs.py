@@ -8,6 +8,8 @@ import numpy as np
 import pandas as pd
 
 import sklearn.cluster
+import sklearn.pipeline
+import sklearn.decomposition
 
 import fingerprints
 import row_filters
@@ -110,16 +112,25 @@ def get_best_k(fingerprint: np.ndarray) -> int:
     best_k = 2
     hiscore = -np.inf
     best_kmeans = None
+
+    n_pca_dims = min(fingerprint.shape[1], 128)
+    pca = sklearn.decomposition.PCA(n_components=n_pca_dims)
+    pca_cache = pca.fit_transform(fingerprint)
     for k in range(2, 6):
-        kmeans = sklearn.cluster.MiniBatchKMeans(n_clusters=k, random_state=RANDOM_SEED)
-        kmeans.fit(fingerprint)
-        score = sklearn.metrics.calinski_harabasz_score(fingerprint, kmeans.predict(fingerprint))
+        kmeans = sklearn.cluster.KMeans(n_clusters=k, random_state=RANDOM_SEED)
+        kmeans.fit(pca_cache)
+        score = sklearn.metrics.calinski_harabasz_score(fingerprint, kmeans.predict(pca_cache))
         if score > hiscore:
             best_k = k
             hiscore = score
-            best_kmeans = kmeans
-        print(f"         |---Trying K={k}, score={np.round(score, 3)}, hiscore={np.round(hiscore, 3)} at {best_k}",
+
+        print(f"         |---Trying K={k} and PCA_dims={n_pca_dims}, score={np.round(score, 3)}, hiscore={np.round(hiscore, 3)} at {best_k}",
               flush=True)
+    best_kmeans = sklearn.pipeline.make_pipeline(
+        sklearn.decomposition.PCA(n_components=n_pca_dims),
+        sklearn.cluster.KMeans(n_clusters=best_k, random_state=RANDOM_SEED)
+    )
+    best_kmeans.fit(fingerprint)
     return best_k, best_kmeans
 
 
