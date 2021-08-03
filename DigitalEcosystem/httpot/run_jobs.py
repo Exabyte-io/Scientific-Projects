@@ -56,7 +56,7 @@ try:
     def rmse(y_true, y_pred):
         mse = sklearn.metrics.mean_squared_error(y_true=y_true, y_pred=y_pred)
         rmse = np.sqrt(abs(mse))
-        return mse
+        return rmse
 
     # Evaluate the model
     print("Evaluating model accuracy")
