@@ -38,7 +38,6 @@ try:
         scoring="neg_mean_squared_error",
         config_dict=IMPORTANCE_CONFIG,
         n_jobs=-1,
-        memory="auto",
         random_state=RANDOM_SEED
     )
 
@@ -54,12 +53,18 @@ try:
     # Evaluate
     # --------
 
+    def rmse(y_true, y_pred):
+        mse = sklearn.metrics.mean_squared_error(y_true=y_true, y_pred=y_pred)
+        rmse = np.sqrt(abs(mse))
+        return mse
+
     # Evaluate the model
     print("Evaluating model accuracy")
     metrics = {
         'MaxError': sklearn.metrics.max_error,
         'MAE': sklearn.metrics.mean_absolute_error,
         'MSE': sklearn.metrics.mean_squared_error,
+        'RMSE': rmse,
         'MAPE': sklearn.metrics.mean_absolute_percentage_error,
         'R2': sklearn.metrics.r2_score
     }
