@@ -101,8 +101,8 @@ try:
     max_xy = max(max(y_true_test), max(y_true_train), max(y_pred_test), max(y_pred_train))
 
     plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
-    plt.ylabel("Bandgap (Dataset)")
-    plt.xlabel("Bandgap (Predicted)")
+    plt.ylabel("Bandgap (Predicted)")
+    plt.xlabel("Bandgap (Dataset)")
     plt.legend()
     plt.savefig('plot.jpeg')
 
