@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#PBS -l nodes=1
+#PBS -l ppn=44
+#PBS -l walltime=01:30:00
+#PBS -q SFplus
+#PBS -m n
+#PBS -A exabyte-io-default
+#PBS -N HTTPOT
+#PBS -r y
+#PBS -R n
+
+BASE_DIR=/cluster-007-home/jrd101/exabyte-io/sisso/httpot
+
+cd $PBS_O_WORKDIR
+module load python/3.8.6
+source $BASE_DIR/.env/bin/activate
+
+ln -s $BASE_DIR/tpot_config.py
+
+python run_job.py 2>> stderr.out 1>> log.out
