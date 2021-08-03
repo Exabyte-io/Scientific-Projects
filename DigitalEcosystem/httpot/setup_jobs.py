@@ -138,12 +138,12 @@ def write_calculation(row_pathname: str,
         "K": "",
         "status": "Pending",
         "setup_date_utc": "",
-        "run_date_utc": "",
-        "MAE": "",
-        "RMSE": "",
-        "MAPE": "",
-        "R2": "",
-        "MaxError": ""
+        "run_date_utc": "NA",
+        "MAE": "NA",
+        "RMSE": "NA",
+        "MAPE": "NA",
+        "R2": "NA",
+        "MaxError": "NA"
     }
 
     basename = "httpot_runs"
