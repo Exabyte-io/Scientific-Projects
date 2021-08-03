@@ -416,10 +416,47 @@ test_export.to_csv('data_test_featurized_importances_bandgap.csv')
 
 # # Testing SISSO
 
+# In[]:
+
+
+1
+
+
+# In[]:
+
+
+
+
+
+# In[]:
+
+
+dataset_path = "../raw_data/2d_mat_dataset_raw.pkl"
+cutoff = 0.1
+tmp_df = pd.read_pickle(dataset_path)
+sum(tmp_df['bandgap (eV)'] <= cutoff)
+
+
+# In[]:
+
+
+sum(tmp_df['bandgap (eV)'] > cutoff)
+
+
+# In[]:
+
+
+tmp_df
+
+
+# In[]:
+
+
+sns.histplot(tmp_df['decomposition_energy (eV/atom)'])
+
+
 # In[ ]:
 
 
-class model:
-    def __init__(fun, coefs_dict):
-        
+
 
