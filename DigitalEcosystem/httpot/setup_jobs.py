@@ -118,7 +118,7 @@ def get_best_k(fingerprint: np.ndarray) -> int:
             best_k = k
             hiscore = score
             best_kmeans = kmeans
-        print(f"         |---Test K={k}, score={np.round(score, 3)}, hiscore={np.round(hiscore, 3)} at {best_k}",
+        print(f"         |---Trying K={k}, score={np.round(score, 3)}, hiscore={np.round(hiscore, 3)} at {best_k}",
               flush=True)
     return best_k, best_kmeans
 
@@ -149,16 +149,18 @@ def write_calculation(row_pathname: str,
     basename = "httpot_runs"
     model_path = os.path.join(".", basename, row_pathname, col_pathname, finger_pathname, model_pathname)
     # First off, generate the runs for the individual K's
-    for k in range(best_k + 1):
+    for k in range(best_k):
         path = os.path.join(model_path, f"k_{k}")
         os.makedirs(path, exist_ok=True)
         print(f"             |---Writing to {path}")
-        train.drop(columns=["k_means_label"]).to_parquet(path=os.path.join(path, "train.parquet"),
-                                                         engine="pyarrow",
-                                                         compression="gzip")
-        test.drop(columns=["k_means_label"]).to_parquet(path=os.path.join(path, "test.parquet"),
-                                                        engine="pyarrow",
-                                                        compression="gzip")
+        train[train["k_means_label"] == k].drop(columns=["k_means_label"]).to_parquet(
+            path=os.path.join(path, "train.parquet"),
+            engine="pyarrow",
+            compression="gzip")
+        test[test["k_means_label"] == k].drop(columns=["k_means_label"]).to_parquet(
+            path=os.path.join(path, "test.parquet"),
+            engine="pyarrow",
+            compression="gzip")
         with open(os.path.join(path, "result.csv"), "w") as outp:
             csv_data["setup_date_utc"] = datetime.datetime.utcnow().isoformat()
             csv_data["K"] = str(k)
