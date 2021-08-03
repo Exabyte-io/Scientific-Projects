@@ -76,7 +76,11 @@ try:
     print("Storing model accuracy")
     results = pd.read_csv('result.csv')
     for key, fun in metrics.items():
-        results[key] = fun(y_true=y_true_test, y_pred=y_pred_test)
+        try:
+            value = fun(y_true=y_true_test, y_pred=y_pred_test)
+        except:
+            value = "NA"
+        results[key] = value
 
     # ----------------
     # Plot the results
@@ -120,11 +124,11 @@ except:
     results = pd.read_csv('result.csv')
     results['run_date_utc'] = datetime.datetime.utcnow().isoformat()
     results['status'] = 'Error'
-    results.to_csv('result.csv')
+    results.to_csv('result.csv', index=False)
     raise
 
 print("Run successful, updating result.csv")
 results['run_date_utc'] = datetime.datetime.utcnow().isoformat()
 results['status'] = 'Complete'
-results.to_csv('result.csv')
+results.to_csv('result.csv', index=False)
 
