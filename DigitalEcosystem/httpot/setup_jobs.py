@@ -246,12 +246,3 @@ for col_pathname, col_selection in column_splits.items():
                               best_k=best_k,
                               train=filtered_train.drop(columns=cols_to_drop + remove_after_row_selection + atoms_col),
                               test=filtered_test.drop(columns=cols_to_drop + remove_after_row_selection + atoms_col))
-#
-
-
-# Work out where the path is going to be
-
-# Save as an Apache Parquet
-
-
-# Create and update Registry
