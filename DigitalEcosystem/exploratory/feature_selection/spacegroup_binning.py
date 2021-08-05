@@ -174,16 +174,16 @@ neighbor_finder = JmolNN()
 with tqdm.tqdm(total=len(df)) as pbar:
     for struct in df["ox_struct"]:
         symbols_cols.update([groups[symbol] for symbol in struct.symbol_set])
-        
+
         for index, site in enumerate(struct.sites):
             connected = [i['site'] for i in neighbor_finder.get_nn_shell_info(struct, index, 1)]
-            
+
             # Bond counts
             for vertex in connected:
                 start, end = sorted([groups[str(site.specie.element)], groups[str(vertex.specie.element)]])
                 bond = f"{start}-{end}"
                 bond_cols[bond] += 0.5
-                
+
             # Angles
             for angle_start, angle_end in map(sorted, itertools.combinations(connected,2)):
                 angle = f"{groups[str(angle_start.specie.element)]}-{groups[str(site.specie.element)]}-{groups[str(angle_end.specie.element)]}"
@@ -204,40 +204,40 @@ def featurize(data):
     bond_units = "bonds"
     angle_units = "angles"
     struct = data["ox_struct"]
-    
+
     present_symbols = collections.Counter([groups[symbol] for symbol in struct.symbol_set])
     present_bonds = collections.Counter()
     present_angles = collections.Counter()
-    
+
     # Record and Count Symbols
     for symbol, count in present_symbols.items():
         data[f"{symbol} ({symbol_units})"] = count
     data[f"Total Atoms ({symbol_units})"] = sum(present_symbols.values())
-    
+
     for index, site in enumerate(struct.sites):
         connected = [i['site'] for i in neighbor_finder.get_nn_shell_info(struct, index, 1)]
-        
+
         # Count Bonds
         for vertex in connected:
             start, end = sorted([groups[str(site.specie.element)], groups[str(vertex.specie.element)]])
             bond = f"{start}-{end}"
             present_bonds[bond] += 0.5
-            
+
         # Count Angles
         for angle_start, angle_end in map(sorted, itertools.combinations(connected, 2)):
             angle = f"{groups[str(angle_start.specie.element)]}-{groups[str(site.specie.element)]}-{groups[str(angle_end.specie.element)]}"
             present_angles[angle] += 1
-            
+
     # Record Bonds
     for bond, count in present_bonds.items():
         data[f"{bond} ({bond_units})"] = count
     data[f"Total Bonds ({bond_units})"] = sum(present_bonds.values())
-            
+
     # Record Angles
     for angle, count in present_angles.items():
         data[f"{angle} ({angle_units})"] = count
     data[f"Total Angles ({angle_units})"] = sum(present_angles.values())
-    
+
     return data
 
 all_data_features = df.progress_apply(featurize, axis=1)
@@ -269,7 +269,7 @@ train, test = sklearn.model_selection.train_test_split(all_data_features.drop(co
 # In[]:
 
 
-data_train, data_test = sklearn.model_selection.train_test_split(train.drop(columns=['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0), 
+data_train, data_test = sklearn.model_selection.train_test_split(train.drop(columns=['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0),
                                                                  test_size=0.1, random_state=RANDOM_SEED)
 
 train_x = data_train.drop(columns=["bandgap (eV)", 'spacegroup_number']).to_numpy()
@@ -295,7 +295,7 @@ model.fit(X=train_x, y=train_y)
 train_y_pred = model.predict(train_x)
 val_y_pred = model.predict(val_x)
 
-# Plot the results   
+# Plot the results
 plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
 plt.rcParams["figure.figsize"] = (10,10)
 plt.rcParams["font.size"] = 16
@@ -431,7 +431,7 @@ test_export.to_csv('data_test_featurized_importances_bandgap.csv')
 # In[]:
 
 
-dataset_path = "../raw_data/2d_mat_dataset_raw.pkl"
+dataset_path = "../../raw_data/2d_mat_dataset_raw.pkl"
 cutoff = 0.1
 tmp_df = pd.read_pickle(dataset_path)
 sum(tmp_df['bandgap (eV)'] <= cutoff)

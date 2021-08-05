@@ -39,10 +39,10 @@ np.random.seed(RANDOM_SEED)
 # In[]:
 
 
-df = pd.read_pickle("../raw_data/2d_mat_dataset_raw.pkl")
+df = pd.read_pickle("../../raw_data/2d_mat_dataset_raw.pkl")
 total = len(df)
 print(f"Starting with {total} entries. Includes top-down and bottom-up.")
-      
+
 # Throw out systems that are predicted to decompose
 df = df[df["decomposition_energy (eV/atom)"] == 0]
 print(f"Discarding {total-len(df)} entries predicted to decompose (Decomp energy != 0). Total is now {len(df)}.")
@@ -77,7 +77,7 @@ print(f"Discarding {total - len(df)} entries outside {np.round(min_exfol,3)} < e
 
 def is_MAX_structure(atoms):
     formula = set(atoms.get_chemical_symbols())
-    
+
     m_symbols = ['Sc', 'Ti', 'V', 'Cr',
                  'Y', 'Zr', 'Nb', 'Mo',
                  'Hf', 'Ta', 'W']
@@ -86,11 +86,11 @@ def is_MAX_structure(atoms):
                  'Cd', 'In', 'Sn', 'Sb', 'Te',
                  'Hg', 'Tl', 'Pb', 'Bi', 'Po']
     x_symbols = ['C', 'N', 'O']
-    
+
     has_m = any(symbol in m_symbols for symbol in formula)
     has_a = any(symbol in a_symbols for symbol in formula)
     has_x = any(symbol in x_symbols for symbol in formula)
-    
+
     return has_m and has_a and has_x
 
 df[df["atoms_object (unitless)"].apply(lambda atoms: is_MAX_structure(atoms))]

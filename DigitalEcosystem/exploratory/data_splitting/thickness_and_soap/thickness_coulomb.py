@@ -42,10 +42,10 @@ np.random.seed(RANDOM_SEED)
 # In[]:
 
 
-df = pd.read_pickle("../../raw_data/2d_mat_dataset_raw.pkl")
+df = pd.read_pickle("../../../raw_data/2d_mat_dataset_raw.pkl")
 total = len(df)
 print(f"Starting with {total} entries. Includes top-down and bottom-up.")
-      
+
 # Throw out systems that are predicted to decompose
 df = df[df["decomposition_energy (eV/atom)"] == 0]
 print(f"Discarding {total-len(df)} entries predicted to decompose (Decomp energy != 0). Total is now {len(df)}.")
@@ -185,9 +185,9 @@ def slab_thickness(structure:ase.Atoms):
     The highest and lowest point of the slab are used to determine thickness.
     """
     structure = structure.copy()
-    
+
     positions = structure.get_scaled_positions()
-    
+
     in_target_zone = all(map(lambda pos: 0.25 < pos < 0.75, positions[:,2]))
     max_iter = 10000
     count = 0
@@ -197,12 +197,12 @@ def slab_thickness(structure:ase.Atoms):
         in_target_zone = all(map(lambda pos: 0.25 < pos < 0.75, structure.get_scaled_positions()[:,2]))
         count += 1
         assert count < max_iter
-    
+
     c_pos = structure.get_scaled_positions()[:,2] * structure.cell.lengths()[2]
     radii = ase.data.covalent_radii[structure.get_atomic_numbers()]
-        
+
     thickness = max(c_pos + radii) - min(c_pos - radii)
-    
+
     return thickness
 
 df["slab_thickness"] = df["atoms_object (unitless)"].swifter.apply(slab_thickness)
@@ -303,7 +303,7 @@ test_y = data_test["bandgap (eV)"].to_numpy()
 # # Stacked Ensemble
 # Tried out a stacked ensemble approach below, got decent results compared to TPOT.
 # Imputation -> Standardization -> PCA -> Ensemble
-# 
+#
 # Ensemble contains LASSO, Ridge, Support Vector Regression, Gradient-Boosted Trees, and a basic Neural Network. The ensemble's generalizer is a kernel ridge regressor.
 
 # In[]:
@@ -335,7 +335,7 @@ def model_callback(study, trial):
 
 def objective(trial: optuna.Trial):
     global model
-    
+
     model = sklearn.pipeline.Pipeline(
         [("Imputation", sklearn.impute.KNNImputer(n_neighbors=trial.suggest_int('KNN_imputation_n_neighbors', 2, 10))),
          ("Scaler", sklearn.preprocessing.StandardScaler()),
@@ -360,7 +360,7 @@ def objective(trial: optuna.Trial):
     )
     score = sklearn.model_selection.cross_val_score(model, train_x, train_y, scoring='neg_mean_squared_error', cv=4).mean()
     return score
-    
+
 study = optuna.create_study(direction='maximize')
 study.optimize(objective, n_trials=32, n_jobs=2, callbacks=[model_callback])
 
@@ -386,7 +386,7 @@ plt.legend()
 # In[]:
 
 
-import sklearn.metrics  
+import sklearn.metrics
 print("Test-Set Error Metrics:")
 for name, metric in [
     ["MAE", sklearn.metrics.mean_absolute_error],
@@ -401,7 +401,7 @@ for name, metric in [
 # In[]:
 
 
-import sklearn.metrics  
+import sklearn.metrics
 
 all_data = df.drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)'])
 
@@ -416,7 +416,7 @@ metrics = {"MAE": sklearn.metrics.mean_absolute_error,
            "R2": sklearn.metrics.r2_score,
            "Max Error": sklearn.metrics.max_error}
 metrics = dict((key, sklearn.metrics.make_scorer(value)) for key, value in metrics.items())
- 
+
 cv=5
 scores = sklearn.model_selection.cross_validate(model, X=all_x, y=all_y, cv=cv, scoring=metrics, verbose=2, n_jobs=4)
 print(f"{cv}-fold Error Metrics:")
@@ -467,7 +467,7 @@ plt.legend()
 # In[]:
 
 
-import sklearn.metrics  
+import sklearn.metrics
 print("Test-Set Error Metrics:")
 for name, metric in [
     ["MAE", sklearn.metrics.mean_absolute_error],

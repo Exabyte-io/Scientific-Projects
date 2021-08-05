@@ -59,7 +59,7 @@ tqdm.tqdm.pandas()
 # In[]:
 
 
-dataset_path = "../raw_data/2d_mat_dataset_raw.pkl"
+dataset_path = "../../raw_data/2d_mat_dataset_raw.pkl"
 df = pd.read_pickle(dataset_path)
 
 total = len(df)
@@ -210,7 +210,7 @@ classes = {
 'pnictogen' : ['N', 'P', 'As', 'Sb', 'Bi'],
 'chalcogen' : ['O', 'S', 'Se', 'Te', 'Po'],
 'halide' : ['F', 'Cl', 'Br', 'I', 'At']
-    
+
 }
 
 groups = {}
@@ -231,16 +231,16 @@ neighbor_finder = JmolNN()
 with tqdm.tqdm(total=len(df)) as pbar:
     for struct in df["ox_struct"]:
         symbols_cols.update([groups[symbol] for symbol in struct.symbol_set])
-        
+
         for index, site in enumerate(struct.sites):
             connected = [i['site'] for i in neighbor_finder.get_nn_shell_info(struct, index, 1)]
-            
+
             # Bond counts
             for vertex in connected:
                 start, end = sorted([groups[str(site.specie.element)], groups[str(vertex.specie.element)]])
                 bond = f"{start}-{end}"
                 bond_cols[bond] += 0.5
-                
+
             # Angles
             for angle_start, angle_end in map(sorted, itertools.combinations(connected,2)):
                 angle = f"{groups[str(angle_start.specie.element)]}-{groups[str(site.specie.element)]}-{groups[str(angle_end.specie.element)]}"
@@ -261,40 +261,40 @@ def featurize(data):
     bond_units = "bonds"
     angle_units = "angles"
     struct = data["ox_struct"]
-    
+
     present_symbols = collections.Counter([groups[symbol] for symbol in struct.symbol_set])
     present_bonds = collections.Counter()
     present_angles = collections.Counter()
-    
+
     # Record and Count Symbols
     for symbol, count in present_symbols.items():
         data[f"{symbol} ({symbol_units})"] = count
     data[f"Total Atoms ({symbol_units})"] = sum(present_symbols.values())
-    
+
     for index, site in enumerate(struct.sites):
         connected = [i['site'] for i in neighbor_finder.get_nn_shell_info(struct, index, 1)]
-        
+
         # Count Bonds
         for vertex in connected:
             start, end = sorted([groups[str(site.specie.element)], groups[str(vertex.specie.element)]])
             bond = f"{start}-{end}"
             present_bonds[bond] += 0.5
-            
+
         # Count Angles
         for angle_start, angle_end in map(sorted, itertools.combinations(connected, 2)):
             angle = f"{groups[str(angle_start.specie.element)]}-{groups[str(site.specie.element)]}-{groups[str(angle_end.specie.element)]}"
             present_angles[angle] += 1
-            
+
     # Record Bonds
     for bond, count in present_bonds.items():
         data[f"{bond} ({bond_units})"] = count
     data[f"Total Bonds ({bond_units})"] = sum(present_bonds.values())
-            
+
     # Record Angles
     for angle, count in present_angles.items():
         data[f"{angle} ({angle_units})"] = count
     data[f"Total Angles ({angle_units})"] = sum(present_angles.values())
-    
+
     return data
 
 all_data_features = df.progress_apply(featurize, axis=1)
@@ -328,7 +328,7 @@ def saponify(atoms):
     lathered = soap.create(atoms)
     # Soap creates an N x M array
     #     - N is the number of atoms in the system
-    #     - M is the size of the SOAP descriptor 
+    #     - M is the size of the SOAP descriptor
     # So we'll average along the N direction
     rinsed = np.hstack([lathered.mean(axis=0), lathered.min(axis=0), lathered.max(axis=0)])
     return rinsed
@@ -371,7 +371,7 @@ for n_clusters in np.arange(min_clusters, max_clusters, n_skip):
     error = sklearn.metrics.calinski_harabasz_score(cluster_training_data, clusters.predict(cluster_training_data))
     results[n_clusters] = error
     print(n_clusters, error, sep="\t\t")
-    
+
 plt.plot(list(results.keys()), list(results.values()), marker="o", color="black")
 plt.xticks(range(min_clusters, max_clusters))
 plt.xlabel("N Clusters")
@@ -446,7 +446,7 @@ regression_irrelevant = object_cols + [
 # In[]:
 
 
-data_train, data_test = sklearn.model_selection.train_test_split(train[train['soap_label']==1].drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0), 
+data_train, data_test = sklearn.model_selection.train_test_split(train[train['soap_label']==1].drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0),
                                                                  test_size=0.1, random_state=RANDOM_SEED)
 
 train_x = data_train.drop(columns=["bandgap (eV)", 'soap_label']).to_numpy()
@@ -470,7 +470,7 @@ model.fit(X=train_x, y=train_y)
 train_y_pred = model.predict(train_x)
 val_y_pred = model.predict(val_x)
 
-# Plot the results   
+# Plot the results
 plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
 plt.rcParams["figure.figsize"] = (10,10)
 plt.rcParams["font.size"] = 16
@@ -491,7 +491,7 @@ plt.show()
 # In[]:
 
 
-data_train, data_test = sklearn.model_selection.train_test_split(train[train['soap_label']==0].drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0), 
+data_train, data_test = sklearn.model_selection.train_test_split(train[train['soap_label']==0].drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0),
                                                                  test_size=0.1, random_state=RANDOM_SEED)
 
 train_x = data_train.drop(columns=["bandgap (eV)", 'soap_label']).to_numpy()
@@ -515,7 +515,7 @@ model.fit(X=train_x, y=train_y)
 train_y_pred = model.predict(train_x)
 val_y_pred = model.predict(val_x)
 
-# Plot the results   
+# Plot the results
 plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
 plt.rcParams["figure.figsize"] = (10,10)
 plt.rcParams["font.size"] = 16
@@ -585,7 +585,7 @@ r1d1_t1 = lambda df: 7.593072978523676e-01 + 8.053457188249878e-13 * (df['var:so
 r1d2_t0 = lambda df: 2.846720668897464e+00 +            -1.002110960463248e+00 * (df['average_cn'] / df['ave:period']) +            1.476693682392120e-11 * (df['var:sound_velocity'] * df['sum:hhi_r'])
 r1d2_t1 = lambda df: 1.755560174422515e+00 + -9.219908571141404e-01 * (df['average_cn'] / df['ave:period']) +            7.687571882326259e-13 * (df['var:sound_velocity'] * df['sum:hhi_r'])
 
-# R1D3 
+# R1D3
 r1d3_t0 = lambda df: 3.336572064073060e+00 +            7.765011870062933e-05 * (df['sum:heat_of_formation'] * df['average_cn']) +            -2.258678345200038e+00 * (df['average_cn'] / df['ave:period']) +            1.181395466097512e-11 * (df['var:sound_velocity'] * df['sum:hhi_r'])
 r1d3_t1 = lambda df: 1.779675579057679e+00 +            -1.293263119117848e-05 * (df['sum:heat_of_formation'] * df['average_cn']) +            -7.968776670442069e-01 * (df['average_cn'] / df['ave:period']) +            9.117578085106980e-13 * (df['var:sound_velocity'] * df['sum:hhi_r'])
 
@@ -651,7 +651,7 @@ plt.rcParams['font.size'] = 16
 # In[]:
 
 
-def make_plot(colname):    
+def make_plot(colname):
     train_t0 = train_export[train_export['soap_label'] == 0]
     train_t1 = train_export[train_export['soap_label'] == 1]
     test_t0 = test_export[test_export['soap_label'] == 0]
@@ -659,13 +659,13 @@ def make_plot(colname):
 
     plt.scatter(x=train_t0[colname], y=train_t0['bandgap (eV)'], label="Train_Type0", marker='o', c='#FFAAAA')
     plt.scatter(x=train_t1[colname], y=train_t1['bandgap (eV)'], label="Train_Type1", marker='o', c='#AAAAFF')
-    
+
     plt.scatter(x=test_t0[colname], y=test_t0['bandgap (eV)'], label="Test_Type0", marker='o',    c='#FF0000')
     plt.scatter(x=test_t1[colname], y=test_t1['bandgap (eV)'], label="Test_Type1", marker='o',    c='#0000FF')
     lims = [min(min(train_export[colname]), min(train_export['bandgap (eV)'])),
             max(max(train_export[colname]), max(train_export['bandgap (eV)']))]
     plt.plot([lims[0],lims[1]], [lims[0],lims[1]], label="Parity", ls='--', c='k')
-    
+
     plt.title(colname)
     plt.ylabel("Bandgap (Actual)")
     plt.xlabel("Bandgap (Predicted)")
