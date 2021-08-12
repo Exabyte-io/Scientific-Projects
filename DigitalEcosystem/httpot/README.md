@@ -1,4 +1,4 @@
-HT screening of TPOT models. To reproduce the results:
+HT screening of TPOT models to predict the bandgap. To reproduce the results:
 
 1. Execute `setup_jobs.py`. This will generate an `httopt_runs` directory.
 2. Copy the `httpot_runs` directory to a cluster running Torque (Slurm also is fine if the submission script is
