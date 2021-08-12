@@ -59,7 +59,7 @@ tqdm.tqdm.pandas()
 # In[]:
 
 
-dataset_path = "../../raw_data/2d_mat_dataset_raw.pkl"
+dataset_path = "../raw_data/2d_mat_dataset_raw.pkl"
 df = pd.read_pickle(dataset_path)
 
 total = len(df)
