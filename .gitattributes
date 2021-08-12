@@ -1,5 +1,2 @@
 *pkl filter=lfs diff=lfs merge=lfs -text
 *csv filter=lfs diff=lfs merge=lfs -text
-DigitalEcosystem/raw_data/2d_mat_dataset_raw.csv filter=lfs diff=lfs merge=lfs -text
-DigitalEcosystem/raw_data/bitter-sweet.csv filter=lfs diff=lfs merge=lfs -text
-DigitalEcosystem/raw_data/curated-solubility-dataset.csv filter=lfs diff=lfs merge=lfs -text
