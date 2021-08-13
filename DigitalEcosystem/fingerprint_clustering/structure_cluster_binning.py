@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[]:
+# In[ ]:
 
 
 import itertools
@@ -486,9 +486,11 @@ collections.Counter(train['soap_label'])
 collections.Counter(test['soap_label'])
 
 
-# # Feature Selection
+# # Feature Selection [OUTDATED]
 # 
 # Next, we will use Random-Forest feature selection to determine which features to include for SISSO. We begin by dropping several columns that we do not want to include with SISSO, such as DFT-calculated properties like the decomposition energy.
+# 
+# **NOTE**: We should re-run this section. The K-values are different in the above K-means, and in what we fed to SISSO. -JD
 
 # In[]:
 
@@ -508,7 +510,11 @@ regression_irrelevant = object_cols + [
     'total_magnetization (Bohr Magneton)']
 
 
-# Next, we hold out a validation set (called `data_test` below) and train a Random-Forest model on each K.
+# In[]:
+
+
+
+
 
 # In[]:
 
@@ -645,7 +651,7 @@ test_export = test[['bandgap (eV)', 'soap_label'] + exported_features].fillna(0)
 #test_export.to_csv('data_test_featurized_sulfurUnrestricted_soap_importances_bandgap.csv')
 
 
-# # SISSO Models
+# # SISSO Models [OUTDATED]
 
 # In[]:
 
