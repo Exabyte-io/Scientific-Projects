@@ -487,6 +487,8 @@ collections.Counter(test['soap_label'])
 
 
 # # Feature Selection
+# 
+# Next, we will use Random-Forest feature selection to determine which features to include for SISSO. We begin by dropping several columns that we do not want to include with SISSO, such as DFT-calculated properties like the decomposition energy.
 
 # In[]:
 
@@ -505,6 +507,8 @@ regression_irrelevant = object_cols + [
     'energy_vdw_per_atom (eV/atom)',
     'total_magnetization (Bohr Magneton)']
 
+
+# Next, we hold out a validation set (called `data_test` below) and train a Random-Forest model on each K.
 
 # In[]:
 
@@ -549,6 +553,12 @@ plt.ylabel("Bandgap (Dataset)")
 plt.xlabel("Bandgap (Predicted)")
 plt.legend()
 plt.show()
+
+
+# In[]:
+
+
+
 
 
 # In[]:
