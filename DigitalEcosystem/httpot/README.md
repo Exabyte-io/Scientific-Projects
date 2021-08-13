@@ -1,3 +1,4 @@
+# <u>H</u>igh <u>T</u>hroughput model selection via <u>TPOT</u>
 HT screening of TPOT models to predict the bandgap. To reproduce the results:
 
 1. Execute `setup_jobs.py`. This will generate an `httopt_runs` directory.
