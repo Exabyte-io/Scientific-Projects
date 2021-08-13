@@ -55,6 +55,12 @@ tqdm.tqdm.pandas()
 
 
 # # Read and Clean the Data
+# 
+# The following criteria were applied to filter this data:
+# - Systems may not contain elements from the f-block or any synthetic elements
+# - Systems may not contain noble gases
+# - Systems which had a U-correction appplied were removed. This helps ensure a consistent methodology in the data we're using, as the bandgap is influenced by the U-correction (and indeed, U is often tuned *to reproduce* the experimental bandgap - see this [excellent article](https://www.mdpi.com/2076-3417/11/5/2395) on the process).
+# - We also restrict ourselves to only Sulfur-containing systems in this notebook, as we'd observed in previous work that they're rather more well-behaved than the other systems in the dataset (while still being relevant to 2D material engineering e.g. MoS2).
 
 # In[]:
 
@@ -75,7 +81,7 @@ df = df[df["atoms_object (unitless)"].apply(
 print(f"Discarding {total - len(df)} entries in the f-block, or synthetics. Total is now {len(df)}.")
 total = len(df)
 
-# Remove systems containing f-block / synthetic elements
+# Remove systems containing noble gases
 nobles = ["He", "Ne", "Ar", "Kr", "Xe", "Rn"]
 df = df[df["atoms_object (unitless)"].apply(
            lambda atoms: all(symbol not in nobles for symbol in atoms.get_chemical_symbols()))
@@ -88,13 +94,15 @@ df = df[df["is_hubbard (unitless)"] == False]
 print(f"Discarding {total - len(df)} entries that have U-corrections applied (metal oxides/fluorides). Total is now {len(df)}.")
 total = len(df)
 
-# Also like, keep only S
+# Discard systems that do not contain Sulfur
 df = df[df["atoms_object (unitless)"].apply(lambda atoms: "S" in atoms.get_chemical_symbols())]
 print(f"Discarding {total - len(df)} entries that don't contain Sulfur. Total is now {len(df)}.")
 total = len(df)
 
 
 # # Featurization
+# 
+# Next, we featurized our dataset. We begin by leveraging PyMatGen to estimate the oxidation states of our materials.
 
 # In[]:
 
@@ -191,7 +199,12 @@ df['perimeter_area_ratio'] = df.ox_struct.progress_apply(ab_perimeter_area_ratio
 df["formula"] = df["atoms_object (unitless)"].progress_apply(lambda atoms: atoms.get_chemical_formula(empirical=True))
 
 
-# # Additional Structure Featurization
+# # Symbol / Length / Angle Features
+# 
+# Taking inspiration from the work of Bhowmik, R. et al in doi.org/10.1016/j.polymer.2021.123558, we incorporate as features:
+# - The number of elements in per crystal unit (e.g. number of C, H, N, etc).
+# - The number of element-element bonds per crystal unit (e.g. number of C-C, C-H, C-N, H-N, H-H, N-N, etc bonds).
+# - The number of element-element-element angles per crystal unit (e.g. number of C-C-H, C-H-C, C-C-C, etc angles).
 
 # In[]:
 
@@ -210,7 +223,7 @@ classes = {
 'pnictogen' : ['N', 'P', 'As', 'Sb', 'Bi'],
 'chalcogen' : ['O', 'S', 'Se', 'Te', 'Po'],
 'halide' : ['F', 'Cl', 'Br', 'I', 'At']
-
+    
 }
 
 groups = {}
@@ -218,6 +231,8 @@ for key, values in classes.items():
     for val in values:
         groups[val] = key
 
+
+# It's a little inefficient since we're doing some heavy calculations twice, but we start off by figuring out which symbol/length/angle columns we'll even need
 
 # In[]:
 
@@ -231,22 +246,29 @@ neighbor_finder = JmolNN()
 with tqdm.tqdm(total=len(df)) as pbar:
     for struct in df["ox_struct"]:
         symbols_cols.update([groups[symbol] for symbol in struct.symbol_set])
-
+        
         for index, site in enumerate(struct.sites):
             connected = [i['site'] for i in neighbor_finder.get_nn_shell_info(struct, index, 1)]
-
+            
             # Bond counts
             for vertex in connected:
                 start, end = sorted([groups[str(site.specie.element)], groups[str(vertex.specie.element)]])
                 bond = f"{start}-{end}"
                 bond_cols[bond] += 0.5
-
+                
             # Angles
             for angle_start, angle_end in map(sorted, itertools.combinations(connected,2)):
                 angle = f"{groups[str(angle_start.specie.element)]}-{groups[str(site.specie.element)]}-{groups[str(angle_end.specie.element)]}"
                 angle_cols[angle] += 1
         pbar.update(1)
 
+
+# Here, we walk through the elements in the crystal to count the symbols / lengths / angles. For each atom `i`, we:
+# 
+# 1) Incrememnt the relevant atomic symbol count by 1.
+# 2) Calculate a list of first-nearest-neighbors for the atom.
+# 3) For each neighbor `j`, increment the `i-j` bond count by 0.5 (since otherwise, we double-count). To ensure this is permutation-independent (e.g. H-C being counted separately from C-H), we order i and j alphabetically (e.g. H-C would be represented as C-H instead).
+# 4) For each possible length-2 combination of neighbors (`j` and `k`), we increment the `j-i-k` angle count (e.g. the C-H-C angle). To again ensure this is permutation-independent, we alphabetize `j` and `k` beforehand. Double counting is not a possibility here, because we only visit each center atom (the `i` in a `j-i-k` angle) once.
 
 # In[]:
 
@@ -261,40 +283,40 @@ def featurize(data):
     bond_units = "bonds"
     angle_units = "angles"
     struct = data["ox_struct"]
-
+    
     present_symbols = collections.Counter([groups[symbol] for symbol in struct.symbol_set])
     present_bonds = collections.Counter()
     present_angles = collections.Counter()
-
+    
     # Record and Count Symbols
     for symbol, count in present_symbols.items():
         data[f"{symbol} ({symbol_units})"] = count
     data[f"Total Atoms ({symbol_units})"] = sum(present_symbols.values())
-
+    
     for index, site in enumerate(struct.sites):
         connected = [i['site'] for i in neighbor_finder.get_nn_shell_info(struct, index, 1)]
-
+        
         # Count Bonds
         for vertex in connected:
             start, end = sorted([groups[str(site.specie.element)], groups[str(vertex.specie.element)]])
             bond = f"{start}-{end}"
             present_bonds[bond] += 0.5
-
+            
         # Count Angles
         for angle_start, angle_end in map(sorted, itertools.combinations(connected, 2)):
             angle = f"{groups[str(angle_start.specie.element)]}-{groups[str(site.specie.element)]}-{groups[str(angle_end.specie.element)]}"
             present_angles[angle] += 1
-
+            
     # Record Bonds
     for bond, count in present_bonds.items():
         data[f"{bond} ({bond_units})"] = count
     data[f"Total Bonds ({bond_units})"] = sum(present_bonds.values())
-
+            
     # Record Angles
     for angle, count in present_angles.items():
         data[f"{angle} ({angle_units})"] = count
     data[f"Total Angles ({angle_units})"] = sum(present_angles.values())
-
+    
     return data
 
 all_data_features = df.progress_apply(featurize, axis=1)
@@ -302,6 +324,8 @@ all_data_features
 
 
 # # Train/Test Split and Clustering
+# 
+# Now that we're done featurizing, we can begin analyzing our data. To begin, well take a train / test split.
 
 # In[]:
 
@@ -311,6 +335,13 @@ all_data_features[to_fill] = all_data_features[to_fill].fillna(0)
 
 train, test = sklearn.model_selection.train_test_split(all_data_features, test_size=0.1, random_state=RANDOM_SEED)
 
+
+# # K-Means and SOAP
+# 
+# Next, we'll incorporate structural information by way of K-Means clustering on the Smooth Overlap of Atomic Positions (SOAP) fingerprint.
+# 
+# ## SOAP
+# SOAP (documentation link [here](https://singroup.github.io/dscribe/latest/tutorials/descriptors/soap.html)) will generate an `m` x `n` matrix from the atomic coordinates, where `m` is the number of atoms in the system and `n` is SOAP's encoding for the atom. Because we want a vector and not a matrix for each structure, we concatenate the average, minimum, and maximum of each column of the SOAP encoding for the atoms in the system. This generates a vector of length `3n`.
 
 # In[]:
 
@@ -328,11 +359,19 @@ def saponify(atoms):
     lathered = soap.create(atoms)
     # Soap creates an N x M array
     #     - N is the number of atoms in the system
-    #     - M is the size of the SOAP descriptor
+    #     - M is the size of the SOAP descriptor 
     # So we'll average along the N direction
     rinsed = np.hstack([lathered.mean(axis=0), lathered.min(axis=0), lathered.max(axis=0)])
     return rinsed
 
+
+# ## PCA
+# 
+# SOAP generates some rather large feature vectors. Part of this is because we consider atoms up to atomic number 92 (U).
+# 
+# The extremely high-dimensional space this creates (255,300 dimensions!) is very problematic for us. The K-means implementation we're using leverages the Euclidean distance to create its clusters - and doesn't allow for other distance metrics. This creates a problem for us: as Aggarwal, C. C. points out in "[On the Surprising Behavior of Distance Metrics in High Dimensional Space](https://doi.org/10.1007/3-540-44503-X_27)", in high dimensional spaces, the Manhattan (L1) distance is *significantly* more meaningful in assessing proximity than the Euclidean (L2) distance.
+# 
+# As a result, we'll instead reduce the dimensionality of our problem via PCA - this is especially useful, as the SOAP vectors we create are also rather sparse. Somewhat arbitrarily, we will take the first 128 principle components of the data.
 
 # In[]:
 
@@ -345,6 +384,10 @@ cluster_training_data = pca.fit_transform(cluster_training_data)
 print(cluster_training_data.shape)
 
 
+# Another major reason to use PCA is that it gives us a compressed representation of the variance of our feature space. PCA works by providing vectors containing the highest (PCA component 0), next-highest, (component 1), and so-on variance in the feature space. We demonstrate this by plotting the range of the data in the below plot - we see a much greater variation in the data at higher dimensions compared to low dimensions.
+# 
+# This synergizes very well with K-means, as the algorithm attempts to find clusters whose groups contain equal variance.
+
 # In[]:
 
 
@@ -354,6 +397,14 @@ plt.xlabel("Principle Component")
 plt.ylabel("Value (Arbitrary)")
 plt.legend()
 
+
+# ## K-Means
+# 
+# Because we're programmers, and enjoy automating things, we'll algorithmically find an optimal K for the clustering. To do this, we take advantage of the [Calinski-Harabasz Score](https://arxiv.org/abs/1905.05667), which rates higher clusters which:
+# 1. Maximizes the distance between members of different clusters.
+# 2. Minimizes the distance between members of the same cluster.
+# 
+# We then plot this score as a function of K, seeking to maximize it.
 
 # In[]:
 
@@ -371,13 +422,21 @@ for n_clusters in np.arange(min_clusters, max_clusters, n_skip):
     error = sklearn.metrics.calinski_harabasz_score(cluster_training_data, clusters.predict(cluster_training_data))
     results[n_clusters] = error
     print(n_clusters, error, sep="\t\t")
-
+    
 plt.plot(list(results.keys()), list(results.values()), marker="o", color="black")
 plt.xticks(range(min_clusters, max_clusters))
 plt.xlabel("N Clusters")
 plt.ylabel("Calinski Harabasz Score")
 plt.show()
 
+
+# We see that we reach an optimum at K=4.
+# 
+# One more thing we need to do. We want to avoid a scenario where only 2-3 points have been assigned to the same cluster, as this creates problems when we try to evaluate certain metrics like R2, and is also problematic for cross validation in multitask SISSO. It also isn't particularly useful to train a model on that few points.
+# 
+# So, first, we'll check the number of points in each cluster. If there are not enough labels, we'll drop down to the next-lowest number of cluster.
+# 
+# In this case, we see that our optimum of K=4 is fine.
 
 # In[]:
 
@@ -403,6 +462,8 @@ while any([count < 4 for count in labels.values()]):
 print(n_clusters)
 
 
+# Next, label each cluster based on the cluster they belong to.
+
 # In[]:
 
 
@@ -410,6 +471,8 @@ cluster_test = np.vstack(test['atoms_object (unitless)'].progress_apply(saponify
 train['soap_label'] = clusters.predict(cluster_training_data)
 test['soap_label'] = clusters.predict(pca.transform(cluster_test))
 
+
+# Finally, we'll check to make sure that we do actually represent all 4 clusters in the training and testing set:
 
 # In[]:
 
@@ -446,7 +509,7 @@ regression_irrelevant = object_cols + [
 # In[]:
 
 
-data_train, data_test = sklearn.model_selection.train_test_split(train[train['soap_label']==1].drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0),
+data_train, data_test = sklearn.model_selection.train_test_split(train[train['soap_label']==1].drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0), 
                                                                  test_size=0.1, random_state=RANDOM_SEED)
 
 train_x = data_train.drop(columns=["bandgap (eV)", 'soap_label']).to_numpy()
@@ -470,7 +533,7 @@ model.fit(X=train_x, y=train_y)
 train_y_pred = model.predict(train_x)
 val_y_pred = model.predict(val_x)
 
-# Plot the results
+# Plot the results   
 plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
 plt.rcParams["figure.figsize"] = (10,10)
 plt.rcParams["font.size"] = 16
@@ -491,7 +554,7 @@ plt.show()
 # In[]:
 
 
-data_train, data_test = sklearn.model_selection.train_test_split(train[train['soap_label']==0].drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0),
+data_train, data_test = sklearn.model_selection.train_test_split(train[train['soap_label']==0].drop(columns=regression_irrelevant + ['formula', '2dm_id (unitless)', 'exfoliation_energy_per_atom (eV/atom)']).fillna(0), 
                                                                  test_size=0.1, random_state=RANDOM_SEED)
 
 train_x = data_train.drop(columns=["bandgap (eV)", 'soap_label']).to_numpy()
@@ -515,7 +578,7 @@ model.fit(X=train_x, y=train_y)
 train_y_pred = model.predict(train_x)
 val_y_pred = model.predict(val_x)
 
-# Plot the results
+# Plot the results   
 plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
 plt.rcParams["figure.figsize"] = (10,10)
 plt.rcParams["font.size"] = 16
@@ -585,7 +648,7 @@ r1d1_t1 = lambda df: 7.593072978523676e-01 + 8.053457188249878e-13 * (df['var:so
 r1d2_t0 = lambda df: 2.846720668897464e+00 +            -1.002110960463248e+00 * (df['average_cn'] / df['ave:period']) +            1.476693682392120e-11 * (df['var:sound_velocity'] * df['sum:hhi_r'])
 r1d2_t1 = lambda df: 1.755560174422515e+00 + -9.219908571141404e-01 * (df['average_cn'] / df['ave:period']) +            7.687571882326259e-13 * (df['var:sound_velocity'] * df['sum:hhi_r'])
 
-# R1D3
+# R1D3 
 r1d3_t0 = lambda df: 3.336572064073060e+00 +            7.765011870062933e-05 * (df['sum:heat_of_formation'] * df['average_cn']) +            -2.258678345200038e+00 * (df['average_cn'] / df['ave:period']) +            1.181395466097512e-11 * (df['var:sound_velocity'] * df['sum:hhi_r'])
 r1d3_t1 = lambda df: 1.779675579057679e+00 +            -1.293263119117848e-05 * (df['sum:heat_of_formation'] * df['average_cn']) +            -7.968776670442069e-01 * (df['average_cn'] / df['ave:period']) +            9.117578085106980e-13 * (df['var:sound_velocity'] * df['sum:hhi_r'])
 
@@ -651,7 +714,7 @@ plt.rcParams['font.size'] = 16
 # In[]:
 
 
-def make_plot(colname):
+def make_plot(colname):    
     train_t0 = train_export[train_export['soap_label'] == 0]
     train_t1 = train_export[train_export['soap_label'] == 1]
     test_t0 = test_export[test_export['soap_label'] == 0]
@@ -659,13 +722,13 @@ def make_plot(colname):
 
     plt.scatter(x=train_t0[colname], y=train_t0['bandgap (eV)'], label="Train_Type0", marker='o', c='#FFAAAA')
     plt.scatter(x=train_t1[colname], y=train_t1['bandgap (eV)'], label="Train_Type1", marker='o', c='#AAAAFF')
-
+    
     plt.scatter(x=test_t0[colname], y=test_t0['bandgap (eV)'], label="Test_Type0", marker='o',    c='#FF0000')
     plt.scatter(x=test_t1[colname], y=test_t1['bandgap (eV)'], label="Test_Type1", marker='o',    c='#0000FF')
     lims = [min(min(train_export[colname]), min(train_export['bandgap (eV)'])),
             max(max(train_export[colname]), max(train_export['bandgap (eV)']))]
     plt.plot([lims[0],lims[1]], [lims[0],lims[1]], label="Parity", ls='--', c='k')
-
+    
     plt.title(colname)
     plt.ylabel("Bandgap (Actual)")
     plt.xlabel("Bandgap (Predicted)")
