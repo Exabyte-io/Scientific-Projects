@@ -5,7 +5,9 @@
 # 
 # In this notebook, we demonstrate some of the initial work on this project that was carried out in the summer of 2021. Here, we leverage some Xenonpy-calculated properties to calculate the unit cell volume of several perovskite systems taken from NOMAD's database.
 # 
-# Both SISSO and TPOT are used t
+# Both SISSO and TPOT are used to train predictive models, and near the end of the document we discuss what we can learn from this comparison.
+# 
+# Overall, in this notebook we demonstrate SISSO's ability to generate simple, interpretable models that can help lead us to physical insight - one of the major strengths of symbolic regression.
 
 # In[]:
 
