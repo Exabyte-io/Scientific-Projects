@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Featurization
-# 
+#
 # In this notebook, we apply some structural descriptors to our dataset, such as the number of `halide`-`transitoin metal`-`halide` bonds in the system. These are a bit expensive to calculate, and end up taking an hour or two. For this reason, we pickle them here.
 
 # In[]:
@@ -15,7 +15,6 @@ import collections
 import pandas as pd
 import random
 import numpy as np
-import swifter
 
 import tqdm
 
@@ -26,12 +25,10 @@ from matminer.featurizers.base import MultipleFeaturizer
 from matminer.featurizers.structure.misc import EwaldEnergy
 from matminer.featurizers.structure.order import StructuralComplexity
 from matminer.featurizers.structure.symmetry import GlobalSymmetryFeatures
-from matminer.featurizers.structure.bonding import GlobalInstabilityIndex
-from matminer.featurizers.site.bonding import AverageBondLength
-
 
 # In[]:
-
+from DigitalEcosystem.utils.fingerprints import maybe_global_instability, average_bond_length, average_bond_angle, \
+    average_cn, ab_perimeter_area_ratio, neighbor_finder
 
 RANDOM_SEED = 1234
 np.random.seed(RANDOM_SEED)
@@ -41,7 +38,7 @@ tqdm.tqdm.pandas()
 
 
 # # Read the Datset
-# 
+#
 # We'll start by loading up the entire dataset.
 
 # In[]:
@@ -52,10 +49,10 @@ df = pd.read_pickle(dataset_path)
 
 
 # # Featurize the Dataset
-# 
+#
 # Now, we're going to add features to our dataset. We already have several compositional features calculated using
 # XenonPy, and we may get some better performance out of our models if we also incorporate structural descriptors.
-# 
+#
 # We'll start by leveraging PyMatGen to estimate the oxidation state of our 2D materials. This will be useful for the
 # calculation of some of our features down the road, which require information about the oxidation state.
 
@@ -73,19 +70,19 @@ df.ox_struct.swifter.apply(lambda struct: struct.add_oxidation_state_by_guess())
 
 # ## Ewald Energy
 # [Documentation Link](https://hackingmaterials.lbl.gov/matminer/matminer.featurizers.structure.html#matminer.featurizers.structure.misc.EwaldEnergy)
-# 
+#
 # Using the partial charges we estimated earlier, this will approximate the long-range interactions between ions in our
 # 2D systems.
-# 
+#
 # ## Structural Complexity
 # [Documentation Link](https://hackingmaterials.lbl.gov/matminer/matminer.featurizers.structure.html#matminer.featurizers.structure.order.StructuralComplexity)
-# 
+#
 # This is a variation on the Shannon entropy that accounts for the symmetry of the unit cell. This helps assess how
 # organized / disorganized our system is, providing some estimation of its entropy.
-# 
+#
 # ## N Symmetry Ops
 # [Documentation Link](https://hackingmaterials.lbl.gov/matminer/matminer.featurizers.structure.html#matminer.featurizers.structure.order.StructuralComplexity)
-# 
+#
 # Number of symmetry operations allowed by the point group in our unit cell.
 
 # In[]:
@@ -104,22 +101,14 @@ print(struct_features.feature_labels())
 
 # ## Global Instability Index
 # [Documentation Link](https://hackingmaterials.lbl.gov/matminer/matminer.featurizers.structure.html#matminer.featurizers.structure.order.StructuralComplexity)
-# 
+#
 # The global instability index is based on the work of Salinas-Sanches, A. in the following publication: [Link](https://www.sciencedirect.com/science/article/abs/pii/002245969290094C?via%3Dihub).
-# 
+#
 # Essentially, it estimates, on average, how strained the bonds are in the system (e.g. are the over-or under-bonding).
-# 
+#
 
 # In[]:
 
-
-desc = GlobalInstabilityIndex()
-
-def maybe_global_instability(struct):
-    try:
-        return desc.featurize(struct)[0]
-    except:
-        return None
 
 with warnings.catch_warnings():
     warnings.simplefilter('ignore')
@@ -127,60 +116,40 @@ with warnings.catch_warnings():
 
 
 # ## Choosing a Neighbor Finder
-# 
+#
 # The next several descriptors will require us to define what exactly it means for two atoms to be "neighbors." Many of
 # the neighbor-finders in PyMatGen use a voronoi-based algorithm that has trouble with some slabs. As of August 2021,
 # the issue is still open, as shown in this link: [Link](https://github.com/materialsproject/pymatgen/issues/801)
-# 
+#
 # Here, we'll take the neighbor-finding algorithm of JMol, as implemented in PyMatGen.
 
 # In[]:
 
 
-neighbor_finder = JmolNN()
-
-
 # ## Average Bond Length
 # [Documentation Link](https://hackingmaterials.lbl.gov/matminer/matminer.featurizers.site.html#matminer.featurizers.site.bonding.AverageBondLength)
-# 
+#
 # We will also calculate the average bond length in our system.
 
 # In[]:
 
-
-def average_bond_length(structure, featurizer = AverageBondLength(neighbor_finder)):
-    n_atoms = len(structure)
-    try:
-        lengths = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
-        return sum(lengths) / n_atoms
-    except IndexError:
-        return None
 
 df['bond_length_average'] = df.ox_struct.swifter.apply(average_bond_length).copy()
 
 
 # ## Average Bond Angle
 # [Documentation Link](https://hackingmaterials.lbl.gov/matminer/matminer.featurizers.site.html#matminer.featurizers.site.bonding.AverageBondAngle)
-# 
+#
 # We'll additionally determine the average bond angle between atoms in our system.
 
 # In[]:
 
 
-from matminer.featurizers.site.bonding import AverageBondAngle
-
-def average_bond_angle(structure, featurizer = AverageBondAngle(neighbor_finder)):
-    n_atoms = len(structure)
-    try:
-        angles = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
-        return sum(angles) / n_atoms
-    except IndexError:
-        return None
 df['bond_angle_average'] = df.ox_struct.swifter.apply(average_bond_angle).copy()
 
 
 # ## Average Coordination Number
-# 
+#
 # We'll determine how coordinated, on average, the different atoms in our system are. This is accomplished by
 # determining the number of nearest neighbors with the neighbor finder we defined earlier, and averaging over
 # the atoms in the crystal cell.
@@ -188,26 +157,17 @@ df['bond_angle_average'] = df.ox_struct.swifter.apply(average_bond_angle).copy()
 # In[]:
 
 
-def average_cn(structure, neighbor_finder = neighbor_finder):
-    n_atoms = len(structure)
-    cns = map(lambda i: neighbor_finder.get_cn(structure, i), range(n_atoms))
-    return sum(cns) / n_atoms
 df['average_cn'] = df.ox_struct.swifter.apply(average_cn).copy()
 
 
 # ## AB Perimeter/Area Ratio
-# 
+#
 # Next, we'll try to assess how square our unit cell is in the two directions parallel to the surface. To do this, we'll
 # take the ratio of the perimeter to the area of the cell.
 
 # In[]:
 
 
-def ab_perimeter_area_ratio(structure):
-    a, b, c = structure.lattice.matrix
-    perimeter = 2*np.linalg.norm(a) + 2*np.linalg.norm(b)
-    area = np.linalg.norm(np.cross(a,b))
-    return perimeter / area
 df['perimeter_area_ratio'] = df.ox_struct.swifter.apply(ab_perimeter_area_ratio).copy()
 
 
@@ -220,9 +180,9 @@ df["formula"] = df["atoms_object (unitless)"].swifter.apply(lambda atoms: atoms.
 
 
 # ## Structural Descriptors
-# 
-# Next, we'll calculate some structural descriptors, similar to the ones that had been used by Bhowmik, R. et al in [DOI 10.1016/j.polymer.2021.123558](https://doi.org/10.1016/j.polymer.2021.123558). 
-# 
+#
+# Next, we'll calculate some structural descriptors, similar to the ones that had been used by Bhowmik, R. et al in [DOI 10.1016/j.polymer.2021.123558](https://doi.org/10.1016/j.polymer.2021.123558).
+#
 # Because there are a wide variety of elements in our dataset, to try and keep this from generating too many columns, we'll bin each element into different sections of the periodic table:
 # - Alkaline metals
 # - Alkaline earth metals
@@ -236,12 +196,12 @@ df["formula"] = df["atoms_object (unitless)"].swifter.apply(lambda atoms: atoms.
 # - Noble Gases
 # - F-block elements
 # - Post-Uranium elements
-# 
+#
 # We'll be looking for the following counts:
 # - Number of each group (e.g. number of alkaline, number of triel, etc)
 # - Number of each group-group bond (e.g. number of alkaline-early_transition, number of chalcogen-chalcogen, etc)
 # - Number of each grou-grou-group angle (e.g. number of halide-late_transition-halide, number of tetrel-tetrel-tetrel, etc)
-# 
+#
 # Adding dihedrals as well would have required a more complex graph traversal algorithm, so in the interest of time we forego this.
 
 # In[]:
@@ -283,8 +243,6 @@ symbols_cols = collections.Counter()
 bond_cols = collections.Counter()
 angle_cols = collections.Counter()
 
-neighbor_finder = JmolNN()
-
 with tqdm.tqdm(total=len(df)) as pbar:
     for struct in df["ox_struct"]:
         symbols_cols.update([groups[symbol] for symbol in struct.symbol_set])
@@ -306,9 +264,9 @@ with tqdm.tqdm(total=len(df)) as pbar:
 
 
 # # Back These Up
-# 
+#
 # This takes long enough that, to save progress, we save it.
-# 
+#
 # We then store the above run as a pickle. In this notebook, we can see a typo was present in its first version (`df.to_picke` instead of `df.to_pickle` had been called). To fix this, we re-ran that line in the below cell. The above featurization takes a couple of hours to run, so we didn't re-run the entire cell just for that.
 
 # In[]:
@@ -318,7 +276,7 @@ df.to_pickle('backup.pkl')
 
 
 # # Featurize the Data
-# 
+#
 # Next, we'll take the second pass at calculating these features (again, this is rather inefficient, and could probably be compressed into a single run if we wanted to do this again).
 
 # In[]:
@@ -374,7 +332,7 @@ all_data_features
 
 
 # # Pickle the data
-# 
+#
 # Finally, pickle the data for use in the remainder of the HTTPOT work.
 
 # In[]:

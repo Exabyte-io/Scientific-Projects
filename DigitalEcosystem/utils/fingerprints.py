@@ -5,6 +5,13 @@ import dscribe.descriptors
 
 import functools
 
+from matminer.featurizers.site import AverageBondLength, AverageBondAngle
+from matminer.featurizers.structure import GlobalInstabilityIndex
+from pymatgen.analysis.local_env import JmolNN
+
+# ============
+# Fingerprints
+# ============
 
 def fingerprint_df(df: pd.DataFrame) -> np.ndarray:
     """
@@ -55,7 +62,7 @@ def fingerprint_soap(df: pd.DataFrame) -> np.ndarray:
     return result
 
 
-def fingerprint_ewald_sum(max_atoms: int, df: pd.DataFrame,) -> np.ndarray:
+def fingerprint_ewald_sum(max_atoms: int, df: pd.DataFrame, ) -> np.ndarray:
     """
     Takes the eigenspectrum of the Ewald sum using Dscribe:
     https://singroup.github.io/dscribe/latest/tutorials/descriptors/ewald_sum_matrix.html
@@ -73,3 +80,50 @@ def fingerprint_ewald_sum(max_atoms: int, df: pd.DataFrame,) -> np.ndarray:
     result = np.real(np.vstack(df['atoms_object (unitless)'].apply(ewald_matrix.create)))
 
     return result
+
+# ============
+# Descriptors
+# ============
+
+def maybe_global_instability(struct):
+    try:
+        return desc.featurize(struct)[0]
+    except:
+        return None
+
+
+neighbor_finder = JmolNN()
+
+
+def average_bond_length(structure, featurizer=AverageBondLength(neighbor_finder)):
+    n_atoms = len(structure)
+    try:
+        lengths = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
+        return sum(lengths) / n_atoms
+    except IndexError:
+        return None
+
+
+def average_bond_angle(structure, featurizer=AverageBondAngle(neighbor_finder)):
+    n_atoms = len(structure)
+    try:
+        angles = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
+        return sum(angles) / n_atoms
+    except IndexError:
+        return None
+
+
+def average_cn(structure, neighbor_finder=neighbor_finder):
+    n_atoms = len(structure)
+    cns = map(lambda i: neighbor_finder.get_cn(structure, i), range(n_atoms))
+    return sum(cns) / n_atoms
+
+
+def ab_perimeter_area_ratio(structure):
+    a, b, c = structure.lattice.matrix
+    perimeter = 2 * np.linalg.norm(a) + 2 * np.linalg.norm(b)
+    area = np.linalg.norm(np.cross(a, b))
+    return perimeter / area
+
+
+desc = GlobalInstabilityIndex()
