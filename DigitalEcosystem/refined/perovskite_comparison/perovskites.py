@@ -131,8 +131,8 @@ model.fit(train_x, train_y)
 
 def unscale(arr):
     return arr * std["Volume"] + mean["Volume"]
-    
-train_pred_y = model.predict(train_x) 
+
+train_pred_y = model.predict(train_x)
 test_pred_y = model.predict(test_x)
 
 plt.scatter(x=unscale(train_pred_y), y=unscale(train_y), label="Train")
@@ -256,9 +256,3 @@ plt.show()
 # Contrary to this limitation, the SISSO model will extrapolate, takes in just 2-4 features (depending on the rung and number of terms), and results to something that's very close to the conventional wisdom a chemist might offer.
 # 
 # Overall, although the TPOT model performs *slightly* better, the SISSO model has more utility if one seeks to obtain physical insight.
-
-# In[ ]:
-
-
-
-
