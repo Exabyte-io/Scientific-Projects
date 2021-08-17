@@ -11,7 +11,7 @@ import sklearn.cluster
 import sklearn.pipeline
 import sklearn.decomposition
 
-import fingerprints
+from DigitalEcosystem.utils import fingerprints
 import row_filters
 
 RANDOM_SEED = 1234
