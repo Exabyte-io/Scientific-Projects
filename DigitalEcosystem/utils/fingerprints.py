@@ -2,7 +2,7 @@ import ase
 import pandas as pd
 import numpy as np
 import dscribe.descriptors
-from functional import except_with_default_value
+from .functional import except_with_default_value
 
 import functools
 

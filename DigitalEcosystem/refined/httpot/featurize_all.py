@@ -19,7 +19,6 @@ import numpy as np
 import tqdm
 
 import pymatgen.io
-from pymatgen.analysis.local_env import JmolNN
 
 from matminer.featurizers.base import MultipleFeaturizer
 from matminer.featurizers.structure.misc import EwaldEnergy
