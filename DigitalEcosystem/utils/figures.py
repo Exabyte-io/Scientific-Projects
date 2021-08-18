@@ -42,7 +42,7 @@ def plot_roc(x, y, label, classifier):
         plt.close()
 
 
-def draw_confusion_matrix(x,y,label,classifier, cutoff=0.5):
+def draw_confusion_matrix(x, y, label, classifier, cutoff=0.5):
     plt.rcParams['figure.facecolor'] = 'white'
     sklearn.metrics.ConfusionMatrixDisplay(
         sklearn.metrics.confusion_matrix(
@@ -65,3 +65,25 @@ def save_train_test_histplot(train_df, test_df, title, filename, column, stat, b
     plt.legend()
     plt.title(title)
     plt.savefig(filename)
+
+def save_parity_plot(train_x, test_x, train_y, test_y, regression_model, label, filename):
+    train_pred_y = regression_model.predict(train_x)
+    test_pred_y = regression_model.predict(test_x)
+
+    plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
+    plt.rcParams["figure.figsize"] = (15, 15)
+    plt.rcParams["font.size"] = 16
+
+    plt.scatter(x=train_y, y=train_pred_y, label="Train Set")
+    plt.scatter(x=test_y, y=test_pred_y, label="Test Set")
+
+    min_xy = min(min(train_y), min(test_y), min(test_pred_y), min(train_pred_y))
+    max_xy = max(max(train_y), max(test_y), max(test_pred_y), max(train_pred_y))
+
+    plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
+    plt.ylabel(f"{label} (Predicted)")
+    plt.xlabel(f"{label} (Dataset)")
+    plt.legend()
+    plt.savefig(filename)
+    plt.show()
+    plt.close()

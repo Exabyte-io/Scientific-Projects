@@ -524,26 +524,13 @@ reg_study = optuna.create_study(
 
 reg_study.optimize(func=objective, n_trials=500, callbacks=[keep_best_reg])
 
-#best_reg.fit(train_x_reg, train_y_reg)
-
-y_pred_train = best_reg.predict(train_x_reg)
-y_pred_test = best_reg.predict(test_x_reg)
-
-plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
-plt.rcParams["figure.figsize"] = (15, 15)
-plt.rcParams["font.size"] = 16
-
-plt.scatter(x=train_y_reg, y=y_pred_train, label="Train Set")
-plt.scatter(x=test_y_reg, y=y_pred_test, label="Test Set")
-
-min_xy = min(min(test_y_reg), min(test_y_reg), min(y_pred_test), min(y_pred_train))
-max_xy = max(max(test_y_reg), max(test_y_reg), max(y_pred_test), max(y_pred_train))
-
-plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
-plt.ylabel("Bandgap (Predicted)")
-plt.xlabel("Bandgap (Dataset)")
-plt.legend()
-plt.savefig('parity.jpeg')
+DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
+                                                test_x_reg,
+                                                train_y_reg,
+                                                test_y_reg,
+                                                best_reg,
+                                                "Bandgap (eV)",
+                                                "parity.jpeg")
 
 
 # # Regression - Results
@@ -586,6 +573,7 @@ metrics = {
     'R2': sklearn.metrics.r2_score
 }
 
+y_pred_test = best_reg.predict(test_x_reg)
 for key, fun in metrics.items():
     value = fun(y_true=test_y_reg, y_pred=y_pred_test)
     print(key,np.round(value,3))
