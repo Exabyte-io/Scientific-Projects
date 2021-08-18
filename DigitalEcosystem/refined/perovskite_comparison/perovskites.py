@@ -135,11 +135,15 @@ def unscale(arr):
 train_pred_y = model.predict(train_x)
 test_pred_y = model.predict(test_x)
 
-plt.scatter(x=unscale(train_pred_y), y=unscale(train_y), label="Train")
-plt.scatter(x=unscale(test_pred_y), y=unscale(test_y), label="Test")
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.legend()
+def create_partiy_plot(train_yhat, test_yhat):
+    plt.scatter(x=unscale(train_yhat), y=unscale(train_y), label="Train")
+    plt.scatter(x=unscale(test_yhat), y=unscale(test_y), label="Test")
+    plt.xlabel("Predicted")
+    plt.ylabel("Actual")
+    plt.legend()
+    plt.show()
+
+create_partiy_plot(train_pred_y, test_pred_y)
 
 
 # # SISSO Rung1, 1-Term Plot
@@ -147,11 +151,7 @@ plt.legend()
 # In[]:
 
 
-plt.scatter(x=unscale(data_train_scaled_sisso["r1_1term"]), y=unscale(train_y), label="Train")
-plt.scatter(x=unscale(data_test_scaled_sisso["r1_1term"]), y=unscale(test_y), label="Test")
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.legend()
+create_partiy_plot(data_train_scaled_sisso["r1_1term"],data_test_scaled_sisso["r1_1term"])
 
 
 # # SISSO Rung1, 2-Term Plot
@@ -159,11 +159,7 @@ plt.legend()
 # In[]:
 
 
-plt.scatter(x=unscale(data_train_scaled_sisso["r1_2term"]), y=unscale(train_y), label="Train")
-plt.scatter(x=unscale(data_test_scaled_sisso["r1_2term"]), y=unscale(test_y), label="Test")
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.legend()
+create_partiy_plot(data_train_scaled_sisso["r1_2term"], data_test_scaled_sisso["r1_2term"])
 
 
 # # SISSO Rung2, 1-Term Plot
@@ -171,11 +167,7 @@ plt.legend()
 # In[]:
 
 
-plt.scatter(x=unscale(data_train_scaled_sisso["r2_1term"]), y=unscale(train_y), label="Train")
-plt.scatter(x=unscale(data_test_scaled_sisso["r2_1term"]), y=unscale(test_y), label="Test")
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.legend()
+create_partiy_plot(data_train_scaled_sisso["r2_1term"], data_test_scaled_sisso["r2_1term"])
 
 
 # # Combined Plots
@@ -195,23 +187,29 @@ plt.legend()
 # In[]:
 
 
-tpot_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(train_y), y_pred=unscale(train_pred_y)),2)
-r1_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(train_y), y_pred=unscale(data_train_scaled_sisso["r1_1term"])),2)
-r1_2t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(train_y), y_pred=unscale(data_train_scaled_sisso["r1_2term"])),2)
-r2_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(train_y), y_pred=unscale(data_train_scaled_sisso["r2_1term"])),2)
+def create_multi_parity_plot(ytrue, ypred, source_df, is_train):
+    tpot_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(ypred)),2)
+    r1_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r1_1term"])),2)
+    r1_2t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r1_2term"])),2)
+    r2_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r2_1term"])),2)
 
-plt.rcParams["figure.dpi"]=200
-plt.scatter(x=unscale(train_pred_y), y=unscale(train_y), color="black", alpha=0.9, marker="+", label=f"TPOT, 108 Terms, MAPE={tpot_mape}")
-plt.scatter(x=unscale(data_train_scaled_sisso["r1_1term"]), y=unscale(train_y), marker="v", color="red",alpha=0.5, label=f"Rung 1, 1-Term, MAPE={r1_1t_mape}")
-plt.scatter(x=unscale(data_train_scaled_sisso["r1_2term"]), y=unscale(train_y), marker="^", color="green", alpha=0.5, label=f"Rung 1, 2-Term, MAPE={r1_2t_mape}")
-plt.scatter(x=unscale(data_train_scaled_sisso["r2_1term"]), y=unscale(train_y), marker="s", color="blue", alpha=0.5, label=f"Rung 2, 1-term, MAPE={r2_1t_mape}")
-plt.plot([45, 280], [45, 280], color="black", linestyle="--", label="Parity")
+    plt.rcParams["figure.dpi"]=200
+    plt.scatter(x=unscale(train_pred_y), y=unscale(ytrue), color="black", alpha=0.9, marker="+", label=f"TPOT, 108 Terms, MAPE={tpot_mape}")
+    plt.scatter(x=unscale(source_df["r1_1term"]), y=unscale(ytrue), marker="v", color="red",alpha=0.5, label=f"Rung 1, 1-Term, MAPE={r1_1t_mape}")
+    plt.scatter(x=unscale(source_df["r1_2term"]), y=unscale(ytrue), marker="^", color="green", alpha=0.5, label=f"Rung 1, 2-Term, MAPE={r1_2t_mape}")
+    plt.scatter(x=unscale(source_df["r2_1term"]), y=unscale(ytrue), marker="s", color="blue", alpha=0.5, label=f"Rung 2, 1-term, MAPE={r2_1t_mape}")
+    plt.plot([45, 280], [45, 280], color="black", linestyle="--", label="Parity")
 
-plt.title("Training Set (80% of Dataset)")
-plt.xlabel("Predicted (Å^3 / Formula Unit)")
-plt.ylabel("Actual Volume (Å^3 / Formula Unit)")
-plt.legend(prop={"size": 8})
-plt.show()
+    if is_train:
+        plt.title("Training Set (80% of Dataset)")
+    else:
+        plt.title("Testing Set (20% Holdout)")
+    plt.xlabel("Predicted (Å^3 / Formula Unit)")
+    plt.ylabel("Actual Volume (Å^3 / Formula Unit)")
+    plt.legend(prop={"size": 8})
+    plt.show()
+
+create_multi_parity_plot(ytrue=train_y, ypred=train_pred_y, source_df=data_train_scaled_sisso, is_train=True)
 
 
 # ## Test-Set
@@ -226,23 +224,7 @@ plt.show()
 # In[]:
 
 
-tpot_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(test_y), y_pred=unscale(test_pred_y)),2)
-r1_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(test_y), y_pred=unscale(data_test_scaled_sisso["r1_1term"])),2)
-r1_2t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(test_y), y_pred=unscale(data_test_scaled_sisso["r1_2term"])),2)
-r2_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(test_y), y_pred=unscale(data_test_scaled_sisso["r2_1term"])),2)
-
-plt.rcParams["figure.dpi"]=200
-plt.scatter(x=unscale(test_pred_y), y=unscale(test_y), color="black", alpha=0.9, marker="+", label=f"TPOT, 108 Terms, MAPE={tpot_mape}")
-plt.scatter(x=unscale(data_test_scaled_sisso["r1_1term"]), y=unscale(test_y), marker="v", color="red",alpha=0.5, label=f"Rung 1, 1-Term, MAPE={r1_1t_mape}")
-plt.scatter(x=unscale(data_test_scaled_sisso["r1_2term"]), y=unscale(test_y), marker="^", color="green", alpha=0.5, label=f"Rung 1, 2-Term, MAPE={r1_2t_mape}")
-plt.scatter(x=unscale(data_test_scaled_sisso["r2_1term"]), y=unscale(test_y), marker="s", color="blue", alpha=0.5, label=f"Rung 2, 1-term, MAPE={r2_1t_mape}")
-plt.plot([45, 280], [45, 280], color="black", linestyle="--", label="Parity")
-
-plt.title("Testing Set (20% Holdout)")
-plt.xlabel("Predicted (Å^3 / Formula Unit)")
-plt.ylabel("Actual Volume (Å^3 / Formula Unit)")
-plt.legend(prop={"size": 8})
-plt.show()
+create_multi_parity_plot(ytrue=test_y, ypred=test_pred_y, source_df=data_test_scaled_sisso, is_train=False)
 
 
 # # Conclusions
@@ -256,3 +238,9 @@ plt.show()
 # Contrary to this limitation, the SISSO model will extrapolate, takes in just 2-4 features (depending on the rung and number of terms), and results to something that's very close to the conventional wisdom a chemist might offer.
 # 
 # Overall, although the TPOT model performs *slightly* better, the SISSO model has more utility if one seeks to obtain physical insight.
+
+# In[ ]:
+
+
+
+
