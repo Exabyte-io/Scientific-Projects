@@ -4,7 +4,7 @@ import functools
 
 
 def except_with_default_value(exceptions_to_catch: Tuple[Type[BaseException]] = (Exception,),
-                            default_return: Any = None) -> Callable:
+                              default_return: Any = None) -> Callable:
     """
     Wraps the specified function to catch the specified set of errors, returning a default value.
 

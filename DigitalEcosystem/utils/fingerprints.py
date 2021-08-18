@@ -89,7 +89,7 @@ def fingerprint_ewald_sum(max_atoms: int, df: pd.DataFrame, ) -> np.ndarray:
 # ============
 
 @except_with_default_value(exceptions_to_catch=(BaseException,),
-                         default_return=None)
+                           default_return=None)
 def global_instability(struct):
     return desc.featurize(struct)[0]
 
