@@ -2,9 +2,9 @@
 # coding: utf-8
 
 # # Metal Classifier
-#
+# 
 # In this notebook, we train an XGBoost classifier to predict whether a system is metallic or not (bandgap <0.1 eV), and use this as an automated means of cleaning our dataset.
-#
+# 
 # At the end, we assess model performance, and observe that our data is largely Tweedie-distributed once we remove the metallic systems.
 
 # In[]:
@@ -17,25 +17,23 @@ import numpy as np
 import optuna
 import xgboost
 import imblearn.over_sampling
-import smogn
 import sklearn.model_selection
 import dscribe.descriptors
 import tqdm
 import sklearn.pipeline
 
-import matplotlib
+import functools
+
 import matplotlib.pyplot as plt
 import sklearn.impute
 import seaborn as sns
 
+import DigitalEcosystem.utils.figures
+
 tqdm.tqdm.pandas()
 
-import sys
 
-from DigitalEcosystem.utils.fingerprints import fingerprint_ewald_sum
-
-
-# In[]:
+# In[ ]:
 
 
 # Random seeds for reproducibility
@@ -70,7 +68,7 @@ atoms_col = ['atoms_object (unitless)']
 
 
 # # Featurization
-#
+# 
 # Here, we use the Sine Matrix eigenspectrum (DScribe Documentation here: [Link](https://singroup.github.io/dscribe/0.3.x/tutorials/sine_matrix.html)) as our input feature to determine metallicity. We'd also tried the Ewald Summation Matrix eigenspectrum (DScribe Documentation here: [Link](https://singroup.github.io/dscribe/latest/tutorials/descriptors/ewald_sum_matrix.html)), but found that the Sine Matrix led to better performnance.
 
 # In[]:
@@ -113,7 +111,7 @@ test_x, test_y = get_x_y(test)
 
 # # K-Means SMOTE
 # At this point, our dataset is slightly imbalanced. To address this, we'll use the K-means variation of SMOTE (Imbalanced-Learn Documentation here: [Link](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.KMeansSMOTE.html)). This is a variation on SMOTE that first performs the K-Means algorithm to generate class labels within the minority class, and then upsamples those. It's shown very promising performance for imbalanced classification problems compared to the original SMOTE algorithm (Original publication hosted at https://arxiv.org/abs/1711.00837).
-#
+# 
 # To avoid contaminating our test set with information about the training set, we perform K-means SMOTE *after* the train/test split.
 
 # In[]:
@@ -128,9 +126,9 @@ res_x, res_y = knn_smote.fit_resample(train_x, train_y)
 
 
 # # Hyperparameter Optimization
-#
+# 
 # For this work, we'll use an XGBoost classifier. Several of its most important hyperparameters are tuned via Optuna, a Bayesian optimization framework implented in Python.
-#
+# 
 # In addition to optimizing the hyperparameters, we'll also investigate the use of a scaler. Optuna can choose from the following options:
 # 1. No scaler being applied
 # 2. A Min/Max scaler
@@ -142,7 +140,7 @@ res_x, res_y = knn_smote.fit_resample(train_x, train_y)
 current_pipeline = None
 best_pipeline = None
 
-def keep_best_bg(study, trial):
+def keep_best_bandgap_model(study, trial):
     """
     Records the best bandgap model found so far
     """
@@ -184,6 +182,7 @@ def objective(trial: optuna.Trial):
     ])
 
     pruning_callback = optuna.integration.XGBoostPruningCallback(trial, 'validation_0-auc')
+
     current_pipeline.fit(X=tr_x, y=tr_y,
                          **{
                             'XGB_Classifier__eval_set': [[val_x, val_y]],
@@ -201,7 +200,7 @@ def objective(trial: optuna.Trial):
 
 
 # We'll run Optuna using its TPE Sampler (the default; documentation here: [Link](https://optuna.readthedocs.io/en/stable/reference/generated/optuna.samplers.TPESampler.html)) with a random seed supplied. Additionally, we'll use the HyperBand pruner to prune trials that are not promising (Documentation link here: [Link](https://optuna.readthedocs.io/en/stable/reference/generated/optuna.pruners.HyperbandPruner.html)).
-#
+# 
 # We choose the HyperBand pruner because it's demonstrated accelerate convergence faster than many of the other pruning techniques available in Optuna: [Blogpost Link](https://tech.preferred.jp/en/blog/how-we-implement-hyperband-in-optuna/)
 
 # In[]:
@@ -223,69 +222,34 @@ study = optuna.create_study(
 # In[]:
 
 
-study.optimize(objective, n_trials=1000, callbacks=[keep_best_bg])
+study.optimize(objective, n_trials=1000, callbacks=[keep_best_bandgap_model])
 
 
 # # ROC Curves
-#
+# 
 # To assess model performance, we'll print out some ROC curves here.
-#
+# 
 # Although we hold out a validation set in our objective function, we do not retrain the model on the entire training set, as this validation set was also used to control the early stopping of our XGBoost model (and thus helps guard against overfitting).
-#
+# 
 # Overall, we see generally good results for both our training set and our testing set.
 
 # In[]:
 
 
-def plot_roc(x, y, label):
-        plt.rcParams['figure.figsize'] = [10,10]
-        probabilities = best_pipeline.predict_proba(x)[:,1]
-
-        # ROC curve function in sklearn prefers the positive class
-        false_positive_rate, true_positive_rate, thresholds = sklearn.metrics.roc_curve(y, probabilities,
-                                                                                        pos_label=1)
-        thresholds[0] -= 1  # Sklearn arbitrarily adds 1 to the first threshold
-        roc_auc = np.round(sklearn.metrics.auc(false_positive_rate, true_positive_rate), 3)
-
-        # Plot the curve
-        fig, ax = plt.subplots()
-        points = np.array([false_positive_rate, true_positive_rate]).T.reshape(-1, 1, 2)
-        segments = np.concatenate([points[:-1], points[1:]], axis=1)
-        norm = plt.Normalize(thresholds.min(), thresholds.max())
-        lc = matplotlib.collections.LineCollection(segments, cmap='jet', norm=norm, linewidths=2)
-        lc.set_array(thresholds)
-        line = ax.add_collection(lc)
-        fig.colorbar(line, ax=ax).set_label('Threshold')
-
-        # Padding to ensure we see the line
-        ax.margins(0.01)
-
-        fig.patch.set_facecolor('white')
-
-        plt.plot([0,1], [0,1], c='k')
-
-        plt.title(f"{label} Set ROC curve, AUC={roc_auc}")
-
-        plt.xlabel("False Positive Rate")
-        plt.ylabel("True Positive Rate")
-        plt.tight_layout()
-        plt.savefig(f"{label}_Set_ROC.png")
-        plt.show()
-        plt.close()
-
+plot_roc = functools.partial(DigitalEcosystem.utils.figures.plot_roc, classifier=best_pipeline)
 
 plot_roc(train_x, train_y, "Training")
 plot_roc(test_x, test_y, "Test")
 
 
 # # Confusion Matrices
-#
+# 
 # For a more fine-grained picture of our model's performance, we also draw confusion matrices here.
-#
+# 
 # Overall, our classification is slightly biased towards under-prediction of the number of metals in the dataset when the model's probability cutoff is set to 0.5. Although we did not tune this cutoff, the process would be easy: we could simply lower the probability at-which something is considered to be a metal until the number of misclassified metals and nonmetals were equal in the training set.
-#
+# 
 # A few metrics of the model's performance, derived from the above ROC curves and the below confusion matrices, are summarized in the below table.
-#
+# 
 # | Metric   | Training Set | Test Set |
 # |----------|--------------|----------|
 # | TPR      | 0.892        | 0.766    |
@@ -293,7 +257,7 @@ plot_roc(test_x, test_y, "Test")
 # | Accuracy | 0.897        | 0.767    |
 # | F1 Score | 0.902        | 0.784    |
 # | ROC AUC  | 0.956        | 0.848    |
-#
+# 
 # Overall, we see good performnace in both our training and testing set, with similar error rates in both - which is a good indication that our model generalizes well to the testing set.
 
 # In[]:
@@ -301,30 +265,19 @@ plot_roc(test_x, test_y, "Test")
 
 CUTOFF = 0.5
 
-def create_confusion(x,y,label,cutoff=CUTOFF):
-    plt.rcParams['figure.facecolor'] = 'white'
-    sklearn.metrics.ConfusionMatrixDisplay(
-        sklearn.metrics.confusion_matrix(
-            y_true=y,
-            y_pred=best_pipeline.predict_proba(x)[:,1]>cutoff,
-        )
-    ).plot(cmap="Blues")
-    plt.title(f"{label} Set Confusion Matrix at cutoff {cutoff}")
-    plt.xticks([0,1], labels=["Nonmetal", "Metal"])
-    plt.yticks([0,1], labels=["Nonmetal", "Metal"])
-    plt.gca().xaxis.tick_top()
-    plt.savefig(f"{label}_set_confusion_matrix.png")
-    plt.show()
-    plt.close()
 
-create_confusion(train_x, train_y, "Training")
-create_confusion(test_x, test_y, "Test")
+draw_confusion_matrix = functools.partial(DigitalEcosystem.utils.figures.draw_confusion_matrix,
+                                          classifier=best_pipeline,
+                                          cutoff=CUTOFF)
+
+draw_confusion_matrix(train_x, train_y, "Training")
+draw_confusion_matrix(test_x, test_y, "Test")
 
 
 # # Nonmetal Bandgap Regression
-#
+# 
 # Next, we'll move to the next step of our pipeline: predicting the bandgap of nonmetals.
-#
+# 
 # We'll use our trained classifier to label the dataset as "metal" or "nonmetal."
 
 # In[]:
@@ -347,11 +300,11 @@ test_nonmetals = test[test['pred_metal'] != True]
 
 
 # # Bandgap Distribution
-#
+# 
 # Before we perform the regression, let's also investigate the distribution of our data.
-#
+# 
 # ## Entire Dataset
-#
+# 
 # First, we look at the bandgap of all data in our dataset (including metals and nonmetals). We see a very large spike at approximately 0 bandgap, followed by a tail of wider bandgaps.
 
 # In[]:
@@ -360,45 +313,46 @@ test_nonmetals = test[test['pred_metal'] != True]
 bins = np.arange(0,max(data['bandgap (eV)']), 0.5)
 stat='density'
 
-sns.histplot(train, x='bandgap (eV)', label="Train", color="#AAAAFF", stat=stat, bins=bins)
-sns.histplot(test, x='bandgap (eV)', label="Test", color="#FFAAAA", stat=stat, bins=bins)
-plt.legend()
-plt.title("All Data")
-plt.savefig("FullDatasetBandgapHistogram.jpeg")
+draw_train_test_histplot = functools.partial(DigitalEcosystem.utils.figures.save_train_test_histplot,
+                                             column='bandgap (eV)',
+                                             stat=stat,
+                                             bins=bins)
+
+draw_train_test_histplot(train, test,
+                         "All Data",
+                         "FullDatasetBandgapHistogram.jpeg")
 
 
 # ## Predicted-Nonmetals Only
-#
+# 
 # Next, we'll take a look at just rows from training and testing set which were labeled as nonmetals by our classifier.
-#
+# 
 # We see that our data distribution has changed - the training set and testing set seem to be a a mixture between a Poisson distribution and a Gamma distribution - this is the classic Tweedie distribution (Wikipedia article: [Link](https://en.wikipedia.org/wiki/Tweedie_distribution)).
 
 # In[]:
 
 
-sns.histplot(train_nonmetals, x='bandgap (eV)', color="#AAAAFF", label="Train", stat=stat, bins=bins)
-sns.histplot(test_nonmetals, x='bandgap (eV)', color="#FFAAAA", label="Test", stat=stat, bins=bins)
-plt.legend()
-plt.title("Classified as Nonmetals")
-plt.savefig("NonmetalHistplot.jpeg")
+draw_train_test_histplot(train_nonmetals,
+                         test_nonmetals,
+                         "Classififed as Nonmetals",
+                         "NormalHistplot.jpeg")
 
 
 # ## Predicted Metals Only
-#
+# 
 # Finally, we'll investigate our predicted metals and nonmetals. We see that, barring a few exceptions, materials that are predicted to be a metal at least tend to have a low bandgap.
 
 # In[]:
 
 
-sns.histplot(train_metals, x='bandgap (eV)', color="#AAAAFF", label="Train", stat=stat, bins=bins)
-sns.histplot(test_metals, x='bandgap (eV)', color="#FFAAAA", label="Test", stat=stat, bins=bins)
-plt.legend()
-plt.title("Classified as Metals")
-plt.savefig("MetalHistplot.jpeg")
+draw_train_test_histplot(train_metals,
+                         test_metals,
+                         "Classified as Metals",
+                         "MetalHistplot.jpeg")
 
 
 # # Regression - Features
-#
+# 
 # Before we start doing any work with regression, we need to choose a set of features. Because we've been finding success in the past in this problem with the Xenonpy and Matminer-derived descriptors, we'll go ahead and extract those from our dataset.
 
 # In[ ]:
@@ -422,7 +376,7 @@ target = ['bandgap (eV)']
 
 
 # Next, we'll separate out our X and Y columns, and we'll use Numpy to remove any NaN values that made their way into the dataset.
-#
+# 
 # This is an area of improvement, as we could have also imputed the NaN values instead.
 
 # In[]:
@@ -436,25 +390,25 @@ test_y_reg = np.nan_to_num(test_nonmetals[target].to_numpy())
 
 
 # # Tweedie Distribution - Investigation
-#
+# 
 # Finally, before we do our regression, let's revisit the Tweedie distribution we discussed earlier.
-#
+# 
 # The shape of the Tweedie distribution is controlled by a power parameter, which allows it to function as a generalization of a variety of other distributions, including the Poisson, Gamma, Normal, Gaussian, and other distributions. H2O has some very good documentation on this subject: [Link](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/tweedie_variance_power.html#:~:text=Tweedie%20distributions%20are%20a%20family,\)%3D%CF%95%CE%BCpi.).
-#
+# 
 # To estimate the power, we'll walk along powers ranging from 1.0 (Poisson) to almost 2.0 (Gamma), with intermediate powers representing a Tweedie distribution. At each step, we'll take 1,000 bootstrap samples of the dataset and calculate the mean tweedie deviance relative to the mean of the bandgap. We'll take the power that results in the lowest mean tweedie deviance as an estimate of the Tweedie power.
-#
+# 
 # Overall, we find the following results:
-#
+# 
 # | Data Subset     | Optimal Tweedie Power |
 # |-----------------|-----------------------|
 # | Full Dataset    | 1.0                   |
 # | Train Nonmetals | 1.326                 |
 # | Test Nonmetals  | 1.202                 |
-#
+# 
 # When we attempt to fit a model on our entire dataset, we see that the data is closest to a Poisson distribution.
-#
-# When we remove metals from our training and testing set, however, we see that our data shifts to be more Tweedie-Distributed (a power between 1 and 2). Moreover, we see a slight difference in power between our training and testing set - which we can actually see in the above "Classified as Nonmetals" plot, particularly below 2 eV.
-#
+# 
+# When we remove metals and testing set, however, we see that our data shifts to be more Tweedie - Distributed (a power between 1 and 2).Moreover, we see a slight difference in power between our training and testing set - which we can actually see in the above "Classified as Nonmetals" plot, particularly below 2 eV.
+# 
 # This difference in distribution between our training set and testing set is likely to contribute to error in our regression model.
 
 # In[]:
@@ -503,9 +457,9 @@ best_pow=get_pow_plot(train_nonmetals["bandgap (eV)"].to_numpy(), "TrainNonmetal
 
 
 # # Regression - XGBoost
-#
+# 
 # Finally, we'll train another XGBoost model, this time for regression of the bandgap. We'll again use Optuna to tune a few of the model's hyperparameter (fewer in the interest of time). We'll also just start with a Min/Max scaler, as some previous work we'd done on thi problem indicated good performance when this was used as a scaler versus standardization or not scaling.
-#
+# 
 # We'll finally draw a parity plot of our results.
 
 # In[]:
@@ -593,13 +547,13 @@ plt.savefig('parity.jpeg')
 
 
 # # Regression - Results
-#
+# 
 # Overall, we see okay performance of the model. Certainly not the big gains in performance that we had hoped for when removing the metals from the dataset.
-#
+# 
 # One thing we could try to improve our predictions here would be to manually remove all metals from the training set, then train on those. This would likely lead to even worse performance in the case of the metal systems that had been misclassified as nonmetals - but those are already wrong by quite a lot anyway.
-#
+# 
 # Below, we output the test-set error metrics, since those are the ones that really tell us if our model will generalize. Reproduced here:
-#
+# 
 # | Error Metric | Test-Set Value    |
 # |--------------|-------------------|
 # | MAE          | 0.67              |
@@ -607,13 +561,13 @@ plt.savefig('parity.jpeg')
 # | RMSE         | 0.909             |
 # | MAPE         | 543850845913702.8 |
 # | R2           | 0.703             |
-#
+# 
 # - The MAE is comparable to a related model, MegNet [Link](https://github.com/materialsvirtuallab/megnet). MegNet is a graph convolution neural network trained on a variety of different datasets. When compared with DFT bandgaps from Materials Project (slightly different, as that dataset is of 3D materials and not 2D materials), they report a MAE of 0.33 eV for the bandgap. Considering we're not training a neural network on huge numbers of samples, this should put our MAE of 0.67 eV in perspective.
 # - We see a similar story for our RMSE (square root of our MSE), which is 0.909 eV.
 # - The Mean Absolute Percent Error (MAPE) is high, but this is because we have 0-valued entries in the dataset - this is why this metric is generally avoided in the case of data with 0s in their values (it also tends to cause models to underestinate when used as a loss function, which is another reason we don't use it as our loss function).
 # - Finally, we see that our R2 is 0.703, so our test set predictions are at least correlated with our dataset.
-#
-#
+# 
+# 
 
 # In[]:
 
@@ -638,7 +592,7 @@ for key, fun in metrics.items():
 
 
 # # Regression - Feature Importances
-#
+# 
 # Finally, in the below plot we will list the feature importances of our XGBoost model. Here are a few of the most-important features:
 # 1. `min:GS_Energy` is a property from XenonPy. It is derived by looking at the ground-state electronic energy of the bulk cells of each element in the system (e.g. a system containing NaCl would look at the bulk cell for Na and the bulk cell for Cl). The `min` in front tells us that this version of the feature chooses the minimum amongst the ground-state DFT energies in each elemental system.
 # 2. `var:VDW_radius_MM3` is another XenonPy property. As is the case with all the Xenonpy descriptors we use in this notebook, it is derived by looking at tabulated values for each element in the system. In this case, we take the variance of the elemntal VDW radii, as tabulated by the MM3 forcefield.
@@ -663,9 +617,9 @@ plt.savefig("Importances.jpeg")
 
 
 # # Conclusions
-#
+# 
 # Overall, in this notebook we:
-#
+# 
 # 1. Trained a classifier to predict whether a material is likely to be a metal or a nonmetal, with very good performance.
 # 2. Identified that our data seems to be Tweedie-Distributed once we remove the nonmetals - which might be contributing to some of the error in the model (the high density of points at 0 eV).
 # 3. Trained a regression model to predict the bandgap, with MAE comparable to a graph convolutional neural network that had been trained to address the bandgap of similar materials.
