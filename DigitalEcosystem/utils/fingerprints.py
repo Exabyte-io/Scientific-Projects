@@ -2,12 +2,14 @@ import ase
 import pandas as pd
 import numpy as np
 import dscribe.descriptors
+from functional import except_with_default_value
 
 import functools
 
 from matminer.featurizers.site import AverageBondLength, AverageBondAngle
 from matminer.featurizers.structure import GlobalInstabilityIndex
 from pymatgen.analysis.local_env import JmolNN
+
 
 # ============
 # Fingerprints
@@ -81,36 +83,36 @@ def fingerprint_ewald_sum(max_atoms: int, df: pd.DataFrame, ) -> np.ndarray:
 
     return result
 
+
 # ============
 # Descriptors
 # ============
 
-def maybe_global_instability(struct):
-    try:
-        return desc.featurize(struct)[0]
-    except:
-        return None
+@except_with_default_value(exceptions_to_catch=(BaseException,),
+                         default_return=None)
+def global_instability(struct):
+    return desc.featurize(struct)[0]
 
 
 neighbor_finder = JmolNN()
 
+default_val_on_index_error = functools.partial(except_with_default_value,
+                                               exceptions_to_catch=(IndexError,),
+                                               default_return=None)
 
+
+@default_val_on_index_error()
 def average_bond_length(structure, featurizer=AverageBondLength(neighbor_finder)):
     n_atoms = len(structure)
-    try:
-        lengths = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
-        return sum(lengths) / n_atoms
-    except IndexError:
-        return None
+    lengths = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
+    return sum(lengths) / n_atoms
 
 
+@default_val_on_index_error()
 def average_bond_angle(structure, featurizer=AverageBondAngle(neighbor_finder)):
     n_atoms = len(structure)
-    try:
-        angles = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
-        return sum(angles) / n_atoms
-    except IndexError:
-        return None
+    angles = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
+    return sum(angles) / n_atoms
 
 
 def average_cn(structure, neighbor_finder=neighbor_finder):

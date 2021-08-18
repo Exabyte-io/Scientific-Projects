@@ -27,7 +27,7 @@ from matminer.featurizers.structure.order import StructuralComplexity
 from matminer.featurizers.structure.symmetry import GlobalSymmetryFeatures
 
 # In[]:
-from DigitalEcosystem.utils.fingerprints import maybe_global_instability, average_bond_length, average_bond_angle, \
+from DigitalEcosystem.utils.fingerprints import global_instability, average_bond_length, average_bond_angle, \
     average_cn, ab_perimeter_area_ratio, neighbor_finder
 
 RANDOM_SEED = 1234
@@ -112,7 +112,7 @@ print(struct_features.feature_labels())
 
 with warnings.catch_warnings():
     warnings.simplefilter('ignore')
-    df['global_instability'] = df.ox_struct.swifter.apply(maybe_global_instability).copy()
+    df['global_instability'] = df.ox_struct.swifter.apply(global_instability).copy()
 
 
 # ## Choosing a Neighbor Finder
