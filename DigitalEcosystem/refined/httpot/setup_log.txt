@@ -1,0 +1,248 @@
+Cols are lengthAngle_cols
+|---Caching ewald_fingerprint
+|---Recalled ewald_fingerprint from cache
+    |---all_rows
+         |---Trying K=2 and PCA_dims=40, score=5923.256, hiscore=5923.256 at 2
+         |---Trying K=3 and PCA_dims=40, score=5933.846, hiscore=5933.846 at 3
+         |---Trying K=4 and PCA_dims=40, score=5857.995, hiscore=5933.846 at 3
+         |---Trying K=5 and PCA_dims=40, score=6177.497, hiscore=6177.497 at 5
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_2
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_3
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_4
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=40, score=5306.474, hiscore=5306.474 at 2
+         |---Trying K=3 and PCA_dims=40, score=5049.403, hiscore=5306.474 at 2
+         |---Trying K=4 and PCA_dims=40, score=5102.985, hiscore=5306.474 at 2
+         |---Trying K=5 and PCA_dims=40, score=5167.866, hiscore=5306.474 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=40, score=1683.487, hiscore=1683.487 at 2
+         |---Trying K=3 and PCA_dims=40, score=1711.402, hiscore=1711.402 at 3
+         |---Trying K=4 and PCA_dims=40, score=1753.398, hiscore=1753.398 at 4
+         |---Trying K=5 and PCA_dims=40, score=1801.217, hiscore=1801.217 at 5
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_3
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_4
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/ewald_fingerprint/tpot/k_as_column
+|---Calculated direct_fingerprint, cannot be cached
+    |---all_rows
+         |---Trying K=2 and PCA_dims=128, score=4658.072, hiscore=4658.072 at 2
+         |---Trying K=3 and PCA_dims=128, score=3697.302, hiscore=4658.072 at 2
+         |---Trying K=4 and PCA_dims=128, score=3032.344, hiscore=4658.072 at 2
+         |---Trying K=5 and PCA_dims=128, score=2589.812, hiscore=4658.072 at 2
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/direct_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=128, score=3513.928, hiscore=3513.928 at 2
+         |---Trying K=3 and PCA_dims=128, score=2833.401, hiscore=3513.928 at 2
+         |---Trying K=4 and PCA_dims=128, score=2314.519, hiscore=3513.928 at 2
+         |---Trying K=5 and PCA_dims=128, score=1976.655, hiscore=3513.928 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/direct_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=128, score=2358.656, hiscore=2358.656 at 2
+         |---Trying K=3 and PCA_dims=128, score=1933.112, hiscore=2358.656 at 2
+         |---Trying K=4 and PCA_dims=128, score=1603.748, hiscore=2358.656 at 2
+         |---Trying K=5 and PCA_dims=128, score=1385.494, hiscore=2358.656 at 2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/direct_fingerprint/tpot/k_as_column
+|---Caching soap_fingerprint
+|---Recalled soap_fingerprint from cache
+    |---all_rows
+         |---Trying K=2 and PCA_dims=128, score=1295.261, hiscore=1295.261 at 2
+         |---Trying K=3 and PCA_dims=128, score=1015.979, hiscore=1295.261 at 2
+         |---Trying K=4 and PCA_dims=128, score=922.961, hiscore=1295.261 at 2
+         |---Trying K=5 and PCA_dims=128, score=889.126, hiscore=1295.261 at 2
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/lengthAngle_cols/soap_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=128, score=1279.532, hiscore=1279.532 at 2
+         |---Trying K=3 and PCA_dims=128, score=1047.923, hiscore=1279.532 at 2
+         |---Trying K=4 and PCA_dims=128, score=774.239, hiscore=1279.532 at 2
+         |---Trying K=5 and PCA_dims=128, score=698.542, hiscore=1279.532 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/lengthAngle_cols/soap_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=128, score=942.286, hiscore=942.286 at 2
+         |---Trying K=3 and PCA_dims=128, score=836.432, hiscore=942.286 at 2
+         |---Trying K=4 and PCA_dims=128, score=647.422, hiscore=942.286 at 2
+         |---Trying K=5 and PCA_dims=128, score=567.186, hiscore=942.286 at 2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/lengthAngle_cols/soap_fingerprint/tpot/k_as_column
+Cols are xenonpy_matminer_cols
+|---Recalled ewald_fingerprint from cache
+    |---all_rows
+         |---Trying K=2 and PCA_dims=40, score=5923.256, hiscore=5923.256 at 2
+         |---Trying K=3 and PCA_dims=40, score=5933.846, hiscore=5933.846 at 3
+         |---Trying K=4 and PCA_dims=40, score=5857.995, hiscore=5933.846 at 3
+         |---Trying K=5 and PCA_dims=40, score=6177.497, hiscore=6177.497 at 5
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_2
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_3
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_4
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=40, score=5306.474, hiscore=5306.474 at 2
+         |---Trying K=3 and PCA_dims=40, score=5049.403, hiscore=5306.474 at 2
+         |---Trying K=4 and PCA_dims=40, score=5102.985, hiscore=5306.474 at 2
+         |---Trying K=5 and PCA_dims=40, score=5167.866, hiscore=5306.474 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=40, score=1683.487, hiscore=1683.487 at 2
+         |---Trying K=3 and PCA_dims=40, score=1711.402, hiscore=1711.402 at 3
+         |---Trying K=4 and PCA_dims=40, score=1753.398, hiscore=1753.398 at 4
+         |---Trying K=5 and PCA_dims=40, score=1801.217, hiscore=1801.217 at 5
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_3
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_4
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/ewald_fingerprint/tpot/k_as_column
+|---Calculated direct_fingerprint, cannot be cached
+    |---all_rows
+         |---Trying K=2 and PCA_dims=128, score=17202.046, hiscore=17202.046 at 2
+         |---Trying K=3 and PCA_dims=128, score=11915.773, hiscore=17202.046 at 2
+         |---Trying K=4 and PCA_dims=128, score=11423.245, hiscore=17202.046 at 2
+         |---Trying K=5 and PCA_dims=128, score=10218.786, hiscore=17202.046 at 2
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=128, score=9865.916, hiscore=9865.916 at 2
+         |---Trying K=3 and PCA_dims=128, score=6773.548, hiscore=9865.916 at 2
+         |---Trying K=4 and PCA_dims=128, score=6363.626, hiscore=9865.916 at 2
+         |---Trying K=5 and PCA_dims=128, score=5756.812, hiscore=9865.916 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=128, score=7639.276, hiscore=7639.276 at 2
+         |---Trying K=3 and PCA_dims=128, score=5419.052, hiscore=7639.276 at 2
+         |---Trying K=4 and PCA_dims=128, score=5183.191, hiscore=7639.276 at 2
+         |---Trying K=5 and PCA_dims=128, score=4559.754, hiscore=7639.276 at 2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/direct_fingerprint/tpot/k_as_column
+|---Recalled soap_fingerprint from cache
+    |---all_rows
+         |---Trying K=2 and PCA_dims=128, score=1295.261, hiscore=1295.261 at 2
+         |---Trying K=3 and PCA_dims=128, score=1015.979, hiscore=1295.261 at 2
+         |---Trying K=4 and PCA_dims=128, score=922.961, hiscore=1295.261 at 2
+         |---Trying K=5 and PCA_dims=128, score=889.126, hiscore=1295.261 at 2
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=128, score=1279.532, hiscore=1279.532 at 2
+         |---Trying K=3 and PCA_dims=128, score=1047.923, hiscore=1279.532 at 2
+         |---Trying K=4 and PCA_dims=128, score=844.665, hiscore=1279.532 at 2
+         |---Trying K=5 and PCA_dims=128, score=698.542, hiscore=1279.532 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=128, score=942.286, hiscore=942.286 at 2
+         |---Trying K=3 and PCA_dims=128, score=836.432, hiscore=942.286 at 2
+         |---Trying K=4 and PCA_dims=128, score=647.422, hiscore=942.286 at 2
+         |---Trying K=5 and PCA_dims=128, score=567.186, hiscore=942.286 at 2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/xenonpy_matminer_cols/soap_fingerprint/tpot/k_as_column
+Cols are all_cols
+|---Recalled ewald_fingerprint from cache
+    |---all_rows
+         |---Trying K=2 and PCA_dims=40, score=5923.256, hiscore=5923.256 at 2
+         |---Trying K=3 and PCA_dims=40, score=5933.846, hiscore=5933.846 at 3
+         |---Trying K=4 and PCA_dims=40, score=5857.995, hiscore=5933.846 at 3
+         |---Trying K=5 and PCA_dims=40, score=6177.497, hiscore=6177.497 at 5
+             |---Writing to ./httpot_runs/all_rows/all_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/all_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/all_cols/ewald_fingerprint/tpot/k_2
+             |---Writing to ./httpot_runs/all_rows/all_cols/ewald_fingerprint/tpot/k_3
+             |---Writing to ./httpot_runs/all_rows/all_cols/ewald_fingerprint/tpot/k_4
+             |---Writing to ./httpot_runs/all_rows/all_cols/ewald_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=40, score=5306.474, hiscore=5306.474 at 2
+         |---Trying K=3 and PCA_dims=40, score=5049.403, hiscore=5306.474 at 2
+         |---Trying K=4 and PCA_dims=40, score=5102.985, hiscore=5306.474 at 2
+         |---Trying K=5 and PCA_dims=40, score=5167.866, hiscore=5306.474 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/ewald_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=40, score=1683.487, hiscore=1683.487 at 2
+         |---Trying K=3 and PCA_dims=40, score=1711.402, hiscore=1711.402 at 3
+         |---Trying K=4 and PCA_dims=40, score=1753.398, hiscore=1753.398 at 4
+         |---Trying K=5 and PCA_dims=40, score=1801.217, hiscore=1801.217 at 5
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/ewald_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/ewald_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/ewald_fingerprint/tpot/k_2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/ewald_fingerprint/tpot/k_3
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/ewald_fingerprint/tpot/k_4
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/ewald_fingerprint/tpot/k_as_column
+|---Calculated direct_fingerprint, cannot be cached
+    |---all_rows
+         |---Trying K=2 and PCA_dims=128, score=17202.046, hiscore=17202.046 at 2
+         |---Trying K=3 and PCA_dims=128, score=11915.773, hiscore=17202.046 at 2
+         |---Trying K=4 and PCA_dims=128, score=11423.245, hiscore=17202.046 at 2
+         |---Trying K=5 and PCA_dims=128, score=10218.786, hiscore=17202.046 at 2
+             |---Writing to ./httpot_runs/all_rows/all_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/all_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/all_cols/direct_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=128, score=9865.916, hiscore=9865.916 at 2
+         |---Trying K=3 and PCA_dims=128, score=6773.548, hiscore=9865.916 at 2
+         |---Trying K=4 and PCA_dims=128, score=6363.626, hiscore=9865.916 at 2
+         |---Trying K=5 and PCA_dims=128, score=5756.812, hiscore=9865.916 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/direct_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=128, score=7639.276, hiscore=7639.276 at 2
+         |---Trying K=3 and PCA_dims=128, score=5419.052, hiscore=7639.276 at 2
+         |---Trying K=4 and PCA_dims=128, score=5183.191, hiscore=7639.276 at 2
+         |---Trying K=5 and PCA_dims=128, score=4559.754, hiscore=7639.276 at 2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/direct_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/direct_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/direct_fingerprint/tpot/k_as_column
+|---Recalled soap_fingerprint from cache
+    |---all_rows
+         |---Trying K=2 and PCA_dims=128, score=1295.261, hiscore=1295.261 at 2
+         |---Trying K=3 and PCA_dims=128, score=1015.979, hiscore=1295.261 at 2
+         |---Trying K=4 and PCA_dims=128, score=894.51, hiscore=1295.261 at 2
+         |---Trying K=5 and PCA_dims=128, score=831.743, hiscore=1295.261 at 2
+             |---Writing to ./httpot_runs/all_rows/all_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/all_rows/all_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/all_rows/all_cols/soap_fingerprint/tpot/k_as_column
+    |---reasonable_rows
+         |---Trying K=2 and PCA_dims=128, score=1279.532, hiscore=1279.532 at 2
+         |---Trying K=3 and PCA_dims=128, score=1047.923, hiscore=1279.532 at 2
+         |---Trying K=4 and PCA_dims=128, score=845.009, hiscore=1279.532 at 2
+         |---Trying K=5 and PCA_dims=128, score=698.542, hiscore=1279.532 at 2
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_rows/all_cols/soap_fingerprint/tpot/k_as_column
+    |---reasonable_nonmetals_rows
+         |---Trying K=2 and PCA_dims=128, score=942.286, hiscore=942.286 at 2
+         |---Trying K=3 and PCA_dims=128, score=836.432, hiscore=942.286 at 2
+         |---Trying K=4 and PCA_dims=128, score=647.422, hiscore=942.286 at 2
+         |---Trying K=5 and PCA_dims=128, score=567.186, hiscore=942.286 at 2
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/soap_fingerprint/tpot/k_0
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/soap_fingerprint/tpot/k_1
+             |---Writing to ./httpot_runs/reasonable_nonmetals_rows/all_cols/soap_fingerprint/tpot/k_as_column
