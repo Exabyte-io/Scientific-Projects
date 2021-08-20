@@ -12,11 +12,17 @@
 # In[]:
 
 
+import functools
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import tpot
 import sklearn
+
+import sys
+
+sys.path.append("../../../")
+import DigitalEcosystem.utils.figures
 
 from IPython.display import Latex
 
@@ -68,15 +74,22 @@ data_test = (data_test_scaled * std) + mean
 # In[]:
 
 
-models = {}
-
-models["r1_1term"] = lambda df: 2.342082515585748e-02 + 5.172456498122173e-01 * (df["ave:vdw_radius_uff"] + df["ave:covalent_radius_pyykko_double"])
-models["r1_2term"] = lambda df: 1.052443572291616e-02 + 1.242091145866421e-01 * (df["ave:num_p_valence"] + df["ave:num_p_unfilled"]) +                                 4.898720001428966e-01 * (df["min:gs_volume_per"] + df["ave:covalent_radius_pyykko_double"])
-models["r2_1term"] = lambda df: 4.521699008847579e-03 + 2.966651096729857e-01 * ((df["min:Polarizability"] + df["ave:num_p_valence"]) + (df["min:gs_volume_per"] + df["ave:vdw_radius_mm3"]))
+models = {
+    "r1_1term": lambda df: 2.342082515585748e-02 + \
+                           5.172456498122173e-01 * (df["ave:vdw_radius_uff"] + df["ave:covalent_radius_pyykko_double"]),
+    "r1_2term": lambda df: 1.052443572291616e-02 + \
+                           1.242091145866421e-01 * (df["ave:num_p_valence"] + df["ave:num_p_unfilled"]) + \
+                           4.898720001428966e-01 * (df["min:gs_volume_per"] + df["ave:covalent_radius_pyykko_double"]),
+    "r2_1term": lambda df: 4.521699008847579e-03 + \
+                           2.966651096729857e-01 * (
+                                   (df["min:Polarizability"] + df["ave:num_p_valence"]) + \
+                                   (df["min:gs_volume_per"] + df["ave:vdw_radius_mm3"])
+                           )
+}
 
 data_train_scaled_sisso = data_train_scaled.copy()
 data_test_scaled_sisso = data_test_scaled.copy()
-for key,fun in models.items():
+for key, fun in models.items():
     data_train_scaled_sisso[key] = fun(data_train_scaled_sisso)
     data_test_scaled_sisso[key] = fun(data_test_scaled_sisso)
 
@@ -95,7 +108,7 @@ data_train_scaled_sisso.head()
 model = tpot.TPOTRegressor(
     generations=None,
     population_size=100,
-    max_eval_time_mins=1/60,
+    max_eval_time_mins=1 / 60,
     max_time_mins=10,
     cv=len(data_train_scaled),
     verbosity=2,
@@ -132,18 +145,17 @@ model.fit(train_x, train_y)
 def unscale(arr):
     return arr * std["Volume"] + mean["Volume"]
 
+
 train_pred_y = model.predict(train_x)
 test_pred_y = model.predict(test_x)
 
-def create_partiy_plot(train_yhat, test_yhat):
-    plt.scatter(x=unscale(train_yhat), y=unscale(train_y), label="Train")
-    plt.scatter(x=unscale(test_yhat), y=unscale(test_y), label="Test")
-    plt.xlabel("Predicted")
-    plt.ylabel("Actual")
-    plt.legend()
-    plt.show()
+create_parity_plot_with_raw_values = functools.partial(DigitalEcosystem.utils.figures.save_parity_plot_with_raw_values,
+                                                       train_y=unscale(train_y),
+                                                       test_y=unscale(test_y))
 
-create_partiy_plot(train_pred_y, test_pred_y)
+create_parity_plot_with_raw_values(unscale(train_pred_y),
+                                   unscale(test_pred_y),
+                                   filename='tpot_parity.png')
 
 
 # # SISSO Rung1, 1-Term Plot
@@ -151,7 +163,9 @@ create_partiy_plot(train_pred_y, test_pred_y)
 # In[]:
 
 
-create_partiy_plot(data_train_scaled_sisso["r1_1term"],data_test_scaled_sisso["r1_1term"])
+create_parity_plot_with_raw_values(unscale(data_train_scaled_sisso["r1_1term"]),
+                                   unscale(data_test_scaled_sisso["r1_1term"]),
+                                   filename='sisso_r1_1t_parity.png')
 
 
 # # SISSO Rung1, 2-Term Plot
@@ -159,7 +173,9 @@ create_partiy_plot(data_train_scaled_sisso["r1_1term"],data_test_scaled_sisso["r
 # In[]:
 
 
-create_partiy_plot(data_train_scaled_sisso["r1_2term"], data_test_scaled_sisso["r1_2term"])
+create_parity_plot_with_raw_values(unscale(data_train_scaled_sisso["r1_2term"]),
+                                   unscale(data_test_scaled_sisso["r1_2term"]),
+                                   filename='sisso_r1_2t_parity.png')
 
 
 # # SISSO Rung2, 1-Term Plot
@@ -167,7 +183,9 @@ create_partiy_plot(data_train_scaled_sisso["r1_2term"], data_test_scaled_sisso["
 # In[]:
 
 
-create_partiy_plot(data_train_scaled_sisso["r2_1term"], data_test_scaled_sisso["r2_1term"])
+create_parity_plot_with_raw_values(unscale(data_train_scaled_sisso["r2_1term"]),
+                                   unscale(data_test_scaled_sisso["r2_1term"]),
+                                   filename='sisso_r2_1t_parity.png')
 
 
 # # Combined Plots
@@ -187,29 +205,30 @@ create_partiy_plot(data_train_scaled_sisso["r2_1term"], data_test_scaled_sisso["
 # In[]:
 
 
-def create_multi_parity_plot(ytrue, ypred, source_df, is_train):
-    tpot_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(ypred)),2)
-    r1_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r1_1term"])),2)
-    r1_2t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r1_2term"])),2)
-    r2_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r2_1term"])),2)
+tpot_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(train_y),  y_pred=unscale(train_pred_y)),2)
+r1_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(train_y), y_pred=unscale(data_train_scaled_sisso["r1_1term"])), 2)
+r1_2t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(train_y), y_pred=unscale(data_train_scaled_sisso["r1_2term"])), 2)
+r2_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(train_y), y_pred=unscale(data_train_scaled_sisso["r2_1term"])), 2)
 
-    plt.rcParams["figure.dpi"]=200
-    plt.scatter(x=unscale(train_pred_y), y=unscale(ytrue), color="black", alpha=0.9, marker="+", label=f"TPOT, 108 Terms, MAPE={tpot_mape}")
-    plt.scatter(x=unscale(source_df["r1_1term"]), y=unscale(ytrue), marker="v", color="red",alpha=0.5, label=f"Rung 1, 1-Term, MAPE={r1_1t_mape}")
-    plt.scatter(x=unscale(source_df["r1_2term"]), y=unscale(ytrue), marker="^", color="green", alpha=0.5, label=f"Rung 1, 2-Term, MAPE={r1_2t_mape}")
-    plt.scatter(x=unscale(source_df["r2_1term"]), y=unscale(ytrue), marker="s", color="blue", alpha=0.5, label=f"Rung 2, 1-term, MAPE={r2_1t_mape}")
-    plt.plot([45, 280], [45, 280], color="black", linestyle="--", label="Parity")
+alphas = (0.9, 0.5, 0.5, 0.5)
+markers = '+v^s'
+colors=('black','red', 'green', 'blue')
+labels=(f"TPOT, 108 Terms, MAPE={tpot_mape}",
+        f"Rung 1, 1-Term, MAPE={r1_1t_mape}",
+        f"Rung 1, 2-Term, MAPE={r1_2t_mape}",
+        f"Rung 2, 1-term, MAPE={r2_1t_mape}")
 
-    if is_train:
-        plt.title("Training Set (80% of Dataset)")
-    else:
-        plt.title("Testing Set (20% Holdout)")
-    plt.xlabel("Predicted (Å^3 / Formula Unit)")
-    plt.ylabel("Actual Volume (Å^3 / Formula Unit)")
-    plt.legend(prop={"size": 8})
-    plt.show()
-
-create_multi_parity_plot(ytrue=train_y, ypred=train_pred_y, source_df=data_train_scaled_sisso, is_train=True)
+DigitalEcosystem.utils.figures.create_multi_parity_plot(ytrue=unscale(train_y), 
+                                                        series_to_plot = map(unscale, (train_pred_y, 
+                                                                                       data_train_scaled_sisso['r1_1term'],
+                                                                                       data_train_scaled_sisso['r1_2term'],
+                                                                                       data_train_scaled_sisso['r2_1term'])
+                                                                            ),
+                                                        markers=markers,
+                                                        alphas=alphas,
+                                                        colors=colors,
+                                                        labels=labels,
+                                                        is_train=True)
 
 
 # ## Test-Set
@@ -224,7 +243,17 @@ create_multi_parity_plot(ytrue=train_y, ypred=train_pred_y, source_df=data_train
 # In[]:
 
 
-create_multi_parity_plot(ytrue=test_y, ypred=test_pred_y, source_df=data_test_scaled_sisso, is_train=False)
+DigitalEcosystem.utils.figures.create_multi_parity_plot(ytrue=unscale(test_y), 
+                                                        series_to_plot = map(unscale, (test_pred_y, 
+                                                                                       data_test_scaled_sisso['r1_1term'],
+                                                                                       data_test_scaled_sisso['r1_2term'],
+                                                                                       data_test_scaled_sisso['r2_1term'])
+                                                                            ),
+                                                        markers=markers,
+                                                        alphas=alphas,
+                                                        colors=colors,
+                                                        labels=labels,
+                                                        is_train=False)
 
 
 # # Conclusions
