@@ -11,9 +11,11 @@ from matminer.featurizers.structure import GlobalInstabilityIndex
 from pymatgen.analysis.local_env import JmolNN
 
 
-# ============
+# ====================================================================================================================
 # Fingerprints
-# ============
+# These are properties which do not have a direct interpretation, and provide a unique (or near-unique) representation
+# of the structure.
+# ====================================================================================================================
 
 def fingerprint_df(df: pd.DataFrame) -> np.ndarray:
     """
@@ -84,9 +86,11 @@ def fingerprint_ewald_sum(max_atoms: int, df: pd.DataFrame, ) -> np.ndarray:
     return result
 
 
-# ============
+# =============================================================================================================================
 # Descriptors
-# ============
+# These are properties which typically do have a direct interpretation, and are not intended to provide a unique representation
+# of the structure.
+# =============================================================================================================================
 
 @except_with_default_value(exceptions_to_catch=(BaseException,),
                            default_return=None)
