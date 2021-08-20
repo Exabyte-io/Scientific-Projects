@@ -87,3 +87,33 @@ def save_parity_plot(train_x, test_x, train_y, test_y, regression_model, label, 
     plt.savefig(filename)
     plt.show()
     plt.close()
+
+def create_multi_parity_plot(ytrue, ypred, source_df, is_train):
+    tpot_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(ypred)),2)
+    r1_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r1_1term"])),2)
+    r1_2t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r1_2term"])),2)
+    r2_1t_mape = np.round(sklearn.metrics.mean_absolute_percentage_error(y_true=unscale(ytrue), y_pred=unscale(source_df["r2_1term"])),2)
+
+    plt.rcParams["figure.dpi"]=200
+    plt.scatter(x=unscale(train_pred_y), y=unscale(ytrue), color="black", alpha=0.9, marker="+", label=f"TPOT, 108 Terms, MAPE={tpot_mape}")
+    plt.scatter(x=unscale(source_df["r1_1term"]), y=unscale(ytrue), marker="v", color="red",alpha=0.5, label=f"Rung 1, 1-Term, MAPE={r1_1t_mape}")
+    plt.scatter(x=unscale(source_df["r1_2term"]), y=unscale(ytrue), marker="^", color="green", alpha=0.5, label=f"Rung 1, 2-Term, MAPE={r1_2t_mape}")
+    plt.scatter(x=unscale(source_df["r2_1term"]), y=unscale(ytrue), marker="s", color="blue", alpha=0.5, label=f"Rung 2, 1-term, MAPE={r2_1t_mape}")
+    plt.plot([45, 280], [45, 280], color="black", linestyle="--", label="Parity")
+
+    if is_train:
+        plt.title("Training Set (80% of Dataset)")
+    else:
+        plt.title("Testing Set (20% Holdout)")
+    plt.xlabel("Predicted (Å^3 / Formula Unit)")
+    plt.ylabel("Actual Volume (Å^3 / Formula Unit)")
+    plt.legend(prop={"size": 8})
+    plt.show()
+
+def create_parity_plot(train_yhat, test_yhat):
+    plt.scatter(x=unscale(train_yhat), y=unscale(train_y), label="Train")
+    plt.scatter(x=unscale(test_yhat), y=unscale(test_y), label="Test")
+    plt.xlabel("Predicted")
+    plt.ylabel("Actual")
+    plt.legend()
+    plt.show()
