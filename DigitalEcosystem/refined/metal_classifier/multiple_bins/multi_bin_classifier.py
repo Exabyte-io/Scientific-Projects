@@ -265,42 +265,10 @@ study.optimize(objective, n_trials=256, callbacks=[keep_best_bandgap_model])
 
 
 labels = {j[0]:i for (i,j) in cutoffs.items()}
-
-def plot_multi_roc(x, y, dataset_label, custom_labels=None, classifier=best_pipeline):
-        plt.rcParams['figure.figsize'] = [10,10]
-
-        classes = set(y)
-        fig, ax = plt.subplots()
-
-        for class_label in classes:
-            probabilities = classifier.predict_proba(x)[:,class_label]
-
-            # ROC curve function in sklearn prefers the positive class
-            false_positive_rate, true_positive_rate, thresholds = sklearn.metrics.roc_curve(y, probabilities,
-                                                                                            pos_label=class_label)
-            roc_auc = np.round(sklearn.metrics.auc(false_positive_rate, true_positive_rate), 3)
-            
-            if custom_labels is None:
-                label = f"Class {class_label}"
-            else:
-                label = custom_labels[class_label]
-            ax.plot(false_positive_rate, true_positive_rate, label=f"{label}, AUC ROC={roc_auc}")
-
-        # Padding to ensure we see the line
-        ax.margins(0.01)
-        ax.legend()
-        fig.patch.set_facecolor('white')
-        plt.plot([0,1], [0,1], c='k')
-        plt.title(f"{dataset_label} Set ROC curves")
-        plt.xlabel("False Positive Rate")
-        plt.ylabel("True Positive Rate")
-        plt.tight_layout()
-        plt.savefig(f"{dataset_label}_Set_ROC.png")
-        plt.show()
-        plt.close()
-        
-plot_multi_roc(train_x, train_y, "Training", labels)
-plot_multi_roc(test_x, test_y, "Test", labels)
+plot_multi_roc = functools.partial(DigitalEcosystem.utils.figures.plot_multi_roc, classifier=best_pipeline)
+                                   
+plot_multi_roc(train_x, train_y, "Training", custom_labels=labels)
+plot_multi_roc(test_x, test_y, "Test", custom_labels=labels)
 
 
 # # Confusion Matrices
@@ -310,6 +278,7 @@ plot_multi_roc(test_x, test_y, "Test", labels)
 # In[]:
 
 
+draw_confusion_matrix=functools.partial
 def draw_confusion_matrix(x, y, label, classnames, classifier):
     plt.rcParams['figure.facecolor'] = 'white'
     sklearn.metrics.ConfusionMatrixDisplay(

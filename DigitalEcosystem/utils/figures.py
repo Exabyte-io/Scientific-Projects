@@ -42,6 +42,40 @@ def plot_roc(x, y, label, classifier):
         plt.close()
 
 
+def plot_multi_roc(x, y, dataset_label, classifier, custom_labels=None):
+    plt.rcParams['figure.figsize'] = [10, 10]
+
+    classes = set(y)
+    fig, ax = plt.subplots()
+
+    for class_label in classes:
+        probabilities = classifier.predict_proba(x)[:, class_label]
+
+        # ROC curve function in sklearn prefers the positive class
+        false_positive_rate, true_positive_rate, thresholds = sklearn.metrics.roc_curve(y, probabilities,
+                                                                                        pos_label=class_label)
+        roc_auc = np.round(sklearn.metrics.auc(false_positive_rate, true_positive_rate), 3)
+
+        if custom_labels is None:
+            label = f"Class {class_label}"
+        else:
+            label = custom_labels[class_label]
+        ax.plot(false_positive_rate, true_positive_rate, label=f"{label}, AUC ROC={roc_auc}")
+
+    # Padding to ensure we see the line
+    ax.margins(0.01)
+    ax.legend()
+    fig.patch.set_facecolor('white')
+    plt.plot([0, 1], [0, 1], c='k')
+    plt.title(f"{dataset_label} Set ROC curves")
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
+    plt.tight_layout()
+    plt.savefig(f"{dataset_label}_Set_ROC.png")
+    plt.show()
+    plt.close()
+
+
 def draw_confusion_matrix(x, y, label, classifier, cutoff=0.5):
     plt.rcParams['figure.facecolor'] = 'white'
     sklearn.metrics.ConfusionMatrixDisplay(
@@ -53,6 +87,22 @@ def draw_confusion_matrix(x, y, label, classifier, cutoff=0.5):
     plt.title(f"{label} Set Confusion Matrix at cutoff {cutoff}")
     plt.xticks([0,1], labels=["Nonmetal", "Metal"])
     plt.yticks([0,1], labels=["Nonmetal", "Metal"])
+    plt.gca().xaxis.tick_top()
+    plt.savefig(f"{label}_set_confusion_matrix.png")
+    plt.show()
+    plt.close()
+
+def draw_confusion_matrix_custom_classnames(x, y, label, classnames, classifier):
+    plt.rcParams['figure.facecolor'] = 'white'
+    sklearn.metrics.ConfusionMatrixDisplay(
+        sklearn.metrics.confusion_matrix(
+            y_true=y,
+            y_pred=classifier.predict(x),
+        )
+    ).plot(cmap="Blues")
+    plt.title(f"{label} Set Confusion Matrix")
+    plt.xticks(range(len(classnames)), labels=classnames)
+    plt.yticks(range(len(classnames)), labels=classnames)
     plt.gca().xaxis.tick_top()
     plt.savefig(f"{label}_set_confusion_matrix.png")
     plt.show()
