@@ -249,7 +249,7 @@ study = optuna.create_study(
 )
 
 
-# In[ ]:
+# In[]:
 
 
 study.optimize(objective, n_trials=256, callbacks=[keep_best_bandgap_model])
@@ -260,10 +260,8 @@ study.optimize(objective, n_trials=256, callbacks=[keep_best_bandgap_model])
 # To assess model performance, we'll print out some ROC curves here.
 # 
 # Although we hold out a validation set in our objective function, we do not retrain the model on the entire training set, as this validation set was also used to control the early stopping of our XGBoost model (and thus helps guard against overfitting).
-# 
-# Overall, we see generally good results for both our training set and our testing set.
 
-# In[ ]:
+# In[]:
 
 
 labels = {j[0]:i for (i,j) in cutoffs.items()}
@@ -309,7 +307,7 @@ plot_multi_roc(test_x, test_y, "Test", labels)
 # 
 # 
 
-# In[ ]:
+# In[]:
 
 
 def draw_confusion_matrix(x, y, label, classnames, classifier):
