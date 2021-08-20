@@ -278,24 +278,9 @@ plot_multi_roc(test_x, test_y, "Test", custom_labels=labels)
 # In[]:
 
 
-draw_confusion_matrix=functools.partial
-def draw_confusion_matrix(x, y, label, classnames, classifier):
-    plt.rcParams['figure.facecolor'] = 'white'
-    sklearn.metrics.ConfusionMatrixDisplay(
-        sklearn.metrics.confusion_matrix(
-            y_true=y,
-            y_pred=classifier.predict(x),
-        )
-    ).plot(cmap="Blues")
-    plt.title(f"{label} Set Confusion Matrix")
-    plt.xticks(range(len(classnames)), labels=classnames)
-    plt.yticks(range(len(classnames)), labels=classnames)
-    plt.gca().xaxis.tick_top()
-    plt.savefig(f"{label}_set_confusion_matrix.png")
-    plt.show()
-    plt.close()
-
 classnames = [key for key in cutoffs.keys()]
+draw_confusion_matrix=functools.partial(DigitalEcosystem.utils.figures.draw_confusion_matrix_custom_classnames, classnames=classnames, classifier=best_pipeline)
+
 draw_confusion_matrix(train_x, train_y, "Training", classnames, best_pipeline)
 draw_confusion_matrix(test_x, test_y, "Test", classnames, best_pipeline)
 
