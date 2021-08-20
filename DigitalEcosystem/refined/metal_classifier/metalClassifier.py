@@ -11,7 +11,6 @@
 
 
 import copy
-import sys
 
 import pandas as pd
 import numpy as np
@@ -29,13 +28,14 @@ import matplotlib.pyplot as plt
 import sklearn.impute
 import seaborn as sns
 
-sys.path.append("../../../")
+import sys
+sys.path.append("../../")
 import DigitalEcosystem.utils.figures
 
 tqdm.tqdm.pandas()
 
 
-# In[]:
+# In[ ]:
 
 
 # Random seeds for reproducibility
@@ -79,8 +79,8 @@ atoms_col = ['atoms_object (unitless)']
 # Generate the Sine Matrix Fingerprint
 max_atoms = max(data['atoms_object (unitless)'].apply(len))
 sine_eigenspectrum = dscribe.descriptors.SineMatrix(n_atoms_max=max_atoms,
-                                                         permutation='eigenspectrum',
-                                                         sparse=False)
+                                                    permutation='eigenspectrum',
+                                                    sparse=False)
 data['sine_matrix'] = data['atoms_object (unitless)'].progress_apply(lambda atoms: np.real(sine_eigenspectrum.create(atoms)))
 
 
@@ -156,7 +156,7 @@ def keep_best_bandgap_model(study, trial):
 def objective(trial: optuna.Trial):
     global current_pipeline
 
-    tr_x, val_x, tr_y, val_y = sklearn.model_selection.train_test_split(res_x, res_y, test_size=0.2, random_state=RANDOM_SEED)
+    objective_train_x, objective_validation_x, objective_train_y, objective_validation_y = sklearn.model_selection.train_test_split(res_x, res_y, test_size=0.2)
 
     params = {
         'learning_rate': trial.suggest_float('learning_rate', 0, 1),
@@ -185,18 +185,18 @@ def objective(trial: optuna.Trial):
 
     pruning_callback = optuna.integration.XGBoostPruningCallback(trial, 'validation_0-auc')
 
-    current_pipeline.fit(X=tr_x, y=tr_y,
+    current_pipeline.fit(X=objective_train_x, y=objective_train_y,
                          **{
-                            'XGB_Classifier__eval_set': [[val_x, val_y]],
+                            'XGB_Classifier__eval_set': [[objective_validation_x, objective_validation_y]],
                             'XGB_Classifier__eval_metric': 'auc',
                             'XGB_Classifier__early_stopping_rounds': 5,
                             'XGB_Classifier__callbacks': [pruning_callback],
                             'XGB_Classifier__verbose': False
                          })
 
-    preds = current_pipeline.predict(val_x)
+    preds = current_pipeline.predict(objective_validation_x)
     pred_labels = np.rint(preds)
-    f1 = sklearn.metrics.f1_score(val_y, pred_labels)
+    f1 = sklearn.metrics.f1_score(objective_validation_y, pred_labels)
 
     return f1
 
@@ -254,11 +254,11 @@ plot_roc(test_x, test_y, "Test")
 # 
 # | Metric   | Training Set | Test Set |
 # |----------|--------------|----------|
-# | TPR      | 0.893        | 0.738    |
-# | FPR      | 0.074        | 0.167    |
-# | Accuracy | 0.910        | 0.788    |
-# | F1 Score | 0.904        | 0.767    |
-# | ROC AUC  | 0.963        | 0.866    |
+# | TPR      | 0.892        | 0.766    |
+# | FPR      | 0.098        | 0.232    |
+# | Accuracy | 0.897        | 0.767    |
+# | F1 Score | 0.902        | 0.784    |
+# | ROC AUC  | 0.956        | 0.848    |
 # 
 # Overall, we see good performnace in both our training and testing set, with similar error rates in both - which is a good indication that our model generalizes well to the testing set.
 
@@ -322,7 +322,7 @@ draw_train_test_histplot = functools.partial(DigitalEcosystem.utils.figures.save
 
 draw_train_test_histplot(train, test,
                          "All Data",
-                         "full_dataset_bandgap_histogram.jpeg")
+                         "FullDatasetBandgapHistogram.jpeg")
 
 
 # ## Predicted-Nonmetals Only
@@ -337,7 +337,7 @@ draw_train_test_histplot(train, test,
 draw_train_test_histplot(train_nonmetals,
                          test_nonmetals,
                          "Classififed as Nonmetals",
-                         "normal_histplot.jpeg")
+                         "NormalHistplot.jpeg")
 
 
 # ## Predicted Metals Only
@@ -350,14 +350,14 @@ draw_train_test_histplot(train_nonmetals,
 draw_train_test_histplot(train_metals,
                          test_metals,
                          "Classified as Metals",
-                         "metal_histplot.jpeg")
+                         "MetalHistplot.jpeg")
 
 
 # # Regression - Features
 # 
 # Before we start doing any work with regression, we need to choose a set of features. Because we've been finding success in the past in this problem with the Xenonpy and Matminer-derived descriptors, we'll go ahead and extract those from our dataset.
 
-# In[]:
+# In[ ]:
 
 
 xenonpy_descriptors = [col for col in data.columns if ":" in col]
@@ -404,7 +404,7 @@ test_y_reg = np.nan_to_num(test_nonmetals[target].to_numpy())
 # | Data Subset     | Optimal Tweedie Power |
 # |-----------------|-----------------------|
 # | Full Dataset    | 1.0                   |
-# | Train Nonmetals | 1.345                 |
+# | Train Nonmetals | 1.326                 |
 # | Test Nonmetals  | 1.202                 |
 # 
 # When we attempt to fit a model on our entire dataset, we see that the data is closest to a Poisson distribution.
@@ -453,9 +453,9 @@ def get_pow_plot(dist, filename):
     return best_pow
 
 
-get_pow_plot(test_nonmetals['bandgap (eV)'].to_numpy(), "test_nonmetal_tweedie_power.jpeg")
-get_pow_plot(data["bandgap (eV)"].to_numpy(), "full_dataset_tweedie_power.jpeg")
-best_pow=get_pow_plot(train_nonmetals["bandgap (eV)"].to_numpy(), "train_nonmetal_tweedie_power.jpeg")
+get_pow_plot(test_nonmetals['bandgap (eV)'].to_numpy(), "TestNonmetalTweediePower.jpeg")
+get_pow_plot(data["bandgap (eV)"].to_numpy(), "FullDatasetTweediePower.jpeg")
+best_pow=get_pow_plot(train_nonmetals["bandgap (eV)"].to_numpy(), "TrainNonmetalTweediePower.jpeg")
 
 
 # # Regression - XGBoost
@@ -474,7 +474,9 @@ def keep_best_reg(study, trial):
     if study.best_trial == trial:
         best_reg = current_reg
 
-tr_x_reg, val_x_reg, tr_y_reg, val_y_reg = sklearn.model_selection.train_test_split(np.nan_to_num(train_x_reg), train_y_reg, test_size=0.2, random_state=RANDOM_SEED)
+#TEST
+objective_train_x_reg, objective_validation_x_reg, objective_train_y_reg, objective_validation_y_reg = sklearn.model_selection.train_test_split(
+    np.nan_to_num(train_x_reg), train_y_reg, test_size=0.2, random_state=RANDOM_SEED)
 
 def objective(trial: optuna.Trial):
     global current_reg
@@ -496,9 +498,9 @@ def objective(trial: optuna.Trial):
     ])
 
     pruning_callback = optuna.integration.XGBoostPruningCallback(trial, f'validation_0-poisson-nloglik')
-    current_reg.fit(X=tr_x_reg, y=tr_y_reg,
+    current_reg.fit(X=objective_train_x_reg, y=objective_train_y_reg,
                          **{
-                            'XGB_Regressor__eval_set': [[val_x_reg, val_y_reg]],
+                            'XGB_Regressor__eval_set': [[objective_validation_x_reg, objective_validation_y_reg]],
                             'XGB_Regressor__eval_metric': 'poisson-nloglik',
                             'XGB_Regressor__early_stopping_rounds': 50,
                             'XGB_Regressor__callbacks': [pruning_callback],
@@ -506,8 +508,8 @@ def objective(trial: optuna.Trial):
                          })
 
     score = sklearn.metrics.mean_poisson_deviance(
-        y_true=val_y_reg,
-        y_pred=abs(current_reg.predict(val_x_reg)),
+        y_true=objective_validation_y_reg,
+        y_pred=abs(current_reg.predict(objective_validation_x_reg)),
     )
 
     return score
@@ -525,10 +527,6 @@ reg_study = optuna.create_study(
 )
 
 reg_study.optimize(func=objective, n_trials=500, callbacks=[keep_best_reg])
-
-
-# In[]:
-
 
 DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
                                                 test_x_reg,
@@ -549,15 +547,16 @@ DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
 # 
 # | Error Metric | Test-Set Value    |
 # |--------------|-------------------|
-# | MAE          | 0.631             |
-# | RMSE         | 0.852             |
-# | MAPE         | 646627325416641.8 |
-# | R2           | 0.735             |
+# | MAE          | 0.67              |
+# | MSE          | 0.825             |
+# | RMSE         | 0.909             |
+# | MAPE         | 543850845913702.8 |
+# | R2           | 0.703             |
 # 
-# - The MAE is comparable to a related model, MegNet [Link](https://github.com/materialsvirtuallab/megnet). MegNet is a graph convolution neural network trained on a variety of different datasets. When compared with DFT bandgaps from Materials Project (slightly different, as that dataset is of 3D materials and not 2D materials), they report a MAE of 0.33 eV for the bandgap. Considering we're not training a neural network on huge numbers of samples, this should put our MAE of 0.631 eV in perspective.
-# - We see a similar story for our RMSE, which is 0.852 eV.
+# - The MAE is comparable to a related model, MegNet [Link](https://github.com/materialsvirtuallab/megnet). MegNet is a graph convolution neural network trained on a variety of different datasets. When compared with DFT bandgaps from Materials Project (slightly different, as that dataset is of 3D materials and not 2D materials), they report a MAE of 0.33 eV for the bandgap. Considering we're not training a neural network on huge numbers of samples, this should put our MAE of 0.67 eV in perspective.
+# - We see a similar story for our RMSE (square root of our MSE), which is 0.909 eV.
 # - The Mean Absolute Percent Error (MAPE) is high, but this is because we have 0-valued entries in the dataset - this is why this metric is generally avoided in the case of data with 0s in their values (it also tends to cause models to underestinate when used as a loss function, which is another reason we don't use it as our loss function).
-# - Finally, we see that our R2 is 0.735, so our test set predictions are at least correlated with our dataset.
+# - Finally, we see that our R2 is 0.703, so our test set predictions are at least correlated with our dataset.
 # 
 # 
 
@@ -587,9 +586,9 @@ for key, fun in metrics.items():
 # # Regression - Feature Importances
 # 
 # Finally, in the below plot we will list the feature importances of our XGBoost model. Here are a few of the most-important features:
-# 1. `var:en_pauling` is a property from XenonPy. It is derived by looking at the tabulated pauling electronegativity of each element in the system (e.g. a system containing NaCl would look at the electronegativity of Na and the electronegativity of Cl). The `var` in front tells us that this version of the feature chooses the variance amongst the electronegativities in each elemental system.
-# 2. `max:density` is another XenonPy property. As is the case with all the Xenonpy descriptors we use in this notebook, it is derived by looking at tabulated values for each element in the system. In this case, we take the maximum of the elemntal densities.
-# 3. `max:evaporation_heat` is yet another XenonPy descriptor, and is the maximum of the elemental heats of evaporation.
+# 1. `min:GS_Energy` is a property from XenonPy. It is derived by looking at the ground-state electronic energy of the bulk cells of each element in the system (e.g. a system containing NaCl would look at the bulk cell for Na and the bulk cell for Cl). The `min` in front tells us that this version of the feature chooses the minimum amongst the ground-state DFT energies in each elemental system.
+# 2. `var:VDW_radius_MM3` is another XenonPy property. As is the case with all the Xenonpy descriptors we use in this notebook, it is derived by looking at tabulated values for each element in the system. In this case, we take the variance of the elemntal VDW radii, as tabulated by the MM3 forcefield.
+# 3. `ave:density` is yet another XenonPy descriptor, and is the average of the elemental densities in their respective bulk cells.
 
 # In[]:
 
