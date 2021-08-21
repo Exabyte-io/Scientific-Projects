@@ -20,14 +20,16 @@ import swifter
 import tqdm
 
 import pymatgen.io
-from pymatgen.analysis.local_env import JmolNN
+
+import sys
+
+sys.path.append("../../../")
+from DigitalEcosystem.utils.fingerprints import global_instability, average_bond_length,                                                 average_bond_angle, average_cn, ab_perimeter_area_ratio,                                                 neighbor_finder
 
 from matminer.featurizers.base import MultipleFeaturizer
 from matminer.featurizers.structure.misc import EwaldEnergy
 from matminer.featurizers.structure.order import StructuralComplexity
 from matminer.featurizers.structure.symmetry import GlobalSymmetryFeatures
-from matminer.featurizers.structure.bonding import GlobalInstabilityIndex
-from matminer.featurizers.site.bonding import AverageBondLength
 
 
 # In[]:
@@ -113,17 +115,9 @@ print(struct_features.feature_labels())
 # In[]:
 
 
-desc = GlobalInstabilityIndex()
-
-def maybe_global_instability(struct):
-    try:
-        return desc.featurize(struct)[0]
-    except:
-        return None
-
 with warnings.catch_warnings():
     warnings.simplefilter('ignore')
-    df['global_instability'] = df.ox_struct.swifter.apply(maybe_global_instability).copy()
+    df['global_instability'] = df.ox_struct.swifter.apply(global_instability).copy()
 
 
 # ## Choosing a Neighbor Finder
@@ -134,12 +128,6 @@ with warnings.catch_warnings():
 # 
 # Here, we'll take the neighbor-finding algorithm of JMol, as implemented in PyMatGen.
 
-# In[]:
-
-
-neighbor_finder = JmolNN()
-
-
 # ## Average Bond Length
 # [Documentation Link](https://hackingmaterials.lbl.gov/matminer/matminer.featurizers.site.html#matminer.featurizers.site.bonding.AverageBondLength)
 # 
@@ -147,14 +135,6 @@ neighbor_finder = JmolNN()
 
 # In[]:
 
-
-def average_bond_length(structure, featurizer = AverageBondLength(neighbor_finder)):
-    n_atoms = len(structure)
-    try:
-        lengths = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
-        return sum(lengths) / n_atoms
-    except IndexError:
-        return None
 
 df['bond_length_average'] = df.ox_struct.swifter.apply(average_bond_length).copy()
 
@@ -167,15 +147,6 @@ df['bond_length_average'] = df.ox_struct.swifter.apply(average_bond_length).copy
 # In[]:
 
 
-from matminer.featurizers.site.bonding import AverageBondAngle
-
-def average_bond_angle(structure, featurizer = AverageBondAngle(neighbor_finder)):
-    n_atoms = len(structure)
-    try:
-        angles = map(lambda i: featurizer.featurize(structure, i)[0], range(n_atoms))
-        return sum(angles) / n_atoms
-    except IndexError:
-        return None
 df['bond_angle_average'] = df.ox_struct.swifter.apply(average_bond_angle).copy()
 
 
@@ -188,10 +159,6 @@ df['bond_angle_average'] = df.ox_struct.swifter.apply(average_bond_angle).copy()
 # In[]:
 
 
-def average_cn(structure, neighbor_finder = neighbor_finder):
-    n_atoms = len(structure)
-    cns = map(lambda i: neighbor_finder.get_cn(structure, i), range(n_atoms))
-    return sum(cns) / n_atoms
 df['average_cn'] = df.ox_struct.swifter.apply(average_cn).copy()
 
 
@@ -203,11 +170,6 @@ df['average_cn'] = df.ox_struct.swifter.apply(average_cn).copy()
 # In[]:
 
 
-def ab_perimeter_area_ratio(structure):
-    a, b, c = structure.lattice.matrix
-    perimeter = 2*np.linalg.norm(a) + 2*np.linalg.norm(b)
-    area = np.linalg.norm(np.cross(a,b))
-    return perimeter / area
 df['perimeter_area_ratio'] = df.ox_struct.swifter.apply(ab_perimeter_area_ratio).copy()
 
 
@@ -221,7 +183,7 @@ df["formula"] = df["atoms_object (unitless)"].swifter.apply(lambda atoms: atoms.
 
 # ## Structural Descriptors
 # 
-# Next, we'll calculate some structural descriptors, similar to the ones that had been used by Bhowmik, R. et al in [DOI 10.1016/j.polymer.2021.123558](https://doi.org/10.1016/j.polymer.2021.123558). 
+# Next, we'll calculate some structural descriptors, similar to the ones that had been used by Bhowmik, R. et al in [DOI 10.1016/j.polymer.2021.123558](https://doi.org/10.1016/j.polymer.2021.123558).
 # 
 # Because there are a wide variety of elements in our dataset, to try and keep this from generating too many columns, we'll bin each element into different sections of the periodic table:
 # - Alkaline metals
@@ -283,8 +245,6 @@ symbols_cols = collections.Counter()
 bond_cols = collections.Counter()
 angle_cols = collections.Counter()
 
-neighbor_finder = JmolNN()
-
 with tqdm.tqdm(total=len(df)) as pbar:
     for struct in df["ox_struct"]:
         symbols_cols.update([groups[symbol] for symbol in struct.symbol_set])
@@ -328,7 +288,7 @@ all_symbols = set(symbols_cols.keys())
 all_bonds = set(bond_cols.keys())
 all_angles = set(angle_cols.keys())
 
-def featurize(data):
+def add_symbol_length_dihedral_counts_feature(data):
     symbol_units = "atoms"
     bond_units = "bonds"
     angle_units = "angles"
@@ -369,7 +329,7 @@ def featurize(data):
 
     return data
 
-all_data_features = df.progress_apply(featurize, axis=1)
+all_data_features = df.progress_apply(add_symbol_length_dihedral_counts_feature, axis=1)
 all_data_features
 
 

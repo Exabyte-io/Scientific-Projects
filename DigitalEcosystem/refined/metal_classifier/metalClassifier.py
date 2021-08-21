@@ -17,26 +17,25 @@ import numpy as np
 import optuna
 import xgboost
 import imblearn.over_sampling
-import smogn
 import sklearn.model_selection
 import dscribe.descriptors
 import tqdm
 import sklearn.pipeline
 
-import matplotlib
+import functools
+
 import matplotlib.pyplot as plt
 import sklearn.impute
 import seaborn as sns
 
+import sys
+sys.path.append("../../")
+import DigitalEcosystem.utils.figures
+
 tqdm.tqdm.pandas()
 
-import sys
 
-sys.path.append("../httpot")
-from fingerprints import fingerprint_ewald_sum
-
-
-# In[]:
+# In[ ]:
 
 
 # Random seeds for reproducibility
@@ -80,8 +79,8 @@ atoms_col = ['atoms_object (unitless)']
 # Generate the Sine Matrix Fingerprint
 max_atoms = max(data['atoms_object (unitless)'].apply(len))
 sine_eigenspectrum = dscribe.descriptors.SineMatrix(n_atoms_max=max_atoms,
-                                                         permutation='eigenspectrum',
-                                                         sparse=False)
+                                                    permutation='eigenspectrum',
+                                                    sparse=False)
 data['sine_matrix'] = data['atoms_object (unitless)'].progress_apply(lambda atoms: np.real(sine_eigenspectrum.create(atoms)))
 
 
@@ -143,7 +142,7 @@ res_x, res_y = knn_smote.fit_resample(train_x, train_y)
 current_pipeline = None
 best_pipeline = None
 
-def keep_best_bg(study, trial):
+def keep_best_bandgap_model(study, trial):
     """
     Records the best bandgap model found so far
     """
@@ -157,7 +156,7 @@ def keep_best_bg(study, trial):
 def objective(trial: optuna.Trial):
     global current_pipeline
 
-    tr_x, val_x, tr_y, val_y = sklearn.model_selection.train_test_split(res_x, res_y, test_size=0.2)
+    objective_train_x, objective_validation_x, objective_train_y, objective_validation_y = sklearn.model_selection.train_test_split(res_x, res_y, test_size=0.2)
 
     params = {
         'learning_rate': trial.suggest_float('learning_rate', 0, 1),
@@ -185,18 +184,19 @@ def objective(trial: optuna.Trial):
     ])
 
     pruning_callback = optuna.integration.XGBoostPruningCallback(trial, 'validation_0-auc')
-    current_pipeline.fit(X=tr_x, y=tr_y,
+
+    current_pipeline.fit(X=objective_train_x, y=objective_train_y,
                          **{
-                            'XGB_Classifier__eval_set': [[val_x, val_y]],
+                            'XGB_Classifier__eval_set': [[objective_validation_x, objective_validation_y]],
                             'XGB_Classifier__eval_metric': 'auc',
                             'XGB_Classifier__early_stopping_rounds': 5,
                             'XGB_Classifier__callbacks': [pruning_callback],
                             'XGB_Classifier__verbose': False
                          })
 
-    preds = current_pipeline.predict(val_x)
+    preds = current_pipeline.predict(objective_validation_x)
     pred_labels = np.rint(preds)
-    f1 = sklearn.metrics.f1_score(val_y, pred_labels)
+    f1 = sklearn.metrics.f1_score(objective_validation_y, pred_labels)
 
     return f1
 
@@ -224,7 +224,7 @@ study = optuna.create_study(
 # In[]:
 
 
-study.optimize(objective, n_trials=1000, callbacks=[keep_best_bg])
+study.optimize(objective, n_trials=1000, callbacks=[keep_best_bandgap_model])
 
 
 # # ROC Curves
@@ -238,42 +238,7 @@ study.optimize(objective, n_trials=1000, callbacks=[keep_best_bg])
 # In[]:
 
 
-def plot_roc(x, y, label):
-        plt.rcParams['figure.figsize'] = [10,10]
-        probabilities = best_pipeline.predict_proba(x)[:,1]
-
-        # ROC curve function in sklearn prefers the positive class
-        false_positive_rate, true_positive_rate, thresholds = sklearn.metrics.roc_curve(y, probabilities,
-                                                                                        pos_label=1)
-        thresholds[0] -= 1  # Sklearn arbitrarily adds 1 to the first threshold
-        roc_auc = np.round(sklearn.metrics.auc(false_positive_rate, true_positive_rate), 3)
-
-        # Plot the curve
-        fig, ax = plt.subplots()
-        points = np.array([false_positive_rate, true_positive_rate]).T.reshape(-1, 1, 2)
-        segments = np.concatenate([points[:-1], points[1:]], axis=1)
-        norm = plt.Normalize(thresholds.min(), thresholds.max())
-        lc = matplotlib.collections.LineCollection(segments, cmap='jet', norm=norm, linewidths=2)
-        lc.set_array(thresholds)
-        line = ax.add_collection(lc)
-        fig.colorbar(line, ax=ax).set_label('Threshold')
-
-        # Padding to ensure we see the line
-        ax.margins(0.01)
-
-        fig.patch.set_facecolor('white')
-
-        plt.plot([0,1], [0,1], c='k')
-
-        plt.title(f"{label} Set ROC curve, AUC={roc_auc}")
-
-        plt.xlabel("False Positive Rate")
-        plt.ylabel("True Positive Rate")
-        plt.tight_layout()
-        plt.savefig(f"{label}_Set_ROC.png")
-        plt.show()
-        plt.close()
-
+plot_roc = functools.partial(DigitalEcosystem.utils.figures.plot_roc, classifier=best_pipeline)
 
 plot_roc(train_x, train_y, "Training")
 plot_roc(test_x, test_y, "Test")
@@ -302,24 +267,13 @@ plot_roc(test_x, test_y, "Test")
 
 CUTOFF = 0.5
 
-def create_confusion(x,y,label,cutoff=CUTOFF):
-    plt.rcParams['figure.facecolor'] = 'white'
-    sklearn.metrics.ConfusionMatrixDisplay(
-        sklearn.metrics.confusion_matrix(
-            y_true=y,
-            y_pred=best_pipeline.predict_proba(x)[:,1]>cutoff,
-        )
-    ).plot(cmap="Blues")
-    plt.title(f"{label} Set Confusion Matrix at cutoff {cutoff}")
-    plt.xticks([0,1], labels=["Nonmetal", "Metal"])
-    plt.yticks([0,1], labels=["Nonmetal", "Metal"])
-    plt.gca().xaxis.tick_top()
-    plt.savefig(f"{label}_set_confusion_matrix.png")
-    plt.show()
-    plt.close()
 
-create_confusion(train_x, train_y, "Training")
-create_confusion(test_x, test_y, "Test")
+draw_confusion_matrix = functools.partial(DigitalEcosystem.utils.figures.draw_confusion_matrix,
+                                          classifier=best_pipeline,
+                                          cutoff=CUTOFF)
+
+draw_confusion_matrix(train_x, train_y, "Training")
+draw_confusion_matrix(test_x, test_y, "Test")
 
 
 # # Nonmetal Bandgap Regression
@@ -361,11 +315,14 @@ test_nonmetals = test[test['pred_metal'] != True]
 bins = np.arange(0,max(data['bandgap (eV)']), 0.5)
 stat='density'
 
-sns.histplot(train, x='bandgap (eV)', label="Train", color="#AAAAFF", stat=stat, bins=bins)
-sns.histplot(test, x='bandgap (eV)', label="Test", color="#FFAAAA", stat=stat, bins=bins)
-plt.legend()
-plt.title("All Data")
-plt.savefig("FullDatasetBandgapHistogram.jpeg")
+draw_train_test_histplot = functools.partial(DigitalEcosystem.utils.figures.save_train_test_histplot,
+                                             column='bandgap (eV)',
+                                             stat=stat,
+                                             bins=bins)
+
+draw_train_test_histplot(train, test,
+                         "All Data",
+                         "FullDatasetBandgapHistogram.jpeg")
 
 
 # ## Predicted-Nonmetals Only
@@ -377,11 +334,10 @@ plt.savefig("FullDatasetBandgapHistogram.jpeg")
 # In[]:
 
 
-sns.histplot(train_nonmetals, x='bandgap (eV)', color="#AAAAFF", label="Train", stat=stat, bins=bins)
-sns.histplot(test_nonmetals, x='bandgap (eV)', color="#FFAAAA", label="Test", stat=stat, bins=bins)
-plt.legend()
-plt.title("Classified as Nonmetals")
-plt.savefig("NonmetalHistplot.jpeg")
+draw_train_test_histplot(train_nonmetals,
+                         test_nonmetals,
+                         "Classififed as Nonmetals",
+                         "NormalHistplot.jpeg")
 
 
 # ## Predicted Metals Only
@@ -391,11 +347,10 @@ plt.savefig("NonmetalHistplot.jpeg")
 # In[]:
 
 
-sns.histplot(train_metals, x='bandgap (eV)', color="#AAAAFF", label="Train", stat=stat, bins=bins)
-sns.histplot(test_metals, x='bandgap (eV)', color="#FFAAAA", label="Test", stat=stat, bins=bins)
-plt.legend()
-plt.title("Classified as Metals")
-plt.savefig("MetalHistplot.jpeg")
+draw_train_test_histplot(train_metals,
+                         test_metals,
+                         "Classified as Metals",
+                         "MetalHistplot.jpeg")
 
 
 # # Regression - Features
@@ -454,7 +409,7 @@ test_y_reg = np.nan_to_num(test_nonmetals[target].to_numpy())
 # 
 # When we attempt to fit a model on our entire dataset, we see that the data is closest to a Poisson distribution.
 # 
-# When we remove metals from our training and testing set, however, we see that our data shifts to be more Tweedie-Distributed (a power between 1 and 2). Moreover, we see a slight difference in power between our training and testing set - which we can actually see in the above "Classified as Nonmetals" plot, particularly below 2 eV.
+# When we remove metals and testing set, however, we see that our data shifts to be more Tweedie - Distributed (a power between 1 and 2).Moreover, we see a slight difference in power between our training and testing set - which we can actually see in the above "Classified as Nonmetals" plot, particularly below 2 eV.
 # 
 # This difference in distribution between our training set and testing set is likely to contribute to error in our regression model.
 
@@ -519,7 +474,9 @@ def keep_best_reg(study, trial):
     if study.best_trial == trial:
         best_reg = current_reg
 
-tr_x_reg, val_x_reg, tr_y_reg, val_y_reg = sklearn.model_selection.train_test_split(np.nan_to_num(train_x_reg), train_y_reg, test_size=0.2, random_state=RANDOM_SEED)
+#TEST
+objective_train_x_reg, objective_validation_x_reg, objective_train_y_reg, objective_validation_y_reg = sklearn.model_selection.train_test_split(
+    np.nan_to_num(train_x_reg), train_y_reg, test_size=0.2, random_state=RANDOM_SEED)
 
 def objective(trial: optuna.Trial):
     global current_reg
@@ -541,9 +498,9 @@ def objective(trial: optuna.Trial):
     ])
 
     pruning_callback = optuna.integration.XGBoostPruningCallback(trial, f'validation_0-poisson-nloglik')
-    current_reg.fit(X=tr_x_reg, y=tr_y_reg,
+    current_reg.fit(X=objective_train_x_reg, y=objective_train_y_reg,
                          **{
-                            'XGB_Regressor__eval_set': [[val_x_reg, val_y_reg]],
+                            'XGB_Regressor__eval_set': [[objective_validation_x_reg, objective_validation_y_reg]],
                             'XGB_Regressor__eval_metric': 'poisson-nloglik',
                             'XGB_Regressor__early_stopping_rounds': 50,
                             'XGB_Regressor__callbacks': [pruning_callback],
@@ -551,8 +508,8 @@ def objective(trial: optuna.Trial):
                          })
 
     score = sklearn.metrics.mean_poisson_deviance(
-        y_true=val_y_reg,
-        y_pred=abs(current_reg.predict(val_x_reg)),
+        y_true=objective_validation_y_reg,
+        y_pred=abs(current_reg.predict(objective_validation_x_reg)),
     )
 
     return score
@@ -571,26 +528,13 @@ reg_study = optuna.create_study(
 
 reg_study.optimize(func=objective, n_trials=500, callbacks=[keep_best_reg])
 
-#best_reg.fit(train_x_reg, train_y_reg)
-
-y_pred_train = best_reg.predict(train_x_reg)
-y_pred_test = best_reg.predict(test_x_reg)
-
-plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
-plt.rcParams["figure.figsize"] = (15, 15)
-plt.rcParams["font.size"] = 16
-
-plt.scatter(x=train_y_reg, y=y_pred_train, label="Train Set")
-plt.scatter(x=test_y_reg, y=y_pred_test, label="Test Set")
-
-min_xy = min(min(test_y_reg), min(test_y_reg), min(y_pred_test), min(y_pred_train))
-max_xy = max(max(test_y_reg), max(test_y_reg), max(y_pred_test), max(y_pred_train))
-
-plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
-plt.ylabel("Bandgap (Predicted)")
-plt.xlabel("Bandgap (Dataset)")
-plt.legend()
-plt.savefig('parity.jpeg')
+DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
+                                                test_x_reg,
+                                                train_y_reg,
+                                                test_y_reg,
+                                                best_reg,
+                                                "Bandgap (eV)",
+                                                "parity.jpeg")
 
 
 # # Regression - Results
@@ -633,6 +577,7 @@ metrics = {
     'R2': sklearn.metrics.r2_score
 }
 
+y_pred_test = best_reg.predict(test_x_reg)
 for key, fun in metrics.items():
     value = fun(y_true=test_y_reg, y_pred=y_pred_test)
     print(key,np.round(value,3))
@@ -643,7 +588,7 @@ for key, fun in metrics.items():
 # Finally, in the below plot we will list the feature importances of our XGBoost model. Here are a few of the most-important features:
 # 1. `min:GS_Energy` is a property from XenonPy. It is derived by looking at the ground-state electronic energy of the bulk cells of each element in the system (e.g. a system containing NaCl would look at the bulk cell for Na and the bulk cell for Cl). The `min` in front tells us that this version of the feature chooses the minimum amongst the ground-state DFT energies in each elemental system.
 # 2. `var:VDW_radius_MM3` is another XenonPy property. As is the case with all the Xenonpy descriptors we use in this notebook, it is derived by looking at tabulated values for each element in the system. In this case, we take the variance of the elemntal VDW radii, as tabulated by the MM3 forcefield.
-# 3. `ave:density` is yet another XenonPy descriptor, and is the average of the elemental densities in their respective bulk cells. 
+# 3. `ave:density` is yet another XenonPy descriptor, and is the average of the elemental densities in their respective bulk cells.
 
 # In[]:
 
