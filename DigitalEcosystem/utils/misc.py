@@ -1,8 +1,5 @@
-import os
 import re
 import requests
-from typing import List
-
 import pymatgen.ext.matproj
 
 def get_parent_structure_id(id_2dm: str) -> str:
@@ -58,10 +55,3 @@ def get_e_above_hull(material_id: str, pymatgen_rester: pymatgen.ext.matproj.MPR
     entry = pymatgen_rester.get_entries(material_id)
     energy = pymatgen_rester.get_stability(entry)[0]['e_above_hull']
     return energy
-
-if __name__ == '__main__':
-    matproj_key = os.getenv("MATERIALS_PROJECT_API_KEY")
-    source_id = 'mp-1095420'
-    rester = pymatgen.ext.matproj.MPRester(
-        api_key=matproj_key
-    )
