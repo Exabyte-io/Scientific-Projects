@@ -24,7 +24,11 @@ def get_parent_structure_id(id_2dm: str) -> str:
     if len(mp_results) == 0:
         result = "no_parent"
     else:
-        result = re.search("mp-\d+", mp_results[0])[0]
+        regex = re.search("mp-\d+", mp_results[0])
+        if regex:
+            result = regex[0]
+        else:
+            result = "no_parent"
     return result
 
 def get_e_above_hull(material_id: str, pymatgen_rester: pymatgen.ext.matproj.MPRester) -> float:
