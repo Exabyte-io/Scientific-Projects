@@ -169,8 +169,6 @@ test_y_reg = np.nan_to_num(test[target].to_numpy())
 # In[]:
 
 
-import sklearn.linear_model
-
 current_reg = None
 best_reg = None
 def keep_best_reg(study, trial):
