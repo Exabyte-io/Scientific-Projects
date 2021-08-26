@@ -15,7 +15,9 @@ import sklearn.model_selection
 import dscribe.descriptors
 import tqdm
 import sklearn.pipeline
-
+import sklearn.feature_selection
+import pymatgen.io.ase
+import pymatgen.symmetry.analyzer
 import functools
 
 import matplotlib.pyplot as plt
@@ -61,7 +63,26 @@ element_mask = data['atoms_object (unitless)'].apply(lambda atoms: all([forbidde
 
 decomp_mask = data['decomposition_energy (eV/atom)'] < 0.5
 
-reasonable = data[element_mask & decomp_mask]
+exfol_mask = data['exfoliation_energy_per_atom (eV/atom)'] > 0
+
+reasonable = data[element_mask & decomp_mask & exfol_mask]
+
+
+# In[]:
+
+
+pymatgen_objs = reasonable['atoms_object (unitless)'].progress_apply(pymatgen.io.ase.AseAtomsAdaptor.get_structure)
+spacegroups = pymatgen_objs.progress_apply(lambda structure: pymatgen.symmetry.analyzer.SpacegroupAnalyzer(structure).get_space_group_number())
+
+
+# In[]:
+
+
+max_bitlength = spacegroups.apply(lambda num: num.bit_length()).max()
+bins = spacegroups.apply(lambda sg: np.base_repr(sg, base=2, padding=max_bitlength-sg.bit_length()))
+
+spacegroup_colnames = [f'spacegroup_bit_{2**i}' for i in range(max_bitlength)]
+reasonable[spacegroup_colnames] = bins.apply(list).apply(lambda lst: list(map(int,lst))).to_list()
 
 
 # In[]:
@@ -80,12 +101,6 @@ cols_to_drop = ['formula',
 target_column = ['exfoliation_energy_per_atom (eV/atom)']
 matpedia_id = ['2dm_id (unitless)']
 atoms_col = ['atoms_object (unitless)']
-
-
-# In[]:
-
-
-reasonable = reasonable[reasonable['exfoliation_energy_per_atom (eV/atom)'] > 0]
 
 
 # In[]:
@@ -121,14 +136,14 @@ train, test = sklearn.model_selection.train_test_split(reasonable, test_size=0.1
 # In[]:
 
 
-train_x_reg = np.nan_to_num(train[xenonpy_matminer_descriptors].to_numpy())
+train_x_reg = np.nan_to_num(train[matminer_descriptors + spacegroup_colnames].to_numpy())
 train_y_reg = np.nan_to_num(train[target_column].to_numpy())
 
-test_x_reg = np.nan_to_num(test[xenonpy_matminer_descriptors].to_numpy())
+test_x_reg = np.nan_to_num(test[matminer_descriptors + spacegroup_colnames].to_numpy())
 test_y_reg = np.nan_to_num(test[target_column].to_numpy())
 
 
-# In[ ]:
+# In[]:
 
 
 import sklearn.linear_model
@@ -194,7 +209,7 @@ reg_study = optuna.create_study(
 reg_study.optimize(func=objective, n_trials=256, callbacks=[keep_best_reg])
 
 
-# In[ ]:
+# In[]:
 
 
 DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
@@ -206,7 +221,7 @@ DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
                                                 "exfoliation_parity.jpeg")
 
 
-# In[ ]:
+# In[]:
 
 
 def rmse(y_true, y_pred):
@@ -229,11 +244,11 @@ for key, fun in metrics.items():
     print(key,np.round(value,3))
 
 
-# In[ ]:
+# In[]:
 
 
-n_importances = 20
-importances = list(zip(best_reg[1].feature_importances_, xenonpy_matminer_descriptors))
+n_importances = len(matminer_descriptors + spacegroup_colnames)
+importances = list(zip(best_reg[1].feature_importances_, matminer_descriptors+spacegroup_colnames))
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
 
@@ -244,13 +259,7 @@ plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_import
 plt.ylabel("Feature")
 plt.xlabel("Importance Score")
 plt.tight_layout()
-plt.savefig("exfoliation_importance.jpeg")
-
-
-# In[ ]:
-
-
-sns.histplot(reasonable['exfoliation_energy_per_atom (eV/atom)'])
+plt.savefig("sg_importances.jpeg")
 
 
 # In[ ]:
