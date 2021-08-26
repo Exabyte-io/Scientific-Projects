@@ -136,10 +136,10 @@ train, test = sklearn.model_selection.train_test_split(reasonable, test_size=0.1
 # In[]:
 
 
-train_x_reg = np.nan_to_num(train[matminer_descriptors + spacegroup_colnames].to_numpy())
+train_x_reg = np.nan_to_num(train[xenonpy_matminer_descriptors + spacegroup_colnames].to_numpy())
 train_y_reg = np.nan_to_num(train[target_column].to_numpy())
 
-test_x_reg = np.nan_to_num(test[matminer_descriptors + spacegroup_colnames].to_numpy())
+test_x_reg = np.nan_to_num(test[xenonpy_matminer_descriptors + spacegroup_colnames].to_numpy())
 test_y_reg = np.nan_to_num(test[target_column].to_numpy())
 
 
@@ -247,8 +247,8 @@ for key, fun in metrics.items():
 # In[]:
 
 
-n_importances = len(matminer_descriptors + spacegroup_colnames)
-importances = list(zip(best_reg[1].feature_importances_, matminer_descriptors+spacegroup_colnames))
+n_importances = 16
+importances = list(zip(best_reg[1].feature_importances_, xenonpy_matminer_descriptors+spacegroup_colnames))
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
 

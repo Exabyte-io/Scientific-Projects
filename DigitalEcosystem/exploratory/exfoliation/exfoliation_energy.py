@@ -128,7 +128,7 @@ test_x_reg = np.nan_to_num(test[xenonpy_matminer_descriptors].to_numpy())
 test_y_reg = np.nan_to_num(test[target_column].to_numpy())
 
 
-# In[ ]:
+# In[]:
 
 
 import sklearn.linear_model
@@ -194,7 +194,7 @@ reg_study = optuna.create_study(
 reg_study.optimize(func=objective, n_trials=256, callbacks=[keep_best_reg])
 
 
-# In[ ]:
+# In[]:
 
 
 DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
@@ -206,7 +206,7 @@ DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
                                                 "exfoliation_parity.jpeg")
 
 
-# In[ ]:
+# In[]:
 
 
 def rmse(y_true, y_pred):
@@ -229,7 +229,7 @@ for key, fun in metrics.items():
     print(key,np.round(value,3))
 
 
-# In[ ]:
+# In[]:
 
 
 n_importances = 20
@@ -247,7 +247,7 @@ plt.tight_layout()
 plt.savefig("exfoliation_importance.jpeg")
 
 
-# In[ ]:
+# In[]:
 
 
 sns.histplot(reasonable['exfoliation_energy_per_atom (eV/atom)'])
