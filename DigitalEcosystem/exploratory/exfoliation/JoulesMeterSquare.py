@@ -147,7 +147,7 @@ def objective(trial: optuna.Trial):
     
     SEED = trial.suggest_categorical('random', [42,1234,12345])
     objective_train_x_reg, objective_validation_x_reg, objective_train_y_reg, objective_validation_y_reg = sklearn.model_selection.train_test_split(
-    np.nan_to_num(train_x_reg), train_y_reg, test_size=0.1, random_state=SEED)
+    np.nan_to_num(train_x_reg), train_y_reg, test_size=0.25, random_state=SEED)
 
     current_reg = sklearn.pipeline.Pipeline([
         ("Scaler", sklearn.preprocessing.MinMaxScaler()),
