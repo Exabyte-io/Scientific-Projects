@@ -195,7 +195,7 @@ DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
                                                 test_y_reg,
                                                 best_reg,
                                                 "Exfoliation Energy (eV/atom*Å^2)",
-                                                "exfoliation_parity.jpeg")
+                                                "exfoliation_per_atom.jpeg")
 
 
 # In[]:
@@ -219,6 +219,19 @@ y_pred_test = best_reg.predict(test_x_reg)
 for key, fun in metrics.items():
     value = fun(y_true=test_y_reg, y_pred=y_pred_test)
     print(key,np.round(value,3))
+
+
+# In[]:
+
+
+cutoff= .04
+DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg[train_y_reg<cutoff, :],
+                                                test_x_reg[test_y_reg<cutoff, :],
+                                                train_y_reg[train_y_reg<cutoff],
+                                                test_y_reg[test_y_reg<cutoff],
+                                                best_reg,
+                                                target_column,
+                                                "exfoliation_per_atom_lessThanPoint4.jpeg")
 
 
 # In[ ]:

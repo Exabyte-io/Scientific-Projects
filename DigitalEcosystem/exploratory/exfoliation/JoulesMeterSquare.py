@@ -231,6 +231,20 @@ for key, fun in metrics.items():
     print(key,np.round(value,3))
 
 
+# In[]:
+
+
+# Zoom in on just exfoliation energies below 2 eV
+cutoff=2
+DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg[train_y_reg<cutoff, :],
+                                                test_x_reg[test_y_reg<cutoff, :],
+                                                train_y_reg[train_y_reg<cutoff],
+                                                test_y_reg[test_y_reg<cutoff],
+                                                best_reg,
+                                                target_column,
+                                                "exfoliation_joules_per_meter_lessThan2.jpeg")
+
+
 # In[ ]:
 
 
