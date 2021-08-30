@@ -1,0 +1,20 @@
+time to generate feat sapce: 0.0903365 s
+time input_parsing/Feature space generation: 2.17589 s
+Projection time: 0.0117289 s
+Time to get best features on rank : 0.0391234 s
+Projection time for features generated on the fly: 73.0837 s
+Complete final combination/selection from all ranks: 0.00203857 s
+Time for SIS: 73.1417 s
+Time for l0-norm: 37.9247 s
+Projection time: 0.018393 s
+Time to get best features on rank : 0.0309169 s
+Projection time for features generated on the fly: 72.459 s
+Complete final combination/selection from all ranks: 0.00474269 s
+Time for SIS: 72.5161 s
+Time for l0-norm: 152.645 s
+Percent of training data misclassified: 92.2224%; Percent of test data misclassified: 89.5105%
+[(|(ave:en_allen * min:vdw_radius_uff) - (|min:atomic_radius - ave:boiling_point|)|)]
+
+Percent of training data misclassified: 86.7004%; Percent of test data misclassified: 84.7902%
+[(sin(min:en_allen) / (global_instability + ave:en_pauling)), (|(ave:boiling_point / ave:en_allen) - (var:en_allen + min:vdw_radius_uff)|)]
+
