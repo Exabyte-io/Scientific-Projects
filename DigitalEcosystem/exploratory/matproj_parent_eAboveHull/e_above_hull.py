@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Filtering by E above hull
+# 
+# In this notebook, we train an XGBoost regressor to predict exfoliation energies. Data are filtered based on the stability of the parent structur in materials project.
+
 # In[]:
 
 
@@ -34,6 +38,8 @@ from DigitalEcosystem.utils.misc import noble_gases, fblock, d_synths, matminer_
 tqdm.tqdm.pandas()
 
 
+# # Read in the Dataset
+
 # In[]:
 
 
@@ -53,6 +59,10 @@ data = pd.read_pickle(data_path)
 
 data = data[data['discovery_process (unitless)']=='top-down']
 
+
+# # Filter the Dataset
+# 
+# The next few cells look up the e above hull of the parent system from materials project.
 
 # In[]:
 
@@ -80,6 +90,10 @@ df['e_above_hull'] = df['mp_id (unitless)'].progress_apply(e_above_hull_fun)
 df.to_csv("data_with_mp_ids.csv")
 
 
+# # Show the distribution of the data
+# 
+# In the below plot, we see a Pareto-esque distribution of the data.
+
 # In[]:
 
 
@@ -87,6 +101,8 @@ plt.rcParams['figure.figsize'] = [20,10]
 plt.rcParams['font.size'] = 24
 sns.histplot(df['e_above_hull'])
 
+
+# # Filter out NA entries in the dataset
 
 # In[]:
 
@@ -100,6 +116,10 @@ df = df[df['e_above_hull'].isna() == False]
 df = df.fillna(0)
 
 
+# # Descriptor selection
+# 
+# XenonPy and Matminer
+
 # In[]:
 
 
@@ -108,6 +128,15 @@ xenonpy_descriptors = [col for col in data.columns if ":" in col]
 xenonpy_matminer_descriptors = xenonpy_descriptors + matminer_descriptors
 target = ['exfoliation_energy_per_atom (eV/atom)']
 
+
+# # Filter out by several masks
+# 
+# - `element_mask` - throw away systems containing noble gases, f-blocks, or any synthetic elements
+# - `decomposition_mask` - keep systems with a decomposition energy < 0.5 eV/atom
+# - `exfol_mask` - keep systems with an exfoliation energy > 0 eV/atom
+# - `hull_mask` - keep systems whose parent structures e_above_hull reported by Materials Project is <= 0.05
+# 
+# And finally, do a train/test split
 
 # In[]:
 
@@ -136,6 +165,10 @@ train_y_regression = np.nan_to_num(train[target].to_numpy())
 test_x_regression = np.nan_to_num(test[xenonpy_matminer_descriptors + ['e_above_hull']].to_numpy())
 test_y_regression = np.nan_to_num(test[target].to_numpy())
 
+
+# # XGBoost Hyperparameter Tuning
+# 
+# Tune an XGBoost regressor for the exfoliation energy using Optuna.
 
 # In[]:
 
@@ -200,6 +233,13 @@ regression_study = optuna.create_study(
 
 regression_study.optimize(func=objective, n_trials=1024, callbacks=[keep_best_regression])
 
+
+# # Save summary statistics
+# 
+# - A parity plot for the model and the entire data range
+# - A bar chart for some of the variable importances
+# - Model performance statistics are also printed
+# 
 
 # In[]:
 
