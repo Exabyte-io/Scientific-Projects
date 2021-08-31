@@ -254,9 +254,3 @@ plt.xlabel("Importance Score")
 plt.tight_layout()
 plt.savefig("importances_spacegroup_binning.jpeg")
 
-
-# In[ ]:
-
-
-
-

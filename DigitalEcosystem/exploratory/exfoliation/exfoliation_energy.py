@@ -242,9 +242,3 @@ plt.savefig("importances_exfoliation.jpeg")
 
 sns.histplot(reasonable['exfoliation_energy_per_atom (eV/atom)'])
 
-
-# In[ ]:
-
-
-
-
