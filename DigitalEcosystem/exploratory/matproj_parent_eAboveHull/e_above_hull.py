@@ -52,20 +52,6 @@ data = pd.read_pickle(data_path)
 
 data = data[data['discovery_process (unitless)']=='top-down']
 
-cols_to_drop = ['formula',
-                'discovery_process (unitless)',
-                'potcars (unitless)',
-                'is_hubbard (unitless)',
-                'energy_per_atom (eV)',
-                'exfoliation_energy_per_atom (eV/atom)',
-                'is_bandgap_direct (unitless)',
-                'is_metal (unitless)',
-                'energy_vdw_per_atom (eV/atom)',
-                'total_magnetization (Bohr Magneton)']
-target_column = ['bandgap (eV)']
-matpedia_id = ['2dm_id (unitless)']
-atoms_col = ['atoms_object (unitless)']
-
 
 # In[]:
 
