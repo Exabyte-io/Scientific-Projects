@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Exfoliation Bandgap Binning
+# 
+# In this notebook, we train an XGBoost regressor to predict exfoliation energies. We include whether the bandgap is low or high as a descriptor.
+
 # In[]:
 
 
@@ -40,6 +44,8 @@ random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
 
 
+# # Read in the Dataset
+
 # In[]:
 
 
@@ -49,6 +55,15 @@ data = pd.read_pickle(data_path)
 
 target_column = ['exfoliation_energy_per_atom (eV/atom)']
 
+
+# # Filter out by several masks
+# 
+# - `element_mask` - throw away systems containing noble gases, f-blocks, or any synthetic elements
+# - `decomposition_mask` - keep systems with a decomposition energy < 0.5 eV/atom
+# - `exfol_mask` - keep systems with an exfoliation energy > 0 eV/atom
+# - `hull_mask` - keep systems whose parent structures e_above_hull reported by Materials Project is <= 0.05
+# 
+# And finally, do a train/test split
 
 # In[]:
 
@@ -63,6 +78,10 @@ exfoliation_mask = data['exfoliation_energy_per_atom (eV/atom)'] > 0
 
 reasonable = data[element_mask & decomposition_mask & exfoliation_mask]
 
+
+# # Descriptor selection
+# 
+# XenonPy and Matminer
 
 # In[]:
 
@@ -101,6 +120,10 @@ train_y_regression = np.nan_to_num(train[target_column].to_numpy())
 test_x_regression = np.nan_to_num(test[xenonpy_matminer_descriptors + ['low_bandgap']].to_numpy())
 test_y_regression = np.nan_to_num(test[target_column].to_numpy())
 
+
+# # XGBoost Hyperparameter Tuning
+# 
+# Tune an XGBoost regressor for the exfoliation energy using Optuna.
 
 # In[]:
 
@@ -162,7 +185,14 @@ regression_study = optuna.create_study(
 regression_study.optimize(func=objective, n_trials=256, callbacks=[keep_best_regression])
 
 
-# In[ ]:
+# # Save summary statistics
+# 
+# - A parity plot for the model and the entire data range
+# - A bar chart for some of the variable importances
+# - Model performance statistics are also printed
+# 
+
+# In[]:
 
 
 DigitalEcosystem.utils.figures.save_parity_plot(train_x_regression,
@@ -174,7 +204,7 @@ DigitalEcosystem.utils.figures.save_parity_plot(train_x_regression,
                                                 "exfoliation_parity.jpeg")
 
 
-# In[ ]:
+# In[]:
 
 
 def rmse(y_true, y_pred):
@@ -197,7 +227,7 @@ for key, fun in metrics.items():
     print(key,np.round(value,3))
 
 
-# In[ ]:
+# In[]:
 
 
 n_importances = 20
