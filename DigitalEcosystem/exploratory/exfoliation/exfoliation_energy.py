@@ -25,6 +25,7 @@ import seaborn as sns
 import sys
 sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
+from DigitalEcosystem.utils.misc import noble_gases, fblock, d_synths, matminer_descriptors
 
 tqdm.tqdm.pandas()
 
@@ -49,11 +50,6 @@ data = pd.read_pickle(data_path).fillna(0)
 
 # In[]:
 
-
-noble_gases = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn']
-fblock = ['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu',
-          'Ac', 'Th', 'Pa', 'U',  'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr']
-d_synths = ['Rf', 'Db', 'Sg', 'Bh', 'HS', 'Mt', 'Ds', 'Rg', 'Cn', 'Nh', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']
 
 bad_elements = noble_gases + fblock + d_synths
 
@@ -92,17 +88,6 @@ reasonable = reasonable[reasonable['exfoliation_energy_per_atom (eV/atom)'] > 0]
 
 
 xenonpy_descriptors = [col for col in data.columns if ":" in col]
-matminer_descriptors = [
-    'bond_length_average',
-    'bond_angle_average',
-    'average_cn',
-    'global_instability',
-    'perimeter_area_ratio',
-    'ewald_energy_per_atom',
-    'structural complexity per atom',
-    'structural complexity per cell',
-    'n_symmetry_ops'
-]
 xenonpy_matminer_descriptors = xenonpy_descriptors + matminer_descriptors
 
 
