@@ -55,9 +55,9 @@ bad_elements = noble_gases + fblock + d_synths
 
 element_mask = data['atoms_object (unitless)'].apply(lambda atoms: all([forbidden not in atoms.get_chemical_symbols() for forbidden in bad_elements]))
 
-decomp_mask = data['decomposition_energy (eV/atom)'] < 0.5
+decomposition_mask = data['decomposition_energy (eV/atom)'] < 0.5
 
-reasonable = data[element_mask & decomp_mask]
+reasonable = data[element_mask & decomposition_mask]
 
 
 # In[]:
@@ -94,11 +94,11 @@ train, test = sklearn.model_selection.train_test_split(reasonable, test_size=0.1
 # In[]:
 
 
-train_x_reg = np.nan_to_num(train[xenonpy_matminer_descriptors].to_numpy())
-train_y_reg = np.nan_to_num(train[target_column].to_numpy())
+train_x_regression = np.nan_to_num(train[xenonpy_matminer_descriptors].to_numpy())
+train_y_regression = np.nan_to_num(train[target_column].to_numpy())
 
-test_x_reg = np.nan_to_num(test[xenonpy_matminer_descriptors].to_numpy())
-test_y_reg = np.nan_to_num(test[target_column].to_numpy())
+test_x_regression = np.nan_to_num(test[xenonpy_matminer_descriptors].to_numpy())
+test_y_regression = np.nan_to_num(test[target_column].to_numpy())
 
 
 # In[]:
@@ -106,24 +106,20 @@ test_y_reg = np.nan_to_num(test[target_column].to_numpy())
 
 import sklearn.linear_model
 
-current_reg = None
-best_reg = None
-def keep_best_reg(study, trial):
-    global best_reg
+current_regression = None
+best_regression = None
+def keep_best_regression(study, trial):
+    global best_regression
     if study.best_trial == trial:
-        best_reg = current_reg
+        best_regression = current_regression
 
-objective_train_x_reg, objective_validation_x_reg, objective_train_y_reg, objective_validation_y_reg = sklearn.model_selection.train_test_split(
-    np.nan_to_num(train_x_reg), train_y_reg, test_size=0.1, random_state=RANDOM_SEED)
+objective_train_x_regression, objective_validation_x_regression, objective_train_y_regression, objective_validation_y_regression = sklearn.model_selection.train_test_split(
+    np.nan_to_num(train_x_regression), train_y_regression, test_size=0.1, random_state=RANDOM_SEED)
 
 def objective(trial: optuna.Trial):
-    global current_reg
+    global current_regression
 
-    params = {
-
-    }
-
-    current_reg = sklearn.pipeline.Pipeline([
+    current_regression = sklearn.pipeline.Pipeline([
         ("Scaler", sklearn.preprocessing.MinMaxScaler()),
         ("XGB_Regressor", xgboost.sklearn.XGBRegressor(
             max_depth= trial.suggest_int('max_depth', 1, 100),
@@ -136,9 +132,9 @@ def objective(trial: optuna.Trial):
     ])
 
     pruning_callback = optuna.integration.XGBoostPruningCallback(trial, f'validation_0-rmse')
-    current_reg.fit(X=objective_train_x_reg, y=objective_train_y_reg,
+    current_regression.fit(X=objective_train_x_regression, y=objective_train_y_regression,
                          **{
-                            'XGB_Regressor__eval_set': [[objective_validation_x_reg, objective_validation_y_reg]],
+                            'XGB_Regressor__eval_set': [[objective_validation_x_regression, objective_validation_y_regression]],
                             'XGB_Regressor__eval_metric': 'rmse',
                             'XGB_Regressor__early_stopping_rounds': 10,
                             'XGB_Regressor__callbacks': [pruning_callback],
@@ -146,13 +142,13 @@ def objective(trial: optuna.Trial):
                          })
 
     score = sklearn.metrics.mean_squared_error(
-        y_true=objective_validation_y_reg,
-        y_pred=abs(current_reg.predict(objective_validation_x_reg)),
+        y_true=objective_validation_y_regression,
+        y_pred=abs(current_regression.predict(objective_validation_x_regression)),
     )
- 
+
     return np.sqrt(score)
 
-reg_study = optuna.create_study(
+regression_study = optuna.create_study(
     sampler = optuna.samplers.TPESampler(
         seed = RANDOM_SEED,
         warn_independent_sampling = True,
@@ -164,17 +160,17 @@ reg_study = optuna.create_study(
     direction='minimize'
 )
 
-reg_study.optimize(func=objective, n_trials=256, callbacks=[keep_best_reg])
+regression_study.optimize(func=objective, n_trials=256, callbacks=[keep_best_regression])
 
 
 # In[]:
 
 
-DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
-                                                test_x_reg,
-                                                train_y_reg,
-                                                test_y_reg,
-                                                best_reg,
+DigitalEcosystem.utils.figures.save_parity_plot(train_x_regression,
+                                                test_x_regression,
+                                                train_y_regression,
+                                                test_y_regression,
+                                                best_regression,
                                                 "Exfoliation Energy (eV/atom)",
                                                 "exfoliation_parity.jpeg")
 
@@ -196,9 +192,9 @@ metrics = {
     'R2': sklearn.metrics.r2_score
 }
 
-y_pred_test = best_reg.predict(test_x_reg)
+y_pred_test = best_regression.predict(test_x_regression)
 for key, fun in metrics.items():
-    value = fun(y_true=test_y_reg, y_pred=y_pred_test)
+    value = fun(y_true=test_y_regression, y_pred=y_pred_test)
     print(key,np.round(value,3))
 
 
@@ -206,7 +202,7 @@ for key, fun in metrics.items():
 
 
 n_importances = 20
-importances = list(zip(best_reg[1].feature_importances_, xenonpy_matminer_descriptors))
+importances = list(zip(best_regression[1].feature_importances_, xenonpy_matminer_descriptors))
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
 
