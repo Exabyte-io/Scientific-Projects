@@ -2,6 +2,11 @@ import re
 import requests
 import pymatgen.ext.matproj
 
+noble_gases = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn']
+fblock = ['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu',
+          'Ac', 'Th', 'Pa', 'U',  'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr']
+d_synths = ['Rf', 'Db', 'Sg', 'Bh', 'HS', 'Mt', 'Ds', 'Rg', 'Cn', 'Nh', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']
+
 def get_parent_structure_id(id_2dm: str) -> str:
     '''
     Given a 2DMatPedia ID, queries the 2DMatPedia for the structure's parent bulk's MaterialsProject ID
