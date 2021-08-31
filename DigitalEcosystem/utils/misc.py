@@ -2,6 +2,18 @@ import re
 import requests
 import pymatgen.ext.matproj
 
+matminer_descriptors = [
+    'bond_length_average',
+    'bond_angle_average',
+    'average_cn',
+    'global_instability',
+    'perimeter_area_ratio',
+    'ewald_energy_per_atom',
+    'structural complexity per atom',
+    'structural complexity per cell',
+    'n_symmetry_ops'
+
+]
 noble_gases = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn']
 fblock = ['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu',
           'Ac', 'Th', 'Pa', 'U',  'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr']
