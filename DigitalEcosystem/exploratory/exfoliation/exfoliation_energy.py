@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Exfoliation Energy
+# 
+# In this notebook, we train an XGBoost regressor to predict exfoliation energies.
+
 # In[]:
 
 
@@ -40,6 +44,8 @@ random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
 
 
+# # Read in the Dataset
+
 # In[]:
 
 
@@ -47,6 +53,14 @@ np.random.seed(RANDOM_SEED)
 data_path = "../../refined/httpot/full_featurized_data.pkl"
 data = pd.read_pickle(data_path).fillna(0)
 
+
+# # Filter out by several masks
+# 
+# - `element_mask` - throw away systems containing noble gases, f-blocks, or any synthetic elements
+# - `decomposition_mask` - keep systems with a decomposition energy < 0.5 eV/atom
+# - `exfol_mask` - keep systems with an exfoliation energy > 0 eV/atom
+# 
+# And finally, do a train/test split
 
 # In[]:
 
@@ -75,20 +89,18 @@ reasonable = reasonable[reasonable['exfoliation_energy_per_atom (eV/atom)'] > 0]
 # In[]:
 
 
+train, test = sklearn.model_selection.train_test_split(reasonable, test_size=0.1, random_state=RANDOM_SEED)
+
+
+# # Descriptor selection
+# 
+# XenonPy and Matminer
+
+# In[]:
+
+
 xenonpy_descriptors = [col for col in data.columns if ":" in col]
 xenonpy_matminer_descriptors = xenonpy_descriptors + matminer_descriptors
-
-
-# In[]:
-
-
-graph_descriptors = list(filter(lambda colname: any(i in colname for i in ["(bonds)", "(angles)", "(atoms)"]), reasonable.columns))
-
-
-# In[]:
-
-
-train, test = sklearn.model_selection.train_test_split(reasonable, test_size=0.1, random_state=RANDOM_SEED)
 
 
 # In[]:
@@ -101,10 +113,12 @@ test_x_regression = np.nan_to_num(test[xenonpy_matminer_descriptors].to_numpy())
 test_y_regression = np.nan_to_num(test[target_column].to_numpy())
 
 
+# # XGBoost Hyperparameter Tuning
+# 
+# Tune an XGBoost regressor for the exfoliation energy using Optuna.
+
 # In[]:
 
-
-import sklearn.linear_model
 
 current_regression = None
 best_regression = None
@@ -163,6 +177,13 @@ regression_study = optuna.create_study(
 regression_study.optimize(func=objective, n_trials=256, callbacks=[keep_best_regression])
 
 
+# # Save summary statistics
+# 
+# - A parity plot for the model and the entire data range
+# - A bar chart for some of the variable importances
+# - Model performance statistics are also printed
+# 
+
 # In[]:
 
 
@@ -213,7 +234,7 @@ plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_import
 plt.ylabel("Feature")
 plt.xlabel("Importance Score")
 plt.tight_layout()
-plt.savefig("exfoliation_importance.jpeg")
+plt.savefig("importances_exfoliation.jpeg")
 
 
 # In[]:
