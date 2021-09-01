@@ -33,7 +33,8 @@ sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
 import DigitalEcosystem.utils.misc
 import DigitalEcosystem.utils.functional
-from DigitalEcosystem.utils.misc import noble_gases, fblock, d_synths, matminer_descriptors
+from DigitalEcosystem.utils.misc import matminer_descriptors
+from DigitalEcosystem.utils.element_symbols import  noble_gases, f_block_elements, synthetic_elements_in_d_block
 
 tqdm.tqdm.pandas()
 
@@ -141,7 +142,7 @@ target = ['exfoliation_energy_per_atom (eV/atom)']
 # In[]:
 
 
-bad_elements = noble_gases + fblock + d_synths
+bad_elements = noble_gases + f_block_elements + synthetic_elements_in_d_block
 
 element_mask = df['atoms_object (unitless)'].apply(lambda atoms: all([forbidden not in atoms.get_chemical_symbols() for forbidden in bad_elements]))
 
