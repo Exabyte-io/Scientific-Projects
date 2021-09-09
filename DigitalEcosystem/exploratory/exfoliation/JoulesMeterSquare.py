@@ -91,7 +91,7 @@ target_column = 'exfoliation_energy (J/m^2)'
 # 
 # - `element_mask` - throw away systems containing noble gases, f-blocks, or any synthetic elements
 # - `decomposition_mask` - keep systems with a decomposition energy < 0.5 eV/atom
-# - `exfol_mask` - keep systems with an exfoliation energy > 0 eV/atom
+# - `exfoliation_mask` - keep systems with an exfoliation energy > 0 eV/atom
 # 
 # And finally, do a train/test split
 
@@ -102,11 +102,11 @@ bad_elements = noble_gases + f_block_elements + synthetic_elements_in_d_block
 
 element_mask = data['atoms_object (unitless)'].apply(lambda atoms: all([forbidden not in atoms.get_chemical_symbols() for forbidden in bad_elements]))
 
-decomp_mask = data['decomposition_energy (eV/atom)'] < 0.5
+decomposition_mask = data['decomposition_energy (eV/atom)'] < 0.5
 
-exfol_mask = data['exfoliation_energy_per_atom (eV/atom)'] > 0
+exfoliation_mask = data['exfoliation_energy_per_atom (eV/atom)'] > 0
 
-reasonable = data[element_mask & decomp_mask & exfol_mask]
+reasonable = data[element_mask & decomposition_mask & exfoliation_mask]
 
 
 # In[]:
@@ -118,11 +118,11 @@ train, test = sklearn.model_selection.train_test_split(reasonable, test_size=0.1
 # In[]:
 
 
-train_x_reg = np.nan_to_num(train[xenonpy_matminer_descriptors].to_numpy())
-train_y_reg = np.nan_to_num(train[target_column].to_numpy())
+train_x_regression = np.nan_to_num(train[xenonpy_matminer_descriptors].to_numpy())
+train_y_regression = np.nan_to_num(train[target_column].to_numpy())
 
-test_x_reg = np.nan_to_num(test[xenonpy_matminer_descriptors].to_numpy())
-test_y_reg = np.nan_to_num(test[target_column].to_numpy())
+test_x_regression = np.nan_to_num(test[xenonpy_matminer_descriptors].to_numpy())
+test_y_regression = np.nan_to_num(test[target_column].to_numpy())
 
 
 # # XGBoost Hyperparameter Tuning
@@ -132,21 +132,21 @@ test_y_reg = np.nan_to_num(test[target_column].to_numpy())
 # In[]:
 
 
-current_reg = None
-best_reg = None
-def keep_best_reg(study, trial):
-    global best_reg
+current_regression = None
+best_regression = None
+def keep_best_regression(study, trial):
+    global best_regression
     if study.best_trial == trial:
-        best_reg = current_reg
+        best_regression = current_regression
 
 def objective(trial: optuna.Trial):
-    global current_reg
-    
-    SEED = trial.suggest_categorical('random', [42,1234,12345])
-    objective_train_x_reg, objective_validation_x_reg, objective_train_y_reg, objective_validation_y_reg = sklearn.model_selection.train_test_split(
-    np.nan_to_num(train_x_reg), train_y_reg, test_size=0.25, random_state=SEED)
+    global current_regression
 
-    current_reg = sklearn.pipeline.Pipeline([
+    SEED = trial.suggest_categorical('random', [42,1234,12345])
+    objective_train_x_regression, objective_validation_x_regression, objective_train_y_regression, objective_validation_y_regression = sklearn.model_selection.train_test_split(
+    np.nan_to_num(train_x_regression), train_y_regression, test_size=0.25, random_state=SEED)
+
+    current_regression = sklearn.pipeline.Pipeline([
         ("Scaler", sklearn.preprocessing.MinMaxScaler()),
         ("XGB_Regressor", xgboost.sklearn.XGBRegressor(
             max_depth= trial.suggest_int('max_depth', 1, 50),
@@ -160,37 +160,29 @@ def objective(trial: optuna.Trial):
             objective='reg:pseudohubererror',
             random_state=SEED)),
     ])
-    
-#     pruning_callback = optuna.integration.XGBoostPruningCallback(trial, f'validation_0-rmse')
-    current_reg.fit(X=objective_train_x_reg, y=objective_train_y_reg,
+
+    current_regression.fit(X=objective_train_x_regression, y=objective_train_y_regression,
                          **{
-#                             'XGB_Regressor__eval_set': [[objective_validation_x_reg, objective_validation_y_reg]],
-#                             'XGB_Regressor__eval_metric': 'rmse',
-#                             'XGB_Regressor__early_stopping_rounds': 100,
-#                             'XGB_Regressor__callbacks': [pruning_callback],
                             'XGB_Regressor__verbose': False
                          })
 
     score = sklearn.metrics.r2_score(
-        y_true=objective_validation_y_reg,
-        y_pred=abs(current_reg.predict(objective_validation_x_reg)),
+        y_true=objective_validation_y_regression,
+        y_pred=abs(current_regression.predict(objective_validation_x_regression)),
     )
 
     return score
 
-reg_study = optuna.create_study(
+regression_study = optuna.create_study(
     sampler = optuna.samplers.TPESampler(
         seed = RANDOM_SEED,
         warn_independent_sampling = True,
         consider_endpoints = True
     ),
-#     pruner = optuna.pruners.HyperbandPruner(
-#         min_resource=1,
-#         max_resource=1000),
     direction='maximize'
 )
 
-reg_study.optimize(func=objective, n_trials=128, callbacks=[keep_best_reg])
+regression_study.optimize(func=objective, n_trials=128, callbacks=[keep_best_regression])
 
 
 # # Save summary statistics
@@ -203,11 +195,11 @@ reg_study.optimize(func=objective, n_trials=128, callbacks=[keep_best_reg])
 # In[]:
 
 
-DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
-                                                test_x_reg,
-                                                train_y_reg,
-                                                test_y_reg,
-                                                best_reg,
+DigitalEcosystem.utils.figures.save_parity_plot(train_x_regression,
+                                                test_x_regression,
+                                                train_y_regression,
+                                                test_y_regression,
+                                                best_regression,
                                                 target_column,
                                                 "exfoliation_joules_per_meter.jpeg")
 
@@ -229,9 +221,9 @@ metrics = {
     'R2': sklearn.metrics.r2_score
 }
 
-y_pred_test = best_reg.predict(test_x_reg)
+y_pred_test = best_regression.predict(test_x_regression)
 for key, fun in metrics.items():
-    value = fun(y_true=test_y_reg, y_pred=y_pred_test)
+    value = fun(y_true=test_y_regression, y_pred=y_pred_test)
     print(key,np.round(value,3))
 
 
@@ -240,17 +232,11 @@ for key, fun in metrics.items():
 
 # Zoom in on just exfoliation energies below 2 eV
 cutoff=2
-DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg[train_y_reg<cutoff, :],
-                                                test_x_reg[test_y_reg<cutoff, :],
-                                                train_y_reg[train_y_reg<cutoff],
-                                                test_y_reg[test_y_reg<cutoff],
-                                                best_reg,
+DigitalEcosystem.utils.figures.save_parity_plot(train_x_regression[train_y_regression<cutoff, :],
+                                                test_x_regression[test_y_regression<cutoff, :],
+                                                train_y_regression[train_y_regression<cutoff],
+                                                test_y_regression[test_y_regression<cutoff],
+                                                best_regression,
                                                 target_column,
                                                 "exfoliation_joules_per_meter_lessThan2.jpeg")
-
-
-# In[ ]:
-
-
-
 
