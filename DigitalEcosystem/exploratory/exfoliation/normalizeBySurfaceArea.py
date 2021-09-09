@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Exfoliation Energy
+# 
+# In this notebook, we train an XGBoost regressor to predict exfoliation energies normalized by surface area, to eV/(atom*Å^2).
+
 # In[]:
 
 
@@ -25,6 +29,8 @@ import seaborn as sns
 import sys
 sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
+from DigitalEcosystem.utils.misc import matminer_descriptors
+from DigitalEcosystem.utils.element_symbols import noble_gases, f_block_elements, synthetic_elements_in_d_block
 
 tqdm.tqdm.pandas()
 
@@ -39,6 +45,8 @@ random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
 
 
+# # Read in the Dataset
+
 # In[]:
 
 
@@ -46,29 +54,17 @@ np.random.seed(RANDOM_SEED)
 data_path = "../../refined/httpot/full_featurized_data.pkl"
 data = pd.read_pickle(data_path)
 
-cols_to_drop = ['formula',
-                'discovery_process (unitless)',
-                'potcars (unitless)',
-                'is_hubbard (unitless)',
-                'energy_per_atom (eV)',
-                'exfoliation_energy_per_atom (eV/atom)',
-                'is_bandgap_direct (unitless)',
-                'is_metal (unitless)',
-                'energy_vdw_per_atom (eV/atom)',
-                'total_magnetization (Bohr Magneton)']
-matpedia_id = ['2dm_id (unitless)']
-atoms_col = ['atoms_object (unitless)']
 
+# # Filter out by several masks
+# 
+# - `element_mask` - throw away systems containing noble gases, f-blocks, or any synthetic elements
+# - `decomposition_mask` - keep systems with a decomposition energy < 0.5 eV/atom
+# - `exfol_mask` - keep systems with an exfoliation energy > 0 eV/atom
 
 # In[]:
 
 
-noble_gases = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn']
-fblock = ['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu',
-          'Ac', 'Th', 'Pa', 'U',  'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr']
-d_synths = ['Rf', 'Db', 'Sg', 'Bh', 'HS', 'Mt', 'Ds', 'Rg', 'Cn', 'Nh', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']
-
-bad_elements = noble_gases + fblock + d_synths
+bad_elements = noble_gases + f_block_elements + synthetic_elements_in_d_block
 
 element_mask = data['atoms_object (unitless)'].apply(lambda atoms: all([forbidden not in atoms.get_chemical_symbols() for forbidden in bad_elements]))
 
@@ -79,6 +75,8 @@ exfol_mask = data['exfoliation_energy_per_atom (eV/atom)'] > 0
 reasonable = data[element_mask & decomp_mask & exfol_mask]
 
 
+# # Normalize by Surface Area
+
 # In[]:
 
 
@@ -88,23 +86,18 @@ target_column = 'exfoliation_energy (eV/atom*area)'
 reasonable[target_column] = reasonable['exfoliation_energy_per_atom (eV/atom)'] / surface_areas
 
 
+# # Descriptor selection
+# 
+# XenonPy and Matminer
+
 # In[]:
 
 
 xenonpy_descriptors = [col for col in data.columns if ":" in col]
-matminer_descriptors = [
-    'bond_length_average',
-    'bond_angle_average',
-    'average_cn',
-    'global_instability',
-    'perimeter_area_ratio',
-    'ewald_energy_per_atom',
-    'structural complexity per atom',
-    'structural complexity per cell',
-    'n_symmetry_ops'
-]
 xenonpy_matminer_descriptors = xenonpy_descriptors + matminer_descriptors
 
+
+# And finally, do a train/test split
 
 # In[]:
 
@@ -121,6 +114,10 @@ train_y_reg = np.nan_to_num(train[target_column].to_numpy())
 test_x_reg = np.nan_to_num(test[xenonpy_matminer_descriptors].to_numpy())
 test_y_reg = np.nan_to_num(test[target_column].to_numpy())
 
+
+# # XGBoost Hyperparameter Tuning
+# 
+# Tune an XGBoost regressor for the exfoliation energy using Optuna.
 
 # In[]:
 
@@ -185,6 +182,13 @@ reg_study = optuna.create_study(
 
 reg_study.optimize(func=objective, n_trials=128, callbacks=[keep_best_reg])
 
+
+# # Save summary statistics
+# 
+# - A parity plot for the model and the entire data range
+#     - Also for a subset of the range
+# - Model performance statistics are also printed
+# 
 
 # In[]:
 
