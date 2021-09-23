@@ -236,27 +236,158 @@ for key, fun in metrics.items():
 # In[]:
 
 
-train['errors'] = (best_regression.predict(train_x_regression).reshape(-1,1)-train_y_regression)**2
-
-
-# In[]:
-
-
-train.nlargest(5,['errors'])['bandgap (eV)']
-
-
-# In[]:
-
-
 cols_for_sisso = [i[1] for i in sorted_importances][:10] + ['bandgap (eV)']
 train[cols_for_sisso].to_csv('bandgap_sisso_train.csv', index=False)
 test[cols_for_sisso].to_csv('bandgap_sisso_test.csv', index=False)
 
 
+# # SISSO
+
 # In[]:
 
 
-get_ipython().system('pwd')
+models = {
+    'r1_1term': lambda df: 6.305762604497209e+00 + \
+                           -3.899085295793941e-02 * (df['ave:covalent_radius_pyykko'] + df['max:density']),
+    'r1_2term': lambda df: 8.013812787771061e+00 + \
+                          -9.856136741665386e+00 * (df['max:density']/ df['max:atomic_number']) + \
+                          -4.173866344605599e-02 * (df['ave:covalent_radius_pyykko'] + df['min:num_s_unfilled']),
+    'r1_3term': lambda df: 7.317334564152490e+00 + \
+                           -3.195459845706383e-02 * (df['ave:sound_velocity'] + df['ave:covalent_radius_pyykko']) + \
+                           3.178134288848232e-02 * (df['ave:sound_velocity'] + df['max:atomic_number']) + \
+                           -1.615509850281063e+00 * np.log(df['max:density']),
+    'r1_4term': lambda df: 7.113099244960149e+00 + \
+                           5.027360011987392e-01 * (df['max:heat_capacity_molar'] / df['max:atomic_number']) + \
+                           3.019208238405184e-01 * np.cos(df['max:atomic_number']) + \
+                           -1.082904529220121e+01 * (df['max:density'] / df['max:atomic_number']) + \
+                           -3.885564807924378e-02 * (df['ave:covalent_radius_pyykko'] - df['max:density']),
+    'r2_1term': lambda df: 6.622653406270025e+00 + \
+                           -3.673916686305851e-02 * ((df['ave:covalent_radius_pyykko'] * df['max:atomic_number'])/(abs(df['max:density'] - df['max:atomic_number']))),
+    'r2_2term': lambda df: 1.555893513782959e+01 + \
+                           -7.238797327296671e+00 * abs(np.exp(-1*df['max:density']) - (df['max:density'] / df['max:atomic_number'])) + \
+                           -2.550627271537310e+00 * ((df['max:density']/df['max:atomic_number']) + np.cbrt(df['ave:covalent_radius_pyykko'])),
+    'r2_3term': lambda df: 1.374001579668306e+01 + \
+                           8.417729142423260e+00 * (np.cos(df['min:vdw_radius_mm3']) / (df['max:density']**2)) + \
+                           -7.080969005797322e+00 * abs(np.exp(-1 * df['max:density']) - (df['max:density']/df['max:atomic_number'])) + \
+                           -2.200729808742001e+00 * ((df['max:density'] / df['max:atomic_number']) + np.cbrt(df['ave:covalent_radius_pyykko'])),
+    'r2_4term': lambda df: 1.042522765313325e+01 + \
+                           -6.900851096642938e-01 * (np.cos(df['max:atomic_number']) + np.sqrt(df['max:heat_capacity_molar'])) + \
+                           -9.754701757588259e-01 * abs(np.cos(df['max:atomic_number']) - (df['ave:covalent_radius_pyykko'] / df['max:heat_capacity_molar'])) + \
+                           1.862846679815186e+01 * (np.cos(df['min:vdw_radius_mm3']) / np.exp(df['max:density'])) + \
+                           -7.785046263957102e+00 * abs(np.exp(-1 * df['max:density']) - (df['max:density'] / df['max:atomic_number']))
+}
+
+for key, fun in models.items():
+    train[key] = fun(train)
+    test[key] = fun(test)
+
+
+# In[]:
+
+
+target='bandgap (eV)'
+train_min = min(train['bandgap (eV)'].min(), best_regression.predict(train_x_regression).min())
+train_max = max(train['bandgap (eV)'].min(), best_regression.predict(train_x_regression).max())
+test_min = min(test['bandgap (eV)'].min(), best_regression.predict(test_x_regression).min())
+test_max = max(test['bandgap (eV)'].min(), best_regression.predict(test_x_regression).max())
+
+for key in models.keys():
+    train_min = min(train_min, train[key].min())
+    train_max = max(train_max, train[key].max())
+    test_min = min(test_min, test[key].min())
+    test_max = max(test_max, test[key].max())
+
+def get_r2(label, dataset):
+    r2 = sklearn.metrics.r2_score(y_true=dataset[target], y_pred=dataset[label])
+    return np.round(r2, 2)
+
+
+# In[]:
+
+
+plt.rcParams['figure.figsize'] = (7,7)
+plt.rcParams['font.size'] = 8
+
+
+# In[]:
+
+
+xgb_r2 = np.round(sklearn.metrics.r2_score(y_true=train[target], y_pred=best_regression.predict(train_x_regression)), 2)
+
+plt.scatter(x=train['bandgap (eV)'], y=best_regression.predict(train_x_regression), label=f"XGBoost, R2={xgb_r2}", c="black")
+
+markers = iter('+vo^')
+for model_label in ['r1_1term', 'r1_2term', 'r1_3term', 'r1_4term']:
+    plt.scatter(x=train['bandgap (eV)'], y=train[model_label], label=f"{model_label}, R2={get_r2(model_label, train)}", alpha=0.3, marker=next(markers))
+plt.plot([train_min, train_max], [train_min, train_max], c='k', linestyle='dashed', label='Parity')
+plt.xlim([train_min, train_max])
+plt.ylim([train_min, train_max])
+
+plt.title('Bandgap Training Set, Rung1 Models')
+plt.ylabel('Predicted Bandgap (eV)')
+plt.xlabel('Dataset Bandgap (eV)')
+plt.legend()
+
+
+# In[]:
+
+
+xgb_r2 = np.round(sklearn.metrics.r2_score(y_true=train[target], y_pred=best_regression.predict(train_x_regression)), 2)
+
+plt.scatter(x=train['bandgap (eV)'], y=best_regression.predict(train_x_regression), label=f"XGBoost, R2={xgb_r2}", c="black")
+
+markers = iter('+vo^')
+for model_label in ['r2_1term', 'r2_2term', 'r2_3term', 'r2_4term']:
+    plt.scatter(x=train['bandgap (eV)'], y=train[model_label], label=f"{model_label}, R2={get_r2(model_label, train)}", alpha=0.2, marker=next(markers))
+plt.plot([train_min, train_max], [train_min, train_max], c='k', linestyle='dashed', label='Parity')
+plt.xlim([train_min, train_max])
+plt.ylim([train_min, train_max])
+    
+plt.title('Bandgap Training Set, Rung2 Models')
+plt.ylabel('Predicted Bandgap (eV)')
+plt.xlabel('Dataset Bandgap (eV)')
+plt.legend()
+
+
+# In[]:
+
+
+xgb_r2 = np.round(sklearn.metrics.r2_score(y_true=test[target], y_pred=best_regression.predict(test_x_regression)), 2)
+
+plt.scatter(x=test['bandgap (eV)'], y=best_regression.predict(test_x_regression), label=f"XGBoost, R2={xgb_r2}", c="black")
+
+markers = iter('+vo^')
+for model_label in ['r1_1term', 'r1_2term', 'r1_3term', 'r1_4term']:
+    plt.scatter(x=test['bandgap (eV)'], y=test[model_label], label=f"{model_label}, R2={get_r2(model_label, test)}", alpha=0.3, marker=next(markers))
+    
+plt.plot([test_min, test_max], [test_min, test_max], c='k', linestyle='dashed', label='Parity')
+plt.xlim([test_min, test_max])
+plt.ylim([test_min, test_max])
+
+plt.title('Bandgap Test Set, Rung1 Models')
+plt.ylabel('Predicted Bandgap (eV)')
+plt.xlabel('Dataset Bandgap (eV)')
+plt.legend()
+
+
+# In[]:
+
+
+xgb_r2 = np.round(sklearn.metrics.r2_score(y_true=test[target], y_pred=best_regression.predict(test_x_regression)), 2)
+
+plt.scatter(x=test['bandgap (eV)'], y=best_regression.predict(test_x_regression), label=f"XGBoost, R2={xgb_r2}", c="black")
+
+markers = iter('+vo^')
+for model_label in ['r2_1term', 'r2_2term', 'r2_3term', 'r2_4term']:
+    plt.scatter(x=test['bandgap (eV)'], y=test[model_label], label=f"{model_label}, R2={get_r2(model_label, test)}", alpha=0.3, marker=next(markers))
+plt.plot([test_min, test_max], [test_min, test_max], c='k', linestyle='dashed', label='Parity')
+plt.xlim([test_min, test_max])
+plt.ylim([test_min, test_max])
+
+plt.title('Bandgap Test Set, Rung2 Models')
+plt.ylabel('Predicted Bandgap (eV)')
+plt.xlabel('Dataset Bandgap (eV)')
+plt.legend()
 
 
 # In[ ]:
