@@ -418,3 +418,28 @@ plt.ylabel('Predicted Exfoliation Energy (J/m^2)')
 plt.xlabel('Dataset Exfoliation Energy (J/m^2)')
 plt.legend()
 
+
+# In[]:
+
+
+train[['2dm_id (unitless)', 'formula', 'exfoliation_energy (J/m^2)']].to_csv('roost/train_exf.csv', index=False)
+test[['2dm_id (unitless)', 'formula', 'exfoliation_energy (J/m^2)']].to_csv('roost/test_exf.csv', index=False)
+
+
+# In[]:
+
+
+train
+
+
+# In[]:
+
+
+train['exfoliation_energy (J/m^2)']
+
+
+# In[ ]:
+
+
+
+
