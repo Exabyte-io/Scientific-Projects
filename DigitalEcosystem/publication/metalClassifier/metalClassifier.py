@@ -3,7 +3,7 @@
 
 # # Metal Classifier
 # 
-# In this notebook, we train an XGBoost classifier to predict whether a system is metallic or not (bandgap <0.1 eV), and use this as an automated means of cleaning our dataset.
+# In this notebook, we train an XGBoost classifier to predict whether a system is metallic or not (bandgap <0.2 eV), and use this as an automated means of cleaning our dataset.
 # 
 # At the end, we assess model performance, and observe that our data is largely Tweedie-distributed once we remove the metallic systems.
 
@@ -29,13 +29,13 @@ import sklearn.impute
 import seaborn as sns
 
 import sys
-sys.path.append("../../")
+sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
 
 tqdm.tqdm.pandas()
 
 
-# In[ ]:
+# In[]:
 
 
 # Random seeds for reproducibility
@@ -51,22 +51,9 @@ np.random.seed(RANDOM_SEED)
 
 
 # Load up the data
-data_path = "../httpot/full_featurized_data.pkl"
+data_path = "../featurization/full_featurized_data.pkl"
 data = pd.read_pickle(data_path)
-
-cols_to_drop = ['formula',
-                'discovery_process (unitless)',
-                'potcars (unitless)',
-                'is_hubbard (unitless)',
-                'energy_per_atom (eV)',
-                'exfoliation_energy_per_atom (eV/atom)',
-                'is_bandgap_direct (unitless)',
-                'is_metal (unitless)',
-                'energy_vdw_per_atom (eV/atom)',
-                'total_magnetization (Bohr Magneton)']
 target_column = ['bandgap (eV)']
-matpedia_id = ['2dm_id (unitless)']
-atoms_col = ['atoms_object (unitless)']
 
 
 # # Featurization
@@ -84,13 +71,13 @@ sine_eigenspectrum = dscribe.descriptors.SineMatrix(n_atoms_max=max_atoms,
 data['sine_matrix'] = data['atoms_object (unitless)'].progress_apply(lambda atoms: np.real(sine_eigenspectrum.create(atoms)))
 
 
-# Next, we'll label our data. We'll say that it's a metal if its DFT bandgap is less than 0.1 eV.
+# Next, we'll label our data. We'll say that it's a metal if its DFT bandgap is less than 0.2 eV.
 
 # In[]:
 
 
 # Manually label metals/nonmetals
-bandgap_cutoff = 0.1
+bandgap_cutoff = 0.2
 
 data['metal'] = data['bandgap (eV)'] < bandgap_cutoff
 train, test = sklearn.model_selection.train_test_split(data, test_size=0.1, stratify=data['metal'], random_state=RANDOM_SEED)
@@ -250,16 +237,6 @@ plot_roc(test_x, test_y, "Test")
 # 
 # Overall, our classification is slightly biased towards under-prediction of the number of metals in the dataset when the model's probability cutoff is set to 0.5. Although we did not tune this cutoff, the process would be easy: we could simply lower the probability at-which something is considered to be a metal until the number of misclassified metals and nonmetals were equal in the training set.
 # 
-# A few metrics of the model's performance, derived from the above ROC curves and the below confusion matrices, are summarized in the below table.
-# 
-# | Metric   | Training Set | Test Set |
-# |----------|--------------|----------|
-# | TPR      | 0.892        | 0.766    |
-# | FPR      | 0.098        | 0.232    |
-# | Accuracy | 0.897        | 0.767    |
-# | F1 Score | 0.902        | 0.784    |
-# | ROC AUC  | 0.956        | 0.848    |
-# 
 # Overall, we see good performnace in both our training and testing set, with similar error rates in both - which is a good indication that our model generalizes well to the testing set.
 
 # In[]:
@@ -274,6 +251,39 @@ draw_confusion_matrix = functools.partial(DigitalEcosystem.utils.figures.draw_co
 
 draw_confusion_matrix(train_x, train_y, "Training")
 draw_confusion_matrix(test_x, test_y, "Test")
+
+
+# In[]:
+
+
+def calc_confusion_matrix_statistics(y_values, x_values, best_pipeline=best_pipeline):
+    confusion_matrix = sklearn.metrics.confusion_matrix(y_true=y_values, y_pred=best_pipeline.predict_proba(x_values)[:,1]>CUTOFF)
+    
+    all_positives = sum(y_values)
+    all_negatives = len(y_values) - all_positives    
+    
+    true_positives = confusion_matrix[1,1]
+    true_negatives = confusion_matrix[0,0]
+    
+    false_positives = confusion_matrix[0,1]
+    false_negatives = confusion_matrix[1,0]
+
+    results = {
+        "TPR": true_positives / all_positives,
+        "FPR": false_positives / all_negatives,
+        "Accuracy": (true_positives + true_negatives) / (all_positives + all_negatives),
+        "F1 Score": (2 * true_positives) / (2 * true_positives + false_positives + false_negatives),
+        "ROC AUC": sklearn.metrics.roc_auc_score(y_true=y_values, y_score = best_pipeline.predict_proba(x_values)[:,1])
+    }
+    return results
+
+print("Train statistics:")
+for k,v in calc_confusion_matrix_statistics(train_y, train_x).items():
+    print(k,np.round(v,3))
+    
+print("\nTest statistics:")
+for k,v in calc_confusion_matrix_statistics(test_y, test_x).items():
+    print(k,np.round(v,3))
 
 
 # # Nonmetal Bandgap Regression
@@ -357,7 +367,7 @@ draw_train_test_histplot(train_metals,
 # 
 # Before we start doing any work with regression, we need to choose a set of features. Because we've been finding success in the past in this problem with the Xenonpy and Matminer-derived descriptors, we'll go ahead and extract those from our dataset.
 
-# In[ ]:
+# In[]:
 
 
 xenonpy_descriptors = [col for col in data.columns if ":" in col]
@@ -398,14 +408,6 @@ test_y_reg = np.nan_to_num(test_nonmetals[target].to_numpy())
 # The shape of the Tweedie distribution is controlled by a power parameter, which allows it to function as a generalization of a variety of other distributions, including the Poisson, Gamma, Normal, Gaussian, and other distributions. H2O has some very good documentation on this subject: [Link](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/tweedie_variance_power.html#:~:text=Tweedie%20distributions%20are%20a%20family,\)%3D%CF%95%CE%BCpi.).
 # 
 # To estimate the power, we'll walk along powers ranging from 1.0 (Poisson) to almost 2.0 (Gamma), with intermediate powers representing a Tweedie distribution. At each step, we'll take 1,000 bootstrap samples of the dataset and calculate the mean tweedie deviance relative to the mean of the bandgap. We'll take the power that results in the lowest mean tweedie deviance as an estimate of the Tweedie power.
-# 
-# Overall, we find the following results:
-# 
-# | Data Subset     | Optimal Tweedie Power |
-# |-----------------|-----------------------|
-# | Full Dataset    | 1.0                   |
-# | Train Nonmetals | 1.326                 |
-# | Test Nonmetals  | 1.202                 |
 # 
 # When we attempt to fit a model on our entire dataset, we see that the data is closest to a Poisson distribution.
 # 
@@ -448,13 +450,16 @@ def get_pow_plot(dist, filename):
     plt.title(f"{n_boot_samples} Bootstrap Samples")
     plt.legend()
     plt.savefig(filename)
+    plt.show()
     print(f"Best Pow is {best_pow} with Tweedie Deviance {best_dev}")
     plt.close()
     return best_pow
 
-
+print("Testing Set")
 get_pow_plot(test_nonmetals['bandgap (eV)'].to_numpy(), "TestNonmetalTweediePower.jpeg")
+print("Full Dataset")
 get_pow_plot(data["bandgap (eV)"].to_numpy(), "FullDatasetTweediePower.jpeg")
+print("Training Set")
 best_pow=get_pow_plot(train_nonmetals["bandgap (eV)"].to_numpy(), "TrainNonmetalTweediePower.jpeg")
 
 
@@ -484,13 +489,22 @@ def objective(trial: optuna.Trial):
 
     params = {
         'learning_rate': trial.suggest_float('learning_rate', 0, 1),
-        'min_split_loss': trial.suggest_float('min_split_loss', 0, 2),
+        'min_split_loss': trial.suggest_float('min_split_loss', 0, 1),
         'max_depth': trial.suggest_int('max_depth', 1, 100),
         'min_child_weight': trial.suggest_float('min_child_weight', 0, 10),
+        'reg_lambda': trial.suggest_float('reg_lambda', 0, 2),
+        'reg_alpha': trial.suggest_float('reg_alpha', 0, 2)
+    }
+    
+    scalers = {
+        "StandardScaler": sklearn.preprocessing.StandardScaler(),
+        "MinMaxScaler": sklearn.preprocessing.MinMaxScaler()
     }
 
+    scaler = trial.suggest_categorical('scaler', scalers.keys())
+
     current_reg = sklearn.pipeline.Pipeline([
-        ("Scaler", sklearn.preprocessing.MinMaxScaler()),
+        (scaler, scalers[scaler]),
         ("XGB_Regressor", xgboost.sklearn.XGBRegressor(**params,
                                                n_estimators=100,
                                                objective='reg:squarederror',
@@ -616,3 +630,9 @@ plt.savefig("Importances.jpeg")
 # 2. Identified that our data seems to be Tweedie-Distributed once we remove the nonmetals - which might be contributing to some of the error in the model (the high density of points at 0 eV).
 # 3. Trained a regression model to predict the bandgap, with MAE comparable to a graph convolutional neural network that had been trained to address the bandgap of similar materials.
 # 4. Identified several features important to the prediction of the bandgap, as determined by the importance score of our XGBoost model.
+
+# In[ ]:
+
+
+
+
