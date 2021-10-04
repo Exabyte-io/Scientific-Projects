@@ -65,9 +65,11 @@ target_column = ['bandgap (eV)']
 
 # Generate the Sine Matrix Fingerprint
 max_atoms = max(data['atoms_object (unitless)'].apply(len))
+
 sine_eigenspectrum = dscribe.descriptors.SineMatrix(n_atoms_max=max_atoms,
                                                     permutation='eigenspectrum',
                                                     sparse=False)
+
 data['sine_matrix'] = data['atoms_object (unitless)'].progress_apply(lambda atoms: np.real(sine_eigenspectrum.create(atoms)))
 
 
@@ -311,58 +313,6 @@ test_metals = test[test['pred_metal'] == True]
 test_nonmetals = test[test['pred_metal'] != True]
 
 
-# # Bandgap Distribution
-# 
-# Before we perform the regression, let's also investigate the distribution of our data.
-# 
-# ## Entire Dataset
-# 
-# First, we look at the bandgap of all data in our dataset (including metals and nonmetals). We see a very large spike at approximately 0 bandgap, followed by a tail of wider bandgaps.
-
-# In[]:
-
-
-bins = np.arange(0,max(data['bandgap (eV)']), 0.5)
-stat='density'
-
-draw_train_test_histplot = functools.partial(DigitalEcosystem.utils.figures.save_train_test_histplot,
-                                             column='bandgap (eV)',
-                                             stat=stat,
-                                             bins=bins)
-
-draw_train_test_histplot(train, test,
-                         "All Data",
-                         "FullDatasetBandgapHistogram.jpeg")
-
-
-# ## Predicted-Nonmetals Only
-# 
-# Next, we'll take a look at just rows from training and testing set which were labeled as nonmetals by our classifier.
-# 
-# We see that our data distribution has changed - the training set and testing set seem to be a a mixture between a Poisson distribution and a Gamma distribution - this is the classic Tweedie distribution (Wikipedia article: [Link](https://en.wikipedia.org/wiki/Tweedie_distribution)).
-
-# In[]:
-
-
-draw_train_test_histplot(train_nonmetals,
-                         test_nonmetals,
-                         "Classififed as Nonmetals",
-                         "NormalHistplot.jpeg")
-
-
-# ## Predicted Metals Only
-# 
-# Finally, we'll investigate our predicted metals and nonmetals. We see that, barring a few exceptions, materials that are predicted to be a metal at least tend to have a low bandgap.
-
-# In[]:
-
-
-draw_train_test_histplot(train_metals,
-                         test_metals,
-                         "Classified as Metals",
-                         "MetalHistplot.jpeg")
-
-
 # # Regression - Features
 # 
 # Before we start doing any work with regression, we need to choose a set of features. Because we've been finding success in the past in this problem with the Xenonpy and Matminer-derived descriptors, we'll go ahead and extract those from our dataset.
@@ -399,68 +349,6 @@ train_y_reg = np.nan_to_num(train_nonmetals[target].to_numpy())
 
 test_x_reg = np.nan_to_num(test_nonmetals[xenonpy_matminer_descriptors].to_numpy())
 test_y_reg = np.nan_to_num(test_nonmetals[target].to_numpy())
-
-
-# # Tweedie Distribution - Investigation
-# 
-# Finally, before we do our regression, let's revisit the Tweedie distribution we discussed earlier.
-# 
-# The shape of the Tweedie distribution is controlled by a power parameter, which allows it to function as a generalization of a variety of other distributions, including the Poisson, Gamma, Normal, Gaussian, and other distributions. H2O has some very good documentation on this subject: [Link](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/tweedie_variance_power.html#:~:text=Tweedie%20distributions%20are%20a%20family,\)%3D%CF%95%CE%BCpi.).
-# 
-# To estimate the power, we'll walk along powers ranging from 1.0 (Poisson) to almost 2.0 (Gamma), with intermediate powers representing a Tweedie distribution. At each step, we'll take 1,000 bootstrap samples of the dataset and calculate the mean tweedie deviance relative to the mean of the bandgap. We'll take the power that results in the lowest mean tweedie deviance as an estimate of the Tweedie power.
-# 
-# When we attempt to fit a model on our entire dataset, we see that the data is closest to a Poisson distribution.
-# 
-# When we remove metals and testing set, however, we see that our data shifts to be more Tweedie - Distributed (a power between 1 and 2).Moreover, we see a slight difference in power between our training and testing set - which we can actually see in the above "Classified as Nonmetals" plot, particularly below 2 eV.
-# 
-# This difference in distribution between our training set and testing set is likely to contribute to error in our regression model.
-
-# In[]:
-
-
-# Find the power that our data falls under in a tweedie distribution
-def get_pow_plot(dist, filename):
-    deviances = []
-    n_boot_samples = 1000
-    mesh_size = 100
-    with tqdm.tqdm(total=mesh_size) as pbar:
-        for tweedie_deviance_power in np.linspace(1,1.95,num=mesh_size):
-            try:
-                samples = []
-                for i in range(n_boot_samples):
-                    boot_sample = np.random.choice(dist, replace=True, size=len(dist))
-                    samples.append(sklearn.metrics.mean_tweedie_deviance(y_true=boot_sample,
-                                                                         y_pred=[abs(boot_sample.mean())]*len(boot_sample),
-                                                                         power=tweedie_deviance_power))
-                samp_mean = sum(samples) / len(samples)
-                #samp_var = sum([sample - samp_mean for sample in samples])/ len(samples)
-                deviances.append([tweedie_deviance_power, samp_mean])
-            except ValueError:
-                pass
-            finally:
-                pbar.update(1)
-
-    plt.plot([i[0] for i in deviances],[i[1] for i in deviances], label="Bootstrapped Results")
-
-    best_pow, best_dev = min(deviances, key=lambda i: i[1])
-    plt.scatter([best_pow], [best_dev], marker="+", c='k', s=1000, lw=5, label="Minimum")
-
-    plt.xlabel("Tweedie Distribution Power")
-    plt.ylabel("Mean Tweedie Deviance")
-    plt.title(f"{n_boot_samples} Bootstrap Samples")
-    plt.legend()
-    plt.savefig(filename)
-    plt.show()
-    print(f"Best Pow is {best_pow} with Tweedie Deviance {best_dev}")
-    plt.close()
-    return best_pow
-
-print("Testing Set")
-get_pow_plot(test_nonmetals['bandgap (eV)'].to_numpy(), "TestNonmetalTweediePower.jpeg")
-print("Full Dataset")
-get_pow_plot(data["bandgap (eV)"].to_numpy(), "FullDatasetTweediePower.jpeg")
-print("Training Set")
-best_pow=get_pow_plot(train_nonmetals["bandgap (eV)"].to_numpy(), "TrainNonmetalTweediePower.jpeg")
 
 
 # # Regression - XGBoost
@@ -540,7 +428,7 @@ reg_study = optuna.create_study(
     direction='minimize'
 )
 
-reg_study.optimize(func=objective, n_trials=500, callbacks=[keep_best_reg])
+reg_study.optimize(func=objective, n_trials=1000, callbacks=[keep_best_reg])
 
 DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
                                                 test_x_reg,
