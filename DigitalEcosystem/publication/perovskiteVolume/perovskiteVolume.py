@@ -69,15 +69,33 @@ data
 
 
 target_column = ['Volume']
-xenonpy_descriptors = [col for col in data.columns if ":" in col][:10]
+xenonpy_descriptors = [col for col in data.columns if ":" in col]
 
-train, test = sklearn.model_selection.train_test_split(data[target_column+xenonpy_descriptors], test_size=0.1, random_state=RANDOM_SEED)
+train, test = sklearn.model_selection.train_test_split(data, test_size=0.1, random_state=RANDOM_SEED)
 
 train_x = train[xenonpy_descriptors].to_numpy()
 train_y = train[target_column].to_numpy()
 
 test_x = test[xenonpy_descriptors].to_numpy()
 test_y = test[target_column].to_numpy()
+
+
+# In[]:
+
+
+def rmse(y_true, y_pred):
+    mse = sklearn.metrics.mean_squared_error(y_true=y_true, y_pred=y_pred)
+    rmse = np.sqrt(abs(mse))
+    return rmse
+
+metrics = {
+    'MaxError': sklearn.metrics.max_error,
+    'MAE': sklearn.metrics.mean_absolute_error,
+    'MSE': sklearn.metrics.mean_squared_error,
+    'RMSE': rmse,
+    'MAPE': sklearn.metrics.mean_absolute_percentage_error,
+    'R2': sklearn.metrics.r2_score
+}
 
 
 # # XGBoost
@@ -119,6 +137,7 @@ def objective(trial: optuna.Trial):
         (scaler, scalers[scaler]),
         ("XGB_Regressor", xgboost.sklearn.XGBRegressor(**params,
                                                n_estimators=100,
+                                               n_jobs=1,
                                                objective='reg:squarederror',
                                                random_state=RANDOM_SEED),)
     ])
@@ -133,7 +152,7 @@ def objective(trial: optuna.Trial):
                             'XGB_Regressor__verbose': False
                          })
 
-    score = sklearn.metrics.mean_squared_error(
+    score = sklearn.metrics.mean_poisson_deviance(
         y_true=objective_validation_y_reg,
         y_pred=abs(current_reg.predict(objective_validation_x_reg)),
     )
@@ -151,9 +170,11 @@ reg_study = optuna.create_study(
         max_resource=100),
     direction='minimize')
 
-print('here')
-
 reg_study.optimize(func=objective, n_trials=1000, callbacks=[keep_best_reg])
+
+
+# In[]:
+
 
 DigitalEcosystem.utils.figures.save_parity_plot(train_x,
                                                 test_x,
@@ -164,20 +185,80 @@ DigitalEcosystem.utils.figures.save_parity_plot(train_x,
                                                 "xgboost_perovskite_volume_parity.jpeg")
 
 
+# In[]:
+
+
+print("Test Set Error Metrics")
+for key, fun in metrics.items():
+    value = fun(y_true=test_y, y_pred=best_reg.predict(test_x))
+    print(key,np.round(value,4))
+    
+print("\nTraining Set Error Metrics")
+for key, fun in metrics.items():
+    value = fun(y_true=train_y, y_pred=best_reg.predict(train_x))
+    print(key,np.round(value,4))
+
+
 # # TPOT
 
-# In[ ]:
+# In[]:
 
 
+tpot_model = tpot.TPOTRegressor(
+    generations=10,
+    population_size=100,
+    max_eval_time_mins=10 / 60,
+    cv=10,
+    verbosity=2,
+    scoring="neg_root_mean_squared_error",
+    config_dict=tpot.config.regressor_config_dict,
+    n_jobs=-1,
+    random_state=1234
+)
 
+tpot_model.fit(train_x, train_y.ravel())
+
+
+# In[]:
+
+
+DigitalEcosystem.utils.figures.save_parity_plot(train_x,
+                                                test_x,
+                                                train_y,
+                                                test_y,
+                                                tpot_model,
+                                                "Perovskite Volume (Å^3 / formula unit)",
+                                                "xgboost_perovskite_volume_parity.jpeg")
+
+
+# In[]:
+
+
+print("Test Set Error Metrics")
+for key, fun in metrics.items():
+    value = fun(y_true=test_y, y_pred=tpot_model.predict(test_x))
+    print(key,np.round(value,4))
+    
+print("\nTraining Set Error Metrics")
+for key, fun in metrics.items():
+    value = fun(y_true=train_y, y_pred=tpot_model.predict(train_x))
+    print(key,np.round(value,4))
 
 
 # # Roost
 
-# In[ ]:
+# In[]:
 
 
+import os
+roost_dir = "./roost"
+os.makedirs(roost_dir, exist_ok=True)
 
+roost_data_train = train[['Formula', 'Volume']]
+roost_data_test = test[['Formula', 'Volume']]
+
+roost_data_train.to_csv(os.path.join(roost_dir, 'roost_train.csv'))
+roost_data_test.to_csv(os.path.join(roost_dir, 'roost_test.csv'))
 
 
 # # SISSO
@@ -277,8 +358,6 @@ train_y = data_train_scaled.Volume.to_numpy().ravel()
 
 test_x = data_test_scaled.drop(columns="Volume").to_numpy()
 test_y = data_test_scaled.Volume.to_numpy().ravel()
-
-model.fit(train_x, train_y)
 
 
 # ## TPOT Pipeline
