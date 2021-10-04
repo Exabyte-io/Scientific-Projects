@@ -4,6 +4,8 @@
 # # Featurization
 # 
 # In this notebook, we apply some structural descriptors to our dataset, such as the number of `halide`-`transitoin metal`-`halide` bonds in the system. These are a bit expensive to calculate, and end up taking an hour or two. For this reason, we pickle them here.
+# 
+# This notebook shows our work in creating some of the features outlined in the Methodology section of our publication.
 
 # In[]:
 

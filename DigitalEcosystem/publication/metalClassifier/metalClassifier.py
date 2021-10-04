@@ -5,7 +5,7 @@
 # 
 # In this notebook, we train an XGBoost classifier to predict whether a system is metallic or not (bandgap <0.2 eV), and use this as an automated means of cleaning our dataset.
 # 
-# At the end, we assess model performance, and observe that our data is largely Tweedie-distributed once we remove the metallic systems.
+# This notebook produces the results presented in Supporting Information Section "Metal Classification with XGBoost"
 
 # In[]:
 
@@ -221,8 +221,6 @@ study.optimize(objective, n_trials=1000, callbacks=[keep_best_bandgap_model])
 # To assess model performance, we'll print out some ROC curves here.
 # 
 # Although we hold out a validation set in our objective function, we do not retrain the model on the entire training set, as this validation set was also used to control the early stopping of our XGBoost model (and thus helps guard against overfitting).
-# 
-# Overall, we see generally good results for both our training set and our testing set.
 
 # In[]:
 
@@ -236,10 +234,6 @@ plot_roc(test_x, test_y, "Test")
 # # Confusion Matrices
 # 
 # For a more fine-grained picture of our model's performance, we also draw confusion matrices here.
-# 
-# Overall, our classification is slightly biased towards under-prediction of the number of metals in the dataset when the model's probability cutoff is set to 0.5. Although we did not tune this cutoff, the process would be easy: we could simply lower the probability at-which something is considered to be a metal until the number of misclassified metals and nonmetals were equal in the training set.
-# 
-# Overall, we see good performnace in both our training and testing set, with similar error rates in both - which is a good indication that our model generalizes well to the testing set.
 
 # In[]:
 
@@ -315,7 +309,7 @@ test_nonmetals = test[test['pred_metal'] != True]
 
 # # Regression - Features
 # 
-# Before we start doing any work with regression, we need to choose a set of features. Because we've been finding success in the past in this problem with the Xenonpy and Matminer-derived descriptors, we'll go ahead and extract those from our dataset.
+# Choose the set of features for the XGBoost regression model. Compositional and structural features.
 
 # In[]:
 
@@ -353,9 +347,7 @@ test_y_reg = np.nan_to_num(test_nonmetals[target].to_numpy())
 
 # # Regression - XGBoost
 # 
-# Finally, we'll train another XGBoost model, this time for regression of the bandgap. We'll again use Optuna to tune a few of the model's hyperparameter (fewer in the interest of time). We'll also just start with a Min/Max scaler, as some previous work we'd done on thi problem indicated good performance when this was used as a scaler versus standardization or not scaling.
-# 
-# We'll finally draw a parity plot of our results.
+# Finally, we'll train another XGBoost model, this time for regression of the bandgap. We'll also draw a parity plot of our results.
 
 # In[]:
 
@@ -441,26 +433,6 @@ DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
 
 # # Regression - Results
 # 
-# Overall, we see okay performance of the model. Certainly not the big gains in performance that we had hoped for when removing the metals from the dataset.
-# 
-# One thing we could try to improve our predictions here would be to manually remove all metals from the training set, then train on those. This would likely lead to even worse performance in the case of the metal systems that had been misclassified as nonmetals - but those are already wrong by quite a lot anyway.
-# 
-# Below, we output the test-set error metrics, since those are the ones that really tell us if our model will generalize. Reproduced here:
-# 
-# | Error Metric | Test-Set Value    |
-# |--------------|-------------------|
-# | MAE          | 0.67              |
-# | MSE          | 0.825             |
-# | RMSE         | 0.909             |
-# | MAPE         | 543850845913702.8 |
-# | R2           | 0.703             |
-# 
-# - The MAE is comparable to a related model, MegNet [Link](https://github.com/materialsvirtuallab/megnet). MegNet is a graph convolution neural network trained on a variety of different datasets. When compared with DFT bandgaps from Materials Project (slightly different, as that dataset is of 3D materials and not 2D materials), they report a MAE of 0.33 eV for the bandgap. Considering we're not training a neural network on huge numbers of samples, this should put our MAE of 0.67 eV in perspective.
-# - We see a similar story for our RMSE (square root of our MSE), which is 0.909 eV.
-# - The Mean Absolute Percent Error (MAPE) is high, but this is because we have 0-valued entries in the dataset - this is why this metric is generally avoided in the case of data with 0s in their values (it also tends to cause models to underestinate when used as a loss function, which is another reason we don't use it as our loss function).
-# - Finally, we see that our R2 is 0.703, so our test set predictions are at least correlated with our dataset.
-# 
-# 
 
 # In[]:
 
@@ -487,10 +459,7 @@ for key, fun in metrics.items():
 
 # # Regression - Feature Importances
 # 
-# Finally, in the below plot we will list the feature importances of our XGBoost model. Here are a few of the most-important features:
-# 1. `min:GS_Energy` is a property from XenonPy. It is derived by looking at the ground-state electronic energy of the bulk cells of each element in the system (e.g. a system containing NaCl would look at the bulk cell for Na and the bulk cell for Cl). The `min` in front tells us that this version of the feature chooses the minimum amongst the ground-state DFT energies in each elemental system.
-# 2. `var:VDW_radius_MM3` is another XenonPy property. As is the case with all the Xenonpy descriptors we use in this notebook, it is derived by looking at tabulated values for each element in the system. In this case, we take the variance of the elemntal VDW radii, as tabulated by the MM3 forcefield.
-# 3. `ave:density` is yet another XenonPy descriptor, and is the average of the elemental densities in their respective bulk cells.
+# Feature importance scores are from the regression model.
 
 # In[]:
 
