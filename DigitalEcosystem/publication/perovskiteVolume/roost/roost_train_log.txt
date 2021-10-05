@@ -5,201 +5,1545 @@ The model will run on the cpu device
 using independent test set: ./sisso_data/roost_test.csv
 No validation set used, using test set for evaluation purposes
 Total Number of Trainable Parameters: 2,302,096
-Dummy MAE: 43.8008
+Dummy MAE: 45.4800
 Getting Validation Baseline
-Validation Baseline - volume: MAE 52.001
-Epoch: [1/64]
-Train 		: volume - Loss 0.855	MAE 43.851	RMSE 47.453
-Validation 	: volume - Loss 1.007	MAE 51.637	RMSE 62.832
-Epoch: [2/64]
-Train 		: volume - Loss 0.923	MAE 47.343	RMSE 51.430
-Validation 	: volume - Loss 0.999	MAE 51.247	RMSE 64.545
-Epoch: [3/64]
-Train 		: volume - Loss 0.703	MAE 36.059	RMSE 40.755
-Validation 	: volume - Loss 0.988	MAE 50.678	RMSE 67.768
-Epoch: [4/64]
-Train 		: volume - Loss 0.672	MAE 34.495	RMSE 40.438
-Validation 	: volume - Loss 1.048	MAE 53.765	RMSE 73.954
-Epoch: [5/64]
-Train 		: volume - Loss 0.619	MAE 31.756	RMSE 39.705
-Validation 	: volume - Loss 1.194	MAE 61.264	RMSE 84.324
-Epoch: [6/64]
-Train 		: volume - Loss 1.793	MAE 91.982	RMSE 101.962
-Validation 	: volume - Loss 1.220	MAE 62.573	RMSE 85.879
-Epoch: [7/64]
-Train 		: volume - Loss 0.932	MAE 47.791	RMSE 57.931
-Validation 	: volume - Loss 1.108	MAE 56.845	RMSE 78.004
-Epoch: [8/64]
-Train 		: volume - Loss 1.764	MAE 90.470	RMSE 99.330
-Validation 	: volume - Loss 1.008	MAE 51.712	RMSE 71.494
-Epoch: [9/64]
-Train 		: volume - Loss 0.763	MAE 39.145	RMSE 46.380
-Validation 	: volume - Loss 0.986	MAE 50.603	RMSE 68.180
-Epoch: [10/64]
-Train 		: volume - Loss 0.773	MAE 39.631	RMSE 45.738
-Validation 	: volume - Loss 0.990	MAE 50.799	RMSE 67.002
-Epoch: [11/64]
-Train 		: volume - Loss 0.751	MAE 38.516	RMSE 44.163
-Validation 	: volume - Loss 0.991	MAE 50.848	RMSE 66.720
-Epoch: [12/64]
-Train 		: volume - Loss 0.689	MAE 35.360	RMSE 40.888
-Validation 	: volume - Loss 0.992	MAE 50.881	RMSE 66.524
-Epoch: [13/64]
-Train 		: volume - Loss 0.772	MAE 39.616	RMSE 45.083
-Validation 	: volume - Loss 0.993	MAE 50.963	RMSE 66.046
-Epoch: [14/64]
-Train 		: volume - Loss 0.516	MAE 26.454	RMSE 31.672
-Validation 	: volume - Loss 0.995	MAE 51.019	RMSE 65.725
-Epoch: [15/64]
-Train 		: volume - Loss 0.665	MAE 34.135	RMSE 39.267
-Validation 	: volume - Loss 0.995	MAE 51.060	RMSE 65.500
-Epoch: [16/64]
-Train 		: volume - Loss 0.874	MAE 44.814	RMSE 49.883
-Validation 	: volume - Loss 0.996	MAE 51.085	RMSE 65.353
-Epoch: [17/64]
-Train 		: volume - Loss 0.603	MAE 30.922	RMSE 35.894
-Validation 	: volume - Loss 0.995	MAE 51.056	RMSE 65.496
-Epoch: [18/64]
-Train 		: volume - Loss 0.627	MAE 32.162	RMSE 37.195
-Validation 	: volume - Loss 0.995	MAE 51.031	RMSE 65.615
-Epoch: [19/64]
-Train 		: volume - Loss 0.625	MAE 32.053	RMSE 37.135
-Validation 	: volume - Loss 0.995	MAE 51.051	RMSE 65.480
-Epoch: [20/64]
-Train 		: volume - Loss 0.658	MAE 33.751	RMSE 38.789
-Validation 	: volume - Loss 0.996	MAE 51.108	RMSE 65.145
-Epoch: [21/64]
-Train 		: volume - Loss 0.451	MAE 23.135	RMSE 27.982
-Validation 	: volume - Loss 0.997	MAE 51.149	RMSE 64.914
-Epoch: [22/64]
-Train 		: volume - Loss 0.831	MAE 42.628	RMSE 47.477
-Validation 	: volume - Loss 0.997	MAE 51.137	RMSE 64.954
-Epoch: [23/64]
-Train 		: volume - Loss 0.746	MAE 38.246	RMSE 43.102
-Validation 	: volume - Loss 0.996	MAE 51.081	RMSE 65.218
-Epoch: [24/64]
-Train 		: volume - Loss 1.202	MAE 61.678	RMSE 66.619
-Validation 	: volume - Loss 0.995	MAE 51.035	RMSE 65.437
-Epoch: [25/64]
-Train 		: volume - Loss 0.847	MAE 43.464	RMSE 48.519
-Validation 	: volume - Loss 0.994	MAE 50.988	RMSE 65.647
-Epoch: [26/64]
-Train 		: volume - Loss 0.951	MAE 48.787	RMSE 53.929
-Validation 	: volume - Loss 0.993	MAE 50.949	RMSE 65.816
-Epoch: [27/64]
-Train 		: volume - Loss 0.687	MAE 35.244	RMSE 40.434
-Validation 	: volume - Loss 0.992	MAE 50.908	RMSE 65.988
-Epoch: [28/64]
-Train 		: volume - Loss 0.533	MAE 27.356	RMSE 32.581
-Validation 	: volume - Loss 0.990	MAE 50.811	RMSE 66.461
-Epoch: [29/64]
-Train 		: volume - Loss 0.667	MAE 34.237	RMSE 39.686
-Validation 	: volume - Loss 0.989	MAE 50.729	RMSE 66.860
-Epoch: [30/64]
-Train 		: volume - Loss 1.263	MAE 64.784	RMSE 70.377
-Validation 	: volume - Loss 0.989	MAE 50.723	RMSE 66.818
-Epoch: [31/64]
-Train 		: volume - Loss 0.713	MAE 36.552	RMSE 42.156
-Validation 	: volume - Loss 0.988	MAE 50.708	RMSE 66.812
-Epoch: [32/64]
-Train 		: volume - Loss 0.736	MAE 37.740	RMSE 43.352
-Validation 	: volume - Loss 0.986	MAE 50.606	RMSE 67.230
-Epoch: [33/64]
-Train 		: volume - Loss 0.948	MAE 48.611	RMSE 54.413
-Validation 	: volume - Loss 0.985	MAE 50.513	RMSE 67.570
-Epoch: [34/64]
-Train 		: volume - Loss 0.603	MAE 30.928	RMSE 36.838
-Validation 	: volume - Loss 0.983	MAE 50.412	RMSE 67.899
-Epoch: [35/64]
-Train 		: volume - Loss 0.701	MAE 35.939	RMSE 42.011
-Validation 	: volume - Loss 0.981	MAE 50.311	RMSE 68.877
-Epoch: [36/64]
-Train 		: volume - Loss 0.449	MAE 23.040	RMSE 29.426
-Validation 	: volume - Loss 0.998	MAE 51.213	RMSE 70.796
-Epoch: [37/64]
-Train 		: volume - Loss 0.448	MAE 22.993	RMSE 30.066
-Validation 	: volume - Loss 1.052	MAE 53.952	RMSE 74.274
-Epoch: [38/64]
-Train 		: volume - Loss 0.523	MAE 26.814	RMSE 34.996
-Validation 	: volume - Loss 1.143	MAE 58.652	RMSE 80.818
-Epoch: [39/64]
-Train 		: volume - Loss 1.297	MAE 66.523	RMSE 76.267
-Validation 	: volume - Loss 1.193	MAE 61.219	RMSE 84.153
-Epoch: [40/64]
-Train 		: volume - Loss 0.486	MAE 24.937	RMSE 34.690
-Validation 	: volume - Loss 1.106	MAE 56.746	RMSE 78.147
-Epoch: [41/64]
-Train 		: volume - Loss 0.610	MAE 31.275	RMSE 40.518
-Validation 	: volume - Loss 1.043	MAE 53.510	RMSE 73.788
-Epoch: [42/64]
-Train 		: volume - Loss 1.389	MAE 71.260	RMSE 79.445
-Validation 	: volume - Loss 0.998	MAE 51.194	RMSE 70.982
-Epoch: [43/64]
-Train 		: volume - Loss 0.581	MAE 29.819	RMSE 37.194
-Validation 	: volume - Loss 0.975	MAE 50.009	RMSE 69.056
-Epoch: [44/64]
-Train 		: volume - Loss 0.895	MAE 45.936	RMSE 52.748
-Validation 	: volume - Loss 0.965	MAE 49.519	RMSE 67.675
-Epoch: [45/64]
-Train 		: volume - Loss 0.763	MAE 39.165	RMSE 45.486
-Validation 	: volume - Loss 0.965	MAE 49.525	RMSE 66.590
-Epoch: [46/64]
-Train 		: volume - Loss 0.629	MAE 32.291	RMSE 38.247
-Validation 	: volume - Loss 0.960	MAE 49.248	RMSE 66.283
-Epoch: [47/64]
-Train 		: volume - Loss 0.752	MAE 38.570	RMSE 44.542
-Validation 	: volume - Loss 0.949	MAE 48.660	RMSE 66.580
-Epoch: [48/64]
-Train 		: volume - Loss 0.724	MAE 37.156	RMSE 43.413
-Validation 	: volume - Loss 0.947	MAE 48.573	RMSE 67.457
-Epoch: [49/64]
-Train 		: volume - Loss 0.394	MAE 20.205	RMSE 26.949
-Validation 	: volume - Loss 0.969	MAE 49.710	RMSE 69.516
-Epoch: [50/64]
-Train 		: volume - Loss 1.215	MAE 62.311	RMSE 69.988
-Validation 	: volume - Loss 0.980	MAE 50.252	RMSE 70.528
-Epoch: [51/64]
-Train 		: volume - Loss 1.071	MAE 54.944	RMSE 63.279
-Validation 	: volume - Loss 0.876	MAE 44.948	RMSE 64.790
-Epoch: [52/64]
-Train 		: volume - Loss 0.686	MAE 35.188	RMSE 42.998
-Validation 	: volume - Loss 0.761	MAE 39.041	RMSE 55.485
-Epoch: [53/64]
-Train 		: volume - Loss 0.433	MAE 22.208	RMSE 28.937
-Validation 	: volume - Loss 0.692	MAE 35.517	RMSE 50.830
-Epoch: [54/64]
-Train 		: volume - Loss 0.313	MAE 16.045	RMSE 22.060
-Validation 	: volume - Loss 0.615	MAE 31.541	RMSE 47.007
-Epoch: [55/64]
-Train 		: volume - Loss 0.278	MAE 14.252	RMSE 20.088
-Validation 	: volume - Loss 0.545	MAE 27.957	RMSE 42.090
-Epoch: [56/64]
-Train 		: volume - Loss 0.273	MAE 14.021	RMSE 18.983
-Validation 	: volume - Loss 0.616	MAE 31.612	RMSE 41.796
-Epoch: [57/64]
-Train 		: volume - Loss 0.389	MAE 19.937	RMSE 24.299
-Validation 	: volume - Loss 0.523	MAE 26.833	RMSE 39.504
-Epoch: [58/64]
-Train 		: volume - Loss 0.271	MAE 13.895	RMSE 17.717
-Validation 	: volume - Loss 0.578	MAE 29.667	RMSE 46.611
-Epoch: [59/64]
-Train 		: volume - Loss 0.213	MAE 10.913	RMSE 16.611
-Validation 	: volume - Loss 0.650	MAE 33.352	RMSE 51.284
-Epoch: [60/64]
-Train 		: volume - Loss 0.272	MAE 13.952	RMSE 20.121
-Validation 	: volume - Loss 0.719	MAE 36.865	RMSE 55.074
-Epoch: [61/64]
-Train 		: volume - Loss 0.342	MAE 17.546	RMSE 24.056
-Validation 	: volume - Loss 0.751	MAE 38.512	RMSE 57.800
-Epoch: [62/64]
-Train 		: volume - Loss 0.373	MAE 19.130	RMSE 26.077
-Validation 	: volume - Loss 0.766	MAE 39.292	RMSE 58.822
-Epoch: [63/64]
-Train 		: volume - Loss 0.543	MAE 27.879	RMSE 34.971
-Validation 	: volume - Loss 0.741	MAE 38.021	RMSE 56.411
-Epoch: [64/64]
-Train 		: volume - Loss 0.366	MAE 18.799	RMSE 25.666
-Validation 	: volume - Loss 0.736	MAE 37.749	RMSE 53.701
+Validation Baseline - volume: MAE 43.318
+Epoch: [1/512]
+Train 		: volume - Loss 1.004	MAE 53.107	RMSE 56.756
+Validation 	: volume - Loss 0.809	MAE 42.778	RMSE 49.356
+Epoch: [2/512]
+Train 		: volume - Loss 0.680	MAE 35.934	RMSE 39.655
+Validation 	: volume - Loss 0.812	MAE 42.915	RMSE 49.447
+Epoch: [3/512]
+Train 		: volume - Loss 0.952	MAE 50.356	RMSE 54.079
+Validation 	: volume - Loss 0.809	MAE 42.785	RMSE 49.359
+Epoch: [4/512]
+Train 		: volume - Loss 0.854	MAE 45.126	RMSE 48.871
+Validation 	: volume - Loss 0.807	MAE 42.661	RMSE 49.276
+Epoch: [5/512]
+Train 		: volume - Loss 0.439	MAE 23.206	RMSE 26.873
+Validation 	: volume - Loss 0.805	MAE 42.534	RMSE 49.194
+Epoch: [6/512]
+Train 		: volume - Loss 0.819	MAE 43.302	RMSE 47.089
+Validation 	: volume - Loss 0.802	MAE 42.384	RMSE 49.096
+Epoch: [7/512]
+Train 		: volume - Loss 1.098	MAE 58.047	RMSE 61.855
+Validation 	: volume - Loss 0.799	MAE 42.218	RMSE 48.989
+Epoch: [8/512]
+Train 		: volume - Loss 0.577	MAE 30.519	RMSE 34.318
+Validation 	: volume - Loss 0.801	MAE 42.356	RMSE 49.071
+Epoch: [9/512]
+Train 		: volume - Loss 0.797	MAE 42.137	RMSE 45.951
+Validation 	: volume - Loss 0.807	MAE 42.677	RMSE 49.274
+Epoch: [10/512]
+Train 		: volume - Loss 0.981	MAE 51.852	RMSE 55.609
+Validation 	: volume - Loss 0.816	MAE 43.121	RMSE 49.571
+Epoch: [11/512]
+Train 		: volume - Loss 1.229	MAE 64.965	RMSE 68.599
+Validation 	: volume - Loss 0.824	MAE 43.589	RMSE 49.909
+Epoch: [12/512]
+Train 		: volume - Loss 1.041	MAE 55.033	RMSE 58.624
+Validation 	: volume - Loss 0.834	MAE 44.098	RMSE 50.291
+Epoch: [13/512]
+Train 		: volume - Loss 0.654	MAE 34.592	RMSE 38.079
+Validation 	: volume - Loss 0.838	MAE 44.319	RMSE 50.461
+Epoch: [14/512]
+Train 		: volume - Loss 1.013	MAE 53.581	RMSE 57.067
+Validation 	: volume - Loss 0.835	MAE 44.136	RMSE 50.318
+Epoch: [15/512]
+Train 		: volume - Loss 0.841	MAE 44.446	RMSE 47.955
+Validation 	: volume - Loss 0.831	MAE 43.959	RMSE 50.178
+Epoch: [16/512]
+Train 		: volume - Loss 0.904	MAE 47.813	RMSE 51.347
+Validation 	: volume - Loss 0.828	MAE 43.782	RMSE 50.037
+Epoch: [17/512]
+Train 		: volume - Loss 0.677	MAE 35.791	RMSE 39.319
+Validation 	: volume - Loss 0.821	MAE 43.395	RMSE 49.750
+Epoch: [18/512]
+Train 		: volume - Loss 0.961	MAE 50.801	RMSE 54.413
+Validation 	: volume - Loss 0.815	MAE 43.081	RMSE 49.516
+Epoch: [19/512]
+Train 		: volume - Loss 1.635	MAE 86.458	RMSE 89.900
+Validation 	: volume - Loss 0.813	MAE 42.974	RMSE 49.419
+Epoch: [20/512]
+Train 		: volume - Loss 0.932	MAE 49.298	RMSE 52.956
+Validation 	: volume - Loss 0.813	MAE 42.979	RMSE 49.373
+Epoch: [21/512]
+Train 		: volume - Loss 0.849	MAE 44.873	RMSE 48.490
+Validation 	: volume - Loss 0.807	MAE 42.674	RMSE 49.067
+Epoch: [22/512]
+Train 		: volume - Loss 1.611	MAE 85.181	RMSE 88.567
+Validation 	: volume - Loss 0.795	MAE 42.025	RMSE 48.444
+Epoch: [23/512]
+Train 		: volume - Loss 0.929	MAE 49.104	RMSE 52.686
+Validation 	: volume - Loss 0.771	MAE 40.777	RMSE 47.324
+Epoch: [24/512]
+Train 		: volume - Loss 0.848	MAE 44.831	RMSE 48.418
+Validation 	: volume - Loss 0.728	MAE 38.502	RMSE 45.247
+Epoch: [25/512]
+Train 		: volume - Loss 1.519	MAE 80.311	RMSE 83.825
+Validation 	: volume - Loss 0.661	MAE 34.967	RMSE 41.411
+Epoch: [26/512]
+Train 		: volume - Loss 0.862	MAE 45.560	RMSE 49.272
+Validation 	: volume - Loss 0.615	MAE 32.526	RMSE 37.372
+Epoch: [27/512]
+Train 		: volume - Loss 0.388	MAE 20.492	RMSE 23.234
+Validation 	: volume - Loss 0.779	MAE 41.174	RMSE 42.766
+Epoch: [28/512]
+Train 		: volume - Loss 0.683	MAE 36.109	RMSE 38.221
+Validation 	: volume - Loss 0.532	MAE 28.122	RMSE 32.155
+Epoch: [29/512]
+Train 		: volume - Loss 0.605	MAE 32.013	RMSE 34.640
+Validation 	: volume - Loss 0.372	MAE 19.661	RMSE 25.655
+Epoch: [30/512]
+Train 		: volume - Loss 1.139	MAE 60.223	RMSE 63.471
+Validation 	: volume - Loss 0.390	MAE 20.629	RMSE 28.656
+Epoch: [31/512]
+Train 		: volume - Loss 0.962	MAE 50.838	RMSE 55.376
+Validation 	: volume - Loss 0.302	MAE 15.993	RMSE 27.062
+Epoch: [32/512]
+Train 		: volume - Loss 0.422	MAE 22.295	RMSE 27.613
+Validation 	: volume - Loss 0.306	MAE 16.155	RMSE 27.419
+Epoch: [33/512]
+Train 		: volume - Loss 0.240	MAE 12.702	RMSE 18.015
+Validation 	: volume - Loss 0.402	MAE 21.261	RMSE 30.018
+Epoch: [34/512]
+Train 		: volume - Loss 0.471	MAE 24.885	RMSE 29.828
+Validation 	: volume - Loss 0.419	MAE 22.132	RMSE 30.214
+Epoch: [35/512]
+Train 		: volume - Loss 0.346	MAE 18.291	RMSE 22.949
+Validation 	: volume - Loss 0.298	MAE 15.737	RMSE 26.665
+Epoch: [36/512]
+Train 		: volume - Loss 0.379	MAE 20.025	RMSE 25.577
+Validation 	: volume - Loss 0.264	MAE 13.958	RMSE 25.435
+Epoch: [37/512]
+Train 		: volume - Loss 0.216	MAE 11.408	RMSE 16.715
+Validation 	: volume - Loss 0.264	MAE 13.970	RMSE 24.542
+Epoch: [38/512]
+Train 		: volume - Loss 0.265	MAE 13.998	RMSE 19.064
+Validation 	: volume - Loss 0.287	MAE 15.197	RMSE 24.108
+Epoch: [39/512]
+Train 		: volume - Loss 0.216	MAE 11.397	RMSE 15.868
+Validation 	: volume - Loss 0.233	MAE 12.327	RMSE 21.732
+Epoch: [40/512]
+Train 		: volume - Loss 0.221	MAE 11.710	RMSE 15.762
+Validation 	: volume - Loss 0.244	MAE 12.904	RMSE 21.112
+Epoch: [41/512]
+Train 		: volume - Loss 0.394	MAE 20.805	RMSE 24.148
+Validation 	: volume - Loss 0.264	MAE 13.945	RMSE 21.434
+Epoch: [42/512]
+Train 		: volume - Loss 0.174	MAE 9.187	RMSE 12.390
+Validation 	: volume - Loss 0.317	MAE 16.740	RMSE 25.484
+Epoch: [43/512]
+Train 		: volume - Loss 0.354	MAE 18.724	RMSE 22.380
+Validation 	: volume - Loss 0.407	MAE 21.538	RMSE 33.213
+Epoch: [44/512]
+Train 		: volume - Loss 0.421	MAE 22.264	RMSE 26.676
+Validation 	: volume - Loss 0.427	MAE 22.572	RMSE 39.236
+Epoch: [45/512]
+Train 		: volume - Loss 0.437	MAE 23.109	RMSE 29.371
+Validation 	: volume - Loss 0.442	MAE 23.344	RMSE 36.998
+Epoch: [46/512]
+Train 		: volume - Loss 0.532	MAE 28.139	RMSE 34.184
+Validation 	: volume - Loss 0.475	MAE 25.092	RMSE 30.687
+Epoch: [47/512]
+Train 		: volume - Loss 0.274	MAE 14.492	RMSE 17.721
+Validation 	: volume - Loss 0.393	MAE 20.767	RMSE 23.406
+Epoch: [48/512]
+Train 		: volume - Loss 0.529	MAE 27.989	RMSE 30.901
+Validation 	: volume - Loss 0.331	MAE 17.506	RMSE 20.821
+Epoch: [49/512]
+Train 		: volume - Loss 0.465	MAE 24.561	RMSE 27.785
+Validation 	: volume - Loss 0.255	MAE 13.482	RMSE 18.118
+Epoch: [50/512]
+Train 		: volume - Loss 0.226	MAE 11.953	RMSE 15.183
+Validation 	: volume - Loss 0.249	MAE 13.175	RMSE 17.951
+Epoch: [51/512]
+Train 		: volume - Loss 0.373	MAE 19.712	RMSE 22.934
+Validation 	: volume - Loss 0.244	MAE 12.877	RMSE 17.840
+Epoch: [52/512]
+Train 		: volume - Loss 0.199	MAE 10.525	RMSE 13.733
+Validation 	: volume - Loss 0.251	MAE 13.275	RMSE 18.183
+Epoch: [53/512]
+Train 		: volume - Loss 0.436	MAE 23.070	RMSE 26.036
+Validation 	: volume - Loss 0.299	MAE 15.832	RMSE 19.587
+Epoch: [54/512]
+Train 		: volume - Loss 0.214	MAE 11.314	RMSE 14.325
+Validation 	: volume - Loss 0.322	MAE 17.002	RMSE 20.431
+Epoch: [55/512]
+Train 		: volume - Loss 0.177	MAE 9.333	RMSE 12.329
+Validation 	: volume - Loss 0.249	MAE 13.170	RMSE 18.359
+Epoch: [56/512]
+Train 		: volume - Loss 0.404	MAE 21.344	RMSE 24.203
+Validation 	: volume - Loss 0.273	MAE 14.437	RMSE 19.941
+Epoch: [57/512]
+Train 		: volume - Loss 0.383	MAE 20.233	RMSE 22.905
+Validation 	: volume - Loss 0.312	MAE 16.505	RMSE 23.481
+Epoch: [58/512]
+Train 		: volume - Loss 0.288	MAE 15.227	RMSE 17.965
+Validation 	: volume - Loss 0.292	MAE 15.431	RMSE 23.073
+Epoch: [59/512]
+Train 		: volume - Loss 0.204	MAE 10.765	RMSE 14.056
+Validation 	: volume - Loss 0.305	MAE 16.118	RMSE 21.216
+Epoch: [60/512]
+Train 		: volume - Loss 0.309	MAE 16.353	RMSE 19.424
+Validation 	: volume - Loss 0.523	MAE 27.677	RMSE 28.883
+Epoch: [61/512]
+Train 		: volume - Loss 0.554	MAE 29.304	RMSE 31.097
+Validation 	: volume - Loss 0.674	MAE 35.629	RMSE 38.814
+Epoch: [62/512]
+Train 		: volume - Loss 0.490	MAE 25.931	RMSE 28.556
+Validation 	: volume - Loss 0.431	MAE 22.768	RMSE 30.326
+Epoch: [63/512]
+Train 		: volume - Loss 0.616	MAE 32.550	RMSE 37.724
+Validation 	: volume - Loss 0.376	MAE 19.863	RMSE 27.603
+Epoch: [64/512]
+Train 		: volume - Loss 0.355	MAE 18.752	RMSE 23.058
+Validation 	: volume - Loss 0.430	MAE 22.715	RMSE 28.576
+Epoch: [65/512]
+Train 		: volume - Loss 0.591	MAE 31.229	RMSE 34.137
+Validation 	: volume - Loss 0.474	MAE 25.077	RMSE 28.171
+Epoch: [66/512]
+Train 		: volume - Loss 0.455	MAE 24.033	RMSE 26.556
+Validation 	: volume - Loss 0.525	MAE 27.760	RMSE 30.496
+Epoch: [67/512]
+Train 		: volume - Loss 0.459	MAE 24.245	RMSE 26.034
+Validation 	: volume - Loss 0.625	MAE 33.022	RMSE 34.624
+Epoch: [68/512]
+Train 		: volume - Loss 0.782	MAE 41.334	RMSE 42.951
+Validation 	: volume - Loss 0.667	MAE 35.281	RMSE 36.521
+Epoch: [69/512]
+Train 		: volume - Loss 0.756	MAE 39.992	RMSE 41.573
+Validation 	: volume - Loss 0.651	MAE 34.438	RMSE 35.892
+Epoch: [70/512]
+Train 		: volume - Loss 0.530	MAE 28.037	RMSE 29.660
+Validation 	: volume - Loss 0.560	MAE 29.601	RMSE 32.235
+Epoch: [71/512]
+Train 		: volume - Loss 0.512	MAE 27.069	RMSE 28.860
+Validation 	: volume - Loss 0.464	MAE 24.545	RMSE 28.710
+Epoch: [72/512]
+Train 		: volume - Loss 0.450	MAE 23.780	RMSE 26.084
+Validation 	: volume - Loss 0.376	MAE 19.897	RMSE 25.447
+Epoch: [73/512]
+Train 		: volume - Loss 0.441	MAE 23.299	RMSE 26.075
+Validation 	: volume - Loss 0.275	MAE 14.527	RMSE 21.143
+Epoch: [74/512]
+Train 		: volume - Loss 0.304	MAE 16.079	RMSE 19.333
+Validation 	: volume - Loss 0.238	MAE 12.568	RMSE 19.574
+Epoch: [75/512]
+Train 		: volume - Loss 0.477	MAE 25.219	RMSE 29.131
+Validation 	: volume - Loss 0.311	MAE 16.434	RMSE 20.662
+Epoch: [76/512]
+Train 		: volume - Loss 0.242	MAE 12.776	RMSE 15.994
+Validation 	: volume - Loss 0.319	MAE 16.886	RMSE 20.597
+Epoch: [77/512]
+Train 		: volume - Loss 0.188	MAE 9.965	RMSE 12.808
+Validation 	: volume - Loss 0.231	MAE 12.227	RMSE 18.200
+Epoch: [78/512]
+Train 		: volume - Loss 0.235	MAE 12.417	RMSE 15.609
+Validation 	: volume - Loss 0.216	MAE 11.402	RMSE 18.096
+Epoch: [79/512]
+Train 		: volume - Loss 0.173	MAE 9.128	RMSE 12.101
+Validation 	: volume - Loss 0.206	MAE 10.913	RMSE 17.919
+Epoch: [80/512]
+Train 		: volume - Loss 0.196	MAE 10.363	RMSE 13.492
+Validation 	: volume - Loss 0.216	MAE 11.426	RMSE 17.946
+Epoch: [81/512]
+Train 		: volume - Loss 0.189	MAE 10.017	RMSE 13.184
+Validation 	: volume - Loss 0.213	MAE 11.287	RMSE 18.083
+Epoch: [82/512]
+Train 		: volume - Loss 0.451	MAE 23.833	RMSE 26.773
+Validation 	: volume - Loss 0.284	MAE 15.031	RMSE 19.992
+Epoch: [83/512]
+Train 		: volume - Loss 0.196	MAE 10.348	RMSE 12.608
+Validation 	: volume - Loss 0.430	MAE 22.756	RMSE 24.945
+Epoch: [84/512]
+Train 		: volume - Loss 0.598	MAE 31.634	RMSE 33.484
+Validation 	: volume - Loss 0.559	MAE 29.562	RMSE 30.940
+Epoch: [85/512]
+Train 		: volume - Loss 0.644	MAE 34.061	RMSE 35.768
+Validation 	: volume - Loss 0.560	MAE 29.584	RMSE 31.521
+Epoch: [86/512]
+Train 		: volume - Loss 0.403	MAE 21.292	RMSE 23.032
+Validation 	: volume - Loss 0.460	MAE 24.328	RMSE 27.542
+Epoch: [87/512]
+Train 		: volume - Loss 0.371	MAE 19.602	RMSE 21.625
+Validation 	: volume - Loss 0.289	MAE 15.288	RMSE 21.469
+Epoch: [88/512]
+Train 		: volume - Loss 0.290	MAE 15.341	RMSE 18.280
+Validation 	: volume - Loss 0.215	MAE 11.382	RMSE 19.559
+Epoch: [89/512]
+Train 		: volume - Loss 0.231	MAE 12.208	RMSE 15.821
+Validation 	: volume - Loss 0.307	MAE 16.225	RMSE 21.467
+Epoch: [90/512]
+Train 		: volume - Loss 0.384	MAE 20.303	RMSE 23.411
+Validation 	: volume - Loss 0.263	MAE 13.896	RMSE 19.339
+Epoch: [91/512]
+Train 		: volume - Loss 0.313	MAE 16.553	RMSE 19.520
+Validation 	: volume - Loss 0.205	MAE 10.848	RMSE 17.166
+Epoch: [92/512]
+Train 		: volume - Loss 0.442	MAE 23.355	RMSE 26.128
+Validation 	: volume - Loss 0.282	MAE 14.925	RMSE 19.509
+Epoch: [93/512]
+Train 		: volume - Loss 0.317	MAE 16.760	RMSE 19.251
+Validation 	: volume - Loss 0.357	MAE 18.873	RMSE 21.936
+Epoch: [94/512]
+Train 		: volume - Loss 0.344	MAE 18.171	RMSE 20.362
+Validation 	: volume - Loss 0.467	MAE 24.675	RMSE 26.912
+Epoch: [95/512]
+Train 		: volume - Loss 0.676	MAE 35.721	RMSE 37.879
+Validation 	: volume - Loss 0.526	MAE 27.790	RMSE 29.528
+Epoch: [96/512]
+Train 		: volume - Loss 0.551	MAE 29.131	RMSE 31.143
+Validation 	: volume - Loss 0.403	MAE 21.283	RMSE 23.376
+Epoch: [97/512]
+Train 		: volume - Loss 0.228	MAE 12.058	RMSE 13.990
+Validation 	: volume - Loss 0.199	MAE 10.500	RMSE 17.270
+Epoch: [98/512]
+Train 		: volume - Loss 0.147	MAE 7.753	RMSE 10.347
+Validation 	: volume - Loss 0.214	MAE 11.313	RMSE 18.016
+Epoch: [99/512]
+Train 		: volume - Loss 0.445	MAE 23.550	RMSE 27.390
+Validation 	: volume - Loss 0.236	MAE 12.499	RMSE 19.881
+Epoch: [100/512]
+Train 		: volume - Loss 0.236	MAE 12.458	RMSE 16.597
+Validation 	: volume - Loss 0.257	MAE 13.574	RMSE 20.943
+Epoch: [101/512]
+Train 		: volume - Loss 0.238	MAE 12.564	RMSE 16.760
+Validation 	: volume - Loss 0.260	MAE 13.733	RMSE 20.940
+Epoch: [102/512]
+Train 		: volume - Loss 0.240	MAE 12.710	RMSE 16.844
+Validation 	: volume - Loss 0.250	MAE 13.244	RMSE 20.079
+Epoch: [103/512]
+Train 		: volume - Loss 0.186	MAE 9.818	RMSE 13.778
+Validation 	: volume - Loss 0.235	MAE 12.443	RMSE 18.677
+Epoch: [104/512]
+Train 		: volume - Loss 0.161	MAE 8.521	RMSE 12.255
+Validation 	: volume - Loss 0.221	MAE 11.698	RMSE 17.611
+Epoch: [105/512]
+Train 		: volume - Loss 0.165	MAE 8.712	RMSE 11.871
+Validation 	: volume - Loss 0.262	MAE 13.848	RMSE 18.479
+Epoch: [106/512]
+Train 		: volume - Loss 0.223	MAE 11.795	RMSE 14.066
+Validation 	: volume - Loss 0.306	MAE 16.164	RMSE 20.054
+Epoch: [107/512]
+Train 		: volume - Loss 0.218	MAE 11.507	RMSE 13.438
+Validation 	: volume - Loss 0.298	MAE 15.751	RMSE 19.750
+Epoch: [108/512]
+Train 		: volume - Loss 0.305	MAE 16.119	RMSE 18.200
+Validation 	: volume - Loss 0.248	MAE 13.130	RMSE 17.251
+Epoch: [109/512]
+Train 		: volume - Loss 0.520	MAE 27.476	RMSE 29.619
+Validation 	: volume - Loss 0.225	MAE 11.897	RMSE 15.346
+Epoch: [110/512]
+Train 		: volume - Loss 0.258	MAE 13.664	RMSE 16.244
+Validation 	: volume - Loss 0.294	MAE 15.533	RMSE 18.408
+Epoch: [111/512]
+Train 		: volume - Loss 0.393	MAE 20.791	RMSE 23.447
+Validation 	: volume - Loss 0.283	MAE 14.958	RMSE 18.135
+Epoch: [112/512]
+Train 		: volume - Loss 0.391	MAE 20.694	RMSE 23.381
+Validation 	: volume - Loss 0.214	MAE 11.325	RMSE 15.065
+Epoch: [113/512]
+Train 		: volume - Loss 0.246	MAE 13.031	RMSE 15.717
+Validation 	: volume - Loss 0.238	MAE 12.585	RMSE 15.876
+Epoch: [114/512]
+Train 		: volume - Loss 0.401	MAE 21.188	RMSE 23.430
+Validation 	: volume - Loss 0.249	MAE 13.169	RMSE 15.482
+Epoch: [115/512]
+Train 		: volume - Loss 0.369	MAE 19.514	RMSE 21.422
+Validation 	: volume - Loss 0.242	MAE 12.801	RMSE 16.078
+Epoch: [116/512]
+Train 		: volume - Loss 0.478	MAE 25.246	RMSE 27.210
+Validation 	: volume - Loss 0.292	MAE 15.437	RMSE 20.539
+Epoch: [117/512]
+Train 		: volume - Loss 0.298	MAE 15.773	RMSE 18.267
+Validation 	: volume - Loss 0.331	MAE 17.490	RMSE 25.220
+Epoch: [118/512]
+Train 		: volume - Loss 0.851	MAE 45.006	RMSE 48.482
+Validation 	: volume - Loss 0.241	MAE 12.717	RMSE 20.608
+Epoch: [119/512]
+Train 		: volume - Loss 0.271	MAE 14.342	RMSE 17.600
+Validation 	: volume - Loss 0.215	MAE 11.355	RMSE 15.022
+Epoch: [120/512]
+Train 		: volume - Loss 0.405	MAE 21.396	RMSE 23.985
+Validation 	: volume - Loss 0.241	MAE 12.723	RMSE 18.190
+Epoch: [121/512]
+Train 		: volume - Loss 0.161	MAE 8.514	RMSE 11.881
+Validation 	: volume - Loss 0.311	MAE 16.438	RMSE 22.087
+Epoch: [122/512]
+Train 		: volume - Loss 0.426	MAE 22.509	RMSE 26.003
+Validation 	: volume - Loss 0.379	MAE 20.018	RMSE 24.857
+Epoch: [123/512]
+Train 		: volume - Loss 0.484	MAE 25.605	RMSE 28.781
+Validation 	: volume - Loss 0.294	MAE 15.552	RMSE 21.854
+Epoch: [124/512]
+Train 		: volume - Loss 0.223	MAE 11.767	RMSE 15.509
+Validation 	: volume - Loss 0.210	MAE 11.094	RMSE 19.437
+Epoch: [125/512]
+Train 		: volume - Loss 0.219	MAE 11.555	RMSE 15.994
+Validation 	: volume - Loss 0.183	MAE 9.666	RMSE 19.138
+Epoch: [126/512]
+Train 		: volume - Loss 0.140	MAE 7.424	RMSE 11.762
+Validation 	: volume - Loss 0.194	MAE 10.256	RMSE 19.506
+Epoch: [127/512]
+Train 		: volume - Loss 0.531	MAE 28.054	RMSE 32.133
+Validation 	: volume - Loss 0.217	MAE 11.462	RMSE 19.607
+Epoch: [128/512]
+Train 		: volume - Loss 0.410	MAE 21.654	RMSE 25.204
+Validation 	: volume - Loss 0.226	MAE 11.940	RMSE 18.406
+Epoch: [129/512]
+Train 		: volume - Loss 0.262	MAE 13.852	RMSE 16.709
+Validation 	: volume - Loss 0.204	MAE 10.797	RMSE 16.185
+Epoch: [130/512]
+Train 		: volume - Loss 0.303	MAE 16.006	RMSE 18.462
+Validation 	: volume - Loss 0.183	MAE 9.682	RMSE 14.982
+Epoch: [131/512]
+Train 		: volume - Loss 0.134	MAE 7.064	RMSE 9.669
+Validation 	: volume - Loss 0.303	MAE 16.021	RMSE 19.908
+Epoch: [132/512]
+Train 		: volume - Loss 0.303	MAE 16.019	RMSE 18.551
+Validation 	: volume - Loss 0.400	MAE 21.159	RMSE 24.934
+Epoch: [133/512]
+Train 		: volume - Loss 0.439	MAE 23.193	RMSE 25.631
+Validation 	: volume - Loss 0.325	MAE 17.206	RMSE 24.007
+Epoch: [134/512]
+Train 		: volume - Loss 0.230	MAE 12.181	RMSE 15.801
+Validation 	: volume - Loss 0.251	MAE 13.296	RMSE 22.723
+Epoch: [135/512]
+Train 		: volume - Loss 0.426	MAE 22.504	RMSE 26.169
+Validation 	: volume - Loss 0.291	MAE 15.371	RMSE 19.327
+Epoch: [136/512]
+Train 		: volume - Loss 0.295	MAE 15.609	RMSE 17.755
+Validation 	: volume - Loss 0.232	MAE 12.289	RMSE 14.502
+Epoch: [137/512]
+Train 		: volume - Loss 0.274	MAE 14.492	RMSE 16.163
+Validation 	: volume - Loss 0.151	MAE 7.968	RMSE 13.173
+Epoch: [138/512]
+Train 		: volume - Loss 0.151	MAE 8.006	RMSE 10.563
+Validation 	: volume - Loss 0.184	MAE 9.732	RMSE 15.802
+Epoch: [139/512]
+Train 		: volume - Loss 0.864	MAE 45.668	RMSE 49.030
+Validation 	: volume - Loss 0.300	MAE 15.842	RMSE 19.783
+Epoch: [140/512]
+Train 		: volume - Loss 0.311	MAE 16.440	RMSE 19.624
+Validation 	: volume - Loss 0.280	MAE 14.826	RMSE 18.492
+Epoch: [141/512]
+Train 		: volume - Loss 0.170	MAE 9.011	RMSE 12.091
+Validation 	: volume - Loss 0.208	MAE 11.006	RMSE 15.035
+Epoch: [142/512]
+Train 		: volume - Loss 0.150	MAE 7.950	RMSE 11.079
+Validation 	: volume - Loss 0.196	MAE 10.374	RMSE 12.892
+Epoch: [143/512]
+Train 		: volume - Loss 0.169	MAE 8.961	RMSE 11.572
+Validation 	: volume - Loss 0.240	MAE 12.706	RMSE 13.532
+Epoch: [144/512]
+Train 		: volume - Loss 0.296	MAE 15.639	RMSE 17.538
+Validation 	: volume - Loss 0.230	MAE 12.154	RMSE 13.263
+Epoch: [145/512]
+Train 		: volume - Loss 0.233	MAE 12.296	RMSE 14.039
+Validation 	: volume - Loss 0.134	MAE 7.072	RMSE 10.300
+Epoch: [146/512]
+Train 		: volume - Loss 0.409	MAE 21.607	RMSE 24.053
+Validation 	: volume - Loss 0.157	MAE 8.299	RMSE 11.092
+Epoch: [147/512]
+Train 		: volume - Loss 0.255	MAE 13.467	RMSE 15.427
+Validation 	: volume - Loss 0.190	MAE 10.052	RMSE 12.501
+Epoch: [148/512]
+Train 		: volume - Loss 0.175	MAE 9.245	RMSE 11.007
+Validation 	: volume - Loss 0.172	MAE 9.086	RMSE 13.219
+Epoch: [149/512]
+Train 		: volume - Loss 0.261	MAE 13.812	RMSE 16.006
+Validation 	: volume - Loss 0.141	MAE 7.435	RMSE 13.198
+Epoch: [150/512]
+Train 		: volume - Loss 0.343	MAE 18.130	RMSE 20.903
+Validation 	: volume - Loss 0.142	MAE 7.512	RMSE 13.674
+Epoch: [151/512]
+Train 		: volume - Loss 0.408	MAE 21.596	RMSE 24.892
+Validation 	: volume - Loss 0.139	MAE 7.328	RMSE 13.374
+Epoch: [152/512]
+Train 		: volume - Loss 0.511	MAE 26.999	RMSE 30.198
+Validation 	: volume - Loss 0.111	MAE 5.856	RMSE 11.344
+Epoch: [153/512]
+Train 		: volume - Loss 0.191	MAE 10.107	RMSE 12.967
+Validation 	: volume - Loss 0.151	MAE 7.960	RMSE 11.375
+Epoch: [154/512]
+Train 		: volume - Loss 0.113	MAE 5.972	RMSE 8.125
+Validation 	: volume - Loss 0.228	MAE 12.073	RMSE 16.182
+Epoch: [155/512]
+Train 		: volume - Loss 0.197	MAE 10.433	RMSE 12.730
+Validation 	: volume - Loss 0.240	MAE 12.673	RMSE 17.930
+Epoch: [156/512]
+Train 		: volume - Loss 0.276	MAE 14.588	RMSE 17.384
+Validation 	: volume - Loss 0.268	MAE 14.174	RMSE 16.585
+Epoch: [157/512]
+Train 		: volume - Loss 0.250	MAE 13.210	RMSE 15.154
+Validation 	: volume - Loss 0.303	MAE 15.996	RMSE 18.292
+Epoch: [158/512]
+Train 		: volume - Loss 0.291	MAE 15.383	RMSE 17.093
+Validation 	: volume - Loss 0.306	MAE 16.157	RMSE 19.262
+Epoch: [159/512]
+Train 		: volume - Loss 0.346	MAE 18.296	RMSE 20.186
+Validation 	: volume - Loss 0.206	MAE 10.893	RMSE 15.913
+Epoch: [160/512]
+Train 		: volume - Loss 0.154	MAE 8.137	RMSE 10.909
+Validation 	: volume - Loss 0.169	MAE 8.913	RMSE 15.269
+Epoch: [161/512]
+Train 		: volume - Loss 0.308	MAE 16.286	RMSE 19.631
+Validation 	: volume - Loss 0.254	MAE 13.434	RMSE 18.042
+Epoch: [162/512]
+Train 		: volume - Loss 0.252	MAE 13.335	RMSE 15.985
+Validation 	: volume - Loss 0.237	MAE 12.522	RMSE 17.601
+Epoch: [163/512]
+Train 		: volume - Loss 0.371	MAE 19.599	RMSE 22.485
+Validation 	: volume - Loss 0.166	MAE 8.754	RMSE 15.233
+Epoch: [164/512]
+Train 		: volume - Loss 0.169	MAE 8.940	RMSE 12.172
+Validation 	: volume - Loss 0.139	MAE 7.369	RMSE 13.201
+Epoch: [165/512]
+Train 		: volume - Loss 0.179	MAE 9.459	RMSE 12.427
+Validation 	: volume - Loss 0.148	MAE 7.849	RMSE 12.886
+Epoch: [166/512]
+Train 		: volume - Loss 0.184	MAE 9.708	RMSE 12.504
+Validation 	: volume - Loss 0.172	MAE 9.110	RMSE 13.860
+Epoch: [167/512]
+Train 		: volume - Loss 0.338	MAE 17.873	RMSE 20.757
+Validation 	: volume - Loss 0.206	MAE 10.869	RMSE 14.836
+Epoch: [168/512]
+Train 		: volume - Loss 0.193	MAE 10.203	RMSE 12.833
+Validation 	: volume - Loss 0.219	MAE 11.591	RMSE 15.066
+Epoch: [169/512]
+Train 		: volume - Loss 0.272	MAE 14.363	RMSE 16.866
+Validation 	: volume - Loss 0.243	MAE 12.834	RMSE 16.295
+Epoch: [170/512]
+Train 		: volume - Loss 0.183	MAE 9.699	RMSE 12.469
+Validation 	: volume - Loss 0.197	MAE 10.417	RMSE 16.346
+Epoch: [171/512]
+Train 		: volume - Loss 0.232	MAE 12.260	RMSE 15.810
+Validation 	: volume - Loss 0.186	MAE 9.837	RMSE 16.718
+Epoch: [172/512]
+Train 		: volume - Loss 0.190	MAE 10.044	RMSE 13.438
+Validation 	: volume - Loss 0.185	MAE 9.799	RMSE 16.465
+Epoch: [173/512]
+Train 		: volume - Loss 0.204	MAE 10.760	RMSE 14.105
+Validation 	: volume - Loss 0.159	MAE 8.383	RMSE 13.491
+Epoch: [174/512]
+Train 		: volume - Loss 0.204	MAE 10.794	RMSE 13.981
+Validation 	: volume - Loss 0.112	MAE 5.938	RMSE 8.670
+Epoch: [175/512]
+Train 		: volume - Loss 0.490	MAE 25.906	RMSE 27.930
+Validation 	: volume - Loss 0.113	MAE 5.983	RMSE 10.375
+Epoch: [176/512]
+Train 		: volume - Loss 0.108	MAE 5.735	RMSE 7.911
+Validation 	: volume - Loss 0.244	MAE 12.919	RMSE 21.006
+Epoch: [177/512]
+Train 		: volume - Loss 0.194	MAE 10.272	RMSE 14.459
+Validation 	: volume - Loss 0.374	MAE 19.756	RMSE 28.178
+Epoch: [178/512]
+Train 		: volume - Loss 0.301	MAE 15.916	RMSE 20.632
+Validation 	: volume - Loss 0.455	MAE 24.064	RMSE 31.693
+Epoch: [179/512]
+Train 		: volume - Loss 0.277	MAE 14.647	RMSE 19.008
+Validation 	: volume - Loss 0.450	MAE 23.793	RMSE 30.076
+Epoch: [180/512]
+Train 		: volume - Loss 0.460	MAE 24.298	RMSE 28.050
+Validation 	: volume - Loss 0.338	MAE 17.881	RMSE 22.474
+Epoch: [181/512]
+Train 		: volume - Loss 0.203	MAE 10.721	RMSE 13.596
+Validation 	: volume - Loss 0.161	MAE 8.524	RMSE 11.726
+Epoch: [182/512]
+Train 		: volume - Loss 0.236	MAE 12.486	RMSE 14.570
+Validation 	: volume - Loss 0.146	MAE 7.710	RMSE 10.790
+Epoch: [183/512]
+Train 		: volume - Loss 0.137	MAE 7.251	RMSE 10.061
+Validation 	: volume - Loss 0.240	MAE 12.693	RMSE 18.866
+Epoch: [184/512]
+Train 		: volume - Loss 0.552	MAE 29.204	RMSE 32.966
+Validation 	: volume - Loss 0.295	MAE 15.583	RMSE 22.957
+Epoch: [185/512]
+Train 		: volume - Loss 0.234	MAE 12.388	RMSE 16.632
+Validation 	: volume - Loss 0.285	MAE 15.086	RMSE 23.050
+Epoch: [186/512]
+Train 		: volume - Loss 0.473	MAE 25.028	RMSE 29.463
+Validation 	: volume - Loss 0.239	MAE 12.642	RMSE 21.086
+Epoch: [187/512]
+Train 		: volume - Loss 0.196	MAE 10.367	RMSE 14.335
+Validation 	: volume - Loss 0.206	MAE 10.917	RMSE 18.688
+Epoch: [188/512]
+Train 		: volume - Loss 0.509	MAE 26.911	RMSE 30.445
+Validation 	: volume - Loss 0.161	MAE 8.514	RMSE 15.181
+Epoch: [189/512]
+Train 		: volume - Loss 0.180	MAE 9.525	RMSE 12.833
+Validation 	: volume - Loss 0.130	MAE 6.860	RMSE 11.204
+Epoch: [190/512]
+Train 		: volume - Loss 0.198	MAE 10.464	RMSE 13.015
+Validation 	: volume - Loss 0.143	MAE 7.545	RMSE 9.625
+Epoch: [191/512]
+Train 		: volume - Loss 0.264	MAE 13.979	RMSE 15.798
+Validation 	: volume - Loss 0.181	MAE 9.546	RMSE 11.971
+Epoch: [192/512]
+Train 		: volume - Loss 0.407	MAE 21.540	RMSE 23.838
+Validation 	: volume - Loss 0.221	MAE 11.671	RMSE 14.937
+Epoch: [193/512]
+Train 		: volume - Loss 0.196	MAE 10.354	RMSE 12.721
+Validation 	: volume - Loss 0.232	MAE 12.246	RMSE 14.789
+Epoch: [194/512]
+Train 		: volume - Loss 0.496	MAE 26.211	RMSE 28.248
+Validation 	: volume - Loss 0.187	MAE 9.892	RMSE 11.989
+Epoch: [195/512]
+Train 		: volume - Loss 0.185	MAE 9.790	RMSE 11.989
+Validation 	: volume - Loss 0.141	MAE 7.466	RMSE 10.976
+Epoch: [196/512]
+Train 		: volume - Loss 0.204	MAE 10.788	RMSE 13.222
+Validation 	: volume - Loss 0.179	MAE 9.445	RMSE 13.218
+Epoch: [197/512]
+Train 		: volume - Loss 0.217	MAE 11.471	RMSE 13.744
+Validation 	: volume - Loss 0.164	MAE 8.679	RMSE 13.118
+Epoch: [198/512]
+Train 		: volume - Loss 0.150	MAE 7.940	RMSE 10.431
+Validation 	: volume - Loss 0.106	MAE 5.631	RMSE 11.851
+Epoch: [199/512]
+Train 		: volume - Loss 0.231	MAE 12.202	RMSE 15.473
+Validation 	: volume - Loss 0.236	MAE 12.476	RMSE 15.958
+Epoch: [200/512]
+Train 		: volume - Loss 0.336	MAE 17.770	RMSE 20.442
+Validation 	: volume - Loss 0.298	MAE 15.755	RMSE 18.351
+Epoch: [201/512]
+Train 		: volume - Loss 0.193	MAE 10.214	RMSE 12.683
+Validation 	: volume - Loss 0.193	MAE 10.191	RMSE 14.516
+Epoch: [202/512]
+Train 		: volume - Loss 0.524	MAE 27.710	RMSE 30.975
+Validation 	: volume - Loss 0.101	MAE 5.317	RMSE 11.431
+Epoch: [203/512]
+Train 		: volume - Loss 0.284	MAE 14.990	RMSE 17.971
+Validation 	: volume - Loss 0.159	MAE 8.389	RMSE 10.730
+Epoch: [204/512]
+Train 		: volume - Loss 0.116	MAE 6.132	RMSE 7.994
+Validation 	: volume - Loss 0.128	MAE 6.750	RMSE 8.256
+Epoch: [205/512]
+Train 		: volume - Loss 0.147	MAE 7.748	RMSE 9.439
+Validation 	: volume - Loss 0.095	MAE 5.046	RMSE 6.300
+Epoch: [206/512]
+Train 		: volume - Loss 0.181	MAE 9.558	RMSE 11.642
+Validation 	: volume - Loss 0.240	MAE 12.688	RMSE 13.994
+Epoch: [207/512]
+Train 		: volume - Loss 0.307	MAE 16.224	RMSE 17.575
+Validation 	: volume - Loss 0.310	MAE 16.392	RMSE 17.872
+Epoch: [208/512]
+Train 		: volume - Loss 0.323	MAE 17.067	RMSE 18.219
+Validation 	: volume - Loss 0.186	MAE 9.860	RMSE 10.590
+Epoch: [209/512]
+Train 		: volume - Loss 0.111	MAE 5.860	RMSE 7.391
+Validation 	: volume - Loss 0.081	MAE 4.285	RMSE 5.081
+Epoch: [210/512]
+Train 		: volume - Loss 0.154	MAE 8.158	RMSE 9.963
+Validation 	: volume - Loss 0.076	MAE 3.996	RMSE 5.063
+Epoch: [211/512]
+Train 		: volume - Loss 0.121	MAE 6.375	RMSE 8.044
+Validation 	: volume - Loss 0.088	MAE 4.644	RMSE 5.474
+Epoch: [212/512]
+Train 		: volume - Loss 0.131	MAE 6.908	RMSE 8.675
+Validation 	: volume - Loss 0.162	MAE 8.560	RMSE 9.637
+Epoch: [213/512]
+Train 		: volume - Loss 0.302	MAE 15.977	RMSE 17.781
+Validation 	: volume - Loss 0.209	MAE 11.073	RMSE 11.832
+Epoch: [214/512]
+Train 		: volume - Loss 0.286	MAE 15.123	RMSE 16.604
+Validation 	: volume - Loss 0.112	MAE 5.939	RMSE 7.069
+Epoch: [215/512]
+Train 		: volume - Loss 0.110	MAE 5.800	RMSE 7.512
+Validation 	: volume - Loss 0.073	MAE 3.873	RMSE 4.413
+Epoch: [216/512]
+Train 		: volume - Loss 0.153	MAE 8.082	RMSE 10.204
+Validation 	: volume - Loss 0.104	MAE 5.484	RMSE 6.903
+Epoch: [217/512]
+Train 		: volume - Loss 0.141	MAE 7.433	RMSE 9.408
+Validation 	: volume - Loss 0.128	MAE 6.793	RMSE 8.469
+Epoch: [218/512]
+Train 		: volume - Loss 0.194	MAE 10.234	RMSE 12.111
+Validation 	: volume - Loss 0.101	MAE 5.321	RMSE 6.353
+Epoch: [219/512]
+Train 		: volume - Loss 0.283	MAE 14.952	RMSE 16.892
+Validation 	: volume - Loss 0.160	MAE 8.458	RMSE 10.146
+Epoch: [220/512]
+Train 		: volume - Loss 0.117	MAE 6.175	RMSE 7.744
+Validation 	: volume - Loss 0.335	MAE 17.736	RMSE 18.636
+Epoch: [221/512]
+Train 		: volume - Loss 0.377	MAE 19.953	RMSE 21.323
+Validation 	: volume - Loss 0.377	MAE 19.920	RMSE 20.720
+Epoch: [222/512]
+Train 		: volume - Loss 0.221	MAE 11.661	RMSE 13.165
+Validation 	: volume - Loss 0.219	MAE 11.556	RMSE 14.171
+Epoch: [223/512]
+Train 		: volume - Loss 0.124	MAE 6.540	RMSE 9.124
+Validation 	: volume - Loss 0.139	MAE 7.347	RMSE 11.419
+Epoch: [224/512]
+Train 		: volume - Loss 0.329	MAE 17.392	RMSE 20.128
+Validation 	: volume - Loss 0.139	MAE 7.324	RMSE 9.710
+Epoch: [225/512]
+Train 		: volume - Loss 0.245	MAE 12.947	RMSE 14.847
+Validation 	: volume - Loss 0.157	MAE 8.276	RMSE 9.401
+Epoch: [226/512]
+Train 		: volume - Loss 0.258	MAE 13.650	RMSE 15.104
+Validation 	: volume - Loss 0.150	MAE 7.923	RMSE 9.501
+Epoch: [227/512]
+Train 		: volume - Loss 0.213	MAE 11.273	RMSE 12.843
+Validation 	: volume - Loss 0.127	MAE 6.693	RMSE 9.576
+Epoch: [228/512]
+Train 		: volume - Loss 0.170	MAE 8.976	RMSE 11.073
+Validation 	: volume - Loss 0.126	MAE 6.678	RMSE 10.249
+Epoch: [229/512]
+Train 		: volume - Loss 0.132	MAE 6.954	RMSE 9.540
+Validation 	: volume - Loss 0.126	MAE 6.645	RMSE 10.371
+Epoch: [230/512]
+Train 		: volume - Loss 0.094	MAE 4.984	RMSE 7.637
+Validation 	: volume - Loss 0.138	MAE 7.320	RMSE 11.818
+Epoch: [231/512]
+Train 		: volume - Loss 0.212	MAE 11.221	RMSE 14.014
+Validation 	: volume - Loss 0.147	MAE 7.772	RMSE 13.337
+Epoch: [232/512]
+Train 		: volume - Loss 0.184	MAE 9.741	RMSE 12.917
+Validation 	: volume - Loss 0.158	MAE 8.355	RMSE 14.066
+Epoch: [233/512]
+Train 		: volume - Loss 0.157	MAE 8.284	RMSE 11.650
+Validation 	: volume - Loss 0.177	MAE 9.337	RMSE 14.235
+Epoch: [234/512]
+Train 		: volume - Loss 0.169	MAE 8.943	RMSE 12.093
+Validation 	: volume - Loss 0.111	MAE 5.846	RMSE 11.375
+Epoch: [235/512]
+Train 		: volume - Loss 0.180	MAE 9.522	RMSE 12.762
+Validation 	: volume - Loss 0.144	MAE 7.619	RMSE 10.002
+Epoch: [236/512]
+Train 		: volume - Loss 0.219	MAE 11.562	RMSE 13.507
+Validation 	: volume - Loss 0.194	MAE 10.263	RMSE 11.933
+Epoch: [237/512]
+Train 		: volume - Loss 0.278	MAE 14.673	RMSE 16.053
+Validation 	: volume - Loss 0.175	MAE 9.266	RMSE 11.321
+Epoch: [238/512]
+Train 		: volume - Loss 0.159	MAE 8.422	RMSE 10.082
+Validation 	: volume - Loss 0.112	MAE 5.920	RMSE 11.195
+Epoch: [239/512]
+Train 		: volume - Loss 0.185	MAE 9.781	RMSE 12.799
+Validation 	: volume - Loss 0.159	MAE 8.431	RMSE 13.901
+Epoch: [240/512]
+Train 		: volume - Loss 0.232	MAE 12.289	RMSE 15.580
+Validation 	: volume - Loss 0.156	MAE 8.252	RMSE 14.036
+Epoch: [241/512]
+Train 		: volume - Loss 0.113	MAE 5.991	RMSE 9.330
+Validation 	: volume - Loss 0.146	MAE 7.707	RMSE 13.104
+Epoch: [242/512]
+Train 		: volume - Loss 0.165	MAE 8.727	RMSE 11.782
+Validation 	: volume - Loss 0.123	MAE 6.500	RMSE 11.580
+Epoch: [243/512]
+Train 		: volume - Loss 0.231	MAE 12.214	RMSE 15.036
+Validation 	: volume - Loss 0.132	MAE 6.960	RMSE 9.824
+Epoch: [244/512]
+Train 		: volume - Loss 0.125	MAE 6.615	RMSE 8.663
+Validation 	: volume - Loss 0.157	MAE 8.282	RMSE 10.234
+Epoch: [245/512]
+Train 		: volume - Loss 0.165	MAE 8.742	RMSE 10.402
+Validation 	: volume - Loss 0.158	MAE 8.351	RMSE 10.438
+Epoch: [246/512]
+Train 		: volume - Loss 0.163	MAE 8.599	RMSE 10.233
+Validation 	: volume - Loss 0.133	MAE 7.015	RMSE 9.225
+Epoch: [247/512]
+Train 		: volume - Loss 0.103	MAE 5.426	RMSE 7.133
+Validation 	: volume - Loss 0.101	MAE 5.336	RMSE 7.517
+Epoch: [248/512]
+Train 		: volume - Loss 0.122	MAE 6.428	RMSE 8.165
+Validation 	: volume - Loss 0.090	MAE 4.778	RMSE 7.447
+Epoch: [249/512]
+Train 		: volume - Loss 0.093	MAE 4.935	RMSE 6.934
+Validation 	: volume - Loss 0.097	MAE 5.128	RMSE 8.509
+Epoch: [250/512]
+Train 		: volume - Loss 0.503	MAE 26.589	RMSE 28.623
+Validation 	: volume - Loss 0.087	MAE 4.597	RMSE 7.213
+Epoch: [251/512]
+Train 		: volume - Loss 0.111	MAE 5.851	RMSE 7.748
+Validation 	: volume - Loss 0.083	MAE 4.365	RMSE 5.663
+Epoch: [252/512]
+Train 		: volume - Loss 0.120	MAE 6.325	RMSE 7.855
+Validation 	: volume - Loss 0.110	MAE 5.804	RMSE 8.059
+Epoch: [253/512]
+Train 		: volume - Loss 0.144	MAE 7.614	RMSE 9.320
+Validation 	: volume - Loss 0.098	MAE 5.162	RMSE 7.288
+Epoch: [254/512]
+Train 		: volume - Loss 0.120	MAE 6.356	RMSE 8.331
+Validation 	: volume - Loss 0.086	MAE 4.551	RMSE 5.392
+Epoch: [255/512]
+Train 		: volume - Loss 0.087	MAE 4.595	RMSE 6.084
+Validation 	: volume - Loss 0.061	MAE 3.218	RMSE 4.162
+Epoch: [256/512]
+Train 		: volume - Loss 0.089	MAE 4.688	RMSE 6.148
+Validation 	: volume - Loss 0.119	MAE 6.296	RMSE 7.378
+Epoch: [257/512]
+Train 		: volume - Loss 0.165	MAE 8.744	RMSE 10.107
+Validation 	: volume - Loss 0.152	MAE 8.057	RMSE 9.319
+Epoch: [258/512]
+Train 		: volume - Loss 0.142	MAE 7.525	RMSE 8.737
+Validation 	: volume - Loss 0.146	MAE 7.731	RMSE 9.248
+Epoch: [259/512]
+Train 		: volume - Loss 0.104	MAE 5.499	RMSE 6.911
+Validation 	: volume - Loss 0.126	MAE 6.636	RMSE 9.326
+Epoch: [260/512]
+Train 		: volume - Loss 0.174	MAE 9.179	RMSE 11.281
+Validation 	: volume - Loss 0.162	MAE 8.587	RMSE 10.453
+Epoch: [261/512]
+Train 		: volume - Loss 0.451	MAE 23.846	RMSE 25.605
+Validation 	: volume - Loss 0.116	MAE 6.130	RMSE 7.137
+Epoch: [262/512]
+Train 		: volume - Loss 0.193	MAE 10.196	RMSE 11.416
+Validation 	: volume - Loss 0.113	MAE 5.998	RMSE 7.107
+Epoch: [263/512]
+Train 		: volume - Loss 0.248	MAE 13.086	RMSE 14.647
+Validation 	: volume - Loss 0.086	MAE 4.523	RMSE 6.542
+Epoch: [264/512]
+Train 		: volume - Loss 0.075	MAE 3.954	RMSE 5.777
+Validation 	: volume - Loss 0.103	MAE 5.472	RMSE 7.094
+Epoch: [265/512]
+Train 		: volume - Loss 0.104	MAE 5.497	RMSE 7.128
+Validation 	: volume - Loss 0.133	MAE 7.044	RMSE 8.221
+Epoch: [266/512]
+Train 		: volume - Loss 0.091	MAE 4.819	RMSE 6.204
+Validation 	: volume - Loss 0.166	MAE 8.773	RMSE 10.401
+Epoch: [267/512]
+Train 		: volume - Loss 0.394	MAE 20.847	RMSE 22.081
+Validation 	: volume - Loss 0.164	MAE 8.696	RMSE 10.051
+Epoch: [268/512]
+Train 		: volume - Loss 0.193	MAE 10.225	RMSE 11.511
+Validation 	: volume - Loss 0.136	MAE 7.189	RMSE 8.339
+Epoch: [269/512]
+Train 		: volume - Loss 0.091	MAE 4.833	RMSE 6.317
+Validation 	: volume - Loss 0.136	MAE 7.194	RMSE 9.461
+Epoch: [270/512]
+Train 		: volume - Loss 0.135	MAE 7.156	RMSE 8.856
+Validation 	: volume - Loss 0.188	MAE 9.945	RMSE 11.948
+Epoch: [271/512]
+Train 		: volume - Loss 0.123	MAE 6.484	RMSE 8.182
+Validation 	: volume - Loss 0.124	MAE 6.534	RMSE 9.915
+Epoch: [272/512]
+Train 		: volume - Loss 0.086	MAE 4.539	RMSE 6.812
+Validation 	: volume - Loss 0.093	MAE 4.936	RMSE 9.091
+Epoch: [273/512]
+Train 		: volume - Loss 0.080	MAE 4.210	RMSE 6.825
+Validation 	: volume - Loss 0.078	MAE 4.142	RMSE 7.933
+Epoch: [274/512]
+Train 		: volume - Loss 0.090	MAE 4.750	RMSE 7.135
+Validation 	: volume - Loss 0.082	MAE 4.334	RMSE 6.358
+Epoch: [275/512]
+Train 		: volume - Loss 0.145	MAE 7.642	RMSE 9.559
+Validation 	: volume - Loss 0.107	MAE 5.656	RMSE 6.591
+Epoch: [276/512]
+Train 		: volume - Loss 0.100	MAE 5.292	RMSE 6.855
+Validation 	: volume - Loss 0.108	MAE 5.700	RMSE 7.034
+Epoch: [277/512]
+Train 		: volume - Loss 0.099	MAE 5.260	RMSE 6.941
+Validation 	: volume - Loss 0.112	MAE 5.904	RMSE 7.862
+Epoch: [278/512]
+Train 		: volume - Loss 0.662	MAE 35.006	RMSE 36.322
+Validation 	: volume - Loss 0.133	MAE 7.008	RMSE 8.877
+Epoch: [279/512]
+Train 		: volume - Loss 0.114	MAE 6.018	RMSE 7.690
+Validation 	: volume - Loss 0.163	MAE 8.626	RMSE 11.903
+Epoch: [280/512]
+Train 		: volume - Loss 0.245	MAE 12.960	RMSE 14.756
+Validation 	: volume - Loss 0.170	MAE 8.984	RMSE 12.200
+Epoch: [281/512]
+Train 		: volume - Loss 0.295	MAE 15.618	RMSE 17.547
+Validation 	: volume - Loss 0.090	MAE 4.746	RMSE 6.728
+Epoch: [282/512]
+Train 		: volume - Loss 0.104	MAE 5.480	RMSE 7.130
+Validation 	: volume - Loss 0.116	MAE 6.139	RMSE 6.607
+Epoch: [283/512]
+Train 		: volume - Loss 0.129	MAE 6.846	RMSE 7.954
+Validation 	: volume - Loss 0.164	MAE 8.655	RMSE 9.124
+Epoch: [284/512]
+Train 		: volume - Loss 0.135	MAE 7.125	RMSE 8.369
+Validation 	: volume - Loss 0.166	MAE 8.795	RMSE 11.079
+Epoch: [285/512]
+Train 		: volume - Loss 0.111	MAE 5.868	RMSE 7.687
+Validation 	: volume - Loss 0.177	MAE 9.370	RMSE 12.393
+Epoch: [286/512]
+Train 		: volume - Loss 0.166	MAE 8.765	RMSE 10.611
+Validation 	: volume - Loss 0.181	MAE 9.569	RMSE 12.724
+Epoch: [287/512]
+Train 		: volume - Loss 0.239	MAE 12.619	RMSE 14.484
+Validation 	: volume - Loss 0.182	MAE 9.641	RMSE 12.512
+Epoch: [288/512]
+Train 		: volume - Loss 0.324	MAE 17.151	RMSE 18.969
+Validation 	: volume - Loss 0.165	MAE 8.748	RMSE 10.190
+Epoch: [289/512]
+Train 		: volume - Loss 0.250	MAE 13.241	RMSE 14.520
+Validation 	: volume - Loss 0.106	MAE 5.617	RMSE 7.715
+Epoch: [290/512]
+Train 		: volume - Loss 0.166	MAE 8.795	RMSE 10.090
+Validation 	: volume - Loss 0.132	MAE 6.976	RMSE 11.520
+Epoch: [291/512]
+Train 		: volume - Loss 0.133	MAE 7.009	RMSE 9.307
+Validation 	: volume - Loss 0.137	MAE 7.225	RMSE 11.984
+Epoch: [292/512]
+Train 		: volume - Loss 0.199	MAE 10.522	RMSE 12.978
+Validation 	: volume - Loss 0.112	MAE 5.902	RMSE 9.083
+Epoch: [293/512]
+Train 		: volume - Loss 0.129	MAE 6.821	RMSE 8.778
+Validation 	: volume - Loss 0.078	MAE 4.128	RMSE 5.896
+Epoch: [294/512]
+Train 		: volume - Loss 0.205	MAE 10.830	RMSE 12.358
+Validation 	: volume - Loss 0.066	MAE 3.504	RMSE 4.447
+Epoch: [295/512]
+Train 		: volume - Loss 0.071	MAE 3.760	RMSE 5.125
+Validation 	: volume - Loss 0.064	MAE 3.396	RMSE 4.920
+Epoch: [296/512]
+Train 		: volume - Loss 0.130	MAE 6.860	RMSE 8.413
+Validation 	: volume - Loss 0.162	MAE 8.579	RMSE 9.843
+Epoch: [297/512]
+Train 		: volume - Loss 0.183	MAE 9.674	RMSE 11.116
+Validation 	: volume - Loss 0.202	MAE 10.668	RMSE 11.912
+Epoch: [298/512]
+Train 		: volume - Loss 0.304	MAE 16.064	RMSE 17.491
+Validation 	: volume - Loss 0.119	MAE 6.275	RMSE 7.738
+Epoch: [299/512]
+Train 		: volume - Loss 0.147	MAE 7.758	RMSE 9.368
+Validation 	: volume - Loss 0.093	MAE 4.939	RMSE 5.981
+Epoch: [300/512]
+Train 		: volume - Loss 0.119	MAE 6.295	RMSE 7.688
+Validation 	: volume - Loss 0.184	MAE 9.704	RMSE 10.743
+Epoch: [301/512]
+Train 		: volume - Loss 0.192	MAE 10.145	RMSE 11.233
+Validation 	: volume - Loss 0.171	MAE 9.048	RMSE 10.464
+Epoch: [302/512]
+Train 		: volume - Loss 0.360	MAE 19.030	RMSE 20.311
+Validation 	: volume - Loss 0.078	MAE 4.123	RMSE 5.310
+Epoch: [303/512]
+Train 		: volume - Loss 0.255	MAE 13.465	RMSE 14.826
+Validation 	: volume - Loss 0.132	MAE 7.000	RMSE 9.945
+Epoch: [304/512]
+Train 		: volume - Loss 0.134	MAE 7.100	RMSE 9.243
+Validation 	: volume - Loss 0.198	MAE 10.446	RMSE 15.663
+Epoch: [305/512]
+Train 		: volume - Loss 0.162	MAE 8.588	RMSE 11.529
+Validation 	: volume - Loss 0.206	MAE 10.881	RMSE 18.480
+Epoch: [306/512]
+Train 		: volume - Loss 0.214	MAE 11.298	RMSE 14.994
+Validation 	: volume - Loss 0.245	MAE 12.973	RMSE 20.482
+Epoch: [307/512]
+Train 		: volume - Loss 0.236	MAE 12.487	RMSE 16.331
+Validation 	: volume - Loss 0.236	MAE 12.500	RMSE 20.947
+Epoch: [308/512]
+Train 		: volume - Loss 0.183	MAE 9.694	RMSE 13.811
+Validation 	: volume - Loss 0.197	MAE 10.420	RMSE 20.393
+Epoch: [309/512]
+Train 		: volume - Loss 0.180	MAE 9.528	RMSE 13.804
+Validation 	: volume - Loss 0.237	MAE 12.551	RMSE 20.431
+Epoch: [310/512]
+Train 		: volume - Loss 0.440	MAE 23.279	RMSE 27.190
+Validation 	: volume - Loss 0.237	MAE 12.555	RMSE 19.325
+Epoch: [311/512]
+Train 		: volume - Loss 0.246	MAE 13.014	RMSE 16.652
+Validation 	: volume - Loss 0.209	MAE 11.024	RMSE 16.705
+Epoch: [312/512]
+Train 		: volume - Loss 0.219	MAE 11.579	RMSE 14.849
+Validation 	: volume - Loss 0.140	MAE 7.419	RMSE 12.778
+Epoch: [313/512]
+Train 		: volume - Loss 0.141	MAE 7.439	RMSE 10.347
+Validation 	: volume - Loss 0.129	MAE 6.806	RMSE 9.900
+Epoch: [314/512]
+Train 		: volume - Loss 0.090	MAE 4.737	RMSE 6.914
+Validation 	: volume - Loss 0.151	MAE 7.974	RMSE 9.991
+Epoch: [315/512]
+Train 		: volume - Loss 0.221	MAE 11.666	RMSE 13.214
+Validation 	: volume - Loss 0.165	MAE 8.741	RMSE 10.964
+Epoch: [316/512]
+Train 		: volume - Loss 0.569	MAE 30.098	RMSE 31.295
+Validation 	: volume - Loss 0.152	MAE 8.046	RMSE 10.777
+Epoch: [317/512]
+Train 		: volume - Loss 0.239	MAE 12.627	RMSE 14.107
+Validation 	: volume - Loss 0.149	MAE 7.867	RMSE 10.069
+Epoch: [318/512]
+Train 		: volume - Loss 0.361	MAE 19.101	RMSE 20.716
+Validation 	: volume - Loss 0.102	MAE 5.378	RMSE 6.170
+Epoch: [319/512]
+Train 		: volume - Loss 0.158	MAE 8.328	RMSE 9.458
+Validation 	: volume - Loss 0.140	MAE 7.401	RMSE 9.053
+Epoch: [320/512]
+Train 		: volume - Loss 0.175	MAE 9.265	RMSE 11.014
+Validation 	: volume - Loss 0.157	MAE 8.324	RMSE 12.964
+Epoch: [321/512]
+Train 		: volume - Loss 0.180	MAE 9.522	RMSE 12.177
+Validation 	: volume - Loss 0.170	MAE 8.963	RMSE 15.419
+Epoch: [322/512]
+Train 		: volume - Loss 0.297	MAE 15.685	RMSE 18.867
+Validation 	: volume - Loss 0.175	MAE 9.270	RMSE 15.790
+Epoch: [323/512]
+Train 		: volume - Loss 0.235	MAE 12.437	RMSE 15.737
+Validation 	: volume - Loss 0.173	MAE 9.157	RMSE 14.638
+Epoch: [324/512]
+Train 		: volume - Loss 0.230	MAE 12.159	RMSE 15.200
+Validation 	: volume - Loss 0.176	MAE 9.305	RMSE 13.322
+Epoch: [325/512]
+Train 		: volume - Loss 0.233	MAE 12.336	RMSE 15.079
+Validation 	: volume - Loss 0.121	MAE 6.392	RMSE 10.880
+Epoch: [326/512]
+Train 		: volume - Loss 0.252	MAE 13.299	RMSE 16.148
+Validation 	: volume - Loss 0.122	MAE 6.467	RMSE 8.596
+Epoch: [327/512]
+Train 		: volume - Loss 0.282	MAE 14.902	RMSE 16.998
+Validation 	: volume - Loss 0.116	MAE 6.125	RMSE 7.020
+Epoch: [328/512]
+Train 		: volume - Loss 0.143	MAE 7.563	RMSE 8.684
+Validation 	: volume - Loss 0.225	MAE 11.896	RMSE 14.690
+Epoch: [329/512]
+Train 		: volume - Loss 0.385	MAE 20.375	RMSE 21.899
+Validation 	: volume - Loss 0.309	MAE 16.319	RMSE 21.534
+Epoch: [330/512]
+Train 		: volume - Loss 0.429	MAE 22.667	RMSE 24.930
+Validation 	: volume - Loss 0.243	MAE 12.851	RMSE 16.341
+Epoch: [331/512]
+Train 		: volume - Loss 0.159	MAE 8.415	RMSE 10.040
+Validation 	: volume - Loss 0.179	MAE 9.489	RMSE 11.409
+Epoch: [332/512]
+Train 		: volume - Loss 0.120	MAE 6.363	RMSE 7.739
+Validation 	: volume - Loss 0.173	MAE 9.123	RMSE 10.238
+Epoch: [333/512]
+Train 		: volume - Loss 0.182	MAE 9.644	RMSE 10.789
+Validation 	: volume - Loss 0.171	MAE 9.053	RMSE 9.910
+Epoch: [334/512]
+Train 		: volume - Loss 0.157	MAE 8.297	RMSE 9.140
+Validation 	: volume - Loss 0.070	MAE 3.698	RMSE 4.793
+Epoch: [335/512]
+Train 		: volume - Loss 0.134	MAE 7.082	RMSE 7.991
+Validation 	: volume - Loss 0.102	MAE 5.366	RMSE 6.214
+Epoch: [336/512]
+Train 		: volume - Loss 0.097	MAE 5.122	RMSE 6.046
+Validation 	: volume - Loss 0.165	MAE 8.726	RMSE 9.598
+Epoch: [337/512]
+Train 		: volume - Loss 0.214	MAE 11.313	RMSE 12.440
+Validation 	: volume - Loss 0.160	MAE 8.443	RMSE 9.607
+Epoch: [338/512]
+Train 		: volume - Loss 0.124	MAE 6.568	RMSE 7.645
+Validation 	: volume - Loss 0.103	MAE 5.453	RMSE 6.613
+Epoch: [339/512]
+Train 		: volume - Loss 0.190	MAE 10.056	RMSE 11.022
+Validation 	: volume - Loss 0.083	MAE 4.374	RMSE 5.124
+Epoch: [340/512]
+Train 		: volume - Loss 0.117	MAE 6.190	RMSE 6.970
+Validation 	: volume - Loss 0.083	MAE 4.363	RMSE 7.124
+Epoch: [341/512]
+Train 		: volume - Loss 0.066	MAE 3.463	RMSE 4.222
+Validation 	: volume - Loss 0.142	MAE 7.531	RMSE 13.881
+Epoch: [342/512]
+Train 		: volume - Loss 0.136	MAE 7.199	RMSE 8.846
+Validation 	: volume - Loss 0.202	MAE 10.690	RMSE 20.222
+Epoch: [343/512]
+Train 		: volume - Loss 0.300	MAE 15.869	RMSE 18.690
+Validation 	: volume - Loss 0.233	MAE 12.313	RMSE 17.008
+Epoch: [344/512]
+Train 		: volume - Loss 0.140	MAE 7.407	RMSE 9.019
+Validation 	: volume - Loss 0.149	MAE 7.874	RMSE 8.478
+Epoch: [345/512]
+Train 		: volume - Loss 0.070	MAE 3.706	RMSE 4.493
+Validation 	: volume - Loss 0.053	MAE 2.824	RMSE 3.608
+Epoch: [346/512]
+Train 		: volume - Loss 0.113	MAE 5.960	RMSE 7.288
+Validation 	: volume - Loss 0.113	MAE 5.961	RMSE 7.835
+Epoch: [347/512]
+Train 		: volume - Loss 0.349	MAE 18.439	RMSE 20.294
+Validation 	: volume - Loss 0.124	MAE 6.565	RMSE 8.582
+Epoch: [348/512]
+Train 		: volume - Loss 0.451	MAE 23.851	RMSE 25.690
+Validation 	: volume - Loss 0.095	MAE 5.028	RMSE 5.926
+Epoch: [349/512]
+Train 		: volume - Loss 0.099	MAE 5.249	RMSE 6.426
+Validation 	: volume - Loss 0.109	MAE 5.778	RMSE 8.288
+Epoch: [350/512]
+Train 		: volume - Loss 0.144	MAE 7.630	RMSE 8.863
+Validation 	: volume - Loss 0.211	MAE 11.161	RMSE 13.907
+Epoch: [351/512]
+Train 		: volume - Loss 0.164	MAE 8.662	RMSE 9.912
+Validation 	: volume - Loss 0.227	MAE 11.983	RMSE 14.850
+Epoch: [352/512]
+Train 		: volume - Loss 0.206	MAE 10.917	RMSE 12.049
+Validation 	: volume - Loss 0.157	MAE 8.316	RMSE 10.798
+Epoch: [353/512]
+Train 		: volume - Loss 0.098	MAE 5.178	RMSE 6.031
+Validation 	: volume - Loss 0.122	MAE 6.452	RMSE 7.516
+Epoch: [354/512]
+Train 		: volume - Loss 0.183	MAE 9.691	RMSE 10.455
+Validation 	: volume - Loss 0.097	MAE 5.107	RMSE 5.646
+Epoch: [355/512]
+Train 		: volume - Loss 0.108	MAE 5.715	RMSE 6.678
+Validation 	: volume - Loss 0.067	MAE 3.548	RMSE 4.310
+Epoch: [356/512]
+Train 		: volume - Loss 0.068	MAE 3.580	RMSE 4.518
+Validation 	: volume - Loss 0.131	MAE 6.947	RMSE 8.181
+Epoch: [357/512]
+Train 		: volume - Loss 0.109	MAE 5.787	RMSE 6.521
+Validation 	: volume - Loss 0.129	MAE 6.829	RMSE 8.197
+Epoch: [358/512]
+Train 		: volume - Loss 0.120	MAE 6.346	RMSE 7.177
+Validation 	: volume - Loss 0.110	MAE 5.812	RMSE 7.237
+Epoch: [359/512]
+Train 		: volume - Loss 0.148	MAE 7.804	RMSE 9.283
+Validation 	: volume - Loss 0.115	MAE 6.089	RMSE 8.031
+Epoch: [360/512]
+Train 		: volume - Loss 0.163	MAE 8.629	RMSE 10.594
+Validation 	: volume - Loss 0.120	MAE 6.354	RMSE 8.361
+Epoch: [361/512]
+Train 		: volume - Loss 0.149	MAE 7.885	RMSE 9.863
+Validation 	: volume - Loss 0.119	MAE 6.288	RMSE 8.056
+Epoch: [362/512]
+Train 		: volume - Loss 0.165	MAE 8.716	RMSE 10.548
+Validation 	: volume - Loss 0.114	MAE 6.025	RMSE 7.436
+Epoch: [363/512]
+Train 		: volume - Loss 0.091	MAE 4.821	RMSE 6.416
+Validation 	: volume - Loss 0.115	MAE 6.097	RMSE 8.256
+Epoch: [364/512]
+Train 		: volume - Loss 0.247	MAE 13.070	RMSE 14.067
+Validation 	: volume - Loss 0.126	MAE 6.660	RMSE 9.073
+Epoch: [365/512]
+Train 		: volume - Loss 0.114	MAE 6.019	RMSE 6.815
+Validation 	: volume - Loss 0.136	MAE 7.203	RMSE 9.872
+Epoch: [366/512]
+Train 		: volume - Loss 0.066	MAE 3.497	RMSE 4.271
+Validation 	: volume - Loss 0.177	MAE 9.384	RMSE 12.208
+Epoch: [367/512]
+Train 		: volume - Loss 0.147	MAE 7.771	RMSE 8.597
+Validation 	: volume - Loss 0.129	MAE 6.831	RMSE 8.287
+Epoch: [368/512]
+Train 		: volume - Loss 0.162	MAE 8.554	RMSE 9.165
+Validation 	: volume - Loss 0.057	MAE 3.014	RMSE 3.971
+Epoch: [369/512]
+Train 		: volume - Loss 0.085	MAE 4.512	RMSE 5.794
+Validation 	: volume - Loss 0.134	MAE 7.080	RMSE 8.002
+Epoch: [370/512]
+Train 		: volume - Loss 0.132	MAE 7.001	RMSE 8.511
+Validation 	: volume - Loss 0.230	MAE 12.152	RMSE 12.895
+Epoch: [371/512]
+Train 		: volume - Loss 0.149	MAE 7.875	RMSE 9.214
+Validation 	: volume - Loss 0.285	MAE 15.080	RMSE 16.007
+Epoch: [372/512]
+Train 		: volume - Loss 0.173	MAE 9.126	RMSE 10.370
+Validation 	: volume - Loss 0.304	MAE 16.079	RMSE 17.160
+Epoch: [373/512]
+Train 		: volume - Loss 0.199	MAE 10.544	RMSE 11.754
+Validation 	: volume - Loss 0.293	MAE 15.497	RMSE 17.010
+Epoch: [374/512]
+Train 		: volume - Loss 0.199	MAE 10.525	RMSE 11.537
+Validation 	: volume - Loss 0.316	MAE 16.725	RMSE 17.393
+Epoch: [375/512]
+Train 		: volume - Loss 0.299	MAE 15.834	RMSE 16.671
+Validation 	: volume - Loss 0.330	MAE 17.439	RMSE 18.685
+Epoch: [376/512]
+Train 		: volume - Loss 0.264	MAE 13.961	RMSE 14.467
+Validation 	: volume - Loss 0.224	MAE 11.854	RMSE 17.000
+Epoch: [377/512]
+Train 		: volume - Loss 0.220	MAE 11.606	RMSE 12.978
+Validation 	: volume - Loss 0.227	MAE 11.982	RMSE 16.258
+Epoch: [378/512]
+Train 		: volume - Loss 0.267	MAE 14.117	RMSE 15.539
+Validation 	: volume - Loss 0.335	MAE 17.721	RMSE 19.930
+Epoch: [379/512]
+Train 		: volume - Loss 0.299	MAE 15.811	RMSE 16.596
+Validation 	: volume - Loss 0.282	MAE 14.919	RMSE 15.999
+Epoch: [380/512]
+Train 		: volume - Loss 0.177	MAE 9.347	RMSE 10.209
+Validation 	: volume - Loss 0.139	MAE 7.370	RMSE 9.510
+Epoch: [381/512]
+Train 		: volume - Loss 0.146	MAE 7.735	RMSE 8.767
+Validation 	: volume - Loss 0.139	MAE 7.333	RMSE 10.962
+Epoch: [382/512]
+Train 		: volume - Loss 0.229	MAE 12.123	RMSE 13.048
+Validation 	: volume - Loss 0.204	MAE 10.805	RMSE 14.131
+Epoch: [383/512]
+Train 		: volume - Loss 0.156	MAE 8.261	RMSE 9.271
+Validation 	: volume - Loss 0.185	MAE 9.770	RMSE 12.335
+Epoch: [384/512]
+Train 		: volume - Loss 0.173	MAE 9.130	RMSE 10.234
+Validation 	: volume - Loss 0.165	MAE 8.741	RMSE 10.778
+Epoch: [385/512]
+Train 		: volume - Loss 0.252	MAE 13.318	RMSE 14.540
+Validation 	: volume - Loss 0.148	MAE 7.799	RMSE 9.768
+Epoch: [386/512]
+Train 		: volume - Loss 0.100	MAE 5.267	RMSE 6.492
+Validation 	: volume - Loss 0.118	MAE 6.261	RMSE 7.703
+Epoch: [387/512]
+Train 		: volume - Loss 0.190	MAE 10.034	RMSE 11.286
+Validation 	: volume - Loss 0.111	MAE 5.862	RMSE 7.034
+Epoch: [388/512]
+Train 		: volume - Loss 0.090	MAE 4.746	RMSE 6.089
+Validation 	: volume - Loss 0.235	MAE 12.403	RMSE 13.140
+Epoch: [389/512]
+Train 		: volume - Loss 0.364	MAE 19.251	RMSE 20.274
+Validation 	: volume - Loss 0.320	MAE 16.936	RMSE 17.428
+Epoch: [390/512]
+Train 		: volume - Loss 0.202	MAE 10.695	RMSE 11.559
+Validation 	: volume - Loss 0.208	MAE 11.015	RMSE 12.080
+Epoch: [391/512]
+Train 		: volume - Loss 0.234	MAE 12.351	RMSE 13.290
+Validation 	: volume - Loss 0.110	MAE 5.837	RMSE 8.667
+Epoch: [392/512]
+Train 		: volume - Loss 0.195	MAE 10.312	RMSE 11.095
+Validation 	: volume - Loss 0.185	MAE 9.804	RMSE 12.212
+Epoch: [393/512]
+Train 		: volume - Loss 0.262	MAE 13.868	RMSE 14.637
+Validation 	: volume - Loss 0.197	MAE 10.437	RMSE 12.586
+Epoch: [394/512]
+Train 		: volume - Loss 0.286	MAE 15.130	RMSE 15.905
+Validation 	: volume - Loss 0.141	MAE 7.453	RMSE 9.644
+Epoch: [395/512]
+Train 		: volume - Loss 0.173	MAE 9.124	RMSE 9.885
+Validation 	: volume - Loss 0.076	MAE 4.008	RMSE 5.520
+Epoch: [396/512]
+Train 		: volume - Loss 0.200	MAE 10.554	RMSE 11.489
+Validation 	: volume - Loss 0.154	MAE 8.138	RMSE 8.708
+Epoch: [397/512]
+Train 		: volume - Loss 0.209	MAE 11.069	RMSE 11.986
+Validation 	: volume - Loss 0.206	MAE 10.887	RMSE 12.738
+Epoch: [398/512]
+Train 		: volume - Loss 0.135	MAE 7.149	RMSE 7.880
+Validation 	: volume - Loss 0.200	MAE 10.596	RMSE 13.261
+Epoch: [399/512]
+Train 		: volume - Loss 0.138	MAE 7.286	RMSE 8.019
+Validation 	: volume - Loss 0.100	MAE 5.293	RMSE 7.433
+Epoch: [400/512]
+Train 		: volume - Loss 0.113	MAE 5.998	RMSE 6.773
+Validation 	: volume - Loss 0.069	MAE 3.632	RMSE 4.391
+Epoch: [401/512]
+Train 		: volume - Loss 0.148	MAE 7.849	RMSE 8.855
+Validation 	: volume - Loss 0.129	MAE 6.797	RMSE 7.971
+Epoch: [402/512]
+Train 		: volume - Loss 0.173	MAE 9.136	RMSE 10.427
+Validation 	: volume - Loss 0.174	MAE 9.216	RMSE 10.389
+Epoch: [403/512]
+Train 		: volume - Loss 0.285	MAE 15.055	RMSE 16.442
+Validation 	: volume - Loss 0.170	MAE 8.988	RMSE 10.244
+Epoch: [404/512]
+Train 		: volume - Loss 0.256	MAE 13.553	RMSE 14.828
+Validation 	: volume - Loss 0.147	MAE 7.766	RMSE 8.761
+Epoch: [405/512]
+Train 		: volume - Loss 0.191	MAE 10.084	RMSE 11.115
+Validation 	: volume - Loss 0.106	MAE 5.582	RMSE 6.628
+Epoch: [406/512]
+Train 		: volume - Loss 0.095	MAE 4.998	RMSE 5.868
+Validation 	: volume - Loss 0.082	MAE 4.318	RMSE 5.485
+Epoch: [407/512]
+Train 		: volume - Loss 0.127	MAE 6.701	RMSE 7.587
+Validation 	: volume - Loss 0.084	MAE 4.438	RMSE 5.562
+Epoch: [408/512]
+Train 		: volume - Loss 0.142	MAE 7.524	RMSE 8.294
+Validation 	: volume - Loss 0.108	MAE 5.716	RMSE 8.984
+Epoch: [409/512]
+Train 		: volume - Loss 0.159	MAE 8.395	RMSE 9.397
+Validation 	: volume - Loss 0.134	MAE 7.093	RMSE 12.895
+Epoch: [410/512]
+Train 		: volume - Loss 0.114	MAE 6.029	RMSE 7.704
+Validation 	: volume - Loss 0.176	MAE 9.297	RMSE 13.601
+Epoch: [411/512]
+Train 		: volume - Loss 0.206	MAE 10.898	RMSE 12.338
+Validation 	: volume - Loss 0.179	MAE 9.446	RMSE 11.641
+Epoch: [412/512]
+Train 		: volume - Loss 0.297	MAE 15.707	RMSE 16.527
+Validation 	: volume - Loss 0.119	MAE 6.307	RMSE 7.011
+Epoch: [413/512]
+Train 		: volume - Loss 0.094	MAE 4.954	RMSE 5.621
+Validation 	: volume - Loss 0.077	MAE 4.058	RMSE 5.252
+Epoch: [414/512]
+Train 		: volume - Loss 0.127	MAE 6.721	RMSE 7.793
+Validation 	: volume - Loss 0.069	MAE 3.623	RMSE 5.287
+Epoch: [415/512]
+Train 		: volume - Loss 0.069	MAE 3.660	RMSE 4.940
+Validation 	: volume - Loss 0.074	MAE 3.939	RMSE 5.947
+Epoch: [416/512]
+Train 		: volume - Loss 0.082	MAE 4.314	RMSE 5.688
+Validation 	: volume - Loss 0.073	MAE 3.852	RMSE 5.734
+Epoch: [417/512]
+Train 		: volume - Loss 0.095	MAE 5.013	RMSE 6.323
+Validation 	: volume - Loss 0.096	MAE 5.093	RMSE 6.381
+Epoch: [418/512]
+Train 		: volume - Loss 0.173	MAE 9.168	RMSE 10.217
+Validation 	: volume - Loss 0.157	MAE 8.280	RMSE 8.964
+Epoch: [419/512]
+Train 		: volume - Loss 0.117	MAE 6.167	RMSE 6.973
+Validation 	: volume - Loss 0.192	MAE 10.145	RMSE 10.830
+Epoch: [420/512]
+Train 		: volume - Loss 0.191	MAE 10.116	RMSE 10.916
+Validation 	: volume - Loss 0.154	MAE 8.127	RMSE 8.714
+Epoch: [421/512]
+Train 		: volume - Loss 0.153	MAE 8.094	RMSE 8.897
+Validation 	: volume - Loss 0.095	MAE 5.035	RMSE 6.445
+Epoch: [422/512]
+Train 		: volume - Loss 0.051	MAE 2.670	RMSE 3.407
+Validation 	: volume - Loss 0.121	MAE 6.382	RMSE 11.806
+Epoch: [423/512]
+Train 		: volume - Loss 0.096	MAE 5.088	RMSE 6.477
+Validation 	: volume - Loss 0.199	MAE 10.524	RMSE 19.366
+Epoch: [424/512]
+Train 		: volume - Loss 0.165	MAE 8.729	RMSE 11.635
+Validation 	: volume - Loss 0.195	MAE 10.285	RMSE 22.102
+Epoch: [425/512]
+Train 		: volume - Loss 0.244	MAE 12.884	RMSE 16.642
+Validation 	: volume - Loss 0.158	MAE 8.351	RMSE 17.750
+Epoch: [426/512]
+Train 		: volume - Loss 0.200	MAE 10.588	RMSE 13.285
+Validation 	: volume - Loss 0.107	MAE 5.638	RMSE 9.204
+Epoch: [427/512]
+Train 		: volume - Loss 0.107	MAE 5.666	RMSE 6.425
+Validation 	: volume - Loss 0.127	MAE 6.693	RMSE 9.998
+Epoch: [428/512]
+Train 		: volume - Loss 0.162	MAE 8.559	RMSE 9.813
+Validation 	: volume - Loss 0.188	MAE 9.932	RMSE 13.863
+Epoch: [429/512]
+Train 		: volume - Loss 0.300	MAE 15.883	RMSE 17.863
+Validation 	: volume - Loss 0.198	MAE 10.460	RMSE 15.075
+Epoch: [430/512]
+Train 		: volume - Loss 0.399	MAE 21.106	RMSE 23.368
+Validation 	: volume - Loss 0.177	MAE 9.367	RMSE 14.057
+Epoch: [431/512]
+Train 		: volume - Loss 0.283	MAE 14.977	RMSE 17.048
+Validation 	: volume - Loss 0.154	MAE 8.167	RMSE 12.080
+Epoch: [432/512]
+Train 		: volume - Loss 0.310	MAE 16.374	RMSE 18.125
+Validation 	: volume - Loss 0.109	MAE 5.753	RMSE 8.439
+Epoch: [433/512]
+Train 		: volume - Loss 0.212	MAE 11.224	RMSE 12.470
+Validation 	: volume - Loss 0.102	MAE 5.387	RMSE 6.706
+Epoch: [434/512]
+Train 		: volume - Loss 0.141	MAE 7.444	RMSE 8.159
+Validation 	: volume - Loss 0.157	MAE 8.293	RMSE 12.659
+Epoch: [435/512]
+Train 		: volume - Loss 0.147	MAE 7.779	RMSE 9.089
+Validation 	: volume - Loss 0.219	MAE 11.560	RMSE 17.008
+Epoch: [436/512]
+Train 		: volume - Loss 0.187	MAE 9.910	RMSE 11.839
+Validation 	: volume - Loss 0.288	MAE 15.233	RMSE 19.463
+Epoch: [437/512]
+Train 		: volume - Loss 0.327	MAE 17.277	RMSE 19.047
+Validation 	: volume - Loss 0.262	MAE 13.867	RMSE 17.277
+Epoch: [438/512]
+Train 		: volume - Loss 0.202	MAE 10.694	RMSE 12.155
+Validation 	: volume - Loss 0.208	MAE 11.019	RMSE 13.860
+Epoch: [439/512]
+Train 		: volume - Loss 0.162	MAE 8.557	RMSE 9.694
+Validation 	: volume - Loss 0.254	MAE 13.430	RMSE 15.617
+Epoch: [440/512]
+Train 		: volume - Loss 0.206	MAE 10.889	RMSE 11.786
+Validation 	: volume - Loss 0.336	MAE 17.765	RMSE 19.025
+Epoch: [441/512]
+Train 		: volume - Loss 0.334	MAE 17.674	RMSE 18.771
+Validation 	: volume - Loss 0.357	MAE 18.865	RMSE 20.499
+Epoch: [442/512]
+Train 		: volume - Loss 0.268	MAE 14.162	RMSE 15.487
+Validation 	: volume - Loss 0.350	MAE 18.482	RMSE 20.456
+Epoch: [443/512]
+Train 		: volume - Loss 0.626	MAE 33.089	RMSE 34.725
+Validation 	: volume - Loss 0.318	MAE 16.802	RMSE 18.888
+Epoch: [444/512]
+Train 		: volume - Loss 0.167	MAE 8.846	RMSE 10.592
+Validation 	: volume - Loss 0.255	MAE 13.472	RMSE 15.491
+Epoch: [445/512]
+Train 		: volume - Loss 0.182	MAE 9.614	RMSE 11.347
+Validation 	: volume - Loss 0.185	MAE 9.802	RMSE 11.819
+Epoch: [446/512]
+Train 		: volume - Loss 0.121	MAE 6.399	RMSE 8.108
+Validation 	: volume - Loss 0.119	MAE 6.281	RMSE 8.732
+Epoch: [447/512]
+Train 		: volume - Loss 0.140	MAE 7.409	RMSE 9.143
+Validation 	: volume - Loss 0.090	MAE 4.744	RMSE 7.135
+Epoch: [448/512]
+Train 		: volume - Loss 0.137	MAE 7.252	RMSE 8.862
+Validation 	: volume - Loss 0.152	MAE 8.040	RMSE 9.056
+Epoch: [449/512]
+Train 		: volume - Loss 0.167	MAE 8.808	RMSE 9.802
+Validation 	: volume - Loss 0.128	MAE 6.746	RMSE 7.778
+Epoch: [450/512]
+Train 		: volume - Loss 0.064	MAE 3.381	RMSE 4.206
+Validation 	: volume - Loss 0.112	MAE 5.920	RMSE 7.158
+Epoch: [451/512]
+Train 		: volume - Loss 0.188	MAE 9.961	RMSE 10.687
+Validation 	: volume - Loss 0.175	MAE 9.278	RMSE 14.057
+Epoch: [452/512]
+Train 		: volume - Loss 0.176	MAE 9.299	RMSE 10.859
+Validation 	: volume - Loss 0.276	MAE 14.587	RMSE 25.973
+Epoch: [453/512]
+Train 		: volume - Loss 0.186	MAE 9.833	RMSE 13.798
+Validation 	: volume - Loss 0.361	MAE 19.065	RMSE 31.554
+Epoch: [454/512]
+Train 		: volume - Loss 0.308	MAE 16.280	RMSE 20.605
+Validation 	: volume - Loss 0.350	MAE 18.508	RMSE 29.491
+Epoch: [455/512]
+Train 		: volume - Loss 0.231	MAE 12.195	RMSE 15.652
+Validation 	: volume - Loss 0.205	MAE 10.841	RMSE 21.675
+Epoch: [456/512]
+Train 		: volume - Loss 0.275	MAE 14.528	RMSE 17.455
+Validation 	: volume - Loss 0.156	MAE 8.222	RMSE 14.745
+Epoch: [457/512]
+Train 		: volume - Loss 0.094	MAE 4.996	RMSE 6.209
+Validation 	: volume - Loss 0.206	MAE 10.913	RMSE 13.796
+Epoch: [458/512]
+Train 		: volume - Loss 0.122	MAE 6.446	RMSE 7.526
+Validation 	: volume - Loss 0.246	MAE 13.021	RMSE 15.382
+Epoch: [459/512]
+Train 		: volume - Loss 0.378	MAE 20.001	RMSE 21.278
+Validation 	: volume - Loss 0.274	MAE 14.466	RMSE 17.204
+Epoch: [460/512]
+Train 		: volume - Loss 0.223	MAE 11.797	RMSE 13.170
+Validation 	: volume - Loss 0.299	MAE 15.783	RMSE 18.446
+Epoch: [461/512]
+Train 		: volume - Loss 0.160	MAE 8.438	RMSE 10.239
+Validation 	: volume - Loss 0.363	MAE 19.213	RMSE 21.761
+Epoch: [462/512]
+Train 		: volume - Loss 0.435	MAE 22.984	RMSE 24.542
+Validation 	: volume - Loss 0.422	MAE 22.313	RMSE 25.202
+Epoch: [463/512]
+Train 		: volume - Loss 0.382	MAE 20.179	RMSE 21.379
+Validation 	: volume - Loss 0.421	MAE 22.242	RMSE 25.563
+Epoch: [464/512]
+Train 		: volume - Loss 0.395	MAE 20.877	RMSE 22.072
+Validation 	: volume - Loss 0.339	MAE 17.898	RMSE 20.383
+Epoch: [465/512]
+Train 		: volume - Loss 0.395	MAE 20.869	RMSE 21.900
+Validation 	: volume - Loss 0.204	MAE 10.795	RMSE 12.764
+Epoch: [466/512]
+Train 		: volume - Loss 0.316	MAE 16.728	RMSE 17.871
+Validation 	: volume - Loss 0.100	MAE 5.291	RMSE 6.628
+Epoch: [467/512]
+Train 		: volume - Loss 0.097	MAE 5.115	RMSE 5.977
+Validation 	: volume - Loss 0.159	MAE 8.383	RMSE 9.683
+Epoch: [468/512]
+Train 		: volume - Loss 0.141	MAE 7.454	RMSE 8.843
+Validation 	: volume - Loss 0.267	MAE 14.114	RMSE 14.947
+Epoch: [469/512]
+Train 		: volume - Loss 0.262	MAE 13.836	RMSE 15.168
+Validation 	: volume - Loss 0.217	MAE 11.455	RMSE 13.626
+Epoch: [470/512]
+Train 		: volume - Loss 0.237	MAE 12.554	RMSE 14.462
+Validation 	: volume - Loss 0.165	MAE 8.709	RMSE 11.798
+Epoch: [471/512]
+Train 		: volume - Loss 0.329	MAE 17.379	RMSE 19.237
+Validation 	: volume - Loss 0.177	MAE 9.356	RMSE 11.744
+Epoch: [472/512]
+Train 		: volume - Loss 0.267	MAE 14.138	RMSE 15.559
+Validation 	: volume - Loss 0.203	MAE 10.721	RMSE 12.423
+Epoch: [473/512]
+Train 		: volume - Loss 0.158	MAE 8.377	RMSE 9.504
+Validation 	: volume - Loss 0.225	MAE 11.912	RMSE 14.240
+Epoch: [474/512]
+Train 		: volume - Loss 0.286	MAE 15.142	RMSE 16.401
+Validation 	: volume - Loss 0.274	MAE 14.464	RMSE 16.154
+Epoch: [475/512]
+Train 		: volume - Loss 0.404	MAE 21.373	RMSE 22.808
+Validation 	: volume - Loss 0.323	MAE 17.074	RMSE 18.608
+Epoch: [476/512]
+Train 		: volume - Loss 0.243	MAE 12.831	RMSE 13.883
+Validation 	: volume - Loss 0.305	MAE 16.128	RMSE 18.929
+Epoch: [477/512]
+Train 		: volume - Loss 0.373	MAE 19.726	RMSE 20.731
+Validation 	: volume - Loss 0.197	MAE 10.427	RMSE 12.739
+Epoch: [478/512]
+Train 		: volume - Loss 0.105	MAE 5.539	RMSE 6.435
+Validation 	: volume - Loss 0.085	MAE 4.481	RMSE 6.043
+Epoch: [479/512]
+Train 		: volume - Loss 0.179	MAE 9.467	RMSE 10.331
+Validation 	: volume - Loss 0.123	MAE 6.510	RMSE 8.065
+Epoch: [480/512]
+Train 		: volume - Loss 0.242	MAE 12.798	RMSE 14.355
+Validation 	: volume - Loss 0.149	MAE 7.883	RMSE 10.112
+Epoch: [481/512]
+Train 		: volume - Loss 0.191	MAE 10.109	RMSE 12.118
+Validation 	: volume - Loss 0.132	MAE 6.986	RMSE 9.543
+Epoch: [482/512]
+Train 		: volume - Loss 0.257	MAE 13.593	RMSE 15.750
+Validation 	: volume - Loss 0.100	MAE 5.268	RMSE 6.864
+Epoch: [483/512]
+Train 		: volume - Loss 0.085	MAE 4.474	RMSE 6.253
+Validation 	: volume - Loss 0.075	MAE 3.959	RMSE 5.054
+Epoch: [484/512]
+Train 		: volume - Loss 0.080	MAE 4.232	RMSE 5.235
+Validation 	: volume - Loss 0.131	MAE 6.939	RMSE 9.873
+Epoch: [485/512]
+Train 		: volume - Loss 0.142	MAE 7.501	RMSE 8.703
+Validation 	: volume - Loss 0.198	MAE 10.473	RMSE 14.353
+Epoch: [486/512]
+Train 		: volume - Loss 0.247	MAE 13.045	RMSE 14.474
+Validation 	: volume - Loss 0.169	MAE 8.958	RMSE 12.985
+Epoch: [487/512]
+Train 		: volume - Loss 0.210	MAE 11.086	RMSE 12.636
+Validation 	: volume - Loss 0.097	MAE 5.152	RMSE 7.605
+Epoch: [488/512]
+Train 		: volume - Loss 0.087	MAE 4.617	RMSE 5.923
+Validation 	: volume - Loss 0.119	MAE 6.317	RMSE 7.809
+Epoch: [489/512]
+Train 		: volume - Loss 0.143	MAE 7.562	RMSE 9.087
+Validation 	: volume - Loss 0.173	MAE 9.124	RMSE 10.673
+Epoch: [490/512]
+Train 		: volume - Loss 0.174	MAE 9.201	RMSE 10.727
+Validation 	: volume - Loss 0.197	MAE 10.435	RMSE 12.066
+Epoch: [491/512]
+Train 		: volume - Loss 0.196	MAE 10.370	RMSE 11.961
+Validation 	: volume - Loss 0.121	MAE 6.397	RMSE 9.350
+Epoch: [492/512]
+Train 		: volume - Loss 0.407	MAE 21.543	RMSE 23.551
+Validation 	: volume - Loss 0.113	MAE 5.963	RMSE 8.648
+Epoch: [493/512]
+Train 		: volume - Loss 0.214	MAE 11.303	RMSE 12.763
+Validation 	: volume - Loss 0.148	MAE 7.810	RMSE 8.828
+Epoch: [494/512]
+Train 		: volume - Loss 0.182	MAE 9.645	RMSE 10.614
+Validation 	: volume - Loss 0.125	MAE 6.604	RMSE 8.069
+Epoch: [495/512]
+Train 		: volume - Loss 0.160	MAE 8.471	RMSE 9.278
+Validation 	: volume - Loss 0.077	MAE 4.095	RMSE 5.762
+Epoch: [496/512]
+Train 		: volume - Loss 0.161	MAE 8.504	RMSE 9.251
+Validation 	: volume - Loss 0.085	MAE 4.517	RMSE 4.801
+Epoch: [497/512]
+Train 		: volume - Loss 0.108	MAE 5.718	RMSE 6.721
+Validation 	: volume - Loss 0.132	MAE 7.003	RMSE 7.867
+Epoch: [498/512]
+Train 		: volume - Loss 0.090	MAE 4.760	RMSE 6.007
+Validation 	: volume - Loss 0.159	MAE 8.402	RMSE 9.375
+Epoch: [499/512]
+Train 		: volume - Loss 0.135	MAE 7.150	RMSE 8.465
+Validation 	: volume - Loss 0.134	MAE 7.095	RMSE 8.144
+Epoch: [500/512]
+Train 		: volume - Loss 0.116	MAE 6.143	RMSE 7.584
+Validation 	: volume - Loss 0.087	MAE 4.585	RMSE 6.215
+Epoch: [501/512]
+Train 		: volume - Loss 0.101	MAE 5.350	RMSE 6.640
+Validation 	: volume - Loss 0.140	MAE 7.404	RMSE 9.123
+Epoch: [502/512]
+Train 		: volume - Loss 0.167	MAE 8.820	RMSE 9.890
+Validation 	: volume - Loss 0.199	MAE 10.509	RMSE 12.452
+Epoch: [503/512]
+Train 		: volume - Loss 0.174	MAE 9.198	RMSE 10.360
+Validation 	: volume - Loss 0.231	MAE 12.207	RMSE 14.126
+Epoch: [504/512]
+Train 		: volume - Loss 0.189	MAE 9.978	RMSE 11.306
+Validation 	: volume - Loss 0.232	MAE 12.242	RMSE 14.371
+Epoch: [505/512]
+Train 		: volume - Loss 0.151	MAE 7.991	RMSE 9.338
+Validation 	: volume - Loss 0.231	MAE 12.198	RMSE 14.293
+Epoch: [506/512]
+Train 		: volume - Loss 0.211	MAE 11.145	RMSE 12.435
+Validation 	: volume - Loss 0.256	MAE 13.522	RMSE 17.577
+Epoch: [507/512]
+Train 		: volume - Loss 0.340	MAE 17.964	RMSE 19.351
+Validation 	: volume - Loss 0.283	MAE 14.976	RMSE 24.940
+Epoch: [508/512]
+Train 		: volume - Loss 0.238	MAE 12.562	RMSE 15.156
+Validation 	: volume - Loss 0.253	MAE 13.399	RMSE 29.016
+Epoch: [509/512]
+Train 		: volume - Loss 0.295	MAE 15.576	RMSE 19.954
+Validation 	: volume - Loss 0.248	MAE 13.110	RMSE 28.888
+Epoch: [510/512]
+Train 		: volume - Loss 0.191	MAE 10.095	RMSE 14.888
+Validation 	: volume - Loss 0.321	MAE 16.981	RMSE 26.729
+Epoch: [511/512]
+Train 		: volume - Loss 0.286	MAE 15.105	RMSE 18.213
+Validation 	: volume - Loss 0.267	MAE 14.101	RMSE 20.868
+Epoch: [512/512]
+Train 		: volume - Loss 0.277	MAE 14.666	RMSE 16.777
+Validation 	: volume - Loss 0.167	MAE 8.834	RMSE 12.002
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ------------Evaluate model on Test Set------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -208,6 +1552,6 @@ Evaluating Model
 
 Task: 'volume' on Test Set
 Model Performance Metrics:
-R2 Score: 0.2143
-MAE: 37.7490
-RMSE: 53.7010
+R2 Score: 0.9347
+MAE: 8.8345
+RMSE: 12.0021

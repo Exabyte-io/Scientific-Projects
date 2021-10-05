@@ -11,6 +11,6 @@ Evaluating Model
 
 Task: 'volume' on Test Set
 Model Performance Metrics:
-R2 Score: 0.4170
-MAE: 27.1005
-RMSE: 39.1713
+R2 Score: 0.9550
+MAE: 9.1073
+RMSE: 11.2126
