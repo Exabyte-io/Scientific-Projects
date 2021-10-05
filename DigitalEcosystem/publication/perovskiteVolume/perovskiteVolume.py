@@ -415,7 +415,8 @@ for key, fun in sisso_models.items():
 # In[]:
 
 
-sisso_data_train['r1_1term']
+sisso_data_train.to_csv(os.path.join(sisso_dir, 'sisso_results_train.csv'))
+sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_results_test.csv'))
 
 
 # In[]:
