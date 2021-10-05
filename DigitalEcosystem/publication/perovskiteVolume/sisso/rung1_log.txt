@@ -1,0 +1,34 @@
+time input_parsing: 0.00413849 s
+time to generate feat sapce: 0.0156283 s
+Projection time: 0.00573623 s
+Time to get best features on rank : 8.1138e-05 s
+Complete final combination/selection from all ranks: 0.00180903 s
+Time for SIS: 0.210256 s
+Time for l0-norm: 0.000579334 s
+Projection time: 0.000795166 s
+Time to get best features on rank : 7.8268e-05 s
+Complete final combination/selection from all ranks: 0.00223319 s
+Time for SIS: 0.00773229 s
+Time for l0-norm: 0.000430492 s
+Projection time: 0.000762243 s
+Time to get best features on rank : 4.0878e-05 s
+Complete final combination/selection from all ranks: 0.00204533 s
+Time for SIS: 0.00963012 s
+Time for l0-norm: 0.00359355 s
+Projection time: 0.000776717 s
+Time to get best features on rank : 3.2331e-05 s
+Complete final combination/selection from all ranks: 0.00224511 s
+Time for SIS: 0.00970979 s
+Time for l0-norm: 0.0787598 s
+Train RMSE: 21.662 Unitless; Test RMSE: 25.7103 Unitless
+c0 + a0 * (ave:atomic_volume + ave:atomic_radius_rahm)
+
+Train RMSE: 14.585 Unitless; Test RMSE: 16.0542 Unitless
+c0 + a0 * (ave:bulk_modulus - ave:atomic_number) + a1 * (ave:atomic_radius_rahm^6)
+
+Train RMSE: 12.9306 Unitless; Test RMSE: 14.4152 Unitless
+c0 + a0 * (var:c6_gb / sum:hhi_r) + a1 * cbrt(var:melting_point) + a2 * (ave:atomic_volume + ave:atomic_radius_rahm)
+
+Train RMSE: 11.9 Unitless; Test RMSE: 13.9394 Unitless
+c0 + a0 * (var:c6_gb / sum:hhi_p) + a1 * (ave:boiling_point^6) + a2 * (ave:bulk_modulus - ave:atomic_weight) + a3 * (ave:atomic_volume + ave:atomic_radius_rahm)
+

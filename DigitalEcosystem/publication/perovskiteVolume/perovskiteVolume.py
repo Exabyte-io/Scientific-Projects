@@ -24,7 +24,7 @@ import xgboost
 
 import xenonpy.descriptor
 
-import sys
+import sys, os
 
 sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
@@ -38,10 +38,18 @@ pd.options.mode.chained_assignment = None
 
 
 # Random seeds for reproducibility
-RANDOM_SEED = 1234
+RANDOM_SEED = 42
 import random
 random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
+
+
+# In[]:
+
+
+# Plot Configuration
+plt.rcParams["figure.figsize"] = (15, 15)
+plt.rcParams["font.size"] = 32
 
 
 # # Read in the Data
@@ -73,12 +81,14 @@ data
 target_column = ['Volume']
 xenonpy_descriptors = [col for col in data.columns if ":" in col]
 
+descriptors = xenonpy_descriptors
+
 train, test = sklearn.model_selection.train_test_split(data, test_size=0.1, random_state=RANDOM_SEED)
 
-train_x = train[xenonpy_descriptors].to_numpy()
+train_x = train[descriptors].to_numpy()
 train_y = train[target_column].to_numpy()
 
-test_x = test[xenonpy_descriptors].to_numpy()
+test_x = test[descriptors].to_numpy()
 test_y = test[target_column].to_numpy()
 
 
@@ -120,9 +130,9 @@ def objective(trial: optuna.Trial):
 
 
     params = {
-        'learning_rate': trial.suggest_float('learning_rate', 0, 1),
-        'min_split_loss': trial.suggest_float('min_split_loss', 0, 1),
-        'max_depth': trial.suggest_int('max_depth', 1, 100),
+        'learning_rate': trial.suggest_float('learning_rate', 0, 2),
+        'min_split_loss': trial.suggest_float('min_split_loss', 0, 2),
+        'max_depth': trial.suggest_int('max_depth', 1, 256),
         'min_child_weight': trial.suggest_float('min_child_weight', 0, 10),
         'reg_lambda': trial.suggest_float('reg_lambda', 0, 2),
         'reg_alpha': trial.suggest_float('reg_alpha', 0, 2)
@@ -138,7 +148,7 @@ def objective(trial: optuna.Trial):
     current_reg = sklearn.pipeline.Pipeline([
         (scaler, scalers[scaler]),
         ("XGB_Regressor", xgboost.sklearn.XGBRegressor(**params,
-                                               n_estimators=100,
+                                               n_estimators=256,
                                                n_jobs=1,
                                                objective='reg:squarederror',
                                                random_state=RANDOM_SEED),)
@@ -154,12 +164,13 @@ def objective(trial: optuna.Trial):
                             'XGB_Regressor__verbose': False
                          })
 
-    score = sklearn.metrics.mean_poisson_deviance(
+    mse = sklearn.metrics.mean_squared_error(
         y_true=objective_validation_y_reg,
-        y_pred=abs(current_reg.predict(objective_validation_x_reg)),
+        y_pred=current_reg.predict(objective_validation_x_reg),
     )
+    rmse = np.sqrt(mse)
 
-    return score
+    return rmse
 
 reg_study = optuna.create_study(
     sampler = optuna.samplers.TPESampler(
@@ -169,7 +180,7 @@ reg_study = optuna.create_study(
     ),
     pruner = optuna.pruners.HyperbandPruner(
         min_resource=1,
-        max_resource=100),
+        max_resource=256),
     direction='minimize')
 
 reg_study.optimize(func=objective, n_trials=1000, callbacks=[keep_best_reg])
@@ -178,13 +189,12 @@ reg_study.optimize(func=objective, n_trials=1000, callbacks=[keep_best_reg])
 # In[]:
 
 
-DigitalEcosystem.utils.figures.save_parity_plot(train_x,
-                                                test_x,
-                                                train_y,
-                                                test_y,
-                                                best_reg,
-                                                "Perovskite Volume (Å^3 / formula unit)",
-                                                "xgboost_perovskite_volume_parity.jpeg")
+DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = train_y,
+                                                       train_y_pred = best_reg.predict(train_x),
+                                                       test_y_true = test_y,
+                                                       test_y_pred = best_reg.predict(test_x),
+                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                       filename = "xgboost_perovskite_volume_parity.jpeg")
 
 
 # In[]:
@@ -201,6 +211,21 @@ for key, fun in metrics.items():
     print(key,np.round(value,4))
 
 
+# In[]:
+
+
+n_importances = 10
+importances = list(zip(best_reg[1].feature_importances_, xenonpy_descriptors))
+
+sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
+plt.barh(range(n_importances), [imp[0] for imp in sorted_importances[:n_importances]])
+plt.yticksRANDOM_SEEDnge(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
+plt.ylabel("Feature")
+plt.xlabel("Importance Score")
+plt.tight_layout()
+plt.savefig("xgboost_importances.jpeg")
+
+
 # # TPOT
 
 # In[]:
@@ -215,22 +240,17 @@ tpot_model = tpot.TPOTRegressor(
     scoring="neg_root_mean_squared_error",
     config_dict=tpot.config.regressor_config_dict,
     n_jobs=-1,
-    random_state=1234
+    random_state=RANDOM_SEED
 )
 
 tpot_model.fit(train_x, train_y.ravel())
 
-
-# In[]:
-
-
-DigitalEcosystem.utils.figures.save_parity_plot(train_x,
-                                                test_x,
-                                                train_y,
-                                                test_y,
-                                                tpot_model,
-                                                "Perovskite Volume (Å^3 / formula unit)",
-                                                "tpot_perovskite_volume_parity.jpeg")
+DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = train_y,
+                                                       train_y_pred = tpot_model.predict(train_x),
+                                                       test_y_true = test_y,
+                                                       test_y_pred = tpot_model.predict(test_x),
+                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                       filename = "tpot_perovskite_volume_parity.jpeg")
 
 
 # In[]:
@@ -252,7 +272,6 @@ for key, fun in metrics.items():
 # In[]:
 
 
-import os
 roost_dir = "./roost"
 os.makedirs(roost_dir, exist_ok=True)
 
@@ -275,29 +294,12 @@ roost_test_results  = pd.read_csv("roost/roost_test_predictions.csv", index_col=
 # In[]:
 
 
-plt.rcParams["figure.figsize"] = plt.rcParamsDefault["figure.figsize"]
-plt.rcParams["figure.figsize"] = (15, 15)
-plt.rcParams["font.size"] = 16
-
-plt.scatter(x=roost_train_results['volume_target'], y=roost_train_results['volume_pred_n0'], label="Train Set")
-plt.scatter(x=roost_test_results['volume_target'], y=roost_test_results['volume_pred_n0'], label="Test Set")
-
-min_xy = min(min(roost_train_results['volume_target']),
-             min(roost_test_results['volume_target']),
-             min(roost_train_results['volume_pred_n0']),
-             min(roost_test_results['volume_pred_n0']))
-max_xy = max(max(roost_train_results['volume_target']),
-             max(roost_test_results['volume_target']),
-             max(roost_train_results['volume_pred_n0']),
-             max(roost_test_results['volume_pred_n0']))
-
-plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
-plt.ylabel(f"Perovskite Volume (Å^3 / formula unit) (Predicted)")
-plt.xlabel(f"Perovskite Volume (Å^3 / formula unit) (Dataset)")
-plt.legend()
-plt.savefig("roost_perovskite_volume_parity.jpeg")
-plt.show()
-plt.close()
+DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = roost_train_results['volume_target'],
+                                                       train_y_pred =  roost_train_results['volume_pred_n0'],
+                                                       test_y_true = roost_test_results['volume_target'],
+                                                       test_y_pred = roost_test_results['volume_pred_n0'],
+                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                       filename = "roost_perovskite_volume_parity.jpeg")
 
 
 # In[]:
@@ -321,28 +323,24 @@ for key, fun in metrics.items():
 # In[]:
 
 
-n_importances = 10
-importances = list(zip(best_reg[1].feature_importances_, xenonpy_descriptors))
+sisso_feature_selector = sklearn.feature_selection.SelectFromModel(sklearn.linear_model.LassoCV(random_state=RANDOM_SEED),
+                                                                   threshold=-np.inf,
+                                                                   max_features=16,
+                                                                   prefit=False)
+sisso_feature_selector.fit(train_x, train_y.ravel())
 
-sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
-plt.barh(range(n_importances), [imp[0] for imp in sorted_importances[:n_importances]])
-plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
-plt.ylabel("Feature")
-plt.xlabel("Importance Score")
-plt.tight_layout()
-plt.savefig("xgboost_importances.jpeg")
+sisso_features = [col for (col, is_selected) in zip(train[descriptors].columns, sisso_feature_selector.get_support()) if is_selected]
+print("\n".join(sisso_features))
 
 
 # In[]:
 
 
-important_features = [record[1] for record in sorted_importances[:n_importances]]
-
 sisso_dir = "./sisso"
 os.makedirs(sisso_dir, exist_ok=True)
 
-sisso_data_train = train[target_column + important_features]
-sisso_data_test = test[target_column + important_features]
+sisso_data_train = train[target_column + sisso_features]
+sisso_data_test = test[target_column + sisso_features]
 
 sisso_data_train.to_csv(os.path.join(sisso_dir, 'sisso_train.csv'), index_label='material_id')
 
@@ -353,61 +351,67 @@ sisso_data_train.to_csv(os.path.join(sisso_dir, 'sisso_train.csv'), index_label=
 
 
 sisso_models = {
-    'r1_1term': lambda df: -1.173401497819689e+02 + \
-                           1.710176880247700e-01 * (df['ave:vdw_radius_uff'] * df['ave:gs_est_bcc_latcnt']),
+    'r1_1term': lambda df: -4.559505163148324e+02 + \
+                           2.464859419692384e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
+
+    'r1_2term': lambda df: 7.027013257763095e+01 + \
+                           -7.832363248251127e-01 * (df['ave:bulk_modulus'] - df['ave:atomic_number']) + \
+                           6.564150096290632e-13 * (df['ave:atomic_radius_rahm'] ** 6),
     
-    'r1_2term': lambda df: -7.912354154958560e+01 + \
-                           -1.609923938541456e-02 * (df['ave:bulk_modulus'] * df['ave:gs_volume_per']) + \
-                           1.559313572968614e-01 * (df['ave:vdw_radius_uff'] * df['ave:gs_est_bcc_latcnt']),
+    'r1_3term': lambda df: -3.526598287867814e+02 + \
+                           -5.798450768280212e-02 * (df['var:c6_gb'] / df['sum:hhi_r']) + \
+                           -5.504850208135466e-01 * (np.cbrt(df['var:melting_point'])) + \
+                           2.201736063422449e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
     
-    'r1_3term': lambda df: -6.567261626600551e+01 + \
-                           -2.978198018981838e+01 * (df['ave:gs_volume_per'] / df['ave:atomic_weight']) + \
-                           -1.704453039727385e-02 * (df['ave:bulk_modulus'] * df['ave:gs_volume_per']) + \
-                           1.581938411940554e-01 * (df['ave:vdw_radius_uff'] * df['ave:gs_est_bcc_latcnt']),
+    'r1_4term': lambda df: -2.747502839404784e+02 + \
+                           -5.185525800282890e-02 * (df['var:c6_gb'] / df['sum:hhi_p']) + \
+                           -7.290004701356699e-19 * (df['ave:boiling_point'] ** 6) + \
+                           -4.455507677046804e-01 * (df['ave:bulk_modulus'] - df['ave:atomic_weight']) + \
+                           1.699729115030021e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
     
-    'r1_4term': lambda df: 3.301002567877740e+02 + \
-                           -3.565682575738922e-01 * (df['ave:bulk_modulus'] + df['ave:gs_volume_per']) + \
-                           3.786694583493326e-06 * (df['ave:vdw_radius_uff'] ** 3) + \
-                           -1.705997650049823e+00 * (df['ave:gs_volume_per'] + df['ave:vdw_radius_uff']) + \
-                           2.192371977941469e-01 * (df['ave:vdw_radius_uff'] * df['ave:gs_est_bcc_latcnt']),
+    'r2_1term': lambda df: -2.729296923117930e+01 + \
+                           -3.137476417692739e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
     
-    'r2_1term': lambda df: 9.732111258384252e+00 + \
-                           1.163289662731223e-08 * ((df['ave:vdw_radius_uff']**3) * abs(df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm'])),
+    'r2_2term': lambda df: -2.063184570690620e+01 + \
+                           -1.686398694159229e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / (df['ave:atomic_volume'] ** 6)) + \
+                           -3.195005086243114e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
     
-    'r2_2term': lambda df: 1.173595476514455e+01 + \
-                           4.740900052434680e+40 * (np.exp(-(df['ave:vdw_radius_uff']/df['ave:gs_est_bcc_latcnt']))) + \
-                           1.133405246617076e-08 * ((df['ave:vdw_radius_uff']**3) * abs(df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm'])),
+    'r2_3term': lambda df: -1.510330342353259e+01 + \
+                           4.058647378703507e+03 * ((df['var:sound_velocity'] - df['var:hhi_p']) / (df['var:c6_gb'] * df['sum:hhi_r'])) + \
+                           -2.139489205523803e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / df['ave:atomic_volume'] ** 6) + \
+                           -3.170219793913757e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
     
-    'r2_3term': lambda df: -4.694324548214459e+01 + \
-                           -1.480067769463340e+00 * ((df['ave:vdw_radius_uff'] / df['ave:atomic_weight'])-(df['ave:first_ion_en'] / df['ave:en_ghosh'])) + \
-                           4.829354094904532e+40 * (np.exp(-(df['ave:vdw_radius_uff']/df['ave:gs_est_bcc_latcnt']))) + \
-                           1.123442733055649e-08 * ((df['ave:vdw_radius_uff']**3) * abs(df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm'])),
-    
-    'r2_4term': lambda df: -4.818204304584309e+01 + \
-                           4.425039768829772e+00 * (np.sin((df['ave:atomic_weight'] * df['ave:gs_est_bcc_latcnt']))) + \
-                           -1.530621488950609e+00 * ((df['ave:vdw_radius_uff'] / df['ave:atomic_weight']) - (df['ave:first_ion_en'] / df['ave:en_ghosh'])) + \
-                           4.774726643610366e+40 * (np.exp(-(df['ave:vdw_radius_uff']/df['ave:gs_est_bcc_latcnt']))) + \
-                           1.115667532014910e-08 * ((df['ave:vdw_radius_uff']**3) * abs(df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']))
+    'r2_4term': lambda df: -1.199519222577036e+01 + \
+                           1.884199571337176e+00 * ((df['ave:boiling_point'] * df['ave:atomic_weight']) / (abs(df['var:melting_point'] - df['sum:hhi_r']))) + \
+                           3.941803378766428e+03 * ((df['var:sound_velocity'] - df['var:hhi_p']) / (df['var:c6_gb'] * df['sum:hhi_r'])) + \
+                           -2.184309236205812e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / (df['ave:atomic_volume'] ** 6)) + \
+                           -3.048156404473468e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm']))
 }
 
 for key, fun in sisso_models.items():
     print(f"==========\nSISSO Model {key}")
     sisso_train_predictions = fun(sisso_data_train)
     sisso_test_predictions = fun(sisso_data_test)
-    
-    print("\nTest Set Error Metrics")
-    for key, fun in metrics.items():
-        value = fun(y_true=sisso_data_test['Volume'], y_pred=sisso_test_predictions)
-        print(key,np.round(value,4))
-
-    print("\nTraining Set Error Metrics")
-    for key, fun in metrics.items():
-        value = fun(y_true=sisso_data_train['Volume'], y_pred=sisso_train_predictions)
-        print(key,np.round(value,4))
-    
-    
     sisso_data_train[key] = sisso_train_predictions
     sisso_data_test[key] = sisso_test_predictions
+    
+    print("\nTest Set Error Metrics")
+    for metric, fun in metrics.items():
+        value = fun(y_true=sisso_data_test['Volume'], y_pred=sisso_test_predictions)
+        print(metric,np.round(value,4))
+
+    print("\nTraining Set Error Metrics")
+    for metric, fun in metrics.items():
+        value = fun(y_true=sisso_data_train['Volume'], y_pred=sisso_train_predictions)
+        print(metric,np.round(value,4))
+    
+    
+
+
+# In[]:
+
+
+sisso_data_train
 
 
 # It's not the best model, but we're gonna use the Rung1 1Term model, because it's simple and still performs well. It's also intuitive.
@@ -422,25 +426,13 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_results_test.csv'))
 # In[]:
 
 
-plt.scatter(x=sisso_data_train['Volume'], y=sisso_data_train['r1_1term'], label="Train Set")
-plt.scatter(x=sisso_data_test['Volume'], y=sisso_data_test['r1_1term'], label="Test Set")
-
-min_xy = min(min(sisso_data_train['Volume']),
-             min(sisso_data_test['Volume']),
-             min(sisso_data_train['r1_1term']),
-             min(sisso_data_test['r1_1term']))
-max_xy = max(max(sisso_data_train['Volume']),
-             max(sisso_data_test['Volume']),
-             max(sisso_data_train['r1_1term']),
-             max(sisso_data_test['r1_1term']))
-
-plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
-plt.ylabel(f"Perovskite Volume (Å^3 / formula unit) (Predicted)")
-plt.xlabel(f"Perovskite Volume (Å^3 / formula unit) (Dataset)")
-plt.legend()
-plt.savefig("sisso_perovskite_volume_parity.jpeg")
-plt.show()
-plt.close()
+model_to_plot = 'r1_1term'
+DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data_train['Volume'],
+                                                       train_y_pred = sisso_data_train[model_to_plot],
+                                                       test_y_true = sisso_data_test['Volume'],
+                                                       test_y_pred = sisso_data_test[model_to_plot],
+                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                       filename = "sisso_perovskite_volume_parity.jpeg")
 
 
 # In[ ]:
