@@ -1,0 +1,1557 @@
+The model will run on the cpu device
+['exfoliation_energy']
+['regression']
+['L1']
+using independent test set: ./sisso_data/roost_test.csv
+No validation set used, using test set for evaluation purposes
+Total Number of Trainable Parameters: 2,302,096
+Dummy MAE: 0.3355
+Getting Validation Baseline
+Validation Baseline - exfoliation_energy: MAE 0.311
+Epoch: [1/512]
+Train 		: exfoliation_energy - Loss 0.527	MAE 0.298	RMSE 0.573
+Validation 	: exfoliation_energy - Loss 0.532	MAE 0.301	RMSE 0.523
+Epoch: [2/512]
+Train 		: exfoliation_energy - Loss 0.494	MAE 0.279	RMSE 0.552
+Validation 	: exfoliation_energy - Loss 0.491	MAE 0.278	RMSE 0.474
+Epoch: [3/512]
+Train 		: exfoliation_energy - Loss 0.468	MAE 0.265	RMSE 0.517
+Validation 	: exfoliation_energy - Loss 0.478	MAE 0.271	RMSE 0.477
+Epoch: [4/512]
+Train 		: exfoliation_energy - Loss 0.443	MAE 0.251	RMSE 0.498
+Validation 	: exfoliation_energy - Loss 0.443	MAE 0.251	RMSE 0.421
+Epoch: [5/512]
+Train 		: exfoliation_energy - Loss 0.433	MAE 0.245	RMSE 0.488
+Validation 	: exfoliation_energy - Loss 0.440	MAE 0.249	RMSE 0.437
+Epoch: [6/512]
+Train 		: exfoliation_energy - Loss 0.431	MAE 0.244	RMSE 0.486
+Validation 	: exfoliation_energy - Loss 0.432	MAE 0.244	RMSE 0.407
+Epoch: [7/512]
+Train 		: exfoliation_energy - Loss 0.423	MAE 0.239	RMSE 0.485
+Validation 	: exfoliation_energy - Loss 0.431	MAE 0.244	RMSE 0.421
+Epoch: [8/512]
+Train 		: exfoliation_energy - Loss 0.420	MAE 0.238	RMSE 0.476
+Validation 	: exfoliation_energy - Loss 0.429	MAE 0.242	RMSE 0.412
+Epoch: [9/512]
+Train 		: exfoliation_energy - Loss 0.414	MAE 0.234	RMSE 0.470
+Validation 	: exfoliation_energy - Loss 0.426	MAE 0.241	RMSE 0.403
+Epoch: [10/512]
+Train 		: exfoliation_energy - Loss 0.410	MAE 0.232	RMSE 0.464
+Validation 	: exfoliation_energy - Loss 0.424	MAE 0.240	RMSE 0.413
+Epoch: [11/512]
+Train 		: exfoliation_energy - Loss 0.409	MAE 0.231	RMSE 0.460
+Validation 	: exfoliation_energy - Loss 0.421	MAE 0.238	RMSE 0.404
+Epoch: [12/512]
+Train 		: exfoliation_energy - Loss 0.409	MAE 0.232	RMSE 0.463
+Validation 	: exfoliation_energy - Loss 0.436	MAE 0.247	RMSE 0.430
+Epoch: [13/512]
+Train 		: exfoliation_energy - Loss 0.402	MAE 0.228	RMSE 0.459
+Validation 	: exfoliation_energy - Loss 0.420	MAE 0.238	RMSE 0.411
+Epoch: [14/512]
+Train 		: exfoliation_energy - Loss 0.400	MAE 0.226	RMSE 0.453
+Validation 	: exfoliation_energy - Loss 0.414	MAE 0.234	RMSE 0.407
+Epoch: [15/512]
+Train 		: exfoliation_energy - Loss 0.396	MAE 0.224	RMSE 0.449
+Validation 	: exfoliation_energy - Loss 0.412	MAE 0.233	RMSE 0.401
+Epoch: [16/512]
+Train 		: exfoliation_energy - Loss 0.411	MAE 0.232	RMSE 0.460
+Validation 	: exfoliation_energy - Loss 0.427	MAE 0.241	RMSE 0.389
+Epoch: [17/512]
+Train 		: exfoliation_energy - Loss 0.390	MAE 0.220	RMSE 0.446
+Validation 	: exfoliation_energy - Loss 0.403	MAE 0.228	RMSE 0.397
+Epoch: [18/512]
+Train 		: exfoliation_energy - Loss 0.386	MAE 0.218	RMSE 0.441
+Validation 	: exfoliation_energy - Loss 0.401	MAE 0.227	RMSE 0.390
+Epoch: [19/512]
+Train 		: exfoliation_energy - Loss 0.380	MAE 0.215	RMSE 0.438
+Validation 	: exfoliation_energy - Loss 0.404	MAE 0.228	RMSE 0.383
+Epoch: [20/512]
+Train 		: exfoliation_energy - Loss 0.375	MAE 0.212	RMSE 0.432
+Validation 	: exfoliation_energy - Loss 0.404	MAE 0.228	RMSE 0.396
+Epoch: [21/512]
+Train 		: exfoliation_energy - Loss 0.371	MAE 0.210	RMSE 0.431
+Validation 	: exfoliation_energy - Loss 0.401	MAE 0.227	RMSE 0.393
+Epoch: [22/512]
+Train 		: exfoliation_energy - Loss 0.372	MAE 0.211	RMSE 0.428
+Validation 	: exfoliation_energy - Loss 0.390	MAE 0.221	RMSE 0.380
+Epoch: [23/512]
+Train 		: exfoliation_energy - Loss 0.367	MAE 0.208	RMSE 0.426
+Validation 	: exfoliation_energy - Loss 0.398	MAE 0.225	RMSE 0.388
+Epoch: [24/512]
+Train 		: exfoliation_energy - Loss 0.374	MAE 0.211	RMSE 0.434
+Validation 	: exfoliation_energy - Loss 0.416	MAE 0.235	RMSE 0.391
+Epoch: [25/512]
+Train 		: exfoliation_energy - Loss 0.375	MAE 0.212	RMSE 0.432
+Validation 	: exfoliation_energy - Loss 0.401	MAE 0.227	RMSE 0.373
+Epoch: [26/512]
+Train 		: exfoliation_energy - Loss 0.366	MAE 0.207	RMSE 0.428
+Validation 	: exfoliation_energy - Loss 0.389	MAE 0.220	RMSE 0.372
+Epoch: [27/512]
+Train 		: exfoliation_energy - Loss 0.365	MAE 0.207	RMSE 0.432
+Validation 	: exfoliation_energy - Loss 0.403	MAE 0.228	RMSE 0.394
+Epoch: [28/512]
+Train 		: exfoliation_energy - Loss 0.369	MAE 0.209	RMSE 0.425
+Validation 	: exfoliation_energy - Loss 0.406	MAE 0.229	RMSE 0.361
+Epoch: [29/512]
+Train 		: exfoliation_energy - Loss 0.366	MAE 0.207	RMSE 0.426
+Validation 	: exfoliation_energy - Loss 0.386	MAE 0.218	RMSE 0.379
+Epoch: [30/512]
+Train 		: exfoliation_energy - Loss 0.364	MAE 0.206	RMSE 0.426
+Validation 	: exfoliation_energy - Loss 0.404	MAE 0.229	RMSE 0.373
+Epoch: [31/512]
+Train 		: exfoliation_energy - Loss 0.363	MAE 0.205	RMSE 0.423
+Validation 	: exfoliation_energy - Loss 0.394	MAE 0.223	RMSE 0.383
+Epoch: [32/512]
+Train 		: exfoliation_energy - Loss 0.355	MAE 0.201	RMSE 0.419
+Validation 	: exfoliation_energy - Loss 0.381	MAE 0.215	RMSE 0.368
+Epoch: [33/512]
+Train 		: exfoliation_energy - Loss 0.354	MAE 0.200	RMSE 0.424
+Validation 	: exfoliation_energy - Loss 0.413	MAE 0.234	RMSE 0.400
+Epoch: [34/512]
+Train 		: exfoliation_energy - Loss 0.358	MAE 0.202	RMSE 0.410
+Validation 	: exfoliation_energy - Loss 0.407	MAE 0.230	RMSE 0.378
+Epoch: [35/512]
+Train 		: exfoliation_energy - Loss 0.356	MAE 0.201	RMSE 0.416
+Validation 	: exfoliation_energy - Loss 0.377	MAE 0.213	RMSE 0.360
+Epoch: [36/512]
+Train 		: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.405
+Validation 	: exfoliation_energy - Loss 0.383	MAE 0.217	RMSE 0.365
+Epoch: [37/512]
+Train 		: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.404
+Validation 	: exfoliation_energy - Loss 0.374	MAE 0.211	RMSE 0.368
+Epoch: [38/512]
+Train 		: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.406
+Validation 	: exfoliation_energy - Loss 0.389	MAE 0.220	RMSE 0.380
+Epoch: [39/512]
+Train 		: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.408
+Validation 	: exfoliation_energy - Loss 0.398	MAE 0.225	RMSE 0.374
+Epoch: [40/512]
+Train 		: exfoliation_energy - Loss 0.360	MAE 0.203	RMSE 0.413
+Validation 	: exfoliation_energy - Loss 0.401	MAE 0.227	RMSE 0.368
+Epoch: [41/512]
+Train 		: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.402
+Validation 	: exfoliation_energy - Loss 0.383	MAE 0.216	RMSE 0.370
+Epoch: [42/512]
+Train 		: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.397
+Validation 	: exfoliation_energy - Loss 0.369	MAE 0.209	RMSE 0.360
+Epoch: [43/512]
+Train 		: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.404
+Validation 	: exfoliation_energy - Loss 0.373	MAE 0.211	RMSE 0.357
+Epoch: [44/512]
+Train 		: exfoliation_energy - Loss 0.326	MAE 0.185	RMSE 0.392
+Validation 	: exfoliation_energy - Loss 0.376	MAE 0.213	RMSE 0.366
+Epoch: [45/512]
+Train 		: exfoliation_energy - Loss 0.328	MAE 0.185	RMSE 0.395
+Validation 	: exfoliation_energy - Loss 0.374	MAE 0.212	RMSE 0.351
+Epoch: [46/512]
+Train 		: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.390
+Validation 	: exfoliation_energy - Loss 0.371	MAE 0.210	RMSE 0.351
+Epoch: [47/512]
+Train 		: exfoliation_energy - Loss 0.327	MAE 0.185	RMSE 0.396
+Validation 	: exfoliation_energy - Loss 0.386	MAE 0.218	RMSE 0.365
+Epoch: [48/512]
+Train 		: exfoliation_energy - Loss 0.325	MAE 0.184	RMSE 0.396
+Validation 	: exfoliation_energy - Loss 0.373	MAE 0.211	RMSE 0.341
+Epoch: [49/512]
+Train 		: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.384
+Validation 	: exfoliation_energy - Loss 0.370	MAE 0.209	RMSE 0.353
+Epoch: [50/512]
+Train 		: exfoliation_energy - Loss 0.326	MAE 0.184	RMSE 0.394
+Validation 	: exfoliation_energy - Loss 0.357	MAE 0.202	RMSE 0.340
+Epoch: [51/512]
+Train 		: exfoliation_energy - Loss 0.315	MAE 0.178	RMSE 0.379
+Validation 	: exfoliation_energy - Loss 0.369	MAE 0.209	RMSE 0.351
+Epoch: [52/512]
+Train 		: exfoliation_energy - Loss 0.324	MAE 0.183	RMSE 0.381
+Validation 	: exfoliation_energy - Loss 0.363	MAE 0.205	RMSE 0.349
+Epoch: [53/512]
+Train 		: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.388
+Validation 	: exfoliation_energy - Loss 0.366	MAE 0.207	RMSE 0.346
+Epoch: [54/512]
+Train 		: exfoliation_energy - Loss 0.314	MAE 0.178	RMSE 0.384
+Validation 	: exfoliation_energy - Loss 0.390	MAE 0.221	RMSE 0.359
+Epoch: [55/512]
+Train 		: exfoliation_energy - Loss 0.313	MAE 0.177	RMSE 0.376
+Validation 	: exfoliation_energy - Loss 0.353	MAE 0.200	RMSE 0.338
+Epoch: [56/512]
+Train 		: exfoliation_energy - Loss 0.313	MAE 0.177	RMSE 0.369
+Validation 	: exfoliation_energy - Loss 0.373	MAE 0.211	RMSE 0.344
+Epoch: [57/512]
+Train 		: exfoliation_energy - Loss 0.307	MAE 0.173	RMSE 0.372
+Validation 	: exfoliation_energy - Loss 0.365	MAE 0.206	RMSE 0.354
+Epoch: [58/512]
+Train 		: exfoliation_energy - Loss 0.312	MAE 0.176	RMSE 0.376
+Validation 	: exfoliation_energy - Loss 0.362	MAE 0.205	RMSE 0.347
+Epoch: [59/512]
+Train 		: exfoliation_energy - Loss 0.299	MAE 0.169	RMSE 0.363
+Validation 	: exfoliation_energy - Loss 0.350	MAE 0.198	RMSE 0.332
+Epoch: [60/512]
+Train 		: exfoliation_energy - Loss 0.302	MAE 0.171	RMSE 0.359
+Validation 	: exfoliation_energy - Loss 0.353	MAE 0.199	RMSE 0.338
+Epoch: [61/512]
+Train 		: exfoliation_energy - Loss 0.298	MAE 0.169	RMSE 0.354
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.338
+Epoch: [62/512]
+Train 		: exfoliation_energy - Loss 0.299	MAE 0.169	RMSE 0.356
+Validation 	: exfoliation_energy - Loss 0.355	MAE 0.200	RMSE 0.338
+Epoch: [63/512]
+Train 		: exfoliation_energy - Loss 0.299	MAE 0.169	RMSE 0.345
+Validation 	: exfoliation_energy - Loss 0.376	MAE 0.213	RMSE 0.364
+Epoch: [64/512]
+Train 		: exfoliation_energy - Loss 0.292	MAE 0.165	RMSE 0.343
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.332
+Epoch: [65/512]
+Train 		: exfoliation_energy - Loss 0.291	MAE 0.164	RMSE 0.350
+Validation 	: exfoliation_energy - Loss 0.352	MAE 0.199	RMSE 0.339
+Epoch: [66/512]
+Train 		: exfoliation_energy - Loss 0.295	MAE 0.167	RMSE 0.338
+Validation 	: exfoliation_energy - Loss 0.371	MAE 0.210	RMSE 0.360
+Epoch: [67/512]
+Train 		: exfoliation_energy - Loss 0.286	MAE 0.162	RMSE 0.343
+Validation 	: exfoliation_energy - Loss 0.373	MAE 0.211	RMSE 0.357
+Epoch: [68/512]
+Train 		: exfoliation_energy - Loss 0.287	MAE 0.162	RMSE 0.341
+Validation 	: exfoliation_energy - Loss 0.369	MAE 0.208	RMSE 0.360
+Epoch: [69/512]
+Train 		: exfoliation_energy - Loss 0.292	MAE 0.165	RMSE 0.346
+Validation 	: exfoliation_energy - Loss 0.357	MAE 0.202	RMSE 0.344
+Epoch: [70/512]
+Train 		: exfoliation_energy - Loss 0.300	MAE 0.169	RMSE 0.347
+Validation 	: exfoliation_energy - Loss 0.397	MAE 0.224	RMSE 0.388
+Epoch: [71/512]
+Train 		: exfoliation_energy - Loss 0.283	MAE 0.160	RMSE 0.337
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.324
+Epoch: [72/512]
+Train 		: exfoliation_energy - Loss 0.275	MAE 0.155	RMSE 0.332
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.339
+Epoch: [73/512]
+Train 		: exfoliation_energy - Loss 0.278	MAE 0.157	RMSE 0.331
+Validation 	: exfoliation_energy - Loss 0.361	MAE 0.204	RMSE 0.348
+Epoch: [74/512]
+Train 		: exfoliation_energy - Loss 0.275	MAE 0.156	RMSE 0.329
+Validation 	: exfoliation_energy - Loss 0.364	MAE 0.206	RMSE 0.346
+Epoch: [75/512]
+Train 		: exfoliation_energy - Loss 0.283	MAE 0.160	RMSE 0.335
+Validation 	: exfoliation_energy - Loss 0.365	MAE 0.206	RMSE 0.349
+Epoch: [76/512]
+Train 		: exfoliation_energy - Loss 0.270	MAE 0.153	RMSE 0.325
+Validation 	: exfoliation_energy - Loss 0.365	MAE 0.207	RMSE 0.350
+Epoch: [77/512]
+Train 		: exfoliation_energy - Loss 0.288	MAE 0.163	RMSE 0.334
+Validation 	: exfoliation_energy - Loss 0.365	MAE 0.207	RMSE 0.354
+Epoch: [78/512]
+Train 		: exfoliation_energy - Loss 0.271	MAE 0.153	RMSE 0.321
+Validation 	: exfoliation_energy - Loss 0.380	MAE 0.215	RMSE 0.367
+Epoch: [79/512]
+Train 		: exfoliation_energy - Loss 0.272	MAE 0.154	RMSE 0.327
+Validation 	: exfoliation_energy - Loss 0.370	MAE 0.209	RMSE 0.349
+Epoch: [80/512]
+Train 		: exfoliation_energy - Loss 0.266	MAE 0.150	RMSE 0.323
+Validation 	: exfoliation_energy - Loss 0.357	MAE 0.202	RMSE 0.346
+Epoch: [81/512]
+Train 		: exfoliation_energy - Loss 0.260	MAE 0.147	RMSE 0.312
+Validation 	: exfoliation_energy - Loss 0.369	MAE 0.209	RMSE 0.351
+Epoch: [82/512]
+Train 		: exfoliation_energy - Loss 0.263	MAE 0.149	RMSE 0.308
+Validation 	: exfoliation_energy - Loss 0.380	MAE 0.215	RMSE 0.365
+Epoch: [83/512]
+Train 		: exfoliation_energy - Loss 0.258	MAE 0.146	RMSE 0.309
+Validation 	: exfoliation_energy - Loss 0.360	MAE 0.204	RMSE 0.351
+Epoch: [84/512]
+Train 		: exfoliation_energy - Loss 0.250	MAE 0.141	RMSE 0.307
+Validation 	: exfoliation_energy - Loss 0.378	MAE 0.214	RMSE 0.380
+Epoch: [85/512]
+Train 		: exfoliation_energy - Loss 0.249	MAE 0.141	RMSE 0.304
+Validation 	: exfoliation_energy - Loss 0.380	MAE 0.215	RMSE 0.385
+Epoch: [86/512]
+Train 		: exfoliation_energy - Loss 0.257	MAE 0.145	RMSE 0.316
+Validation 	: exfoliation_energy - Loss 0.351	MAE 0.199	RMSE 0.335
+Epoch: [87/512]
+Train 		: exfoliation_energy - Loss 0.245	MAE 0.138	RMSE 0.299
+Validation 	: exfoliation_energy - Loss 0.373	MAE 0.211	RMSE 0.363
+Epoch: [88/512]
+Train 		: exfoliation_energy - Loss 0.255	MAE 0.144	RMSE 0.307
+Validation 	: exfoliation_energy - Loss 0.371	MAE 0.210	RMSE 0.362
+Epoch: [89/512]
+Train 		: exfoliation_energy - Loss 0.259	MAE 0.146	RMSE 0.307
+Validation 	: exfoliation_energy - Loss 0.358	MAE 0.203	RMSE 0.340
+Epoch: [90/512]
+Train 		: exfoliation_energy - Loss 0.247	MAE 0.139	RMSE 0.304
+Validation 	: exfoliation_energy - Loss 0.352	MAE 0.199	RMSE 0.343
+Epoch: [91/512]
+Train 		: exfoliation_energy - Loss 0.248	MAE 0.140	RMSE 0.301
+Validation 	: exfoliation_energy - Loss 0.385	MAE 0.217	RMSE 0.387
+Epoch: [92/512]
+Train 		: exfoliation_energy - Loss 0.257	MAE 0.145	RMSE 0.301
+Validation 	: exfoliation_energy - Loss 0.371	MAE 0.210	RMSE 0.368
+Epoch: [93/512]
+Train 		: exfoliation_energy - Loss 0.245	MAE 0.139	RMSE 0.303
+Validation 	: exfoliation_energy - Loss 0.362	MAE 0.204	RMSE 0.354
+Epoch: [94/512]
+Train 		: exfoliation_energy - Loss 0.247	MAE 0.140	RMSE 0.303
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.333
+Epoch: [95/512]
+Train 		: exfoliation_energy - Loss 0.243	MAE 0.138	RMSE 0.297
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.344
+Epoch: [96/512]
+Train 		: exfoliation_energy - Loss 0.240	MAE 0.136	RMSE 0.298
+Validation 	: exfoliation_energy - Loss 0.386	MAE 0.218	RMSE 0.400
+Epoch: [97/512]
+Train 		: exfoliation_energy - Loss 0.235	MAE 0.133	RMSE 0.286
+Validation 	: exfoliation_energy - Loss 0.362	MAE 0.205	RMSE 0.351
+Epoch: [98/512]
+Train 		: exfoliation_energy - Loss 0.236	MAE 0.134	RMSE 0.301
+Validation 	: exfoliation_energy - Loss 0.366	MAE 0.207	RMSE 0.357
+Epoch: [99/512]
+Train 		: exfoliation_energy - Loss 0.234	MAE 0.132	RMSE 0.296
+Validation 	: exfoliation_energy - Loss 0.362	MAE 0.205	RMSE 0.359
+Epoch: [100/512]
+Train 		: exfoliation_energy - Loss 0.235	MAE 0.133	RMSE 0.291
+Validation 	: exfoliation_energy - Loss 0.368	MAE 0.208	RMSE 0.366
+Epoch: [101/512]
+Train 		: exfoliation_energy - Loss 0.239	MAE 0.135	RMSE 0.291
+Validation 	: exfoliation_energy - Loss 0.363	MAE 0.205	RMSE 0.356
+Epoch: [102/512]
+Train 		: exfoliation_energy - Loss 0.238	MAE 0.134	RMSE 0.284
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.340
+Epoch: [103/512]
+Train 		: exfoliation_energy - Loss 0.233	MAE 0.132	RMSE 0.287
+Validation 	: exfoliation_energy - Loss 0.361	MAE 0.204	RMSE 0.360
+Epoch: [104/512]
+Train 		: exfoliation_energy - Loss 0.227	MAE 0.128	RMSE 0.291
+Validation 	: exfoliation_energy - Loss 0.363	MAE 0.205	RMSE 0.359
+Epoch: [105/512]
+Train 		: exfoliation_energy - Loss 0.227	MAE 0.129	RMSE 0.285
+Validation 	: exfoliation_energy - Loss 0.365	MAE 0.206	RMSE 0.367
+Epoch: [106/512]
+Train 		: exfoliation_energy - Loss 0.229	MAE 0.130	RMSE 0.289
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.332
+Epoch: [107/512]
+Train 		: exfoliation_energy - Loss 0.232	MAE 0.131	RMSE 0.292
+Validation 	: exfoliation_energy - Loss 0.378	MAE 0.213	RMSE 0.382
+Epoch: [108/512]
+Train 		: exfoliation_energy - Loss 0.226	MAE 0.128	RMSE 0.287
+Validation 	: exfoliation_energy - Loss 0.330	MAE 0.187	RMSE 0.327
+Epoch: [109/512]
+Train 		: exfoliation_energy - Loss 0.220	MAE 0.124	RMSE 0.289
+Validation 	: exfoliation_energy - Loss 0.352	MAE 0.199	RMSE 0.341
+Epoch: [110/512]
+Train 		: exfoliation_energy - Loss 0.226	MAE 0.128	RMSE 0.290
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.335
+Epoch: [111/512]
+Train 		: exfoliation_energy - Loss 0.229	MAE 0.129	RMSE 0.287
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.343
+Epoch: [112/512]
+Train 		: exfoliation_energy - Loss 0.217	MAE 0.123	RMSE 0.279
+Validation 	: exfoliation_energy - Loss 0.361	MAE 0.204	RMSE 0.357
+Epoch: [113/512]
+Train 		: exfoliation_energy - Loss 0.215	MAE 0.121	RMSE 0.280
+Validation 	: exfoliation_energy - Loss 0.361	MAE 0.204	RMSE 0.354
+Epoch: [114/512]
+Train 		: exfoliation_energy - Loss 0.228	MAE 0.129	RMSE 0.282
+Validation 	: exfoliation_energy - Loss 0.377	MAE 0.213	RMSE 0.370
+Epoch: [115/512]
+Train 		: exfoliation_energy - Loss 0.223	MAE 0.126	RMSE 0.282
+Validation 	: exfoliation_energy - Loss 0.366	MAE 0.207	RMSE 0.356
+Epoch: [116/512]
+Train 		: exfoliation_energy - Loss 0.225	MAE 0.127	RMSE 0.283
+Validation 	: exfoliation_energy - Loss 0.350	MAE 0.198	RMSE 0.341
+Epoch: [117/512]
+Train 		: exfoliation_energy - Loss 0.217	MAE 0.123	RMSE 0.279
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.339
+Epoch: [118/512]
+Train 		: exfoliation_energy - Loss 0.216	MAE 0.122	RMSE 0.273
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.335
+Epoch: [119/512]
+Train 		: exfoliation_energy - Loss 0.214	MAE 0.121	RMSE 0.279
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.344
+Epoch: [120/512]
+Train 		: exfoliation_energy - Loss 0.209	MAE 0.118	RMSE 0.275
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.195	RMSE 0.344
+Epoch: [121/512]
+Train 		: exfoliation_energy - Loss 0.212	MAE 0.120	RMSE 0.270
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.340
+Epoch: [122/512]
+Train 		: exfoliation_energy - Loss 0.220	MAE 0.124	RMSE 0.274
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.348
+Epoch: [123/512]
+Train 		: exfoliation_energy - Loss 0.211	MAE 0.119	RMSE 0.278
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.345
+Epoch: [124/512]
+Train 		: exfoliation_energy - Loss 0.211	MAE 0.119	RMSE 0.272
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.343
+Epoch: [125/512]
+Train 		: exfoliation_energy - Loss 0.204	MAE 0.116	RMSE 0.269
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.339
+Epoch: [126/512]
+Train 		: exfoliation_energy - Loss 0.206	MAE 0.117	RMSE 0.262
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.343
+Epoch: [127/512]
+Train 		: exfoliation_energy - Loss 0.212	MAE 0.120	RMSE 0.273
+Validation 	: exfoliation_energy - Loss 0.353	MAE 0.200	RMSE 0.345
+Epoch: [128/512]
+Train 		: exfoliation_energy - Loss 0.211	MAE 0.119	RMSE 0.263
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.325
+Epoch: [129/512]
+Train 		: exfoliation_energy - Loss 0.211	MAE 0.119	RMSE 0.274
+Validation 	: exfoliation_energy - Loss 0.349	MAE 0.198	RMSE 0.348
+Epoch: [130/512]
+Train 		: exfoliation_energy - Loss 0.204	MAE 0.116	RMSE 0.272
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.332
+Epoch: [131/512]
+Train 		: exfoliation_energy - Loss 0.205	MAE 0.116	RMSE 0.271
+Validation 	: exfoliation_energy - Loss 0.352	MAE 0.199	RMSE 0.348
+Epoch: [132/512]
+Train 		: exfoliation_energy - Loss 0.199	MAE 0.112	RMSE 0.262
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.331
+Epoch: [133/512]
+Train 		: exfoliation_energy - Loss 0.200	MAE 0.113	RMSE 0.271
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.340
+Epoch: [134/512]
+Train 		: exfoliation_energy - Loss 0.202	MAE 0.114	RMSE 0.259
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.337
+Epoch: [135/512]
+Train 		: exfoliation_energy - Loss 0.206	MAE 0.117	RMSE 0.268
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.346
+Epoch: [136/512]
+Train 		: exfoliation_energy - Loss 0.201	MAE 0.114	RMSE 0.266
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.339
+Epoch: [137/512]
+Train 		: exfoliation_energy - Loss 0.202	MAE 0.114	RMSE 0.262
+Validation 	: exfoliation_energy - Loss 0.361	MAE 0.204	RMSE 0.360
+Epoch: [138/512]
+Train 		: exfoliation_energy - Loss 0.198	MAE 0.112	RMSE 0.264
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.343
+Epoch: [139/512]
+Train 		: exfoliation_energy - Loss 0.202	MAE 0.114	RMSE 0.267
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.337
+Epoch: [140/512]
+Train 		: exfoliation_energy - Loss 0.195	MAE 0.110	RMSE 0.267
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.342
+Epoch: [141/512]
+Train 		: exfoliation_energy - Loss 0.196	MAE 0.111	RMSE 0.259
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.344
+Epoch: [142/512]
+Train 		: exfoliation_energy - Loss 0.194	MAE 0.110	RMSE 0.258
+Validation 	: exfoliation_energy - Loss 0.357	MAE 0.202	RMSE 0.353
+Epoch: [143/512]
+Train 		: exfoliation_energy - Loss 0.199	MAE 0.112	RMSE 0.264
+Validation 	: exfoliation_energy - Loss 0.327	MAE 0.185	RMSE 0.330
+Epoch: [144/512]
+Train 		: exfoliation_energy - Loss 0.197	MAE 0.111	RMSE 0.264
+Validation 	: exfoliation_energy - Loss 0.362	MAE 0.205	RMSE 0.355
+Epoch: [145/512]
+Train 		: exfoliation_energy - Loss 0.196	MAE 0.111	RMSE 0.261
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.338
+Epoch: [146/512]
+Train 		: exfoliation_energy - Loss 0.195	MAE 0.110	RMSE 0.262
+Validation 	: exfoliation_energy - Loss 0.355	MAE 0.201	RMSE 0.350
+Epoch: [147/512]
+Train 		: exfoliation_energy - Loss 0.195	MAE 0.110	RMSE 0.261
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.191	RMSE 0.338
+Epoch: [148/512]
+Train 		: exfoliation_energy - Loss 0.205	MAE 0.116	RMSE 0.262
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.339
+Epoch: [149/512]
+Train 		: exfoliation_energy - Loss 0.198	MAE 0.112	RMSE 0.261
+Validation 	: exfoliation_energy - Loss 0.351	MAE 0.198	RMSE 0.352
+Epoch: [150/512]
+Train 		: exfoliation_energy - Loss 0.206	MAE 0.116	RMSE 0.262
+Validation 	: exfoliation_energy - Loss 0.364	MAE 0.206	RMSE 0.348
+Epoch: [151/512]
+Train 		: exfoliation_energy - Loss 0.198	MAE 0.112	RMSE 0.261
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.332
+Epoch: [152/512]
+Train 		: exfoliation_energy - Loss 0.189	MAE 0.107	RMSE 0.257
+Validation 	: exfoliation_energy - Loss 0.368	MAE 0.208	RMSE 0.366
+Epoch: [153/512]
+Train 		: exfoliation_energy - Loss 0.187	MAE 0.106	RMSE 0.255
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.338
+Epoch: [154/512]
+Train 		: exfoliation_energy - Loss 0.181	MAE 0.102	RMSE 0.252
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.340
+Epoch: [155/512]
+Train 		: exfoliation_energy - Loss 0.186	MAE 0.105	RMSE 0.252
+Validation 	: exfoliation_energy - Loss 0.353	MAE 0.200	RMSE 0.346
+Epoch: [156/512]
+Train 		: exfoliation_energy - Loss 0.192	MAE 0.109	RMSE 0.251
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.326
+Epoch: [157/512]
+Train 		: exfoliation_energy - Loss 0.192	MAE 0.109	RMSE 0.255
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.332
+Epoch: [158/512]
+Train 		: exfoliation_energy - Loss 0.186	MAE 0.105	RMSE 0.252
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.340
+Epoch: [159/512]
+Train 		: exfoliation_energy - Loss 0.185	MAE 0.105	RMSE 0.254
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.342
+Epoch: [160/512]
+Train 		: exfoliation_energy - Loss 0.186	MAE 0.105	RMSE 0.244
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.342
+Epoch: [161/512]
+Train 		: exfoliation_energy - Loss 0.185	MAE 0.104	RMSE 0.250
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.344
+Epoch: [162/512]
+Train 		: exfoliation_energy - Loss 0.183	MAE 0.104	RMSE 0.252
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.336
+Epoch: [163/512]
+Train 		: exfoliation_energy - Loss 0.183	MAE 0.103	RMSE 0.241
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.339
+Epoch: [164/512]
+Train 		: exfoliation_energy - Loss 0.181	MAE 0.102	RMSE 0.245
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.328
+Epoch: [165/512]
+Train 		: exfoliation_energy - Loss 0.177	MAE 0.100	RMSE 0.246
+Validation 	: exfoliation_energy - Loss 0.356	MAE 0.201	RMSE 0.357
+Epoch: [166/512]
+Train 		: exfoliation_energy - Loss 0.180	MAE 0.102	RMSE 0.249
+Validation 	: exfoliation_energy - Loss 0.331	MAE 0.187	RMSE 0.332
+Epoch: [167/512]
+Train 		: exfoliation_energy - Loss 0.183	MAE 0.103	RMSE 0.249
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.338
+Epoch: [168/512]
+Train 		: exfoliation_energy - Loss 0.186	MAE 0.105	RMSE 0.239
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.332
+Epoch: [169/512]
+Train 		: exfoliation_energy - Loss 0.176	MAE 0.100	RMSE 0.240
+Validation 	: exfoliation_energy - Loss 0.327	MAE 0.185	RMSE 0.327
+Epoch: [170/512]
+Train 		: exfoliation_energy - Loss 0.179	MAE 0.101	RMSE 0.244
+Validation 	: exfoliation_energy - Loss 0.357	MAE 0.202	RMSE 0.340
+Epoch: [171/512]
+Train 		: exfoliation_energy - Loss 0.177	MAE 0.100	RMSE 0.240
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.345
+Epoch: [172/512]
+Train 		: exfoliation_energy - Loss 0.176	MAE 0.100	RMSE 0.239
+Validation 	: exfoliation_energy - Loss 0.331	MAE 0.187	RMSE 0.329
+Epoch: [173/512]
+Train 		: exfoliation_energy - Loss 0.178	MAE 0.100	RMSE 0.245
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.342
+Epoch: [174/512]
+Train 		: exfoliation_energy - Loss 0.174	MAE 0.098	RMSE 0.242
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.345
+Epoch: [175/512]
+Train 		: exfoliation_energy - Loss 0.173	MAE 0.098	RMSE 0.241
+Validation 	: exfoliation_energy - Loss 0.350	MAE 0.198	RMSE 0.348
+Epoch: [176/512]
+Train 		: exfoliation_energy - Loss 0.172	MAE 0.097	RMSE 0.238
+Validation 	: exfoliation_energy - Loss 0.354	MAE 0.200	RMSE 0.341
+Epoch: [177/512]
+Train 		: exfoliation_energy - Loss 0.175	MAE 0.099	RMSE 0.240
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.194	RMSE 0.335
+Epoch: [178/512]
+Train 		: exfoliation_energy - Loss 0.173	MAE 0.098	RMSE 0.240
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.334
+Epoch: [179/512]
+Train 		: exfoliation_energy - Loss 0.182	MAE 0.103	RMSE 0.241
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.327
+Epoch: [180/512]
+Train 		: exfoliation_energy - Loss 0.173	MAE 0.098	RMSE 0.241
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.340
+Epoch: [181/512]
+Train 		: exfoliation_energy - Loss 0.171	MAE 0.096	RMSE 0.239
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.331
+Epoch: [182/512]
+Train 		: exfoliation_energy - Loss 0.174	MAE 0.099	RMSE 0.236
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.338
+Epoch: [183/512]
+Train 		: exfoliation_energy - Loss 0.171	MAE 0.096	RMSE 0.239
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.335
+Epoch: [184/512]
+Train 		: exfoliation_energy - Loss 0.171	MAE 0.096	RMSE 0.236
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.330
+Epoch: [185/512]
+Train 		: exfoliation_energy - Loss 0.175	MAE 0.099	RMSE 0.241
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.333
+Epoch: [186/512]
+Train 		: exfoliation_energy - Loss 0.176	MAE 0.099	RMSE 0.237
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.331
+Epoch: [187/512]
+Train 		: exfoliation_energy - Loss 0.169	MAE 0.096	RMSE 0.234
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.334
+Epoch: [188/512]
+Train 		: exfoliation_energy - Loss 0.168	MAE 0.095	RMSE 0.233
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.336
+Epoch: [189/512]
+Train 		: exfoliation_energy - Loss 0.163	MAE 0.092	RMSE 0.238
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.333
+Epoch: [190/512]
+Train 		: exfoliation_energy - Loss 0.169	MAE 0.096	RMSE 0.237
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.324
+Epoch: [191/512]
+Train 		: exfoliation_energy - Loss 0.165	MAE 0.093	RMSE 0.230
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.329
+Epoch: [192/512]
+Train 		: exfoliation_energy - Loss 0.172	MAE 0.097	RMSE 0.239
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.334
+Epoch: [193/512]
+Train 		: exfoliation_energy - Loss 0.175	MAE 0.099	RMSE 0.238
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.342
+Epoch: [194/512]
+Train 		: exfoliation_energy - Loss 0.168	MAE 0.095	RMSE 0.233
+Validation 	: exfoliation_energy - Loss 0.328	MAE 0.186	RMSE 0.328
+Epoch: [195/512]
+Train 		: exfoliation_energy - Loss 0.163	MAE 0.092	RMSE 0.228
+Validation 	: exfoliation_energy - Loss 0.328	MAE 0.185	RMSE 0.328
+Epoch: [196/512]
+Train 		: exfoliation_energy - Loss 0.169	MAE 0.096	RMSE 0.237
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.331
+Epoch: [197/512]
+Train 		: exfoliation_energy - Loss 0.170	MAE 0.096	RMSE 0.239
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.333
+Epoch: [198/512]
+Train 		: exfoliation_energy - Loss 0.165	MAE 0.093	RMSE 0.231
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.333
+Epoch: [199/512]
+Train 		: exfoliation_energy - Loss 0.164	MAE 0.093	RMSE 0.233
+Validation 	: exfoliation_energy - Loss 0.330	MAE 0.187	RMSE 0.329
+Epoch: [200/512]
+Train 		: exfoliation_energy - Loss 0.163	MAE 0.092	RMSE 0.224
+Validation 	: exfoliation_energy - Loss 0.352	MAE 0.199	RMSE 0.341
+Epoch: [201/512]
+Train 		: exfoliation_energy - Loss 0.168	MAE 0.095	RMSE 0.234
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.334
+Epoch: [202/512]
+Train 		: exfoliation_energy - Loss 0.165	MAE 0.093	RMSE 0.232
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.336
+Epoch: [203/512]
+Train 		: exfoliation_energy - Loss 0.173	MAE 0.098	RMSE 0.238
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.329
+Epoch: [204/512]
+Train 		: exfoliation_energy - Loss 0.169	MAE 0.096	RMSE 0.237
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.331
+Epoch: [205/512]
+Train 		: exfoliation_energy - Loss 0.167	MAE 0.094	RMSE 0.232
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.194	RMSE 0.333
+Epoch: [206/512]
+Train 		: exfoliation_energy - Loss 0.167	MAE 0.094	RMSE 0.232
+Validation 	: exfoliation_energy - Loss 0.327	MAE 0.185	RMSE 0.323
+Epoch: [207/512]
+Train 		: exfoliation_energy - Loss 0.165	MAE 0.093	RMSE 0.223
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.336
+Epoch: [208/512]
+Train 		: exfoliation_energy - Loss 0.163	MAE 0.092	RMSE 0.222
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.336
+Epoch: [209/512]
+Train 		: exfoliation_energy - Loss 0.165	MAE 0.093	RMSE 0.230
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.337
+Epoch: [210/512]
+Train 		: exfoliation_energy - Loss 0.164	MAE 0.093	RMSE 0.227
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.337
+Epoch: [211/512]
+Train 		: exfoliation_energy - Loss 0.162	MAE 0.092	RMSE 0.228
+Validation 	: exfoliation_energy - Loss 0.332	MAE 0.187	RMSE 0.335
+Epoch: [212/512]
+Train 		: exfoliation_energy - Loss 0.163	MAE 0.092	RMSE 0.219
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.335
+Epoch: [213/512]
+Train 		: exfoliation_energy - Loss 0.172	MAE 0.097	RMSE 0.226
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.338
+Epoch: [214/512]
+Train 		: exfoliation_energy - Loss 0.160	MAE 0.091	RMSE 0.223
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.194	RMSE 0.342
+Epoch: [215/512]
+Train 		: exfoliation_energy - Loss 0.155	MAE 0.088	RMSE 0.218
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.345
+Epoch: [216/512]
+Train 		: exfoliation_energy - Loss 0.166	MAE 0.094	RMSE 0.229
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.337
+Epoch: [217/512]
+Train 		: exfoliation_energy - Loss 0.161	MAE 0.091	RMSE 0.220
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.332
+Epoch: [218/512]
+Train 		: exfoliation_energy - Loss 0.161	MAE 0.091	RMSE 0.224
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.334
+Epoch: [219/512]
+Train 		: exfoliation_energy - Loss 0.156	MAE 0.088	RMSE 0.212
+Validation 	: exfoliation_energy - Loss 0.330	MAE 0.187	RMSE 0.329
+Epoch: [220/512]
+Train 		: exfoliation_energy - Loss 0.158	MAE 0.090	RMSE 0.219
+Validation 	: exfoliation_energy - Loss 0.332	MAE 0.188	RMSE 0.330
+Epoch: [221/512]
+Train 		: exfoliation_energy - Loss 0.154	MAE 0.087	RMSE 0.210
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.341
+Epoch: [222/512]
+Train 		: exfoliation_energy - Loss 0.160	MAE 0.090	RMSE 0.215
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.339
+Epoch: [223/512]
+Train 		: exfoliation_energy - Loss 0.156	MAE 0.088	RMSE 0.219
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.334
+Epoch: [224/512]
+Train 		: exfoliation_energy - Loss 0.153	MAE 0.087	RMSE 0.216
+Validation 	: exfoliation_energy - Loss 0.332	MAE 0.188	RMSE 0.329
+Epoch: [225/512]
+Train 		: exfoliation_energy - Loss 0.153	MAE 0.087	RMSE 0.214
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.342
+Epoch: [226/512]
+Train 		: exfoliation_energy - Loss 0.156	MAE 0.088	RMSE 0.215
+Validation 	: exfoliation_energy - Loss 0.354	MAE 0.200	RMSE 0.346
+Epoch: [227/512]
+Train 		: exfoliation_energy - Loss 0.159	MAE 0.090	RMSE 0.215
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.194	RMSE 0.341
+Epoch: [228/512]
+Train 		: exfoliation_energy - Loss 0.152	MAE 0.086	RMSE 0.210
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.339
+Epoch: [229/512]
+Train 		: exfoliation_energy - Loss 0.155	MAE 0.088	RMSE 0.213
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.340
+Epoch: [230/512]
+Train 		: exfoliation_energy - Loss 0.158	MAE 0.089	RMSE 0.216
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.344
+Epoch: [231/512]
+Train 		: exfoliation_energy - Loss 0.156	MAE 0.088	RMSE 0.214
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.345
+Epoch: [232/512]
+Train 		: exfoliation_energy - Loss 0.157	MAE 0.089	RMSE 0.208
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.347
+Epoch: [233/512]
+Train 		: exfoliation_energy - Loss 0.151	MAE 0.085	RMSE 0.205
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.329
+Epoch: [234/512]
+Train 		: exfoliation_energy - Loss 0.152	MAE 0.086	RMSE 0.202
+Validation 	: exfoliation_energy - Loss 0.351	MAE 0.198	RMSE 0.354
+Epoch: [235/512]
+Train 		: exfoliation_energy - Loss 0.154	MAE 0.087	RMSE 0.206
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.344
+Epoch: [236/512]
+Train 		: exfoliation_energy - Loss 0.151	MAE 0.085	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.338
+Epoch: [237/512]
+Train 		: exfoliation_energy - Loss 0.147	MAE 0.083	RMSE 0.199
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.340
+Epoch: [238/512]
+Train 		: exfoliation_energy - Loss 0.147	MAE 0.083	RMSE 0.203
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.337
+Epoch: [239/512]
+Train 		: exfoliation_energy - Loss 0.148	MAE 0.084	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.345
+Epoch: [240/512]
+Train 		: exfoliation_energy - Loss 0.146	MAE 0.083	RMSE 0.196
+Validation 	: exfoliation_energy - Loss 0.349	MAE 0.197	RMSE 0.349
+Epoch: [241/512]
+Train 		: exfoliation_energy - Loss 0.150	MAE 0.085	RMSE 0.202
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.344
+Epoch: [242/512]
+Train 		: exfoliation_energy - Loss 0.158	MAE 0.089	RMSE 0.207
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.339
+Epoch: [243/512]
+Train 		: exfoliation_energy - Loss 0.157	MAE 0.089	RMSE 0.209
+Validation 	: exfoliation_energy - Loss 0.352	MAE 0.199	RMSE 0.344
+Epoch: [244/512]
+Train 		: exfoliation_energy - Loss 0.148	MAE 0.084	RMSE 0.202
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.343
+Epoch: [245/512]
+Train 		: exfoliation_energy - Loss 0.150	MAE 0.085	RMSE 0.202
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.344
+Epoch: [246/512]
+Train 		: exfoliation_energy - Loss 0.148	MAE 0.084	RMSE 0.203
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.335
+Epoch: [247/512]
+Train 		: exfoliation_energy - Loss 0.152	MAE 0.086	RMSE 0.205
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.346
+Epoch: [248/512]
+Train 		: exfoliation_energy - Loss 0.148	MAE 0.084	RMSE 0.204
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.349
+Epoch: [249/512]
+Train 		: exfoliation_energy - Loss 0.147	MAE 0.083	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.340
+Epoch: [250/512]
+Train 		: exfoliation_energy - Loss 0.144	MAE 0.081	RMSE 0.199
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.350
+Epoch: [251/512]
+Train 		: exfoliation_energy - Loss 0.149	MAE 0.084	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.342
+Epoch: [252/512]
+Train 		: exfoliation_energy - Loss 0.146	MAE 0.083	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.337
+Epoch: [253/512]
+Train 		: exfoliation_energy - Loss 0.146	MAE 0.083	RMSE 0.201
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.335
+Epoch: [254/512]
+Train 		: exfoliation_energy - Loss 0.146	MAE 0.083	RMSE 0.197
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.348
+Epoch: [255/512]
+Train 		: exfoliation_energy - Loss 0.143	MAE 0.081	RMSE 0.196
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.342
+Epoch: [256/512]
+Train 		: exfoliation_energy - Loss 0.141	MAE 0.080	RMSE 0.198
+Validation 	: exfoliation_energy - Loss 0.360	MAE 0.204	RMSE 0.358
+Epoch: [257/512]
+Train 		: exfoliation_energy - Loss 0.141	MAE 0.080	RMSE 0.197
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.343
+Epoch: [258/512]
+Train 		: exfoliation_energy - Loss 0.141	MAE 0.079	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.336
+Epoch: [259/512]
+Train 		: exfoliation_energy - Loss 0.141	MAE 0.080	RMSE 0.197
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.335
+Epoch: [260/512]
+Train 		: exfoliation_energy - Loss 0.145	MAE 0.082	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.353	MAE 0.200	RMSE 0.348
+Epoch: [261/512]
+Train 		: exfoliation_energy - Loss 0.143	MAE 0.081	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.335
+Epoch: [262/512]
+Train 		: exfoliation_energy - Loss 0.140	MAE 0.079	RMSE 0.197
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.339
+Epoch: [263/512]
+Train 		: exfoliation_energy - Loss 0.141	MAE 0.080	RMSE 0.197
+Validation 	: exfoliation_energy - Loss 0.353	MAE 0.199	RMSE 0.348
+Epoch: [264/512]
+Train 		: exfoliation_energy - Loss 0.145	MAE 0.082	RMSE 0.199
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.329
+Epoch: [265/512]
+Train 		: exfoliation_energy - Loss 0.144	MAE 0.081	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.339
+Epoch: [266/512]
+Train 		: exfoliation_energy - Loss 0.148	MAE 0.084	RMSE 0.206
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.339
+Epoch: [267/512]
+Train 		: exfoliation_energy - Loss 0.140	MAE 0.079	RMSE 0.197
+Validation 	: exfoliation_energy - Loss 0.356	MAE 0.201	RMSE 0.353
+Epoch: [268/512]
+Train 		: exfoliation_energy - Loss 0.148	MAE 0.084	RMSE 0.198
+Validation 	: exfoliation_energy - Loss 0.349	MAE 0.198	RMSE 0.340
+Epoch: [269/512]
+Train 		: exfoliation_energy - Loss 0.146	MAE 0.083	RMSE 0.199
+Validation 	: exfoliation_energy - Loss 0.361	MAE 0.204	RMSE 0.356
+Epoch: [270/512]
+Train 		: exfoliation_energy - Loss 0.147	MAE 0.083	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.331
+Epoch: [271/512]
+Train 		: exfoliation_energy - Loss 0.143	MAE 0.081	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.351	MAE 0.198	RMSE 0.345
+Epoch: [272/512]
+Train 		: exfoliation_energy - Loss 0.144	MAE 0.081	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.336
+Epoch: [273/512]
+Train 		: exfoliation_energy - Loss 0.143	MAE 0.081	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.336
+Epoch: [274/512]
+Train 		: exfoliation_energy - Loss 0.142	MAE 0.080	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.337
+Epoch: [275/512]
+Train 		: exfoliation_energy - Loss 0.138	MAE 0.078	RMSE 0.197
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.344
+Epoch: [276/512]
+Train 		: exfoliation_energy - Loss 0.140	MAE 0.079	RMSE 0.199
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.333
+Epoch: [277/512]
+Train 		: exfoliation_energy - Loss 0.153	MAE 0.087	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.359	MAE 0.203	RMSE 0.349
+Epoch: [278/512]
+Train 		: exfoliation_energy - Loss 0.156	MAE 0.088	RMSE 0.199
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.344
+Epoch: [279/512]
+Train 		: exfoliation_energy - Loss 0.144	MAE 0.081	RMSE 0.200
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.339
+Epoch: [280/512]
+Train 		: exfoliation_energy - Loss 0.143	MAE 0.081	RMSE 0.198
+Validation 	: exfoliation_energy - Loss 0.349	MAE 0.197	RMSE 0.346
+Epoch: [281/512]
+Train 		: exfoliation_energy - Loss 0.138	MAE 0.078	RMSE 0.196
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.336
+Epoch: [282/512]
+Train 		: exfoliation_energy - Loss 0.141	MAE 0.080	RMSE 0.196
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.195	RMSE 0.341
+Epoch: [283/512]
+Train 		: exfoliation_energy - Loss 0.142	MAE 0.080	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.336
+Epoch: [284/512]
+Train 		: exfoliation_energy - Loss 0.145	MAE 0.082	RMSE 0.203
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.343
+Epoch: [285/512]
+Train 		: exfoliation_energy - Loss 0.144	MAE 0.081	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.353	MAE 0.199	RMSE 0.340
+Epoch: [286/512]
+Train 		: exfoliation_energy - Loss 0.140	MAE 0.079	RMSE 0.196
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.342
+Epoch: [287/512]
+Train 		: exfoliation_energy - Loss 0.141	MAE 0.080	RMSE 0.199
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.337
+Epoch: [288/512]
+Train 		: exfoliation_energy - Loss 0.141	MAE 0.080	RMSE 0.198
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.344
+Epoch: [289/512]
+Train 		: exfoliation_energy - Loss 0.138	MAE 0.078	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.340
+Epoch: [290/512]
+Train 		: exfoliation_energy - Loss 0.137	MAE 0.077	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.341
+Epoch: [291/512]
+Train 		: exfoliation_energy - Loss 0.136	MAE 0.077	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.344
+Epoch: [292/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.335
+Epoch: [293/512]
+Train 		: exfoliation_energy - Loss 0.131	MAE 0.074	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.340
+Epoch: [294/512]
+Train 		: exfoliation_energy - Loss 0.137	MAE 0.077	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.340
+Epoch: [295/512]
+Train 		: exfoliation_energy - Loss 0.136	MAE 0.077	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.334
+Epoch: [296/512]
+Train 		: exfoliation_energy - Loss 0.137	MAE 0.077	RMSE 0.198
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.336
+Epoch: [297/512]
+Train 		: exfoliation_energy - Loss 0.137	MAE 0.077	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.350	MAE 0.198	RMSE 0.348
+Epoch: [298/512]
+Train 		: exfoliation_energy - Loss 0.132	MAE 0.075	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.336
+Epoch: [299/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.194	RMSE 0.335
+Epoch: [300/512]
+Train 		: exfoliation_energy - Loss 0.133	MAE 0.075	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.341
+Epoch: [301/512]
+Train 		: exfoliation_energy - Loss 0.136	MAE 0.077	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.338
+Epoch: [302/512]
+Train 		: exfoliation_energy - Loss 0.133	MAE 0.075	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.346
+Epoch: [303/512]
+Train 		: exfoliation_energy - Loss 0.138	MAE 0.078	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.342
+Epoch: [304/512]
+Train 		: exfoliation_energy - Loss 0.135	MAE 0.077	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.332
+Epoch: [305/512]
+Train 		: exfoliation_energy - Loss 0.135	MAE 0.076	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.338
+Epoch: [306/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.346
+Epoch: [307/512]
+Train 		: exfoliation_energy - Loss 0.136	MAE 0.077	RMSE 0.196
+Validation 	: exfoliation_energy - Loss 0.351	MAE 0.199	RMSE 0.346
+Epoch: [308/512]
+Train 		: exfoliation_energy - Loss 0.138	MAE 0.078	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.343
+Epoch: [309/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.194
+Validation 	: exfoliation_energy - Loss 0.356	MAE 0.201	RMSE 0.359
+Epoch: [310/512]
+Train 		: exfoliation_energy - Loss 0.135	MAE 0.076	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.337
+Epoch: [311/512]
+Train 		: exfoliation_energy - Loss 0.131	MAE 0.074	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.351	MAE 0.198	RMSE 0.347
+Epoch: [312/512]
+Train 		: exfoliation_energy - Loss 0.133	MAE 0.075	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.332
+Epoch: [313/512]
+Train 		: exfoliation_energy - Loss 0.133	MAE 0.075	RMSE 0.194
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.343
+Epoch: [314/512]
+Train 		: exfoliation_energy - Loss 0.132	MAE 0.074	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.331	MAE 0.187	RMSE 0.331
+Epoch: [315/512]
+Train 		: exfoliation_energy - Loss 0.137	MAE 0.077	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.341
+Epoch: [316/512]
+Train 		: exfoliation_energy - Loss 0.135	MAE 0.077	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.342
+Epoch: [317/512]
+Train 		: exfoliation_energy - Loss 0.130	MAE 0.073	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.337
+Epoch: [318/512]
+Train 		: exfoliation_energy - Loss 0.130	MAE 0.074	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.367	MAE 0.208	RMSE 0.359
+Epoch: [319/512]
+Train 		: exfoliation_energy - Loss 0.136	MAE 0.077	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.335
+Epoch: [320/512]
+Train 		: exfoliation_energy - Loss 0.132	MAE 0.075	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.335
+Epoch: [321/512]
+Train 		: exfoliation_energy - Loss 0.131	MAE 0.074	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.339
+Epoch: [322/512]
+Train 		: exfoliation_energy - Loss 0.131	MAE 0.074	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.346
+Epoch: [323/512]
+Train 		: exfoliation_energy - Loss 0.130	MAE 0.074	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.332
+Epoch: [324/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.343
+Epoch: [325/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.194
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.342
+Epoch: [326/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.344
+Epoch: [327/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.339
+Epoch: [328/512]
+Train 		: exfoliation_energy - Loss 0.133	MAE 0.075	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.351	MAE 0.199	RMSE 0.345
+Epoch: [329/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.337
+Epoch: [330/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.340
+Epoch: [331/512]
+Train 		: exfoliation_energy - Loss 0.139	MAE 0.079	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.350	MAE 0.198	RMSE 0.348
+Epoch: [332/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.193
+Validation 	: exfoliation_energy - Loss 0.349	MAE 0.198	RMSE 0.345
+Epoch: [333/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.338
+Epoch: [334/512]
+Train 		: exfoliation_energy - Loss 0.130	MAE 0.074	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.338
+Epoch: [335/512]
+Train 		: exfoliation_energy - Loss 0.132	MAE 0.074	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.340
+Epoch: [336/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.349	MAE 0.197	RMSE 0.345
+Epoch: [337/512]
+Train 		: exfoliation_energy - Loss 0.128	MAE 0.073	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.340
+Epoch: [338/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.344
+Epoch: [339/512]
+Train 		: exfoliation_energy - Loss 0.130	MAE 0.074	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.331	MAE 0.187	RMSE 0.329
+Epoch: [340/512]
+Train 		: exfoliation_energy - Loss 0.128	MAE 0.073	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.339
+Epoch: [341/512]
+Train 		: exfoliation_energy - Loss 0.131	MAE 0.074	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.337
+Epoch: [342/512]
+Train 		: exfoliation_energy - Loss 0.126	MAE 0.071	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.331
+Epoch: [343/512]
+Train 		: exfoliation_energy - Loss 0.133	MAE 0.075	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.341
+Epoch: [344/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.337
+Epoch: [345/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.195
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.335
+Epoch: [346/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.337
+Epoch: [347/512]
+Train 		: exfoliation_energy - Loss 0.126	MAE 0.071	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.338
+Epoch: [348/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.345
+Epoch: [349/512]
+Train 		: exfoliation_energy - Loss 0.134	MAE 0.076	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.357	MAE 0.202	RMSE 0.351
+Epoch: [350/512]
+Train 		: exfoliation_energy - Loss 0.133	MAE 0.075	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.342
+Epoch: [351/512]
+Train 		: exfoliation_energy - Loss 0.136	MAE 0.077	RMSE 0.194
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.337
+Epoch: [352/512]
+Train 		: exfoliation_energy - Loss 0.137	MAE 0.077	RMSE 0.194
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.332
+Epoch: [353/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.349	MAE 0.197	RMSE 0.343
+Epoch: [354/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.335
+Epoch: [355/512]
+Train 		: exfoliation_energy - Loss 0.126	MAE 0.071	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.340
+Epoch: [356/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.337
+Epoch: [357/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.070	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.332
+Epoch: [358/512]
+Train 		: exfoliation_energy - Loss 0.126	MAE 0.071	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.195	RMSE 0.340
+Epoch: [359/512]
+Train 		: exfoliation_energy - Loss 0.130	MAE 0.073	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.343
+Epoch: [360/512]
+Train 		: exfoliation_energy - Loss 0.132	MAE 0.074	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.327
+Epoch: [361/512]
+Train 		: exfoliation_energy - Loss 0.128	MAE 0.073	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.352	MAE 0.199	RMSE 0.344
+Epoch: [362/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.341
+Epoch: [363/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.333
+Epoch: [364/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.336
+Epoch: [365/512]
+Train 		: exfoliation_energy - Loss 0.126	MAE 0.071	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.345
+Epoch: [366/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.335
+Epoch: [367/512]
+Train 		: exfoliation_energy - Loss 0.125	MAE 0.071	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.347	MAE 0.196	RMSE 0.343
+Epoch: [368/512]
+Train 		: exfoliation_energy - Loss 0.128	MAE 0.073	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.344
+Epoch: [369/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.070	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.334
+Epoch: [370/512]
+Train 		: exfoliation_energy - Loss 0.125	MAE 0.071	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.342
+Epoch: [371/512]
+Train 		: exfoliation_energy - Loss 0.125	MAE 0.071	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.341
+Epoch: [372/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.194	RMSE 0.341
+Epoch: [373/512]
+Train 		: exfoliation_energy - Loss 0.125	MAE 0.070	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.336
+Epoch: [374/512]
+Train 		: exfoliation_energy - Loss 0.128	MAE 0.072	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.342
+Epoch: [375/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.335
+Epoch: [376/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.341
+Epoch: [377/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.343
+Epoch: [378/512]
+Train 		: exfoliation_energy - Loss 0.126	MAE 0.071	RMSE 0.192
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.336
+Epoch: [379/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.070	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.339
+Epoch: [380/512]
+Train 		: exfoliation_energy - Loss 0.125	MAE 0.071	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.342
+Epoch: [381/512]
+Train 		: exfoliation_energy - Loss 0.130	MAE 0.073	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.334
+Epoch: [382/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.340
+Epoch: [383/512]
+Train 		: exfoliation_energy - Loss 0.128	MAE 0.072	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.350	MAE 0.198	RMSE 0.347
+Epoch: [384/512]
+Train 		: exfoliation_energy - Loss 0.125	MAE 0.071	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.329
+Epoch: [385/512]
+Train 		: exfoliation_energy - Loss 0.128	MAE 0.072	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.336
+Epoch: [386/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.338
+Epoch: [387/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.333
+Epoch: [388/512]
+Train 		: exfoliation_energy - Loss 0.132	MAE 0.075	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.194	RMSE 0.340
+Epoch: [389/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.334
+Epoch: [390/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.337
+Epoch: [391/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.340
+Epoch: [392/512]
+Train 		: exfoliation_energy - Loss 0.130	MAE 0.074	RMSE 0.191
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.338
+Epoch: [393/512]
+Train 		: exfoliation_energy - Loss 0.131	MAE 0.074	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.193	RMSE 0.344
+Epoch: [394/512]
+Train 		: exfoliation_energy - Loss 0.126	MAE 0.071	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.342
+Epoch: [395/512]
+Train 		: exfoliation_energy - Loss 0.125	MAE 0.071	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.341
+Epoch: [396/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.341
+Epoch: [397/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.069	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.346
+Epoch: [398/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.349	MAE 0.197	RMSE 0.345
+Epoch: [399/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.344
+Epoch: [400/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.328	MAE 0.186	RMSE 0.335
+Epoch: [401/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.342
+Epoch: [402/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.332	MAE 0.188	RMSE 0.335
+Epoch: [403/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.346
+Epoch: [404/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.069	RMSE 0.179
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.342
+Epoch: [405/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.348
+Epoch: [406/512]
+Train 		: exfoliation_energy - Loss 0.125	MAE 0.071	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.334
+Epoch: [407/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.342
+Epoch: [408/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.069	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.337
+Epoch: [409/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.339
+Epoch: [410/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.069	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.340
+Epoch: [411/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.068	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.343
+Epoch: [412/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.342
+Epoch: [413/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.346
+Epoch: [414/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.339
+Epoch: [415/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.068	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.334
+Epoch: [416/512]
+Train 		: exfoliation_energy - Loss 0.132	MAE 0.074	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.337
+Epoch: [417/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.070	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.342
+Epoch: [418/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.341
+Epoch: [419/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.068	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.345
+Epoch: [420/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.336
+Epoch: [421/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.343
+Epoch: [422/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.341
+Epoch: [423/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.336
+Epoch: [424/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.340
+Epoch: [425/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.340
+Epoch: [426/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.337
+Epoch: [427/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.335
+Epoch: [428/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.328	MAE 0.186	RMSE 0.329
+Epoch: [429/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.336
+Epoch: [430/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.343
+Epoch: [431/512]
+Train 		: exfoliation_energy - Loss 0.129	MAE 0.073	RMSE 0.194
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.339
+Epoch: [432/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.068	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.345
+Epoch: [433/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.066	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.339
+Epoch: [434/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.344
+Epoch: [435/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.335
+Epoch: [436/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.342
+Epoch: [437/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.337
+Epoch: [438/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.342
+Epoch: [439/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.341
+Epoch: [440/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.342
+Epoch: [441/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.068	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.350	MAE 0.198	RMSE 0.349
+Epoch: [442/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.179
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.342
+Epoch: [443/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.342
+Epoch: [444/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.068	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.333
+Epoch: [445/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.197
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.328
+Epoch: [446/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.336
+Epoch: [447/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.069	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.345
+Epoch: [448/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.189
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.337
+Epoch: [449/512]
+Train 		: exfoliation_energy - Loss 0.126	MAE 0.071	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.339
+Epoch: [450/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.341
+Epoch: [451/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.337
+Epoch: [452/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.338
+Epoch: [453/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.338
+Epoch: [454/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.338
+Epoch: [455/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.334
+Epoch: [456/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.340
+Epoch: [457/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.339
+Epoch: [458/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.195	RMSE 0.346
+Epoch: [459/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.068	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.335
+Epoch: [460/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.337
+Epoch: [461/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.346
+Epoch: [462/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.069	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.348	MAE 0.197	RMSE 0.346
+Epoch: [463/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.068	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.339
+Epoch: [464/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.359	MAE 0.203	RMSE 0.356
+Epoch: [465/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.066	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.340
+Epoch: [466/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.187
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.333
+Epoch: [467/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.184
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.343
+Epoch: [468/512]
+Train 		: exfoliation_energy - Loss 0.124	MAE 0.070	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.345	MAE 0.195	RMSE 0.347
+Epoch: [469/512]
+Train 		: exfoliation_energy - Loss 0.127	MAE 0.072	RMSE 0.194
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.337
+Epoch: [470/512]
+Train 		: exfoliation_energy - Loss 0.122	MAE 0.069	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.191	RMSE 0.332
+Epoch: [471/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.066	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.342
+Epoch: [472/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.065	RMSE 0.179
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.334
+Epoch: [473/512]
+Train 		: exfoliation_energy - Loss 0.114	MAE 0.064	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.336	MAE 0.190	RMSE 0.332
+Epoch: [474/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.066	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.342	MAE 0.194	RMSE 0.341
+Epoch: [475/512]
+Train 		: exfoliation_energy - Loss 0.115	MAE 0.065	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.342
+Epoch: [476/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.344
+Epoch: [477/512]
+Train 		: exfoliation_energy - Loss 0.120	MAE 0.068	RMSE 0.179
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.337
+Epoch: [478/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.193	RMSE 0.343
+Epoch: [479/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.178
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.337
+Epoch: [480/512]
+Train 		: exfoliation_energy - Loss 0.112	MAE 0.064	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.338
+Epoch: [481/512]
+Train 		: exfoliation_energy - Loss 0.112	MAE 0.064	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.336
+Epoch: [482/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.336
+Epoch: [483/512]
+Train 		: exfoliation_energy - Loss 0.114	MAE 0.064	RMSE 0.178
+Validation 	: exfoliation_energy - Loss 0.346	MAE 0.196	RMSE 0.347
+Epoch: [484/512]
+Train 		: exfoliation_energy - Loss 0.113	MAE 0.064	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.351	MAE 0.199	RMSE 0.346
+Epoch: [485/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.342
+Epoch: [486/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.065	RMSE 0.176
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.328
+Epoch: [487/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.185
+Validation 	: exfoliation_energy - Loss 0.340	MAE 0.192	RMSE 0.343
+Epoch: [488/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.338
+Epoch: [489/512]
+Train 		: exfoliation_energy - Loss 0.121	MAE 0.068	RMSE 0.188
+Validation 	: exfoliation_energy - Loss 0.344	MAE 0.194	RMSE 0.339
+Epoch: [490/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.067	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.340
+Epoch: [491/512]
+Train 		: exfoliation_energy - Loss 0.123	MAE 0.069	RMSE 0.190
+Validation 	: exfoliation_energy - Loss 0.328	MAE 0.186	RMSE 0.326
+Epoch: [492/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.191	RMSE 0.346
+Epoch: [493/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.179
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.189	RMSE 0.335
+Epoch: [494/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.065	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.335	MAE 0.190	RMSE 0.335
+Epoch: [495/512]
+Train 		: exfoliation_energy - Loss 0.113	MAE 0.064	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.331	MAE 0.187	RMSE 0.330
+Epoch: [496/512]
+Train 		: exfoliation_energy - Loss 0.118	MAE 0.066	RMSE 0.179
+Validation 	: exfoliation_energy - Loss 0.330	MAE 0.187	RMSE 0.334
+Epoch: [497/512]
+Train 		: exfoliation_energy - Loss 0.112	MAE 0.063	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.338	MAE 0.191	RMSE 0.335
+Epoch: [498/512]
+Train 		: exfoliation_energy - Loss 0.112	MAE 0.063	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.343
+Epoch: [499/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.066	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.340
+Epoch: [500/512]
+Train 		: exfoliation_energy - Loss 0.119	MAE 0.067	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.329	MAE 0.186	RMSE 0.331
+Epoch: [501/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.343
+Epoch: [502/512]
+Train 		: exfoliation_energy - Loss 0.114	MAE 0.065	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.341
+Epoch: [503/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.186
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.342
+Epoch: [504/512]
+Train 		: exfoliation_energy - Loss 0.117	MAE 0.066	RMSE 0.182
+Validation 	: exfoliation_energy - Loss 0.352	MAE 0.199	RMSE 0.356
+Epoch: [505/512]
+Train 		: exfoliation_energy - Loss 0.116	MAE 0.066	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.349
+Epoch: [506/512]
+Train 		: exfoliation_energy - Loss 0.111	MAE 0.063	RMSE 0.175
+Validation 	: exfoliation_energy - Loss 0.339	MAE 0.192	RMSE 0.342
+Epoch: [507/512]
+Train 		: exfoliation_energy - Loss 0.112	MAE 0.063	RMSE 0.180
+Validation 	: exfoliation_energy - Loss 0.337	MAE 0.190	RMSE 0.340
+Epoch: [508/512]
+Train 		: exfoliation_energy - Loss 0.112	MAE 0.063	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.333	MAE 0.188	RMSE 0.340
+Epoch: [509/512]
+Train 		: exfoliation_energy - Loss 0.113	MAE 0.064	RMSE 0.179
+Validation 	: exfoliation_energy - Loss 0.332	MAE 0.188	RMSE 0.336
+Epoch: [510/512]
+Train 		: exfoliation_energy - Loss 0.115	MAE 0.065	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.341	MAE 0.193	RMSE 0.338
+Epoch: [511/512]
+Train 		: exfoliation_energy - Loss 0.114	MAE 0.065	RMSE 0.183
+Validation 	: exfoliation_energy - Loss 0.334	MAE 0.189	RMSE 0.339
+Epoch: [512/512]
+Train 		: exfoliation_energy - Loss 0.111	MAE 0.063	RMSE 0.181
+Validation 	: exfoliation_energy - Loss 0.343	MAE 0.194	RMSE 0.344
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------Evaluate model on Test Set------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Evaluating Model
+
+Task: 'exfoliation_energy' on Test Set
+Model Performance Metrics:
+R2 Score: 0.4985
+MAE: 0.1940
+RMSE: 0.3444
