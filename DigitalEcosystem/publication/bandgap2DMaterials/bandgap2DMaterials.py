@@ -461,7 +461,7 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_results_test.csv'))
 # In[]:
 
 
-model_to_plot = 'r1_1term'
+model_to_plot = 'r2_4term'
 DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data_train['bandgap (eV)'],
                                                        train_y_pred = sisso_data_train[model_to_plot],
                                                        test_y_true = sisso_data_test['bandgap (eV)'],
