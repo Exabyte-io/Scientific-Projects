@@ -9,6 +9,7 @@
 
 
 import functools
+import pickle
 import collections
 import numpy as np
 import pandas as pd
@@ -247,6 +248,13 @@ with open("xgboost_perovskite_volume_importances.csv", "w") as outp:
         outp.write(f"{descriptor},{importance}\n")
 
 
+# In[]:
+
+
+with open("xgboost_pipeline.pkl", "wb") as outp:
+    pickle.dump(best_reg, outp)
+
+
 # # TPOT
 
 # In[]:
@@ -301,6 +309,14 @@ test_preds['Prediction'] = tpot_model.predict(test_x)
 
 tpot_predictions = train_preds.append(test_preds)
 tpot_predictions.to_csv("tpot_perovskite_volume_predictions.csv")
+
+
+# In[]:
+
+
+tpot_model.export('tpot_autogeneratepipeline.py')
+with open("tpot_pipeline.pkl", "wb") as outp:
+    pickle.dump(tpot_model.fitted_pipeline_, outp)
 
 
 # # Roost
