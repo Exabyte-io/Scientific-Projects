@@ -429,6 +429,7 @@ sisso_data_train = train[target_column + sisso_features]
 sisso_data_test = test[target_column + sisso_features]
 
 sisso_data_train.to_csv(os.path.join(sisso_dir, 'sisso_train.csv'), index_label='2dm_id (unitless)')
+sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_test.csv'), index_label='2dm_id (unitless)')
 
 
 # At this point, a SISSO model was run.
