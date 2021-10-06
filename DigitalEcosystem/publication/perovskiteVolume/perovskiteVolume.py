@@ -214,6 +214,7 @@ n_importances = 10
 importances = list(zip(best_reg[1].feature_importances_, xenonpy_descriptors))
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
+
 plt.barh(range(n_importances), [imp[0] for imp in sorted_importances[:n_importances]])
 plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
 plt.ylabel("Feature")
@@ -235,6 +236,15 @@ test_preds['Prediction'] = best_reg.predict(test_x)
 
 xgb_predictions = train_preds.append(test_preds)
 xgb_predictions.to_csv("xgboost_perovskite_volume_predictions.csv")
+
+
+# In[]:
+
+
+with open("xgboost_perovskite_volume_importances.csv", "w") as outp:
+    outp.write("Descriptor,XGB_Importance\n")
+    for importance, descriptor in sorted_importances:
+        outp.write(f"{descriptor},{importance}\n")
 
 
 # # TPOT
