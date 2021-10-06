@@ -1,0 +1,33 @@
+time input_parsing: 0.066798 s
+time to generate feat sapce: 0.0329621 s
+Projection time: 0.0108446 s
+Time to get best features on rank : 0.000225946 s
+Complete final combination/selection from all ranks: 0.00326697 s
+Time for SIS: 0.331013 s
+Time for l0-norm: 0.00101358 s
+Projection time: 0.00436505 s
+Time to get best features on rank : 0.000140684 s
+Complete final combination/selection from all ranks: 0.0032087 s
+Time for SIS: 0.00904379 s
+Time for l0-norm: 0.00120129 s
+Projection time: 0.00426063 s
+Time to get best features on rank : 0.000134073 s
+Complete final combination/selection from all ranks: 0.00314942 s
+Time for SIS: 0.00896144 s
+Time for l0-norm: 0.015832 s
+Projection time: 0.00430641 s
+Time to get best features on rank : 0.000247277 s
+Complete final combination/selection from all ranks: 0.00361029 s
+Time for SIS: 0.00969108 s
+Time for l0-norm: 0.420997 s
+Train RMSE: 1.26972 Unitless; Test RMSE: 1.50732 Unitless
+c0 + a0 * cbrt(ave:boiling_point)
+
+Train RMSE: 1.20955 Unitless; Test RMSE: 1.40914 Unitless
+c0 + a0 * (var:sound_velocity / ave:boiling_point) + a1 * cbrt(ave:boiling_point)
+
+Train RMSE: 1.18381 Unitless; Test RMSE: 1.35812 Unitless
+c0 + a0 * (var:thermal_conductivity / ave:boiling_point) + a1 * (var:sound_velocity / ave:boiling_point) + a2 * cbrt(ave:boiling_point)
+
+Train RMSE: 1.16592 Unitless; Test RMSE: 1.29474 Unitless
+c0 + a0 * (sum:hhi_p / ave:atomic_weight) + a1 * (var:thermal_conductivity / ave:boiling_point) + a2 * (var:sound_velocity + var:boiling_point) + a3 * sqrt(ave:boiling_point)

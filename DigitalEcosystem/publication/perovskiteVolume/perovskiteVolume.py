@@ -214,12 +214,37 @@ n_importances = 10
 importances = list(zip(best_reg[1].feature_importances_, xenonpy_descriptors))
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
+
 plt.barh(range(n_importances), [imp[0] for imp in sorted_importances[:n_importances]])
-plt.yticksRANDOM_SEEDnge(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
+plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
 plt.ylabel("Feature")
 plt.xlabel("Importance Score")
 plt.tight_layout()
 plt.savefig("xgboost_importances.jpeg")
+
+
+# In[]:
+
+
+train_preds = train[target_column]
+train_preds['TrainTest Status'] = ['Training Set'] * len(train_preds)
+train_preds['Prediction'] = best_reg.predict(train_x)
+
+test_preds = test[target_column]
+test_preds['TrainTest Status'] = ['Test Set'] * len(test_preds)
+test_preds['Prediction'] = best_reg.predict(test_x)
+
+xgb_predictions = train_preds.append(test_preds)
+xgb_predictions.to_csv("xgboost_perovskite_volume_predictions.csv")
+
+
+# In[]:
+
+
+with open("xgboost_perovskite_volume_importances.csv", "w") as outp:
+    outp.write("Descriptor,XGB_Importance\n")
+    for importance, descriptor in sorted_importances:
+        outp.write(f"{descriptor},{importance}\n")
 
 
 # # TPOT
@@ -261,6 +286,21 @@ print("\nTraining Set Error Metrics")
 for key, fun in metrics.items():
     value = fun(y_true=train_y, y_pred=tpot_model.predict(train_x))
     print(key,np.round(value,4))
+
+
+# In[]:
+
+
+train_preds = train[target_column]
+train_preds['TrainTest Status'] = ['Training Set'] * len(train_preds)
+train_preds['Prediction'] = tpot_model.predict(train_x)
+
+test_preds = test[target_column]
+test_preds['TrainTest Status'] = ['Test Set'] * len(test_preds)
+test_preds['Prediction'] = tpot_model.predict(test_x)
+
+tpot_predictions = train_preds.append(test_preds)
+tpot_predictions.to_csv("tpot_perovskite_volume_predictions.csv")
 
 
 # # Roost
@@ -339,6 +379,7 @@ sisso_data_train = train[target_column + sisso_features]
 sisso_data_test = test[target_column + sisso_features]
 
 sisso_data_train.to_csv(os.path.join(sisso_dir, 'sisso_train.csv'), index_label='material_id')
+sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_test.csv'), index_label='material_id')
 
 
 # At this point, a SISSO model was run.
@@ -400,8 +441,6 @@ for key, fun in sisso_models.items():
     for metric, fun in metrics.items():
         value = fun(y_true=sisso_data_train['Volume'], y_pred=sisso_train_predictions)
         print(metric,np.round(value,4))
-    
-    
 
 
 # In[]:
