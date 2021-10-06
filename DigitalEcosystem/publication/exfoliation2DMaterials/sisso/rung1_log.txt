@@ -1,0 +1,33 @@
+time input_parsing: 0.401963 s
+time to generate feat sapce: 0.0642435 s
+Projection time: 0.0194044 s
+Time to get best features on rank : 0.000481198 s
+Complete final combination/selection from all ranks: 0.00475507 s
+Time for SIS: 0.0375215 s
+Time for l0-norm: 0.00135447 s
+Projection time: 0.00989467 s
+Time to get best features on rank : 0.000436458 s
+Complete final combination/selection from all ranks: 0.00591697 s
+Time for SIS: 0.0178755 s
+Time for l0-norm: 0.00251249 s
+Projection time: 0.00998406 s
+Time to get best features on rank : 0.000721019 s
+Complete final combination/selection from all ranks: 0.00718575 s
+Time for SIS: 0.0197857 s
+Time for l0-norm: 0.0383784 s
+Projection time: 0.00993064 s
+Time to get best features on rank : 0.000866299 s
+Complete final combination/selection from all ranks: 0.00622963 s
+Time for SIS: 0.0189928 s
+Time for l0-norm: 1.03045 s
+Train RMSE: 0.503027 J * m^-2; Test RMSE: 0.748751 J * m^-2
+c0 + a0 * (ave:atomic_volume - ave:Polarizability)
+
+Train RMSE: 0.486295 J * m^-2; Test RMSE: 0.754602 J * m^-2
+c0 + a0 * (ave:Polarizability / ave:atomic_volume) + a1 * (ave:atomic_radius / ave:atomic_volume)
+
+Train RMSE: 0.474494 J * m^-2; Test RMSE: 0.746131 J * m^-2
+c0 + a0 * sqrt(var:evaporation_heat) + a1 * (ave:Polarizability / ave:atomic_volume) + a2 * (ave:atomic_radius / ave:atomic_volume)
+
+Train RMSE: 0.470063 J * m^-2; Test RMSE: 0.739437 J * m^-2
+c0 + a0 * (1.0 / ave:atomic_radius_rahm) + a1 * sqrt(var:evaporation_heat) + a2 * (ave:Polarizability / ave:atomic_volume) + a3 * (ave:atomic_radius / ave:atomic_volume)

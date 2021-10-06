@@ -1,0 +1,33 @@
+time input_parsing: 0.389569 s
+time to generate feat sapce: 3.34259 s
+Projection time: 1.27966 s
+Time to get best features on rank : 0.000987894 s
+Complete final combination/selection from all ranks: 0.00697341 s
+Time for SIS: 1.32241 s
+Time for l0-norm: 0.00142565 s
+Projection time: 1.26958 s
+Time to get best features on rank : 0.000777401 s
+Complete final combination/selection from all ranks: 0.0102443 s
+Time for SIS: 1.28806 s
+Time for l0-norm: 0.00397566 s
+Projection time: 1.27774 s
+Time to get best features on rank : 0.000720556 s
+Complete final combination/selection from all ranks: 0.00768464 s
+Time for SIS: 1.29387 s
+Time for l0-norm: 0.0386862 s
+Projection time: 1.27396 s
+Time to get best features on rank : 0.000453252 s
+Complete final combination/selection from all ranks: 0.00627451 s
+Time for SIS: 1.28871 s
+Time for l0-norm: 1.05604 s
+Train RMSE: 0.51799 J * m^-2; Test RMSE: 0.505926 J * m^-2
+c0 + a0 * ((ave:atomic_radius * ave:Polarizability) / (ave:atomic_volume^3))
+
+Train RMSE: 0.505518 J * m^-2; Test RMSE: 0.486719 J * m^-2
+c0 + a0 * (cbrt(var:evaporation_heat) * (ave:atomic_radius_rahm - ave:atomic_radius)) + a1 * (ave:Polarizability / (ave:atomic_volume^2))
+
+Train RMSE: 0.493847 J * m^-2; Test RMSE: 0.500123 J * m^-2
+c0 + a0 * (cbrt(var:evaporation_heat) * (ave:atomic_radius_rahm - ave:atomic_radius)) + a1 * ((var:thermal_conductivity * var:hhi_r) * (var:hhi_p * var:c6_gb)) + a2 * ((ave:atomic_volume + ave:Polarizability) / (ave:atomic_volume^2))
+
+Train RMSE: 0.485392 J * m^-2; Test RMSE: 0.488211 J * m^-2
+c0 + a0 * ((sum:boiling_point * ave:Polarizability) / (var:evaporation_heat + sum:hhi_r)) + a1 * (cbrt(var:evaporation_heat) * (ave:atomic_radius_rahm - ave:atomic_radius)) + a2 * ((var:thermal_conductivity * var:hhi_r) * (var:hhi_p * var:c6_gb)) + a3 * ((ave:atomic_volume + ave:Polarizability) / (ave:atomic_volume^2))
