@@ -408,8 +408,8 @@ sisso_models = {
                            1.826376438466298e-01 * ((df['ave:atomic_radius'] / df['ave:atomic_number']) + (df['ave:atomic_volume'] - df['ave:Polarizability'])),
     
     'r2_2term': lambda df: 4.505248526916998e-02 + \
-                           -5.114170240526208e-02 * abs((df['ave:boiling_point'] / df['ave:atomic_radius']) - (df['var:thermal_conductivity'] / df['ave:boiling_point'])) + 
-                           9.008103812101369e-01 * (abs(df['ave:boiling_point'] / df['ave:atomic_radius']) / np.sqrt(df['ave:atomic_number'])),
+                           -5.114170240526208e-02 * abs((df['ave:boiling_point'] / df['ave:atomic_radius']) - (df['var:thermal_conductivity'] / df['ave:boiling_point']))  + 
+                           9.008103812101369e-01 * (abs(df['ave:atomic_volume'] - df['ave:Polarizability']) / np.sqrt(df['ave:atomic_number'])),
     
     'r2_3term': lambda df: -9.276197718364346e+00 + \
                            -4.769165630634773e+00 * ((df['ave:atomic_number'] / df['ave:atomic_radius']) - (df['ave:atomic_weight'] / df['ave:atomic_number'])) + \
@@ -441,6 +441,12 @@ for key, fun in sisso_models.items():
         print(metric,np.round(value,4))
     
     
+
+
+# In[ ]:
+
+
+
 
 
 # It's not the best model, but we're gonna use the Rung1 1Term model, because it's simple and still performs well. It's also intuitive.
