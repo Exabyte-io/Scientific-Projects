@@ -495,14 +495,6 @@ for key, fun in sisso_models.items():
     
 
 
-# In[ ]:
-
-
-
-
-
-# It's not the best model, but we're gonna use the Rung1 1Term model, because it's simple and still performs well. It's also intuitive.
-
 # In[]:
 
 
