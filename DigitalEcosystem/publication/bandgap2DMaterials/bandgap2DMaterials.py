@@ -240,7 +240,7 @@ DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = train_y,
                                                        train_y_pred = best_reg.predict(train_x),
                                                        test_y_true = test_y,
                                                        test_y_pred = best_reg.predict(test_x),
-                                                       axis_label = "2D Material Bandgap (eV)",
+                                                       axis_label = "Bandgap (eV)",
                                                        filename = "xgboost_2dm_bandgap_parity.jpeg")
 
 
@@ -281,13 +281,12 @@ tpot_model.fit(train_x, train_y.ravel())
 # In[]:
 
 
-DigitalEcosystem.utils.figures.save_parity_plot(train_x,
-                                                test_x,
-                                                train_y,
-                                                test_y,
-                                                tpot_model,
-                                                "Perovskite Volume (Å^3 / formula unit)",
-                                                "tpot_perovskite_volume_parity.jpeg")
+DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = train_y,
+                                                       train_y_pred = tpot_model.predict(train_x),
+                                                       test_y_true = test_y,
+                                                       test_y_pred = tpot_model.predict(test_x),
+                                                       axis_label = "Bandgap (eV))",
+                                                       filename = "tpot_2dm_bandgap_parity.jpeg")
 
 
 # In[]:
@@ -343,12 +342,12 @@ DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = roost_trai
 
 print("Test Set Error Metrics")
 for key, fun in metrics.items():
-    value = fun(y_true=roost_test_results['volu_target'], y_pred=roost_test_results['volume_pred_n0'])
+    value = fun(y_true=roost_test_results['bandgap_target'], y_pred=roost_test_results['bandgap_pred_n0'])
     print(key,np.round(value,4))
     
 print("\nTraining Set Error Metrics")
 for key, fun in metrics.items():
-    value = fun(y_true=roost_train_results['volume_target'], y_pred=roost_train_results['volume_pred_n0'])
+    value = fun(y_true=roost_train_results['bandgap_target'], y_pred=roost_train_results['bandgap_pred_n0'])
     print(key,np.round(value,4))
 
 
@@ -387,41 +386,41 @@ sisso_data_train.to_csv(os.path.join(sisso_dir, 'sisso_train.csv'), index_label=
 
 
 sisso_models = {
-    'r1_1term': lambda df: -4.559505163148324e+02 + \
-                           2.464859419692384e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
-
-    'r1_2term': lambda df: 7.027013257763095e+01 + \
-                           -7.832363248251127e-01 * (df['ave:bulk_modulus'] - df['ave:atomic_number']) + \
-                           6.564150096290632e-13 * (df['ave:atomic_radius_rahm'] ** 6),
+    'r1_1term': lambda df: 5.908677334854443e+00 + \
+                           -4.182238907095930e-01 * (np.cbrt(df['ave:boiling_point'])),
     
-    'r1_3term': lambda df: -3.526598287867814e+02 + \
-                           -5.798450768280212e-02 * (df['var:c6_gb'] / df['sum:hhi_r']) + \
-                           -5.504850208135466e-01 * (np.cbrt(df['var:melting_point'])) + \
-                           2.201736063422449e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
+    'r1_2term': lambda df: 5.504823956253627e+00 + \
+                           5.835997703571167e-05 * (df['var:sound_velocity'] / df['ave:boiling_point']) + \
+                           -3.985388107700386e-01 * (np.cbrt(df['ave:boiling_point'])),
     
-    'r1_4term': lambda df: -2.747502839404784e+02 + \
-                           -5.185525800282890e-02 * (df['var:c6_gb'] / df['sum:hhi_p']) + \
-                           -7.290004701356699e-19 * (df['ave:boiling_point'] ** 6) + \
-                           -4.455507677046804e-01 * (df['ave:bulk_modulus'] - df['ave:atomic_weight']) + \
-                           1.699729115030021e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
+    'r1_3term': lambda df: 5.845649605906377e+00 + \
+                           -2.776972308247497e-02 * (df['var:thermal_conductivity'] / df['ave:boiling_point']) + \
+                           5.750580034281170e-05 * (df['var:sound_velocity'] / df['ave:boiling_point']) + \
+                           -4.173209991561449e-01 * (np.cbrt(df['ave:boiling_point'])),
     
-    'r2_1term': lambda df: -2.729296923117930e+01 + \
-                           -3.137476417692739e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
+    'r1_4term': lambda df: 4.337750956240681e+00 + \
+                           2.942979316747696e-04 * (df['sum:hhi_p'] / df['ave:atomic_weight']) + \
+                           -2.804305577683217e-02 * (df['var:thermal_conductivity'] / df['ave:boiling_point']) + \
+                           2.931501751528727e-08 * (df['var:sound_velocity'] + df['var:boiling_point']) + \
+                           -8.765265123769861e-02 * (np.sqrt(df['ave:boiling_point'])),
     
-    'r2_2term': lambda df: -2.063184570690620e+01 + \
-                           -1.686398694159229e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / (df['ave:atomic_volume'] ** 6)) + \
-                           -3.195005086243114e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
+    'r2_1term': lambda df: -1.620471055253183e+00 + \
+                           1.826376438466298e-01 * ((df['ave:atomic_radius'] / df['ave:atomic_number']) + (df['ave:atomic_volume'] - df['ave:Polarizability'])),
     
-    'r2_3term': lambda df: -1.510330342353259e+01 + \
-                           4.058647378703507e+03 * ((df['var:sound_velocity'] - df['var:hhi_p']) / (df['var:c6_gb'] * df['sum:hhi_r'])) + \
-                           -2.139489205523803e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / df['ave:atomic_volume'] ** 6) + \
-                           -3.170219793913757e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
+    'r2_2term': lambda df: 4.505248526916998e-02 + \
+                           -5.114170240526208e-02 * abs((df['ave:boiling_point'] / df['ave:atomic_radius']) - (df['var:thermal_conductivity'] / df['ave:boiling_point'])) + 
+                           9.008103812101369e-01 * (abs(df['ave:boiling_point'] / df['ave:atomic_radius']) / np.sqrt(df['ave:atomic_number'])),
     
-    'r2_4term': lambda df: -1.199519222577036e+01 + \
-                           1.884199571337176e+00 * ((df['ave:boiling_point'] * df['ave:atomic_weight']) / (abs(df['var:melting_point'] - df['sum:hhi_r']))) + \
-                           3.941803378766428e+03 * ((df['var:sound_velocity'] - df['var:hhi_p']) / (df['var:c6_gb'] * df['sum:hhi_r'])) + \
-                           -2.184309236205812e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / (df['ave:atomic_volume'] ** 6)) + \
-                           -3.048156404473468e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm']))
+    'r2_3term': lambda df: -9.276197718364346e+00 + \
+                           -4.769165630634773e+00 * ((df['ave:atomic_number'] / df['ave:atomic_radius']) - (df['ave:atomic_weight'] / df['ave:atomic_number'])) + \
+                           -4.679352393536426e-02 * abs((df['ave:boiling_point'] / df['ave:atomic_radius']) - (df['var:thermal_conductivity'] / df['ave:boiling_point'])) + \
+                           2.032274282919613e-02 * ((df['ave:atomic_radius'] / df['ave:atomic_number']) * (df['ave:atomic_volume'] - df['ave:Polarizability'])),
+    
+    'r2_4term': lambda df: -8.836378448679033e+00 + \
+                           1.553680319666299e-03 * ((df['var:sound_velocity'] + df['var:hhi_p']) / (df['ave:bulk_modulus'] * df['ave:boiling_point'])) + \
+                           -4.504845866684036e+00 * ((df['ave:atomic_number'] / df['ave:atomic_radius']) - (df['ave:atomic_weight'] / df['ave:atomic_number'])) + \
+                           -4.228470995480253e-02 * abs((df['ave:boiling_point'] / df['ave:atomic_radius']) - (df['var:thermal_conductivity'] / df['ave:boiling_point'])) + \
+                           1.840996252939134e-02 * ((df['ave:atomic_radius'] / df['ave:atomic_number']) * (df['ave:atomic_volume'] - df['ave:Polarizability']))
 }
 
 for key, fun in sisso_models.items():
@@ -433,12 +432,12 @@ for key, fun in sisso_models.items():
     
     print("\nTest Set Error Metrics")
     for metric, fun in metrics.items():
-        value = fun(y_true=sisso_data_test['Volume'], y_pred=sisso_test_predictions)
+        value = fun(y_true=sisso_data_test['bandgap (eV)'], y_pred=sisso_test_predictions)
         print(metric,np.round(value,4))
 
     print("\nTraining Set Error Metrics")
     for metric, fun in metrics.items():
-        value = fun(y_true=sisso_data_train['Volume'], y_pred=sisso_train_predictions)
+        value = fun(y_true=sisso_data_train['bandgap (eV)'], y_pred=sisso_train_predictions)
         print(metric,np.round(value,4))
     
     
@@ -456,25 +455,13 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_results_test.csv'))
 # In[]:
 
 
-plt.scatter(x=sisso_data_train['Volume'], y=sisso_data_train['r1_1term'], label="Train Set")
-plt.scatter(x=sisso_data_test['Volume'], y=sisso_data_test['r1_1term'], label="Test Set")
-
-min_xy = min(min(sisso_data_train['Volume']),
-             min(sisso_data_test['Volume']),
-             min(sisso_data_train['r1_1term']),
-             min(sisso_data_test['r1_1term']))
-max_xy = max(max(sisso_data_train['Volume']),
-             max(sisso_data_test['Volume']),
-             max(sisso_data_train['r1_1term']),
-             max(sisso_data_test['r1_1term']))
-
-plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
-plt.ylabel(f"Perovskite Volume (Å^3 / formula unit) (Predicted)")
-plt.xlabel(f"Perovskite Volume (Å^3 / formula unit) (Dataset)")
-plt.legend()
-plt.savefig("sisso_perovskite_volume_parity.jpeg")
-plt.show()
-plt.close()
+model_to_plot = 'r1_1term'
+DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data_train['bandgap (eV)'],
+                                                       train_y_pred = sisso_data_train[model_to_plot],
+                                                       test_y_true = sisso_data_test['bandgap (eV)'],
+                                                       test_y_pred = sisso_data_test[model_to_plot],
+                                                       axis_label = "Bandgap (eV)",
+                                                       filename = "sisso_2dm_bandgap_parity.jpeg")
 
 
 # In[ ]:
