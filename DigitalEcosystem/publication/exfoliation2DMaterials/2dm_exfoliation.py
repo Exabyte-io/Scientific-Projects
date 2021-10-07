@@ -3,7 +3,7 @@
 
 # # 2D Material Exfoliation
 # 
-# Plots for the exfoliation energy problem
+# In this notebook, we provide code to reproduce the results shown in our manuscript on the problem of predicting the exfoliation energy of 2D Materials using compositional and structural features.
 
 # In[]:
 
@@ -23,10 +23,11 @@ import xenonpy.descriptor
 from tqdm.notebook import tqdm 
 import sys, os
 
+
 sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
 from DigitalEcosystem.utils.functional import except_with_default_value
-from DigitalEcosystem.utils.misc import matminer_descriptors
+from DigitalEcosystem.utils.misc import matminer_descriptors, rmse
 from DigitalEcosystem.utils.element_symbols import noble_gases, f_block_elements, synthetic_elements_in_d_block
 
 from IPython.display import Latex
@@ -55,7 +56,13 @@ plt.rcParams["font.size"] = 32
 
 # # Read in the Data
 # 
-# Read the data
+# To start, we'll read in the data. Next, we'll convert the exfoliation energies listed in the dataset from eV/atom to eV, to J, then finally from J to J/m^2. This gives us the energy per unit area required to exfoliate a material.
+# 
+# Then, we'll filter out the dataset with the following rules:
+# 
+# 1. No elements from the f-block, anything larger than U, or noble gases
+# 2. Decomposition energies must be below 0.5 eV
+# 3. Exfoliation energies must be strictly positive
 
 # In[]:
 
@@ -114,6 +121,7 @@ descriptors = xenonpy_descriptors + matminer_descriptors
 
 
 # # Prepare Data
+# Next up, we'll perform a train/test split, holding out 10% of the data as a test set.
 
 # In[]:
 
@@ -146,6 +154,10 @@ metrics = {
 
 
 # # XGBoost
+# 
+# XGBoost is a gradient boosting algorithm that uses an ensemble of decision trees. It's a very flexible model that comes with a lot of hyperparameters to tune. To tune them, we'll use Optuna, a Bayesian optimization framework. We'll also use Optuna to choose whether we use Z-score normalization or min/max scaling on the data.
+# 
+# We'll hold out 20% of the data as a validation set, for early-stopping and pruning purposes. We'll train the model to minimize its RMSE on the training set.
 
 # In[]:
 
@@ -262,6 +274,8 @@ plt.tight_layout()
 plt.savefig("xgboost_2dm_exfoliation_importances.jpeg")
 
 
+# Finally, for some book-keeping purposes, we'll go ahead and save the predictions from the XGBoost model, along with the importance scores from the above plot. Also, we'll go ahead and pickle the XGBoost pipeline.
+
 # In[]:
 
 
@@ -294,6 +308,10 @@ with open("xgboost_pipeline.pkl", "wb") as outp:
 
 
 # # TPOT
+# 
+# TPOT is an AutoML solution that uses a genetic algorithm to create an ML pipeline to address a given problem. Here, we'll run a population of 100 models over 10 generations, taking the 10-fold cross-validated RMSE as the fitness metric.
+# 
+# We'll also go ahead and save a parity plot of the TPOT model.
 
 # In[]:
 
@@ -338,6 +356,8 @@ for key, fun in metrics.items():
     print(key,np.round(value,4))
 
 
+# Finally, we'll go ahead and back up those predictions to the disk (this way, we don't need to re-run this again just to get those), and we'll pickle the TPOT model. We'll also have TPOT auto-generate some Python code to re-train itself.
+
 # In[]:
 
 
@@ -362,6 +382,10 @@ with open("tpot_pipeline.pkl", "wb") as outp:
 
 
 # # Roost
+# 
+# [Roost](https://github.com/CompRhys/roost) is a neural network approach to predicting material properties as a function of their composition. Although we only have 144 data-points here, we can at least try for a good model.
+# 
+# Since the model only requires material IDs, the composition, and the property of interest, we'll save a CSV containing those properties.
 
 # In[]:
 
@@ -411,7 +435,9 @@ for key, fun in metrics.items():
 
 # # SISSO
 # 
-# Start by obtaining importance scores from the XGBoost model
+# SISSO is a symbolic regression technique focused on creating interpretable machine learning models. 
+# 
+# Due to the exponential computational cost of running a SISSO model as the number of features and rungs increases, we need to restrict the feature space. To do that, we'll use LASSO-based feature selection (essentially we can look at how quickly LASSO extinguishes a variable to get an idea of its importance). 
 
 # In[]:
 
@@ -501,6 +527,8 @@ for key, fun in sisso_models.items():
     
 
 
+# Finally, we'll go ahead and save the predictions of the SISSO model on the training and test set.
+
 # In[]:
 
 
@@ -518,6 +546,18 @@ DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data
                                                        test_y_pred = sisso_data_test[model_to_plot],
                                                        axis_label = "Exfoliation Energy (J/m^2)",
                                                        filename = "sisso_2dm_exfoliation_parity.jpeg")
+
+
+# In[]:
+
+
+for model_to_plot in sisso_models.keys():
+    DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data_train['exfoliation_energy (J/m^2)'],
+                                                       train_y_pred = sisso_data_train[model_to_plot],
+                                                       test_y_true = sisso_data_test['exfoliation_energy (J/m^2)'],
+                                                       test_y_pred = sisso_data_test[model_to_plot],
+                                                       axis_label = "Exfoliation Energy (J/m^2)",
+                                                       title=f'SISSO Rung-{model_to_plot[1]}, {model_to_plot[3]}-term Model')
 
 
 # In[ ]:
