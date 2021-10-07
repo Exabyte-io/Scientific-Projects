@@ -1,6 +1,7 @@
 # Exabyte Scientific Projects
 
-This repository contains various scientific projects run by Exabyte.io
+This repository contains various scientific projects run by Exabyte.io. Create a virtual environment, and install the
+requirements.txt file. I'll have all the packages needed to run these notebooks.
 
 # Generating .py files
 

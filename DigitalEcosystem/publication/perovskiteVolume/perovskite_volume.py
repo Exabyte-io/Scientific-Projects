@@ -3,7 +3,7 @@
 
 # # Perovskites
 # 
-# Plot generation for the perovskites.
+# In this notebook, we provide code to reproduce the results shown in our manuscript on the problem of predicting the volume of perovskites using only the chemical formula.
 
 # In[]:
 
@@ -25,6 +25,7 @@ import sys, os
 
 sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
+from DigitalEcosystem.utils.misc import rmse
 
 from IPython.display import Latex
 
@@ -51,7 +52,8 @@ plt.rcParams["font.size"] = 32
 
 # # Read in the Data
 # 
-# Read the data, and featurize using XenonPy
+# To start, we'll read in the data. Then, we'll scale the volume of the unit cell by the numberof formula units, such that it has units of Å^3 / formula unit.
+# Next, we'll use XenonPy to generate a set of compositional descriptors for the dataset, which are derived from only the chemical formula.
 
 # In[]:
 
@@ -71,6 +73,9 @@ data
 
 
 # # Prepare Data
+# 
+# Next up, we'll set "volume" as the target column, and extract out the xenonpy descriptors from the dataset.
+# Then we'll perform a train/test split, holding out 10% of the data as a test set.
 
 # In[]:
 
@@ -92,11 +97,6 @@ test_y = test[target_column].to_numpy()
 # In[]:
 
 
-def rmse(y_true, y_pred):
-    mse = sklearn.metrics.mean_squared_error(y_true=y_true, y_pred=y_pred)
-    rmse = np.sqrt(abs(mse))
-    return rmse
-
 metrics = {
     'MaxError': sklearn.metrics.max_error,
     'MAE': sklearn.metrics.mean_absolute_error,
@@ -108,6 +108,10 @@ metrics = {
 
 
 # # XGBoost
+# 
+# XGBoost is a gradient boosting algorithm that uses an ensemble of decision trees. It's a very flexible model that comes with a lot of hyperparameters to tune. To tune them, we'll use Optuna, a Bayesian optimization framework. We'll also use Optuna to choose whether we use Z-score normalization or min/max scaling on the data.
+# 
+# We'll hold out 20% of the data as a validation set, for early-stopping and pruning purposes. We'll train the model to minimize its RMSE on the training set.
 
 # In[]:
 
@@ -224,6 +228,8 @@ plt.tight_layout()
 plt.savefig("xgboost_perovskite_volume_importances.jpeg")
 
 
+# Finally, for some book-keeping purposes, we'll go ahead and save the predictions from the XGBoost model, along with the importance scores from the above plot. Also, we'll go ahead and pickle the XGBoost pipeline.
+
 # In[]:
 
 
@@ -256,6 +262,11 @@ with open("xgboost_pipeline.pkl", "wb") as outp:
 
 
 # # TPOT
+# 
+# TPOT is an AutoML solution that uses a genetic algorithm to create an ML pipeline to address a given problem.
+# Here, we'll run a population of 100 models over 10 generations, taking the 10-fold cross-validated RMSE as the fitness metric.
+# 
+# We'll also go ahead and save a parity plot of the TPOT model.
 
 # In[]:
 
@@ -296,6 +307,8 @@ for key, fun in metrics.items():
     print(key,np.round(value,4))
 
 
+# Finally, we'll go ahead and back up those predictions to the disk (this way, we don't need to re-run this again just to get those), and we'll pickle the TPOT model. We'll also have TPOT auto-generate some Python code to re-train itself.
+
 # In[]:
 
 
@@ -320,6 +333,10 @@ with open("tpot_pipeline.pkl", "wb") as outp:
 
 
 # # Roost
+# 
+# [Roost](https://github.com/CompRhys/roost) is a neural network approach to predicting material properties as a function of their composition. Although we only have 144 data-points here, we can at least try for a good model.
+# 
+# Since the model only requires material IDs, the composition, and the property of interest, we'll save a CSV containing those properties.
 
 # In[]:
 
@@ -370,7 +387,9 @@ for key, fun in metrics.items():
 
 # # SISSO
 # 
-# Start by obtaining importance scores from the XGBoost model
+# SISSO is a symbolic regression technique focused on creating interpretable machine learning models. 
+# 
+# Due to the exponential computational cost of running a SISSO model as the number of features and rungs increases, we need to restrict the feature space. To do that, we'll use LASSO-based feature selection (essentially we can look at how quickly LASSO extinguishes a variable to get an idea of its importance). 
 
 # In[]:
 
@@ -384,6 +403,8 @@ sisso_feature_selector.fit(train_x, train_y.ravel())
 sisso_features = [col for (col, is_selected) in zip(train[descriptors].columns, sisso_feature_selector.get_support()) if is_selected]
 print("\n".join(sisso_features))
 
+
+# Next, we'll save the training set. SISSO does its own internal test-set holdout, but we'll also save the test set that we created above, just so there's a record of that.
 
 # In[]:
 
@@ -465,7 +486,7 @@ for key, fun in sisso_models.items():
 sisso_data_train
 
 
-# It's not the best model, but we're gonna use the Rung1 1Term model, because it's simple and still performs well. It's also intuitive.
+# Finally, we'll go ahead and save the predictions of the SISSO model on the training and test set.
 
 # In[]:
 
@@ -484,6 +505,20 @@ DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data
                                                        test_y_pred = sisso_data_test[model_to_plot],
                                                        axis_label = "Perovskite Volume (Å^3 / formula unit)",
                                                        filename = "sisso_perovskite_volume_parity.jpeg")
+
+
+# Finally, just so we have them, let's print out the rest of the SISSO models
+
+# In[]:
+
+
+for model_to_plot in sisso_models.keys():
+    DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data_train['Volume'],
+                                                       train_y_pred = sisso_data_train[model_to_plot],
+                                                       test_y_true = sisso_data_test['Volume'],
+                                                       test_y_pred = sisso_data_test[model_to_plot],
+                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                       title=f'SISSO Rung-{model_to_plot[1]}, {model_to_plot[3]}-term Model')
 
 
 # In[ ]:
