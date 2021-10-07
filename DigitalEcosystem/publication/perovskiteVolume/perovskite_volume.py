@@ -424,7 +424,9 @@ sisso_data_train.to_csv(os.path.join(sisso_dir, 'sisso_train.csv'), index_label=
 sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_test.csv'), index_label='material_id')
 
 
-# At this point, a SISSO model was run.
+# At this point, a SISSO model was run. The models are stored below.
+# 
+# The model forms are from the SISSO logfiles. Coefficients have been copied directly from the SISSO outputs here.
 
 # In[]:
 
