@@ -172,3 +172,37 @@ def create_multi_parity_plot(ytrue, series_to_plot, markers, colors, labels, alp
     plt.ylabel("Actual Volume (Å^3 / Formula Unit)")
     plt.legend(prop={"size": 8})
     plt.show()
+
+
+def publication_parity_plot(train_y_true,
+                            train_y_pred,
+                            test_y_true,
+                            test_y_pred,
+                            axis_label,
+                            filename=None,
+                            axis_limits=None,
+                            title=None):
+    plt.scatter(x=train_y_true, y=train_y_pred, label="Train Set")
+    plt.scatter(x=test_y_true, y=test_y_pred, label="Test Set")
+
+    if axis_limits is None:
+        min_xy = min(min(train_y_true), min(test_y_true), min(test_y_pred), min(train_y_pred))
+        max_xy = max(max(train_y_true), max(test_y_true), max(test_y_pred), max(train_y_pred))
+    else:
+        min_xy = axis_limits
+        max_xy = axis_limits
+
+
+    plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
+
+    plt.ylabel(f"{axis_label} (Predicted)")
+    plt.xlabel(f"{axis_label} (Dataset)")
+    if title:
+        plt.title(title)
+    plt.legend()
+
+    if filename:
+        plt.savefig(filename)
+
+    plt.show()
+    plt.close()
