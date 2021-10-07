@@ -268,7 +268,7 @@ plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_import
 plt.ylabel("Feature")
 plt.xlabel("Importance Score")
 plt.tight_layout()
-plt.savefig("xgboost_importances.jpeg")
+plt.savefig("xgboost_2dm_bandgap_importances.jpeg")
 
 
 # In[]:
