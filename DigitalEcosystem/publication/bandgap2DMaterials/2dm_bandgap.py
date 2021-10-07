@@ -23,6 +23,7 @@ import xenonpy.descriptor
 from tqdm.notebook import tqdm 
 import sys, os
 
+
 sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
 from DigitalEcosystem.utils.functional import except_with_default_value
@@ -564,6 +565,20 @@ DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data
                                                        test_y_pred = sisso_data_test[model_to_plot],
                                                        axis_label = "Bandgap (eV)",
                                                        filename = "sisso_2dm_bandgap_parity.jpeg")
+
+
+# Finally, just so we have them, let's print out the rest of the SISSO models
+
+# In[]:
+
+
+for model_to_plot in sisso_models.keys():
+    DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data_train['bandgap (eV)'],
+                                                       train_y_pred = sisso_data_train[model_to_plot],
+                                                       test_y_true = sisso_data_test['bandgap (eV)'],
+                                                       test_y_pred = sisso_data_test[model_to_plot],
+                                                       axis_label = "Bandgap (eV)",
+                                                       title=f'SISSO Rung-{model_to_plot[1]}, {model_to_plot[3]}-term Model')
 
 
 # In[ ]:
