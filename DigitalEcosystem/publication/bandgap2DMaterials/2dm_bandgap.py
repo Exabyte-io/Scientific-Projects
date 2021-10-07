@@ -391,6 +391,10 @@ tpot_predictions = train_preds.append(test_preds)
 tpot_predictions.to_csv("tpot_2dm_bandgap_predictions.csv")
 
 
+# At this point, a SISSO model was run. The models are stored below.
+# 
+# The model forms are from the SISSO logfiles. Coefficients have been copied directly from the SISSO outputs here.
+
 # In[]:
 
 
