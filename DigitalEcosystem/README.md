@@ -1,6 +1,8 @@
 # DigitalEcosystem
 Repository for the Digital Ecosystem for DoE Materials Modeling project.
 
+This work was done with Python 3.8.6
+
 ## Folder Structure
 
 - `exploratory` contains exploratory notebooks, back-of-the-envelope calculations, and other things we'd tried, and found useful to keep around.
