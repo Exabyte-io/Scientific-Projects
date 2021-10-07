@@ -24,7 +24,7 @@ import xenonpy.descriptor
 import sys, os
 
 sys.path.append("../../../")
-import DigitalEcosystem.utils.figures
+from DigitalEcosystem.utils.figures import save_parity_plot_publication_quality
 from DigitalEcosystem.utils.misc import root_mean_squared_error
 
 from IPython.display import Latex
@@ -190,12 +190,12 @@ reg_study.optimize(func=objective, n_trials=1000, callbacks=[keep_best_reg])
 # In[]:
 
 
-DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = train_y,
-                                                       train_y_pred = best_reg.predict(train_x),
-                                                       test_y_true = test_y,
-                                                       test_y_pred = best_reg.predict(test_x),
-                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
-                                                       filename = "xgboost_perovskite_volume_parity.jpeg")
+DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = train_y,
+                                                                    train_y_pred = best_reg.predict(train_x),
+                                                                    test_y_true = test_y,
+                                                                    test_y_pred = best_reg.predict(test_x),
+                                                                    axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                                    filename = "xgboost_perovskite_volume_parity.jpeg")
 
 
 # In[]:
@@ -285,12 +285,12 @@ tpot_model = tpot.TPOTRegressor(
 
 tpot_model.fit(train_x, train_y.ravel())
 
-DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = train_y,
-                                                       train_y_pred = tpot_model.predict(train_x),
-                                                       test_y_true = test_y,
-                                                       test_y_pred = tpot_model.predict(test_x),
-                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
-                                                       filename = "tpot_perovskite_volume_parity.jpeg")
+DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = train_y,
+                                                                    train_y_pred = tpot_model.predict(train_x),
+                                                                    test_y_true = test_y,
+                                                                    test_y_pred = tpot_model.predict(test_x),
+                                                                    axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                                    filename = "tpot_perovskite_volume_parity.jpeg")
 
 
 # In[]:
@@ -363,12 +363,12 @@ roost_test_results  = pd.read_csv("roost/roost_test_predictions.csv", index_col=
 # In[]:
 
 
-DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = roost_train_results['volume_target'],
-                                                       train_y_pred =  roost_train_results['volume_pred_n0'],
-                                                       test_y_true = roost_test_results['volume_target'],
-                                                       test_y_pred = roost_test_results['volume_pred_n0'],
-                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
-                                                       filename = "roost_perovskite_volume_parity.jpeg")
+DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = roost_train_results['volume_target'],
+                                                                    train_y_pred =  roost_train_results['volume_pred_n0'],
+                                                                    test_y_true = roost_test_results['volume_target'],
+                                                                    test_y_pred = roost_test_results['volume_pred_n0'],
+                                                                    axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                                    filename = "roost_perovskite_volume_parity.jpeg")
 
 
 # In[]:
@@ -499,12 +499,12 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_results_test.csv'))
 
 
 model_to_plot = 'r1_1term'
-DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data_train['Volume'],
-                                                       train_y_pred = sisso_data_train[model_to_plot],
-                                                       test_y_true = sisso_data_test['Volume'],
-                                                       test_y_pred = sisso_data_test[model_to_plot],
-                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
-                                                       filename = "sisso_perovskite_volume_parity.jpeg")
+DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = sisso_data_train['Volume'],
+                                                                    train_y_pred = sisso_data_train[model_to_plot],
+                                                                    test_y_true = sisso_data_test['Volume'],
+                                                                    test_y_pred = sisso_data_test[model_to_plot],
+                                                                    axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                                    filename = "sisso_perovskite_volume_parity.jpeg")
 
 
 # Finally, just so we have them, let's print out the rest of the SISSO models
@@ -513,12 +513,12 @@ DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data
 
 
 for model_to_plot in sisso_models.keys():
-    DigitalEcosystem.utils.figures.publication_parity_plot(train_y_true = sisso_data_train['Volume'],
-                                                       train_y_pred = sisso_data_train[model_to_plot],
-                                                       test_y_true = sisso_data_test['Volume'],
-                                                       test_y_pred = sisso_data_test[model_to_plot],
-                                                       axis_label = "Perovskite Volume (Å^3 / formula unit)",
-                                                       title=f'SISSO Rung-{model_to_plot[1]}, {model_to_plot[3]}-term Model')
+    DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = sisso_data_train['Volume'],
+                                                                        train_y_pred = sisso_data_train[model_to_plot],
+                                                                        test_y_true = sisso_data_test['Volume'],
+                                                                        test_y_pred = sisso_data_test[model_to_plot],
+                                                                        axis_label = "Perovskite Volume (Å^3 / formula unit)",
+                                                                        title=f'SISSO Rung-{model_to_plot[1]}, {model_to_plot[3]}-term Model')
 
 
 # In[ ]:
