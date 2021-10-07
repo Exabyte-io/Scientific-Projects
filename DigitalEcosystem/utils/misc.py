@@ -15,6 +15,11 @@ matminer_descriptors = [
 
 ]
 
+def rmse(y_true, y_pred):
+    mse = sklearn.metrics.mean_squared_error(y_true=y_true, y_pred=y_pred)
+    rmse = np.sqrt(abs(mse))
+    return rmse
+
 def get_parent_structure_id(id_2dm: str) -> str:
     '''
     Given a 2DMatPedia ID, queries the 2DMatPedia for the structure's parent bulk's MaterialsProject ID
