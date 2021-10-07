@@ -25,7 +25,7 @@ import sys, os
 
 sys.path.append("../../../")
 import DigitalEcosystem.utils.figures
-from DigitalEcosystem.utils.misc import rmse
+from DigitalEcosystem.utils.misc import root_mean_squared_error
 
 from IPython.display import Latex
 
@@ -101,7 +101,7 @@ metrics = {
     'MaxError': sklearn.metrics.max_error,
     'MAE': sklearn.metrics.mean_absolute_error,
     'MSE': sklearn.metrics.mean_squared_error,
-    'RMSE': rmse,
+    'RMSE': root_mean_squared_error,
     'MAPE': sklearn.metrics.mean_absolute_percentage_error,
     'R2': sklearn.metrics.r2_score
 }
