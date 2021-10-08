@@ -1,0 +1,33 @@
+time input_parsing: 0.0670929 s
+time to generate feat sapce: 1.56198 s
+Projection time: 0.567624 s
+Time to get best features on rank : 0.000747648 s
+Complete final combination/selection from all ranks: 0.00367919 s
+Time for SIS: 0.620362 s
+Time for l0-norm: 0.000991978 s
+Projection time: 0.55635 s
+Time to get best features on rank : 0.000402023 s
+Complete final combination/selection from all ranks: 0.00501708 s
+Time for SIS: 0.569014 s
+Time for l0-norm: 0.00120105 s
+Projection time: 0.563107 s
+Time to get best features on rank : 0.000548057 s
+Complete final combination/selection from all ranks: 0.00679327 s
+Time for SIS: 0.578924 s
+Time for l0-norm: 0.0159442 s
+Projection time: 0.558235 s
+Time to get best features on rank : 0.000616041 s
+Complete final combination/selection from all ranks: 0.00524982 s
+Time for SIS: 0.571572 s
+Time for l0-norm: 0.419226 s
+Train RMSE: 1.23078 Unitless; Test RMSE: 1.20211 Unitless
+c0 + a0 * ((ave:atomic_radius / ave:atomic_number) + (ave:atomic_volume - ave:Polarizability))
+
+Train RMSE: 1.1788 Unitless; Test RMSE: 1.15873 Unitless
+c0 + a0 * (|(ave:boiling_point / ave:atomic_radius) - (var:thermal_conductivity / ave:boiling_point)|) + a1 * ((|ave:atomic_volume - ave:Polarizability|) / sqrt(ave:atomic_number))
+
+Train RMSE: 1.13767 Unitless; Test RMSE: 1.12697 Unitless
+c0 + a0 * ((ave:atomic_number / ave:atomic_radius) - (ave:atomic_weight / ave:atomic_number)) + a1 * (|(ave:boiling_point / ave:atomic_radius) - (var:thermal_conductivity / ave:boiling_point)|) + a2 * ((ave:atomic_radius / ave:atomic_number) * (ave:atomic_volume - ave:Polarizability))
+
+Train RMSE: 1.11189 Unitless; Test RMSE: 1.1056 Unitless
+c0 + a0 * ((var:sound_velocity + var:hhi_p) / (ave:bulk_modulus * ave:boiling_point)) + a1 * ((ave:atomic_number / ave:atomic_radius) - (ave:atomic_weight / ave:atomic_number)) + a2 * (|(ave:boiling_point / ave:atomic_radius) - (var:thermal_conductivity / ave:boiling_point)|) + a3 * ((ave:atomic_radius / ave:atomic_number) * (ave:atomic_volume - ave:Polarizability))
