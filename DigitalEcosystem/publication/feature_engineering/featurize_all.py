@@ -218,35 +218,6 @@ for key, values in bond_length_angle_featurization_defs.items():
         groups[val] = key
 
 
-# We then take a second pass over our system - this is probably rather inefficient. But this was faster to code.
-
-# In[]:
-
-
-symbols_cols = collections.Counter()
-bond_cols = collections.Counter()
-angle_cols = collections.Counter()
-
-with tqdm.tqdm(total=len(df)) as pbar:
-    for struct in df["ox_struct"]:
-        symbols_cols.update([groups[symbol] for symbol in struct.symbol_set])
-
-        for index, site in enumerate(struct.sites):
-            connected = [i['site'] for i in neighbor_finder.get_nn_shell_info(struct, index, 1)]
-
-            # Bond counts
-            for vertex in connected:
-                start, end = sorted([groups[str(site.specie.element)], groups[str(vertex.specie.element)]])
-                bond = f"{start}-{end}"
-                bond_cols[bond] += 0.5
-
-            # Angles
-            for angle_start, angle_end in map(sorted, itertools.combinations(connected,2)):
-                angle = f"{groups[str(angle_start.specie.element)]}-{groups[str(site.specie.element)]}-{groups[str(angle_end.specie.element)]}"
-                angle_cols[angle] += 1
-        pbar.update(1)
-
-
 # # Back These Up
 # 
 # This takes long enough that, to save progress, we save it.
@@ -261,14 +232,10 @@ df.to_pickle('backup.pkl')
 
 # # Featurize the Data
 # 
-# Next, we'll take the second pass at calculating these features (again, this is rather inefficient, and could probably be compressed into a single run if we wanted to do this again).
+# Next, we'll featurize the bond length / angle and symbol columns.
 
 # In[]:
 
-
-all_symbols = set(symbols_cols.keys())
-all_bonds = set(bond_cols.keys())
-all_angles = set(angle_cols.keys())
 
 def add_symbol_length_dihedral_counts_feature(data):
     symbol_units = "atoms"
