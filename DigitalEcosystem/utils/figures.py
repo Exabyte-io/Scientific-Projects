@@ -174,14 +174,14 @@ def create_multi_parity_plot(ytrue, series_to_plot, markers, colors, labels, alp
     plt.show()
 
 
-def publication_parity_plot(train_y_true,
-                            train_y_pred,
-                            test_y_true,
-                            test_y_pred,
-                            axis_label,
-                            filename=None,
-                            axis_limits=None,
-                            title=None):
+def save_parity_plot_publication_quality(train_y_true,
+                                         train_y_pred,
+                                         test_y_true,
+                                         test_y_pred,
+                                         axis_label,
+                                         filename=None,
+                                         axis_limits=None,
+                                         title=None):
     plt.scatter(x=train_y_true, y=train_y_pred, label="Train Set")
     plt.scatter(x=test_y_true, y=test_y_pred, label="Test Set")
 
