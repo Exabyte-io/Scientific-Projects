@@ -507,7 +507,7 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_results_test.csv'))
 # In[]:
 
 
-model_to_plot = 'r1_1term'
+model_to_plot = 'r1_4term'
 DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = sisso_data_train['Volume'],
                                                                     train_y_pred = sisso_data_train[model_to_plot],
                                                                     test_y_true = sisso_data_test['Volume'],
