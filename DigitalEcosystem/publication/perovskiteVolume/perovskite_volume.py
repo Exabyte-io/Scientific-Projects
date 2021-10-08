@@ -426,47 +426,49 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_test.csv'), index_label='m
 
 # At this point, a SISSO model was run. The models are stored below.
 # 
-# The model forms are from the SISSO logfiles. Coefficients have been copied directly from the SISSO outputs here.
+# The model forms are from the SISSO logfiles. For example, the "r1_1term" model corresponds with the 1-term model from rung 1.
+# 
+# The coefficients are extracted from the generated model `.dat` files, found in the `sisso/models` directory. 
 
 # In[]:
 
 
 sisso_models = {
-    'r1_1term': lambda df: -4.559505163148324e+02 + \
-                           2.464859419692384e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
-
-    'r1_2term': lambda df: 7.027013257763095e+01 + \
-                           -7.832363248251127e-01 * (df['ave:bulk_modulus'] - df['ave:atomic_number']) + \
-                           6.564150096290632e-13 * (df['ave:atomic_radius_rahm'] ** 6),
+    'r1_1term': lambda df: 1.514024726221378e+01 + \
+                           1.102291647518964e-12 * (df['ave:atomic_radius_rahm']**6),
     
-    'r1_3term': lambda df: -3.526598287867814e+02 + \
-                           -5.798450768280212e-02 * (df['var:c6_gb'] / df['sum:hhi_r']) + \
-                           -5.504850208135466e-01 * (np.cbrt(df['var:melting_point'])) + \
-                           2.201736063422449e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
+    'r1_2term': lambda df: 7.334876186165420e+01 + \
+                           -7.428520613144478e-01 * (np.cbrt(df['var:melting_point'])) + \
+                           9.533719627047374e-13 * (df['ave:atomic_radius_rahm']**6),
     
-    'r1_4term': lambda df: -2.747502839404784e+02 + \
-                           -5.185525800282890e-02 * (df['var:c6_gb'] / df['sum:hhi_p']) + \
-                           -7.290004701356699e-19 * (df['ave:boiling_point'] ** 6) + \
-                           -4.455507677046804e-01 * (df['ave:bulk_modulus'] - df['ave:atomic_weight']) + \
-                           1.699729115030021e+00 * (df['ave:atomic_volume'] + df['ave:atomic_radius_rahm']),
+    'r1_3term': lambda df: -7.845104274964440e+00 + \
+                           -6.272338282227730e-01 * (np.cbrt(df['var:melting_point'])) + \
+                           3.588588809984958e-02 * (df['ave:atomic_volume'] * df['ave:atomic_number']) + \
+                           1.484181970909784e-05 * (df['ave:atomic_radius_rahm']**3),
     
-    'r2_1term': lambda df: -2.729296923117930e+01 + \
-                           -3.137476417692739e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
+    'r1_4term': lambda df: -4.891999568544996e+01 + \
+                           4.156799948231139e-04 * (df['var:melting_point'] + df['ave:boiling_point']) + \
+                           -1.912204993566662e-06 * (df['var:melting_point'] * df['ave:atomic_radius_rahm']) + \
+                           -9.310746788328456e-02 * (np.sqrt(df['var:melting_point'])) + \
+                           2.171628749439707e-05 * (df['ave:atomic_radius_rahm']**3),
     
-    'r2_2term': lambda df: -2.063184570690620e+01 + \
-                           -1.686398694159229e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / (df['ave:atomic_volume'] ** 6)) + \
-                           -3.195005086243114e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
+    'r2_1term': lambda df: 1.001962366216614e+01 + \
+                           1.110330538545055e-11 * ( (df['ave:atomic_radius_rahm']**6) / (np.cbrt(df['ave:boiling_point'])) ),
     
-    'r2_3term': lambda df: -1.510330342353259e+01 + \
-                           4.058647378703507e+03 * ((df['var:sound_velocity'] - df['var:hhi_p']) / (df['var:c6_gb'] * df['sum:hhi_r'])) + \
-                           -2.139489205523803e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / df['ave:atomic_volume'] ** 6) + \
-                           -3.170219793913757e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm'])),
+    'r2_2term': lambda df: -1.587863822825712e+01 + \
+                           -5.112592050263478e-04 * ((df['ave:boiling_point'] / df['var:boiling_point']) * (df['var:melting_point'] * df['ave:atomic_radius_rahm'])) + \
+                           5.845391819889824e-06 * ((df['ave:atomic_radius_rahm'] ** 3) * (np.cbrt(df['ave:atomic_volume']))),
     
-    'r2_4term': lambda df: -1.199519222577036e+01 + \
-                           1.884199571337176e+00 * ((df['ave:boiling_point'] * df['ave:atomic_weight']) / (abs(df['var:melting_point'] - df['sum:hhi_r']))) + \
-                           3.941803378766428e+03 * ((df['var:sound_velocity'] - df['var:hhi_p']) / (df['var:c6_gb'] * df['sum:hhi_r'])) + \
-                           -2.184309236205812e+04 * ((df['var:c6_gb'] / df['ave:bulk_modulus']) / (df['ave:atomic_volume'] ** 6)) + \
-                           -3.048156404473468e-03 * ((df['ave:bulk_modulus'] - df['ave:atomic_radius_rahm']) * (df['ave:atomic_weight'] + df['ave:atomic_radius_rahm']))
+    'r2_3term': lambda df: -4.680483259631612e+01 + \
+                           -1.074707812407143e+01 * ((np.sqrt(df['var:c6_gb'])) / (df['ave:atomic_volume']**2)) + \
+                           -5.480235819708654e-01 * ((df['var:melting_point'] * df['ave:atomic_radius_rahm']) / (df['var:melting_point'] * df['var:boiling_point'])) + \
+                           1.712927094179335e-03 * ((df['ave:atomic_radius_rahm']**2) * (np.cbrt(df['ave:atomic_volume']))),
+    
+    'r2_4term': lambda df: -8.843615884778849e+01 + \
+                           5.625990315322635e+03 * ((np.cbrt(df['var:c6_gb'])) / (df['ave:atomic_volume'] * df['ave:atomic_radius_rahm'])) + \
+                           -3.567568953522600e+01 * ((np.cbrt(df['var:c6_gb'])) / (df['ave:atomic_volume'])) + \
+                           -5.442067807826219e-01 * ((df['var:melting_point'] * df['ave:atomic_radius_rahm']) / (df['var:melting_point'] + df['var:boiling_point'])) + \
+                           2.187059985842607e-03 * ((df['ave:atomic_radius_rahm']**2) * (np.cbrt(df['ave:atomic_volume'])))
 }
 
 for key, fun in sisso_models.items():

@@ -1,4 +1,5 @@
 import re
+import sklearn
 import requests
 import pymatgen.ext.matproj
 import numpy as np
