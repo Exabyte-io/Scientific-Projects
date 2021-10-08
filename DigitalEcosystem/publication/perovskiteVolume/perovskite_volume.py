@@ -426,7 +426,9 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_test.csv'), index_label='m
 
 # At this point, a SISSO model was run. The models are stored below.
 # 
-# The model forms are from the SISSO logfiles. Coefficients have been copied directly from the SISSO outputs here.
+# The model forms are from the SISSO logfiles. For example, the "r1_1term" model corresponds with the 1-term model from rung 1.
+# 
+# The coefficients are extracted from the generated model `.dat` files, found in the `sisso/models` directory. 
 
 # In[]:
 
