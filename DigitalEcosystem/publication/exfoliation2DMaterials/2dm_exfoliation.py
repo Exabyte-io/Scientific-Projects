@@ -546,7 +546,7 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_results_test.csv'))
 # In[]:
 
 
-model_to_plot = 'r2_4term'
+model_to_plot = 'r2_2term'
 DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = sisso_data_train['exfoliation_energy (J/m^2)'],
                                                                     train_y_pred = sisso_data_train[model_to_plot],
                                                                     test_y_true = sisso_data_test['exfoliation_energy (J/m^2)'],
