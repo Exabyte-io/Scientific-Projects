@@ -497,41 +497,41 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_test.csv'), index_label='2
 
 
 sisso_models = {
-    'r1_1term': lambda df: 5.908677334854443e+00 + \
-                           -4.182238907095930e-01 * (np.cbrt(df['ave:boiling_point'])),
+    'r1_1term': lambda df: 5.865590038114292e+00 + \
+                           -4.133268583136611e-01 * (np.cbrt(df['ave:boiling_point'])),
     
-    'r1_2term': lambda df: 5.504823956253627e+00 + \
-                           5.835997703571167e-05 * (df['var:sound_velocity'] / df['ave:boiling_point']) + \
-                           -3.985388107700386e-01 * (np.cbrt(df['ave:boiling_point'])),
+    'r1_2term': lambda df: 5.456824304436886e+00 + \
+                           5.806272825102222e-05 * (df['var:sound_velocity'] / df['ave:boiling_point']) + \
+                           -3.928478305199087e-01 * (np.cbrt(df['ave:boiling_point'])),
     
-    'r1_3term': lambda df: 5.845649605906377e+00 + \
-                           -2.776972308247497e-02 * (df['var:thermal_conductivity'] / df['ave:boiling_point']) + \
-                           5.750580034281170e-05 * (df['var:sound_velocity'] / df['ave:boiling_point']) + \
-                           -4.173209991561449e-01 * (np.cbrt(df['ave:boiling_point'])),
+    'r1_3term': lambda df: 5.829318713354136e+00 + \
+                           -2.895404136895635e-02 * (df['var:thermal_conductivity'] / df['ave:boiling_point']) + \
+                           5.661787713744031e-05 * (df['var:sound_velocity'] / df['ave:boiling_point']) + \
+                           -4.133601815903408e-01 * (np.cbrt(df['ave:boiling_point'])),
     
-    'r1_4term': lambda df: 4.337750956240681e+00 + \
-                           2.942979316747696e-04 * (df['sum:hhi_p'] / df['ave:atomic_weight']) + \
-                           -2.804305577683217e-02 * (df['var:thermal_conductivity'] / df['ave:boiling_point']) + \
-                           2.931501751528727e-08 * (df['var:sound_velocity'] + df['var:boiling_point']) + \
-                           -8.765265123769861e-02 * (np.sqrt(df['ave:boiling_point'])),
+    'r1_4term': lambda df: 4.239649765792811e+00 + \
+                           3.209844715367811e-04 * (df['sum:hhi_p'] / df['ave:atomic_weight']) + \
+                           -2.931356075881642e-02 * (df['var:thermal_conductivity'] / df['ave:boiling_point']) + \
+                           5.565612620549401e-06 * (df['var:sound_velocity'] / df['ave:atomic_radius_rahm']) + \
+                           -8.322616418822797e-02 * (np.sqrt(df['ave:boiling_point'])),
     
-    'r2_1term': lambda df: -1.620471055253183e+00 + \
-                           1.826376438466298e-01 * ((df['ave:atomic_radius'] / df['ave:atomic_number']) + (df['ave:atomic_volume'] - df['ave:Polarizability'])),
+    'r2_1term': lambda df: -6.848927418726274e-01 + \
+                           1.020330482802878e+00 * ((abs(df['ave:atomic_volume'] - df['ave:Polarizability'])) / (np.sqrt(df['ave:atomic_number']))),
     
-    'r2_2term': lambda df: 4.505248526916998e-02 + \
-                           -5.114170240526208e-02 * abs((df['ave:boiling_point'] / df['ave:atomic_radius']) - (df['var:thermal_conductivity'] / df['ave:boiling_point']))  + 
-                           9.008103812101369e-01 * (abs(df['ave:atomic_volume'] - df['ave:Polarizability']) / np.sqrt(df['ave:atomic_number'])),
+    'r2_2term': lambda df: -7.037029355457204e-01 + \
+                           -1.319062598081636e-03 * ((df['var:thermal_conductivity'] * df['ave:bulk_modulus']) / (df['ave:boiling_point'] * df['ave:Polarizability'])) + \
+                           1.084886105825630e+00 * ((abs(df['ave:atomic_volume'] - df['ave:Polarizability'])) / (np.sqrt(df['ave:atomic_number']))),
     
-    'r2_3term': lambda df: -9.276197718364346e+00 + \
-                           -4.769165630634773e+00 * ((df['ave:atomic_number'] / df['ave:atomic_radius']) - (df['ave:atomic_weight'] / df['ave:atomic_number'])) + \
-                           -4.679352393536426e-02 * abs((df['ave:boiling_point'] / df['ave:atomic_radius']) - (df['var:thermal_conductivity'] / df['ave:boiling_point'])) + \
-                           2.032274282919613e-02 * ((df['ave:atomic_radius'] / df['ave:atomic_number']) * (df['ave:atomic_volume'] - df['ave:Polarizability'])),
+    'r2_3term': lambda df: 1.288364460133121e+00 + \
+                           -4.685654009911847e-02 * ((df['ave:atomic_number'] / df['ave:atomic_weight']) * (df['ave:atomic_radius_rahm'] - df['ave:atomic_radius'])) + \
+                           -3.019449625791471e-05 * ((df['var:thermal_conductivity'] * df['var:boiling_point']) / (df['ave:boiling_point']**2)) + \
+                           1.284011701624066e+00 * ((abs(df['ave:atomic_volume'] - df['ave:Polarizability'])) / (np.sqrt(df['ave:atomic_weight']))),
     
-    'r2_4term': lambda df: -8.836378448679033e+00 + \
-                           1.553680319666299e-03 * ((df['var:sound_velocity'] + df['var:hhi_p']) / (df['ave:bulk_modulus'] * df['ave:boiling_point'])) + \
-                           -4.504845866684036e+00 * ((df['ave:atomic_number'] / df['ave:atomic_radius']) - (df['ave:atomic_weight'] / df['ave:atomic_number'])) + \
-                           -4.228470995480253e-02 * abs((df['ave:boiling_point'] / df['ave:atomic_radius']) - (df['var:thermal_conductivity'] / df['ave:boiling_point'])) + \
-                           1.840996252939134e-02 * ((df['ave:atomic_radius'] / df['ave:atomic_number']) * (df['ave:atomic_volume'] - df['ave:Polarizability']))
+    'r2_4term': lambda df: 1.264193645822197e+00 + \
+                           1.670730994972521e+01 * ((np.cbrt(df['var:thermal_conductivity'])) / (df['ave:bulk_modulus'] * df['ave:atomic_volume'])) + \
+                           -5.358316290237519e-02 * ((df['ave:atomic_number'] / df['ave:atomic_weight']) * (df['ave:atomic_radius_rahm'] - df['ave:atomic_radius'])) + \
+                           -3.794450825704627e-05 * ((df['var:thermal_conductivity'] * df['var:boiling_point']) / (df['ave:boiling_point']**2)) + \
+                           1.281828774755674e+00 * ((abs(df['ave:atomic_volume'] - df['ave:Polarizability'])) / (np.sqrt(df['ave:atomic_weight'])))
 }
 
 for key, fun in sisso_models.items():

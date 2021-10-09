@@ -1,0 +1,44 @@
+0             4|0|abd|1|sqrt|div
+1             4|0|sub|1|sqrt|div
+2             4|0|abd|5|sqrt|div
+3             4|0|sub|5|sqrt|div
+4             4|0|abd|1|log|div
+5             4|1|div|4|0|sub|mult
+6             4|0|abd|5|cbrt|div
+7             2|1|div|4|0|sub|mult
+8             4|0|sub|1|log|div
+9             4|1|div|4|0|abd|mult
+#-----------------------------------------------------------------------
+10            15|7|mult|6|0|mult|div
+11            15|0|div|3|sp|div
+12            15|9|mult|6|sq|div
+13            15|0|div|6|3|mult|div
+14            15|4|div|6|0|mult|div
+15            15|6|div|2|0|mult|div
+16            15|0|div|3|0|mult|div
+17            15|4|mult|0|sq|div
+18            15|4|mult|0|cb|div
+19            15|7|mult|6|3|mult|div
+#-----------------------------------------------------------------------
+20            2|3|div|11|nexp|abd
+21            2|3|div|12|nexp|abd
+22            3|2|sub|0|cbrt|div
+23            5|2|mult|3|1|mult|div
+24            3|2|div|12|nexp|add
+25            3|2|div|11|nexp|add
+26            1|5|div|3|2|sub|mult
+27            3|1|mult|5|2|mult|div
+28            2|3|div|1|nexp|add
+29            1|nexp|3|2|div|sub
+#-----------------------------------------------------------------------
+30            14|cbrt|7|4|mult|div
+31            14|cbrt|7|2|mult|div
+32            15|cbrt|7|2|mult|div
+33            15|cbrt|7|4|mult|div
+34            14|cbrt|7|3|mult|div
+35            12|11|sub|1|0|mult|div
+36            1|7|div|15|cbrt|mult
+37            12|11|sub|5|0|mult|div
+38            5|7|div|15|cbrt|mult
+39            14|cbrt|7|sqrt|div
+#-----------------------------------------------------------------------

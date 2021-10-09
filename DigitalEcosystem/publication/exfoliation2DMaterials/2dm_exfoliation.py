@@ -477,41 +477,41 @@ sisso_data_train.to_csv(os.path.join(sisso_dir, 'sisso_train.csv'), index_label=
 
 
 sisso_models = {
-    'r1_1term': lambda df: 1.159576043776266e+00 + \
-                           -5.585482268035945e-02 * (df['ave:atomic_volume'] - df['ave:Polarizability']),
+    'r1_1term': lambda df: 1.137725259756883e+00 + \
+                           -5.319007804268506e-02 * (df['ave:atomic_volume'] - df['ave:Polarizability']),
     
-    'r1_2term': lambda df: -6.414477361338824e-01 + \
-                           7.234395756089002e-01 * (df['ave:Polarizability'] / df['ave:atomic_volume']) + \
-                           1.041717291506195e-01 * (df['ave:atomic_radius'] / df['ave:atomic_volume']),
+    'r1_2term': lambda df: -5.419391770626135e+00 + \
+                           2.234184803571075e+01 * (df['ave:atomic_volume'] / df['ave:atomic_radius']) + \
+                           3.806496811163907e-01 * (df['ave:atomic_radius'] / df['ave:atomic_volume']),
     
-    'r1_3term': lambda df: -6.109742010210223e-01 + \
-                           -1.274929386543976e-03 * (np.sqrt(df['var:evaporation_heat'])) + \
-                           7.420876074363660e-01 * (df['ave:Polarizability'] / df['ave:atomic_volume']) + \
-                           1.186593176328466e-01 * (df['ave:atomic_radius'] / df['ave:atomic_volume']),
+    'r1_3term': lambda df: -3.824902502678368e-01 + \
+                           -1.407896279153107e-03 * (np.sqrt(df['var:evaporation_heat'])) + \
+                           1.319703366669099e+01 * (1 / df['ave:atomic_volume']) + \
+                           8.584309185950054e-01 * (df['ave:Polarizability'] / df['ave:atomic_volume']),
     
-    'r1_4term': lambda df: -1.333025981566247e+00 + \
-                           1.656127669129025e+02 * (1 / df['ave:atomic_radius_rahm']) + \
-                           -1.295307555975112e-03 * (np.sqrt(df['var:evaporation_heat'])) + \
-                           1.009576663923102e+00 * (df['ave:Polarizability'] / df['ave:atomic_volume']) + \
-                           1.028373562950152e-01 * (df['ave:atomic_radius'] / df['ave:atomic_volume']),
+    'r1_4term': lambda df: -3.676480985399972e+00 + \
+                           -1.203621743897748e-03 * (np.sqrt(df['var:evaporation_heat'])) + \
+                           1.828431687132058e+01 * (df['ave:atomic_volume'] / df['ave:atomic_radius']) + \
+                           2.977157680663882e-01 * (df['ave:atomic_radius'] / df['ave:atomic_volume']) + \
+                           -3.507150688749609e-02 * (df['ave:atomic_volume'] - df['ave:Polarizability']),
     
-    'r2_1term': lambda df: 3.547073341936840e-01 + \
-                           1.018594219452304e+00 * ((df['ave:atomic_radius'] * df['ave:Polarizability']) / (df['ave:atomic_volume']**3)),
+    'r2_1term': lambda df: 3.424203469777740e-01 + \
+                           1.061493336418310e+00 * ((df['ave:atomic_radius'] * df['ave:Polarizability']) / (df['ave:atomic_volume']**3)),
     
-    'r2_2term': lambda df: 4.116570822745532e-01 + \
-                           -1.285959176439781e-04 * ((np.cbrt(df['var:evaporation_heat']))*(df['ave:atomic_radius_rahm'] - df['ave:atomic_radius'])) + \
-                           1.744234251683070e+01 * ((df['ave:Polarizability']) / (df['ave:atomic_volume']**2)),
+    'r2_2term': lambda df: 5.112510610979242e-01 + \
+                           -1.116735994457529e-04 * ((df['ave:atomic_radius_rahm'] - df['ave:atomic_radius']) * (np.cbrt(df['var:evaporation_heat']))) + \
+                           1.197095359098612e+00 * ((df['ave:atomic_radius'] * df['ave:Polarizability']) / (df['ave:atomic_volume']**3)),
     
-    'r2_3term': lambda df: -1.101628086686219e-01 + \
-                           -1.267342505583142e-04 * ((np.cbrt(df['var:evaporation_heat'])) * (df['ave:atomic_radius_rahm'] - df['ave:atomic_radius'])) + \
-                           2.591117120632469e-24 * ((df['var:thermal_conductivity'] * df['var:hhi_r']) * (df['var:hhi_p'] * df['var:c6_gb'])) + \
-                           1.038004615974527e+01 * ((df['ave:atomic_volume'] + df['ave:Polarizability']) / (df['ave:atomic_volume'] **2)),
+    'r2_3term': lambda df: 5.078048028624726e-01 + \
+                           1.081343713688761e+01 * ((np.sin(df['sum:hhi_r'])) / ((abs(df['var:hhi_p'] - df['ave:atomic_number'])))) + \
+                           -1.111442185843957e-04 * ((df['ave:atomic_radius_rahm'] - df['ave:atomic_radius']) * (np.cbrt(df['var:evaporation_heat']))) + \
+                           1.201332561215849e+00 * ((df['ave:atomic_radius'] * df['ave:Polarizability']) / (df['ave:atomic_volume'] ** 3)),
     
-    'r2_4term': lambda df: -1.295680108715010e-01 + \
-                           3.665239225465616e-02 * ((df['sum:boiling_point'] * df['ave:Polarizability']) / (df['var:evaporation_heat'] + df['sum:hhi_r'])) + \
-                           -1.075253530950549e-04 * ((np.cbrt(df['var:evaporation_heat'])) * (df['ave:atomic_radius_rahm'] - df['ave:atomic_radius'])) + \
-                           2.485158141474120e-24 * ((df['var:thermal_conductivity'] * df['var:hhi_r']) * (df['var:hhi_p'] * df['var:c6_gb'])) + \
-                           9.428416741220271e+00 * ((df['ave:atomic_volume'] + df['ave:Polarizability']) / (df['ave:atomic_volume']**2))
+    'r2_4term': lambda df: -4.214956358883139e-02 + \
+                           1.295753033325833e-15 * ((df['sum:boiling_point'] / df['sum:hhi_r']) * (df['ave:atomic_radius_rahm']**6)) + \
+                           -1.271831240669525e+04 * ((np.exp(-1 * df['ave:atomic_number'])) / (df['var:hhi_p'] - df['ave:atomic_number'])) + \
+                           -1.399766954307762e-04 * ((df['ave:atomic_radius_rahm'] - df['ave:atomic_radius']) * (np.cbrt(df['var:evaporation_heat']))) + \
+                           8.874928783795299e+00 * ((df['ave:atomic_volume'] + df['ave:Polarizability']) / (df['ave:atomic_volume']**2))
 }
 
 for key, fun in sisso_models.items():
@@ -546,7 +546,7 @@ sisso_data_test.to_csv(os.path.join(sisso_dir, 'sisso_results_test.csv'))
 # In[]:
 
 
-model_to_plot = 'r2_4term'
+model_to_plot = 'r2_2term'
 DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = sisso_data_train['exfoliation_energy (J/m^2)'],
                                                                     train_y_pred = sisso_data_train[model_to_plot],
                                                                     test_y_true = sisso_data_test['exfoliation_energy (J/m^2)'],
