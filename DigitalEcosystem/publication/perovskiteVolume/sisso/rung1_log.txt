@@ -1,0 +1,34 @@
+time input_parsing: 0.00130777 s
+time to generate feat sapce: 0.00645082 s
+Projection time: 0.00044018 s
+Time to get best features on rank : 4.50164e-05 s
+Complete final combination/selection from all ranks: 0.000628889 s
+Time for SIS: 0.0982158 s
+Time for l0-norm: 0.000376567 s
+Projection time: 0.000361905 s
+Time to get best features on rank : 5.22584e-05 s
+Complete final combination/selection from all ranks: 0.000525624 s
+Time for SIS: 0.00102872 s
+Time for l0-norm: 0.000447407 s
+Projection time: 0.000382051 s
+Time to get best features on rank : 3.46154e-05 s
+Complete final combination/selection from all ranks: 0.000522852 s
+Time for SIS: 0.00103159 s
+Time for l0-norm: 0.00852357 s
+Projection time: 0.000361577 s
+Time to get best features on rank : 1.99676e-05 s
+Complete final combination/selection from all ranks: 0.000464007 s
+Time for SIS: 0.000957236 s
+Time for l0-norm: 0.224456 s
+Train RMSE: 24.8213 length^3; Test RMSE: 20.2978 length^3
+c0 + a0 * (ave:atomic_radius_rahm^6)
+
+Train RMSE: 14.7617 length^3; Test RMSE: 16.2381 length^3
+c0 + a0 * cbrt(var:melting_point) + a1 * (ave:atomic_radius_rahm^6)
+
+Train RMSE: 13.5378 length^3; Test RMSE: 16.4339 length^3
+c0 + a0 * cbrt(var:melting_point) + a1 * (ave:atomic_volume * ave:atomic_number) + a2 * (ave:atomic_radius_rahm^3)
+
+Train RMSE: 12.5731 length^3; Test RMSE: 18.3404 length^3
+c0 + a0 * (var:melting_point + ave:boiling_point) + a1 * (var:melting_point * ave:atomic_radius_rahm) + a2 * sqrt(var:melting_point) + a3 * (ave:atomic_radius_rahm^3)
+

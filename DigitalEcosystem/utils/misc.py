@@ -1,6 +1,8 @@
 import re
+import sklearn
 import requests
 import pymatgen.ext.matproj
+import numpy as np
 
 matminer_descriptors = [
     'bond_length_average',
@@ -14,6 +16,18 @@ matminer_descriptors = [
     'n_symmetry_ops'
 
 ]
+
+def root_mean_squared_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    '''
+    RMSE. Wrapper around the Scikit-learn `mean_squared_error` function.
+
+    Args:
+       y_true (np.ndarray): Ground-truth values
+       y_pred (np.ndarray): Predicted values
+    '''
+    mse = sklearn.metrics.mean_squared_error(y_true=y_true, y_pred=y_pred)
+    rmse = np.sqrt(abs(mse))
+    return rmse
 
 def get_parent_structure_id(id_2dm: str) -> str:
     '''

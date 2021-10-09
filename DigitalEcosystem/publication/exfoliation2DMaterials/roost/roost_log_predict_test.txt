@@ -1,0 +1,16 @@
+The model will run on the cpu device
+['exfoliation_energy']
+['regression']
+['L1']
+using independent test set: ./sisso_data/roost_test.csv
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------Evaluate model on Test Set------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Evaluating Model
+
+Task: 'exfoliation_energy' on Test Set
+Model Performance Metrics:
+R2 Score: 0.4985
+MAE: 0.1940
+RMSE: 0.3444
