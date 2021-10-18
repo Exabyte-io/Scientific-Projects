@@ -199,10 +199,11 @@ def save_parity_plot_publication_quality(train_y_true,
         min_xy = min(min(train_y_true), min(test_y_true), min(test_y_pred), min(train_y_pred))
         max_xy = max(max(train_y_true), max(test_y_true), max(test_y_pred), max(train_y_pred))
     else:
-        min_xy = axis_limits
-        max_xy = axis_limits
+        min_xy = axis_limits[0]
+        max_xy = axis_limits[1]
 
-
+    plt.xlim(axis_limits)
+    plt.ylim(axis_limits)
     plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
 
     plt.ylabel(f"{axis_label} (Predicted)")
