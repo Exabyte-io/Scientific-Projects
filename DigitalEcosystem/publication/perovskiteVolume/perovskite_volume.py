@@ -306,29 +306,6 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
 # In[]:
 
 
-tpot_rr_coefs = zip(tpot_model.fitted_pipeline_[2].coef_, descriptors)
-sorted_tpot_rr_coefs = list(sorted(tpot_rr_coefs, key=lambda i: -abs(i[0])))
-
-old_figsize = plt.rcParams["figure.figsize"]
-plt.rcParams["figure.figsize"] = (2*old_figsize[0], old_figsize[1])
-
-print(sorted_tpot_rr_coefs)
-
-plt.barh(range(n_importances), [imp[0] for imp in sorted_tpot_rr_coefs[:n_importances]])
-plt.yticks(range(n_importances), [imp[1] for imp in sorted_tpot_rr_coefs[:n_importances]])
-plt.ylabel("Feature")
-plt.xlabel("Ridge Regression Feature Coefficient")
-plt.tight_layout()
-plt.savefig("tpot_perovskite_volume_rr_coefficients.jpeg")
-plt.show()
-plt.close()
-
-plt.rcParams['figure.figsize'] = old_figsize
-
-
-# In[]:
-
-
 print("Test Set Error Metrics")
 for key, fun in metrics.items():
     value = fun(y_true=test_y, y_pred=tpot_model.predict(test_x))
