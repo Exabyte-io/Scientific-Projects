@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 import tpot
 import sklearn
 import optuna
+import ase.io
 import xgboost
 import pymatgen
 import xenonpy.descriptor
@@ -593,6 +594,22 @@ for model_to_plot in sisso_models.keys():
                                                                         test_y_pred = sisso_data_test[model_to_plot],
                                                                         axis_label = "Exfoliation Energy (J/m^2)",
                                                                         title=f'SISSO Rung-{model_to_plot[1]}, {model_to_plot[3]}-term Model')
+
+
+# In[]:
+
+
+extreme_outlier = data[['2dm_id (unitless)', 'atoms_object (unitless)', 'exfoliation_energy (J/m^2)']][data['exfoliation_energy (J/m^2)'] == data['exfoliation_energy (J/m^2)'].max()]['atoms_object (unitless)']
+ase.io.write('common_outlier_2dm-5985.cif', extreme_outlier)
+
+
+# Turns out, the large outlier is a 2D layer of nitrogen atoms. Given that nitrogen has a strong energetic preference for being a gas phase diatomic system, this system would likely decompose to gaseous nitrogen if there were not the constraint on movement in the Z-direction. 2DMatPedia derived this structure from a Sb system (2dm-4275), itself obtained from a potentially exfoliable allotrope of Sb on Materials Project (mp-567509)
+
+# In[]:
+
+
+outlier_parent = data[['2dm_id (unitless)', 'atoms_object (unitless)']][data['2dm_id (unitless)'] == '2dm-4275']['atoms_object (unitless)']
+ase.io.write('outlier_parent_2dm-4275.cif', outlier_parent)
 
 
 # In[ ]:
