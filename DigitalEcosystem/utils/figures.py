@@ -182,8 +182,15 @@ def save_parity_plot_publication_quality(train_y_true,
                                          filename=None,
                                          axis_limits=None,
                                          title=None):
-    plt.scatter(x=train_y_true, y=train_y_pred, label="Train Set")
-    plt.scatter(x=test_y_true, y=test_y_pred, label="Test Set")
+
+    n_series = 2
+    cmap = iter(plt.cm.cividis(np.linspace(0, 1, n_series)))
+
+    plt.scatter(x=train_y_true, y=train_y_pred, label="Train Set", color=next(cmap),
+                s=100, marker="o", lw=1, edgecolor='black')
+    plt.scatter(x=test_y_true, y=test_y_pred, label="Test Set", color=next(cmap),
+                s=100, marker="s", lw=1, edgecolor='black')
+
 
     if axis_limits is None:
         min_xy = min(min(train_y_true), min(test_y_true), min(test_y_pred), min(train_y_pred))
