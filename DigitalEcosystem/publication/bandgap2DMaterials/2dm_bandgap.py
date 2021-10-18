@@ -368,8 +368,8 @@ plt.yticks(range(n_importances), [imp[1] for imp in sorted_tpot_rr_coefs[:n_impo
 plt.ylabel("Feature")
 plt.xlabel("Elastic Net Feature Coefficient")
 plt.tight_layout()
-plt.show()
 plt.savefig("tpot_2dm_elasticnet_coefficients.jpeg")
+plt.show()
 plt.close()
 
 plt.rcParams['figure.figsize'] = old_figsize
