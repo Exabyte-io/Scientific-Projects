@@ -265,12 +265,19 @@ importances = list(zip(best_reg[1].feature_importances_, xenonpy_descriptors))
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
 
+old_figsize = plt.rcParams["figure.figsize"]
+plt.rcParams["figure.figsize"] = (2*old_figsize[0], old_figsize[1])
+
 plt.barh(range(n_importances), [imp[0] for imp in sorted_importances[:n_importances]])
 plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
-plt.ylabel("Feature")
+plt.ylabel("Feature") 
 plt.xlabel("Importance Score")
 plt.tight_layout()
 plt.savefig("xgboost_2dm_exfoliation_importances.jpeg")
+plt.show()
+plt.close()
+
+plt.rcParams["figure.figsize"] = old_figsize
 
 
 # Finally, for some book-keeping purposes, we'll go ahead and save the predictions from the XGBoost model, along with the importance scores from the above plot. Also, we'll go ahead and pickle the XGBoost pipeline.
@@ -328,6 +335,27 @@ tpot_model = tpot.TPOTRegressor(
 )
 
 tpot_model.fit(train_x, train_y.ravel())
+
+
+# In[]:
+
+
+tpot_importances = zip(tpot_model.fitted_pipeline_[1].feature_importances_, descriptors)
+sorted_tpot_importances = list(sorted(tpot_importances, key=lambda i: -abs(i[0])))
+
+old_figsize = plt.rcParams["figure.figsize"]
+plt.rcParams["figure.figsize"] = (2*old_figsize[0], old_figsize[1])
+
+plt.barh(range(n_importances), [imp[0] for imp in sorted_tpot_importances[:n_importances]])
+plt.yticks(range(n_importances), [imp[1] for imp in sorted_tpot_importances[:n_importances]])
+plt.ylabel("Feature")
+plt.xlabel("Extra Trees Importance")
+plt.tight_layout()
+plt.show()
+plt.savefig("tpot_perovskite_volume_importances.jpeg")
+plt.close()
+
+plt.rcParams["figure.figsize"] = old_figsize
 
 
 # In[]:
