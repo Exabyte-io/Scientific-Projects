@@ -241,6 +241,7 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
                                                                     test_y_true = test_y,
                                                                     test_y_pred = best_reg.predict(test_x),
                                                                     axis_label = "Exfoliation Energy (J/m^2)",
+                                                                    axis_limits=[-0.1,2],
                                                                     filename = "xgboost_2dm_exfoliation_parity.jpeg")
 
 
@@ -367,6 +368,7 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
                                                                     test_y_true = test_y,
                                                                     test_y_pred = tpot_model.predict(test_x),
                                                                     axis_label = "Exfoliation Energy (J/m^2)",
+                                                                    axis_limits=[-0.1,2],
                                                                     filename = "tpot_2dm_exfoliation_parity.jpeg")
 
 
@@ -448,6 +450,7 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
                                                                     test_y_true = roost_test_results['exfoliation_energy_target'],
                                                                     test_y_pred = roost_test_results['exfoliation_energy_pred_n0'],
                                                                     axis_label = "Exfoliation Energy (J/m^2)",
+                                                                    axis_limits=[-0.1,2],
                                                                     filename = "roost_2dm_exfoliation_parity.jpeg")
 
 
@@ -581,6 +584,7 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
                                                                     test_y_true = sisso_data_test['exfoliation_energy (J/m^2)'],
                                                                     test_y_pred = sisso_data_test[model_to_plot],
                                                                     axis_label = "Exfoliation Energy (J/m^2)",
+                                                                    axis_limits=[-0.1,2],
                                                                     filename = "sisso_2dm_exfoliation_parity.jpeg")
 
 
@@ -593,6 +597,7 @@ for model_to_plot in sisso_models.keys():
                                                                         test_y_true = sisso_data_test['exfoliation_energy (J/m^2)'],
                                                                         test_y_pred = sisso_data_test[model_to_plot],
                                                                         axis_label = "Exfoliation Energy (J/m^2)",
+                                                                        axis_limits=[-0.1,2],
                                                                         title=f'SISSO Rung-{model_to_plot[1]}, {model_to_plot[3]}-term Model')
 
 
