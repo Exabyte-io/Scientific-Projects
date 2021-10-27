@@ -39,10 +39,18 @@ tqdm.tqdm.pandas()
 
 
 # Random seeds for reproducibility
-RANDOM_SEED = 1234
+RANDOM_SEED = 42
 import random
 random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
+
+
+# In[]:
+
+
+# Plot Configuration
+plt.rcParams["figure.figsize"] = (15, 15)
+plt.rcParams["font.size"] = 32
 
 
 # # Read in the Dataset
@@ -51,7 +59,7 @@ np.random.seed(RANDOM_SEED)
 
 
 # Load up the data
-data_path = "../featurization/full_featurized_data.pkl"
+data_path = "../feature_engineering/full_featurized_data.pkl"
 data = pd.read_pickle(data_path)
 target_column = ['bandgap (eV)']
 
@@ -84,6 +92,9 @@ bandgap_cutoff = 0.2
 data['metal'] = data['bandgap (eV)'] < bandgap_cutoff
 train, test = sklearn.model_selection.train_test_split(data, test_size=0.1, stratify=data['metal'], random_state=RANDOM_SEED)
 
+for dataset_name, dataset in (("Full dataset", data), ("Training set", train), ("Testing set", test)):
+    print(f"{dataset_name} contains {len(dataset)} entries, with {dataset['metal'].sum()} metals and {len(dataset[dataset['metal']==0])} non-metals.")
+
 
 # # Train/Test Split
 # Then, we'll split up our data into a training and testing set. We'll stratify our dataset to ensure the same proportion of metals are found in both the training and test set.
@@ -114,6 +125,8 @@ knn_smote = imblearn.over_sampling.KMeansSMOTE(
     k_neighbors = 4
 )
 res_x, res_y = knn_smote.fit_resample(train_x, train_y)
+
+print(f"Rebalanced training set contains {len(res_y)} entries, {res_y.sum()} metals, and {len(res_y) - res_y.sum()} nonmetals.")
 
 
 # # Hyperparameter Optimization
@@ -148,9 +161,9 @@ def objective(trial: optuna.Trial):
     objective_train_x, objective_validation_x, objective_train_y, objective_validation_y = sklearn.model_selection.train_test_split(res_x, res_y, test_size=0.2)
 
     params = {
-        'learning_rate': trial.suggest_float('learning_rate', 0, 1),
-        'min_split_loss': trial.suggest_float('min_split_loss', 0, 1),
-        'max_depth': trial.suggest_int('max_depth', 1, 100),
+        'learning_rate': trial.suggest_float('learning_rate', 0, 2),
+        'min_split_loss': trial.suggest_float('min_split_loss', 0, 2),
+        'max_depth': trial.suggest_int('max_depth', 1, 256),
         'min_child_weight': trial.suggest_float('min_child_weight', 0, 10),
         'reg_lambda': trial.suggest_float('reg_lambda', 0, 2),
         'reg_alpha': trial.suggest_float('reg_alpha', 0, 2)
@@ -210,7 +223,7 @@ study = optuna.create_study(
 )
 
 
-# In[]:
+# In[ ]:
 
 
 study.optimize(objective, n_trials=1000, callbacks=[keep_best_bandgap_model])
@@ -368,9 +381,9 @@ def objective(trial: optuna.Trial):
 
 
     params = {
-        'learning_rate': trial.suggest_float('learning_rate', 0, 1),
-        'min_split_loss': trial.suggest_float('min_split_loss', 0, 1),
-        'max_depth': trial.suggest_int('max_depth', 1, 100),
+        'learning_rate': trial.suggest_float('learning_rate', 0, 2),
+        'min_split_loss': trial.suggest_float('min_split_loss', 0, 2),
+        'max_depth': trial.suggest_int('max_depth', 1, 256),
         'min_child_weight': trial.suggest_float('min_child_weight', 0, 10),
         'reg_lambda': trial.suggest_float('reg_lambda', 0, 2),
         'reg_alpha': trial.suggest_float('reg_alpha', 0, 2)
@@ -420,19 +433,26 @@ reg_study = optuna.create_study(
     direction='minimize'
 )
 
+
+# In[]:
+
+
 reg_study.optimize(func=objective, n_trials=1000, callbacks=[keep_best_reg])
 
-DigitalEcosystem.utils.figures.save_parity_plot(train_x_reg,
-                                                test_x_reg,
-                                                train_y_reg,
-                                                test_y_reg,
-                                                best_reg,
-                                                "Bandgap (eV)",
-                                                "parity.jpeg")
+
+# In[]:
+
+
+DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = train_y_reg,
+                                                                    train_y_pred = best_reg.predict(train_x_reg),
+                                                                    test_y_true = test_y_reg,
+                                                                    test_y_pred = best_reg.predict(test_x_reg),
+                                                                    axis_label = "Bandgap (eV)",
+                                                                    filename = "supporting_inforation_metalclassifier_regression_parity.png")
 
 
 # # Regression - Results
-# 
+# DigitalEcosystem
 
 # In[]:
 
@@ -469,7 +489,8 @@ importances = list(zip(best_reg[1].feature_importances_, xenonpy_matminer_descri
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
 
-
+old_figsize = plt.rcParams["figure.figsize"]
+plt.rcParams["figure.figsize"] = (2*old_figsize[0], old_figsize[1])
 
 plt.barh(range(n_importances), [imp[0] for imp in sorted_importances[:n_importances]])
 plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
@@ -477,6 +498,7 @@ plt.ylabel("Feature")
 plt.xlabel("Importance Score")
 plt.tight_layout()
 plt.savefig("Importances.jpeg")
+plt.rcParams['figure.figsize'] = old_figsize
 
 
 # # Conclusions
