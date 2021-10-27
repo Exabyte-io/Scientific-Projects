@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 import tpot
 import sklearn
 import optuna
+import ase.io
 import xgboost
 import pymatgen
 import xenonpy.descriptor
@@ -240,6 +241,7 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
                                                                     test_y_true = test_y,
                                                                     test_y_pred = best_reg.predict(test_x),
                                                                     axis_label = "Exfoliation Energy (J/m^2)",
+                                                                    axis_limits=[-0.1,2],
                                                                     filename = "xgboost_2dm_exfoliation_parity.jpeg")
 
 
@@ -265,12 +267,19 @@ importances = list(zip(best_reg[1].feature_importances_, xenonpy_descriptors))
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
 
+old_figsize = plt.rcParams["figure.figsize"]
+plt.rcParams["figure.figsize"] = (2*old_figsize[0], old_figsize[1])
+
 plt.barh(range(n_importances), [imp[0] for imp in sorted_importances[:n_importances]])
 plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
-plt.ylabel("Feature")
+plt.ylabel("Feature") 
 plt.xlabel("Importance Score")
 plt.tight_layout()
 plt.savefig("xgboost_2dm_exfoliation_importances.jpeg")
+plt.show()
+plt.close()
+
+plt.rcParams["figure.figsize"] = old_figsize
 
 
 # Finally, for some book-keeping purposes, we'll go ahead and save the predictions from the XGBoost model, along with the importance scores from the above plot. Also, we'll go ahead and pickle the XGBoost pipeline.
@@ -333,11 +342,33 @@ tpot_model.fit(train_x, train_y.ravel())
 # In[]:
 
 
+tpot_importances = zip(tpot_model.fitted_pipeline_[1].feature_importances_, descriptors)
+sorted_tpot_importances = list(sorted(tpot_importances, key=lambda i: -abs(i[0])))
+
+old_figsize = plt.rcParams["figure.figsize"]
+plt.rcParams["figure.figsize"] = (2*old_figsize[0], old_figsize[1])
+
+plt.barh(range(n_importances), [imp[0] for imp in sorted_tpot_importances[:n_importances]])
+plt.yticks(range(n_importances), [imp[1] for imp in sorted_tpot_importances[:n_importances]])
+plt.ylabel("Feature")
+plt.xlabel("Extra Trees Importance")
+plt.tight_layout()
+plt.show()
+plt.savefig("tpot_perovskite_volume_importances.jpeg")
+plt.close()
+
+plt.rcParams["figure.figsize"] = old_figsize
+
+
+# In[]:
+
+
 DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = train_y,
                                                                     train_y_pred = tpot_model.predict(train_x),
                                                                     test_y_true = test_y,
                                                                     test_y_pred = tpot_model.predict(test_x),
                                                                     axis_label = "Exfoliation Energy (J/m^2)",
+                                                                    axis_limits=[-0.1,2],
                                                                     filename = "tpot_2dm_exfoliation_parity.jpeg")
 
 
@@ -419,6 +450,7 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
                                                                     test_y_true = roost_test_results['exfoliation_energy_target'],
                                                                     test_y_pred = roost_test_results['exfoliation_energy_pred_n0'],
                                                                     axis_label = "Exfoliation Energy (J/m^2)",
+                                                                    axis_limits=[-0.1,2],
                                                                     filename = "roost_2dm_exfoliation_parity.jpeg")
 
 
@@ -552,6 +584,7 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
                                                                     test_y_true = sisso_data_test['exfoliation_energy (J/m^2)'],
                                                                     test_y_pred = sisso_data_test[model_to_plot],
                                                                     axis_label = "Exfoliation Energy (J/m^2)",
+                                                                    axis_limits=[-0.1,2],
                                                                     filename = "sisso_2dm_exfoliation_parity.jpeg")
 
 
@@ -564,7 +597,24 @@ for model_to_plot in sisso_models.keys():
                                                                         test_y_true = sisso_data_test['exfoliation_energy (J/m^2)'],
                                                                         test_y_pred = sisso_data_test[model_to_plot],
                                                                         axis_label = "Exfoliation Energy (J/m^2)",
+                                                                        axis_limits=[-0.1,2],
                                                                         title=f'SISSO Rung-{model_to_plot[1]}, {model_to_plot[3]}-term Model')
+
+
+# In[]:
+
+
+extreme_outlier = data[['2dm_id (unitless)', 'atoms_object (unitless)', 'exfoliation_energy (J/m^2)']][data['exfoliation_energy (J/m^2)'] == data['exfoliation_energy (J/m^2)'].max()]['atoms_object (unitless)']
+ase.io.write('common_outlier_2dm-5985.cif', extreme_outlier)
+
+
+# Turns out, the large outlier is a 2D layer of nitrogen atoms. Given that nitrogen has a strong energetic preference for being a gas phase diatomic system, this system would likely decompose to gaseous nitrogen if there were not the constraint on movement in the Z-direction. 2DMatPedia derived this structure from a Sb system (2dm-4275), itself obtained from a potentially exfoliable allotrope of Sb on Materials Project (mp-567509)
+
+# In[]:
+
+
+outlier_parent = data[['2dm_id (unitless)', 'atoms_object (unitless)']][data['2dm_id (unitless)'] == '2dm-4275']['atoms_object (unitless)']
+ase.io.write('outlier_parent_2dm-4275.cif', outlier_parent)
 
 
 # In[ ]:

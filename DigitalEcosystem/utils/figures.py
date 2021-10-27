@@ -182,17 +182,28 @@ def save_parity_plot_publication_quality(train_y_true,
                                          filename=None,
                                          axis_limits=None,
                                          title=None):
-    plt.scatter(x=train_y_true, y=train_y_pred, label="Train Set")
-    plt.scatter(x=test_y_true, y=test_y_pred, label="Test Set")
+
+    n_series = 2
+    cmap = iter(plt.cm.cividis(np.linspace(0, 1, n_series)))
+
+    train_r2 = np.round(sklearn.metrics.r2_score(y_true=train_y_true, y_pred=train_y_pred),3)
+    test_r2 = np.round(sklearn.metrics.r2_score(y_true=test_y_true, y_pred=test_y_pred),3)
+
+    plt.scatter(x=train_y_true, y=train_y_pred, label="Train Set, R2=%.3f" % train_r2, color=next(cmap),
+                s=100, marker="o", lw=1, edgecolor='black')
+    plt.scatter(x=test_y_true, y=test_y_pred, label="Test Set, R2=%.3f" % test_r2, color=next(cmap),
+                s=100, marker="s", lw=1, edgecolor='black')
+
 
     if axis_limits is None:
         min_xy = min(min(train_y_true), min(test_y_true), min(test_y_pred), min(train_y_pred))
         max_xy = max(max(train_y_true), max(test_y_true), max(test_y_pred), max(train_y_pred))
     else:
-        min_xy = axis_limits
-        max_xy = axis_limits
+        min_xy = axis_limits[0]
+        max_xy = axis_limits[1]
 
-
+    plt.xlim(axis_limits)
+    plt.ylim(axis_limits)
     plt.plot([min_xy, max_xy], [min_xy, max_xy], label="Parity")
 
     plt.ylabel(f"{axis_label} (Predicted)")

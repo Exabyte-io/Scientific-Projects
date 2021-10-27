@@ -24,6 +24,7 @@ import xenonpy.descriptor
 import sys, os
 
 sys.path.append("../../../")
+import DigitalEcosystem.utils.figures
 from DigitalEcosystem.utils.figures import save_parity_plot_publication_quality
 from DigitalEcosystem.utils.misc import root_mean_squared_error
 
@@ -220,12 +221,17 @@ importances = list(zip(best_reg[1].feature_importances_, xenonpy_descriptors))
 
 sorted_importances = list(sorted(importances, key=lambda i: -i[0]))
 
+old_figsize = plt.rcParams["figure.figsize"]
+plt.rcParams["figure.figsize"] = (2*old_figsize[0], old_figsize[1])
+
 plt.barh(range(n_importances), [imp[0] for imp in sorted_importances[:n_importances]])
 plt.yticks(range(n_importances), [imp[1] for imp in sorted_importances[:n_importances]])
 plt.ylabel("Feature")
 plt.xlabel("Importance Score")
 plt.tight_layout()
 plt.savefig("xgboost_perovskite_volume_importances.jpeg")
+
+plt.rcParams['figure.figsize'] = old_figsize
 
 
 # Finally, for some book-keeping purposes, we'll go ahead and save the predictions from the XGBoost model, along with the importance scores from the above plot. Also, we'll go ahead and pickle the XGBoost pipeline.
@@ -284,6 +290,10 @@ tpot_model = tpot.TPOTRegressor(
 )
 
 tpot_model.fit(train_x, train_y.ravel())
+
+
+# In[]:
+
 
 DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true = train_y,
                                                                     train_y_pred = tpot_model.predict(train_x),
