@@ -1,0 +1,1557 @@
+The model will run on the cpu device
+['bandgap']
+['regression']
+['L1']
+using independent test set: ./sisso_data/roost_test.csv
+No validation set used, using test set for evaluation purposes
+Total Number of Trainable Parameters: 2,302,096
+Dummy MAE: 1.2979
+Getting Validation Baseline
+Validation Baseline - bandgap: MAE 1.292
+Epoch: [1/512]
+Train 		: bandgap - Loss 0.834	MAE 1.283	RMSE 1.560
+Validation 	: bandgap - Loss 0.824	MAE 1.269	RMSE 1.569
+Epoch: [2/512]
+Train 		: bandgap - Loss 0.825	MAE 1.269	RMSE 1.563
+Validation 	: bandgap - Loss 0.809	MAE 1.245	RMSE 1.543
+Epoch: [3/512]
+Train 		: bandgap - Loss 0.765	MAE 1.177	RMSE 1.491
+Validation 	: bandgap - Loss 0.705	MAE 1.086	RMSE 1.364
+Epoch: [4/512]
+Train 		: bandgap - Loss 0.653	MAE 1.004	RMSE 1.293
+Validation 	: bandgap - Loss 0.608	MAE 0.936	RMSE 1.214
+Epoch: [5/512]
+Train 		: bandgap - Loss 0.616	MAE 0.948	RMSE 1.276
+Validation 	: bandgap - Loss 0.578	MAE 0.890	RMSE 1.156
+Epoch: [6/512]
+Train 		: bandgap - Loss 0.576	MAE 0.886	RMSE 1.185
+Validation 	: bandgap - Loss 0.565	MAE 0.870	RMSE 1.123
+Epoch: [7/512]
+Train 		: bandgap - Loss 0.551	MAE 0.848	RMSE 1.121
+Validation 	: bandgap - Loss 0.502	MAE 0.772	RMSE 1.043
+Epoch: [8/512]
+Train 		: bandgap - Loss 0.526	MAE 0.810	RMSE 1.092
+Validation 	: bandgap - Loss 0.497	MAE 0.765	RMSE 1.046
+Epoch: [9/512]
+Train 		: bandgap - Loss 0.508	MAE 0.782	RMSE 1.050
+Validation 	: bandgap - Loss 0.478	MAE 0.736	RMSE 1.018
+Epoch: [10/512]
+Train 		: bandgap - Loss 0.514	MAE 0.791	RMSE 1.074
+Validation 	: bandgap - Loss 0.519	MAE 0.799	RMSE 1.085
+Epoch: [11/512]
+Train 		: bandgap - Loss 0.508	MAE 0.782	RMSE 1.055
+Validation 	: bandgap - Loss 0.472	MAE 0.726	RMSE 1.015
+Epoch: [12/512]
+Train 		: bandgap - Loss 0.478	MAE 0.736	RMSE 1.009
+Validation 	: bandgap - Loss 0.462	MAE 0.711	RMSE 1.003
+Epoch: [13/512]
+Train 		: bandgap - Loss 0.468	MAE 0.721	RMSE 1.003
+Validation 	: bandgap - Loss 0.469	MAE 0.722	RMSE 1.011
+Epoch: [14/512]
+Train 		: bandgap - Loss 0.466	MAE 0.717	RMSE 0.999
+Validation 	: bandgap - Loss 0.481	MAE 0.741	RMSE 1.042
+Epoch: [15/512]
+Train 		: bandgap - Loss 0.472	MAE 0.727	RMSE 1.003
+Validation 	: bandgap - Loss 0.465	MAE 0.716	RMSE 1.016
+Epoch: [16/512]
+Train 		: bandgap - Loss 0.455	MAE 0.700	RMSE 0.976
+Validation 	: bandgap - Loss 0.442	MAE 0.680	RMSE 0.978
+Epoch: [17/512]
+Train 		: bandgap - Loss 0.443	MAE 0.682	RMSE 0.966
+Validation 	: bandgap - Loss 0.446	MAE 0.686	RMSE 0.993
+Epoch: [18/512]
+Train 		: bandgap - Loss 0.441	MAE 0.679	RMSE 0.953
+Validation 	: bandgap - Loss 0.440	MAE 0.678	RMSE 0.978
+Epoch: [19/512]
+Train 		: bandgap - Loss 0.441	MAE 0.679	RMSE 0.962
+Validation 	: bandgap - Loss 0.439	MAE 0.676	RMSE 0.980
+Epoch: [20/512]
+Train 		: bandgap - Loss 0.447	MAE 0.688	RMSE 0.973
+Validation 	: bandgap - Loss 0.428	MAE 0.659	RMSE 0.965
+Epoch: [21/512]
+Train 		: bandgap - Loss 0.424	MAE 0.652	RMSE 0.945
+Validation 	: bandgap - Loss 0.443	MAE 0.681	RMSE 0.990
+Epoch: [22/512]
+Train 		: bandgap - Loss 0.419	MAE 0.645	RMSE 0.931
+Validation 	: bandgap - Loss 0.438	MAE 0.674	RMSE 0.985
+Epoch: [23/512]
+Train 		: bandgap - Loss 0.408	MAE 0.628	RMSE 0.911
+Validation 	: bandgap - Loss 0.430	MAE 0.662	RMSE 0.972
+Epoch: [24/512]
+Train 		: bandgap - Loss 0.400	MAE 0.616	RMSE 0.905
+Validation 	: bandgap - Loss 0.445	MAE 0.686	RMSE 1.008
+Epoch: [25/512]
+Train 		: bandgap - Loss 0.397	MAE 0.612	RMSE 0.906
+Validation 	: bandgap - Loss 0.453	MAE 0.697	RMSE 1.021
+Epoch: [26/512]
+Train 		: bandgap - Loss 0.400	MAE 0.615	RMSE 0.903
+Validation 	: bandgap - Loss 0.438	MAE 0.674	RMSE 0.984
+Epoch: [27/512]
+Train 		: bandgap - Loss 0.396	MAE 0.609	RMSE 0.888
+Validation 	: bandgap - Loss 0.463	MAE 0.712	RMSE 1.036
+Epoch: [28/512]
+Train 		: bandgap - Loss 0.387	MAE 0.595	RMSE 0.886
+Validation 	: bandgap - Loss 0.461	MAE 0.709	RMSE 1.034
+Epoch: [29/512]
+Train 		: bandgap - Loss 0.380	MAE 0.585	RMSE 0.869
+Validation 	: bandgap - Loss 0.445	MAE 0.684	RMSE 0.993
+Epoch: [30/512]
+Train 		: bandgap - Loss 0.366	MAE 0.564	RMSE 0.849
+Validation 	: bandgap - Loss 0.434	MAE 0.668	RMSE 0.997
+Epoch: [31/512]
+Train 		: bandgap - Loss 0.365	MAE 0.562	RMSE 0.856
+Validation 	: bandgap - Loss 0.445	MAE 0.684	RMSE 1.017
+Epoch: [32/512]
+Train 		: bandgap - Loss 0.361	MAE 0.555	RMSE 0.845
+Validation 	: bandgap - Loss 0.452	MAE 0.696	RMSE 1.029
+Epoch: [33/512]
+Train 		: bandgap - Loss 0.367	MAE 0.565	RMSE 0.854
+Validation 	: bandgap - Loss 0.453	MAE 0.698	RMSE 1.024
+Epoch: [34/512]
+Train 		: bandgap - Loss 0.361	MAE 0.556	RMSE 0.837
+Validation 	: bandgap - Loss 0.458	MAE 0.705	RMSE 1.016
+Epoch: [35/512]
+Train 		: bandgap - Loss 0.364	MAE 0.560	RMSE 0.834
+Validation 	: bandgap - Loss 0.427	MAE 0.657	RMSE 0.975
+Epoch: [36/512]
+Train 		: bandgap - Loss 0.364	MAE 0.560	RMSE 0.839
+Validation 	: bandgap - Loss 0.465	MAE 0.715	RMSE 1.039
+Epoch: [37/512]
+Train 		: bandgap - Loss 0.364	MAE 0.560	RMSE 0.843
+Validation 	: bandgap - Loss 0.423	MAE 0.650	RMSE 0.986
+Epoch: [38/512]
+Train 		: bandgap - Loss 0.366	MAE 0.564	RMSE 0.836
+Validation 	: bandgap - Loss 0.459	MAE 0.706	RMSE 1.040
+Epoch: [39/512]
+Train 		: bandgap - Loss 0.378	MAE 0.582	RMSE 0.874
+Validation 	: bandgap - Loss 0.447	MAE 0.687	RMSE 1.000
+Epoch: [40/512]
+Train 		: bandgap - Loss 0.355	MAE 0.546	RMSE 0.827
+Validation 	: bandgap - Loss 0.454	MAE 0.698	RMSE 1.016
+Epoch: [41/512]
+Train 		: bandgap - Loss 0.348	MAE 0.535	RMSE 0.819
+Validation 	: bandgap - Loss 0.435	MAE 0.670	RMSE 0.977
+Epoch: [42/512]
+Train 		: bandgap - Loss 0.339	MAE 0.522	RMSE 0.806
+Validation 	: bandgap - Loss 0.453	MAE 0.697	RMSE 1.025
+Epoch: [43/512]
+Train 		: bandgap - Loss 0.343	MAE 0.527	RMSE 0.808
+Validation 	: bandgap - Loss 0.443	MAE 0.682	RMSE 1.015
+Epoch: [44/512]
+Train 		: bandgap - Loss 0.330	MAE 0.508	RMSE 0.788
+Validation 	: bandgap - Loss 0.432	MAE 0.665	RMSE 0.990
+Epoch: [45/512]
+Train 		: bandgap - Loss 0.360	MAE 0.554	RMSE 0.823
+Validation 	: bandgap - Loss 0.458	MAE 0.705	RMSE 1.046
+Epoch: [46/512]
+Train 		: bandgap - Loss 0.330	MAE 0.508	RMSE 0.782
+Validation 	: bandgap - Loss 0.449	MAE 0.691	RMSE 1.004
+Epoch: [47/512]
+Train 		: bandgap - Loss 0.324	MAE 0.498	RMSE 0.776
+Validation 	: bandgap - Loss 0.433	MAE 0.667	RMSE 0.989
+Epoch: [48/512]
+Train 		: bandgap - Loss 0.321	MAE 0.494	RMSE 0.767
+Validation 	: bandgap - Loss 0.454	MAE 0.699	RMSE 1.020
+Epoch: [49/512]
+Train 		: bandgap - Loss 0.318	MAE 0.490	RMSE 0.767
+Validation 	: bandgap - Loss 0.454	MAE 0.699	RMSE 1.034
+Epoch: [50/512]
+Train 		: bandgap - Loss 0.316	MAE 0.486	RMSE 0.760
+Validation 	: bandgap - Loss 0.434	MAE 0.668	RMSE 1.001
+Epoch: [51/512]
+Train 		: bandgap - Loss 0.313	MAE 0.482	RMSE 0.752
+Validation 	: bandgap - Loss 0.434	MAE 0.668	RMSE 0.996
+Epoch: [52/512]
+Train 		: bandgap - Loss 0.319	MAE 0.491	RMSE 0.769
+Validation 	: bandgap - Loss 0.469	MAE 0.721	RMSE 1.070
+Epoch: [53/512]
+Train 		: bandgap - Loss 0.330	MAE 0.508	RMSE 0.770
+Validation 	: bandgap - Loss 0.426	MAE 0.656	RMSE 0.984
+Epoch: [54/512]
+Train 		: bandgap - Loss 0.321	MAE 0.493	RMSE 0.760
+Validation 	: bandgap - Loss 0.442	MAE 0.681	RMSE 1.002
+Epoch: [55/512]
+Train 		: bandgap - Loss 0.305	MAE 0.469	RMSE 0.745
+Validation 	: bandgap - Loss 0.425	MAE 0.655	RMSE 0.989
+Epoch: [56/512]
+Train 		: bandgap - Loss 0.307	MAE 0.472	RMSE 0.755
+Validation 	: bandgap - Loss 0.440	MAE 0.678	RMSE 1.004
+Epoch: [57/512]
+Train 		: bandgap - Loss 0.305	MAE 0.469	RMSE 0.737
+Validation 	: bandgap - Loss 0.455	MAE 0.700	RMSE 1.016
+Epoch: [58/512]
+Train 		: bandgap - Loss 0.299	MAE 0.460	RMSE 0.726
+Validation 	: bandgap - Loss 0.456	MAE 0.702	RMSE 1.042
+Epoch: [59/512]
+Train 		: bandgap - Loss 0.315	MAE 0.484	RMSE 0.744
+Validation 	: bandgap - Loss 0.465	MAE 0.716	RMSE 1.054
+Epoch: [60/512]
+Train 		: bandgap - Loss 0.304	MAE 0.467	RMSE 0.732
+Validation 	: bandgap - Loss 0.445	MAE 0.685	RMSE 1.015
+Epoch: [61/512]
+Train 		: bandgap - Loss 0.300	MAE 0.462	RMSE 0.725
+Validation 	: bandgap - Loss 0.455	MAE 0.701	RMSE 1.043
+Epoch: [62/512]
+Train 		: bandgap - Loss 0.311	MAE 0.479	RMSE 0.744
+Validation 	: bandgap - Loss 0.465	MAE 0.715	RMSE 1.045
+Epoch: [63/512]
+Train 		: bandgap - Loss 0.297	MAE 0.457	RMSE 0.730
+Validation 	: bandgap - Loss 0.446	MAE 0.687	RMSE 1.055
+Epoch: [64/512]
+Train 		: bandgap - Loss 0.290	MAE 0.446	RMSE 0.719
+Validation 	: bandgap - Loss 0.444	MAE 0.683	RMSE 1.026
+Epoch: [65/512]
+Train 		: bandgap - Loss 0.281	MAE 0.433	RMSE 0.710
+Validation 	: bandgap - Loss 0.436	MAE 0.672	RMSE 1.037
+Epoch: [66/512]
+Train 		: bandgap - Loss 0.285	MAE 0.439	RMSE 0.707
+Validation 	: bandgap - Loss 0.431	MAE 0.663	RMSE 1.010
+Epoch: [67/512]
+Train 		: bandgap - Loss 0.288	MAE 0.443	RMSE 0.717
+Validation 	: bandgap - Loss 0.459	MAE 0.707	RMSE 1.068
+Epoch: [68/512]
+Train 		: bandgap - Loss 0.283	MAE 0.435	RMSE 0.700
+Validation 	: bandgap - Loss 0.447	MAE 0.688	RMSE 1.039
+Epoch: [69/512]
+Train 		: bandgap - Loss 0.274	MAE 0.422	RMSE 0.694
+Validation 	: bandgap - Loss 0.447	MAE 0.687	RMSE 1.046
+Epoch: [70/512]
+Train 		: bandgap - Loss 0.278	MAE 0.428	RMSE 0.697
+Validation 	: bandgap - Loss 0.434	MAE 0.668	RMSE 1.027
+Epoch: [71/512]
+Train 		: bandgap - Loss 0.273	MAE 0.421	RMSE 0.687
+Validation 	: bandgap - Loss 0.441	MAE 0.678	RMSE 1.035
+Epoch: [72/512]
+Train 		: bandgap - Loss 0.270	MAE 0.415	RMSE 0.685
+Validation 	: bandgap - Loss 0.449	MAE 0.691	RMSE 1.051
+Epoch: [73/512]
+Train 		: bandgap - Loss 0.276	MAE 0.425	RMSE 0.686
+Validation 	: bandgap - Loss 0.438	MAE 0.674	RMSE 1.038
+Epoch: [74/512]
+Train 		: bandgap - Loss 0.265	MAE 0.408	RMSE 0.677
+Validation 	: bandgap - Loss 0.440	MAE 0.677	RMSE 1.022
+Epoch: [75/512]
+Train 		: bandgap - Loss 0.267	MAE 0.410	RMSE 0.679
+Validation 	: bandgap - Loss 0.454	MAE 0.698	RMSE 1.081
+Epoch: [76/512]
+Train 		: bandgap - Loss 0.271	MAE 0.417	RMSE 0.683
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.018
+Epoch: [77/512]
+Train 		: bandgap - Loss 0.262	MAE 0.404	RMSE 0.679
+Validation 	: bandgap - Loss 0.423	MAE 0.652	RMSE 1.006
+Epoch: [78/512]
+Train 		: bandgap - Loss 0.261	MAE 0.401	RMSE 0.669
+Validation 	: bandgap - Loss 0.442	MAE 0.681	RMSE 1.049
+Epoch: [79/512]
+Train 		: bandgap - Loss 0.257	MAE 0.396	RMSE 0.658
+Validation 	: bandgap - Loss 0.435	MAE 0.670	RMSE 1.029
+Epoch: [80/512]
+Train 		: bandgap - Loss 0.257	MAE 0.396	RMSE 0.666
+Validation 	: bandgap - Loss 0.429	MAE 0.661	RMSE 1.021
+Epoch: [81/512]
+Train 		: bandgap - Loss 0.261	MAE 0.401	RMSE 0.667
+Validation 	: bandgap - Loss 0.457	MAE 0.703	RMSE 1.067
+Epoch: [82/512]
+Train 		: bandgap - Loss 0.269	MAE 0.414	RMSE 0.671
+Validation 	: bandgap - Loss 0.453	MAE 0.697	RMSE 1.090
+Epoch: [83/512]
+Train 		: bandgap - Loss 0.271	MAE 0.417	RMSE 0.681
+Validation 	: bandgap - Loss 0.450	MAE 0.693	RMSE 1.050
+Epoch: [84/512]
+Train 		: bandgap - Loss 0.274	MAE 0.421	RMSE 0.689
+Validation 	: bandgap - Loss 0.447	MAE 0.688	RMSE 1.063
+Epoch: [85/512]
+Train 		: bandgap - Loss 0.264	MAE 0.406	RMSE 0.666
+Validation 	: bandgap - Loss 0.434	MAE 0.667	RMSE 1.063
+Epoch: [86/512]
+Train 		: bandgap - Loss 0.252	MAE 0.388	RMSE 0.658
+Validation 	: bandgap - Loss 0.435	MAE 0.670	RMSE 1.039
+Epoch: [87/512]
+Train 		: bandgap - Loss 0.246	MAE 0.379	RMSE 0.644
+Validation 	: bandgap - Loss 0.429	MAE 0.660	RMSE 1.044
+Epoch: [88/512]
+Train 		: bandgap - Loss 0.262	MAE 0.403	RMSE 0.660
+Validation 	: bandgap - Loss 0.444	MAE 0.684	RMSE 1.072
+Epoch: [89/512]
+Train 		: bandgap - Loss 0.280	MAE 0.430	RMSE 0.679
+Validation 	: bandgap - Loss 0.449	MAE 0.691	RMSE 1.063
+Epoch: [90/512]
+Train 		: bandgap - Loss 0.258	MAE 0.398	RMSE 0.664
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.029
+Epoch: [91/512]
+Train 		: bandgap - Loss 0.256	MAE 0.394	RMSE 0.657
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.025
+Epoch: [92/512]
+Train 		: bandgap - Loss 0.255	MAE 0.392	RMSE 0.645
+Validation 	: bandgap - Loss 0.472	MAE 0.727	RMSE 1.132
+Epoch: [93/512]
+Train 		: bandgap - Loss 0.251	MAE 0.387	RMSE 0.638
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.009
+Epoch: [94/512]
+Train 		: bandgap - Loss 0.268	MAE 0.412	RMSE 0.660
+Validation 	: bandgap - Loss 0.423	MAE 0.650	RMSE 1.002
+Epoch: [95/512]
+Train 		: bandgap - Loss 0.253	MAE 0.389	RMSE 0.638
+Validation 	: bandgap - Loss 0.421	MAE 0.647	RMSE 1.038
+Epoch: [96/512]
+Train 		: bandgap - Loss 0.230	MAE 0.355	RMSE 0.625
+Validation 	: bandgap - Loss 0.422	MAE 0.650	RMSE 1.044
+Epoch: [97/512]
+Train 		: bandgap - Loss 0.224	MAE 0.344	RMSE 0.604
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.053
+Epoch: [98/512]
+Train 		: bandgap - Loss 0.222	MAE 0.342	RMSE 0.610
+Validation 	: bandgap - Loss 0.431	MAE 0.664	RMSE 1.070
+Epoch: [99/512]
+Train 		: bandgap - Loss 0.229	MAE 0.352	RMSE 0.617
+Validation 	: bandgap - Loss 0.431	MAE 0.664	RMSE 1.051
+Epoch: [100/512]
+Train 		: bandgap - Loss 0.221	MAE 0.341	RMSE 0.615
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.049
+Epoch: [101/512]
+Train 		: bandgap - Loss 0.248	MAE 0.381	RMSE 0.634
+Validation 	: bandgap - Loss 0.452	MAE 0.696	RMSE 1.105
+Epoch: [102/512]
+Train 		: bandgap - Loss 0.237	MAE 0.365	RMSE 0.618
+Validation 	: bandgap - Loss 0.442	MAE 0.680	RMSE 1.098
+Epoch: [103/512]
+Train 		: bandgap - Loss 0.228	MAE 0.351	RMSE 0.618
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.042
+Epoch: [104/512]
+Train 		: bandgap - Loss 0.238	MAE 0.366	RMSE 0.627
+Validation 	: bandgap - Loss 0.433	MAE 0.666	RMSE 1.085
+Epoch: [105/512]
+Train 		: bandgap - Loss 0.237	MAE 0.365	RMSE 0.627
+Validation 	: bandgap - Loss 0.452	MAE 0.696	RMSE 1.081
+Epoch: [106/512]
+Train 		: bandgap - Loss 0.224	MAE 0.344	RMSE 0.602
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.043
+Epoch: [107/512]
+Train 		: bandgap - Loss 0.211	MAE 0.325	RMSE 0.594
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.035
+Epoch: [108/512]
+Train 		: bandgap - Loss 0.222	MAE 0.342	RMSE 0.612
+Validation 	: bandgap - Loss 0.420	MAE 0.647	RMSE 1.063
+Epoch: [109/512]
+Train 		: bandgap - Loss 0.221	MAE 0.340	RMSE 0.604
+Validation 	: bandgap - Loss 0.437	MAE 0.672	RMSE 1.055
+Epoch: [110/512]
+Train 		: bandgap - Loss 0.232	MAE 0.357	RMSE 0.612
+Validation 	: bandgap - Loss 0.438	MAE 0.673	RMSE 1.100
+Epoch: [111/512]
+Train 		: bandgap - Loss 0.251	MAE 0.386	RMSE 0.637
+Validation 	: bandgap - Loss 0.414	MAE 0.638	RMSE 1.025
+Epoch: [112/512]
+Train 		: bandgap - Loss 0.221	MAE 0.341	RMSE 0.599
+Validation 	: bandgap - Loss 0.421	MAE 0.647	RMSE 1.028
+Epoch: [113/512]
+Train 		: bandgap - Loss 0.216	MAE 0.333	RMSE 0.587
+Validation 	: bandgap - Loss 0.424	MAE 0.652	RMSE 1.060
+Epoch: [114/512]
+Train 		: bandgap - Loss 0.225	MAE 0.347	RMSE 0.601
+Validation 	: bandgap - Loss 0.438	MAE 0.674	RMSE 1.091
+Epoch: [115/512]
+Train 		: bandgap - Loss 0.221	MAE 0.341	RMSE 0.605
+Validation 	: bandgap - Loss 0.424	MAE 0.652	RMSE 1.049
+Epoch: [116/512]
+Train 		: bandgap - Loss 0.221	MAE 0.340	RMSE 0.594
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.012
+Epoch: [117/512]
+Train 		: bandgap - Loss 0.216	MAE 0.332	RMSE 0.581
+Validation 	: bandgap - Loss 0.426	MAE 0.656	RMSE 1.044
+Epoch: [118/512]
+Train 		: bandgap - Loss 0.207	MAE 0.319	RMSE 0.586
+Validation 	: bandgap - Loss 0.437	MAE 0.673	RMSE 1.084
+Epoch: [119/512]
+Train 		: bandgap - Loss 0.211	MAE 0.324	RMSE 0.579
+Validation 	: bandgap - Loss 0.433	MAE 0.666	RMSE 1.081
+Epoch: [120/512]
+Train 		: bandgap - Loss 0.209	MAE 0.321	RMSE 0.578
+Validation 	: bandgap - Loss 0.451	MAE 0.694	RMSE 1.099
+Epoch: [121/512]
+Train 		: bandgap - Loss 0.241	MAE 0.371	RMSE 0.612
+Validation 	: bandgap - Loss 0.420	MAE 0.647	RMSE 1.015
+Epoch: [122/512]
+Train 		: bandgap - Loss 0.228	MAE 0.351	RMSE 0.598
+Validation 	: bandgap - Loss 0.421	MAE 0.647	RMSE 1.087
+Epoch: [123/512]
+Train 		: bandgap - Loss 0.201	MAE 0.310	RMSE 0.563
+Validation 	: bandgap - Loss 0.427	MAE 0.657	RMSE 1.068
+Epoch: [124/512]
+Train 		: bandgap - Loss 0.200	MAE 0.308	RMSE 0.560
+Validation 	: bandgap - Loss 0.428	MAE 0.659	RMSE 1.056
+Epoch: [125/512]
+Train 		: bandgap - Loss 0.197	MAE 0.303	RMSE 0.561
+Validation 	: bandgap - Loss 0.405	MAE 0.624	RMSE 1.018
+Epoch: [126/512]
+Train 		: bandgap - Loss 0.196	MAE 0.301	RMSE 0.558
+Validation 	: bandgap - Loss 0.406	MAE 0.625	RMSE 1.038
+Epoch: [127/512]
+Train 		: bandgap - Loss 0.189	MAE 0.291	RMSE 0.559
+Validation 	: bandgap - Loss 0.429	MAE 0.659	RMSE 1.073
+Epoch: [128/512]
+Train 		: bandgap - Loss 0.187	MAE 0.288	RMSE 0.539
+Validation 	: bandgap - Loss 0.420	MAE 0.647	RMSE 1.060
+Epoch: [129/512]
+Train 		: bandgap - Loss 0.191	MAE 0.294	RMSE 0.551
+Validation 	: bandgap - Loss 0.435	MAE 0.669	RMSE 1.086
+Epoch: [130/512]
+Train 		: bandgap - Loss 0.203	MAE 0.312	RMSE 0.577
+Validation 	: bandgap - Loss 0.408	MAE 0.629	RMSE 1.020
+Epoch: [131/512]
+Train 		: bandgap - Loss 0.210	MAE 0.324	RMSE 0.567
+Validation 	: bandgap - Loss 0.424	MAE 0.652	RMSE 1.033
+Epoch: [132/512]
+Train 		: bandgap - Loss 0.208	MAE 0.320	RMSE 0.561
+Validation 	: bandgap - Loss 0.412	MAE 0.635	RMSE 1.004
+Epoch: [133/512]
+Train 		: bandgap - Loss 0.204	MAE 0.314	RMSE 0.544
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.005
+Epoch: [134/512]
+Train 		: bandgap - Loss 0.197	MAE 0.304	RMSE 0.534
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.028
+Epoch: [135/512]
+Train 		: bandgap - Loss 0.186	MAE 0.287	RMSE 0.539
+Validation 	: bandgap - Loss 0.434	MAE 0.668	RMSE 1.089
+Epoch: [136/512]
+Train 		: bandgap - Loss 0.197	MAE 0.304	RMSE 0.557
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.031
+Epoch: [137/512]
+Train 		: bandgap - Loss 0.184	MAE 0.284	RMSE 0.533
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.047
+Epoch: [138/512]
+Train 		: bandgap - Loss 0.187	MAE 0.287	RMSE 0.544
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.031
+Epoch: [139/512]
+Train 		: bandgap - Loss 0.187	MAE 0.288	RMSE 0.543
+Validation 	: bandgap - Loss 0.412	MAE 0.633	RMSE 1.021
+Epoch: [140/512]
+Train 		: bandgap - Loss 0.203	MAE 0.312	RMSE 0.549
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.026
+Epoch: [141/512]
+Train 		: bandgap - Loss 0.193	MAE 0.296	RMSE 0.542
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.061
+Epoch: [142/512]
+Train 		: bandgap - Loss 0.192	MAE 0.295	RMSE 0.536
+Validation 	: bandgap - Loss 0.409	MAE 0.630	RMSE 1.017
+Epoch: [143/512]
+Train 		: bandgap - Loss 0.184	MAE 0.283	RMSE 0.520
+Validation 	: bandgap - Loss 0.400	MAE 0.615	RMSE 1.015
+Epoch: [144/512]
+Train 		: bandgap - Loss 0.174	MAE 0.267	RMSE 0.512
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.042
+Epoch: [145/512]
+Train 		: bandgap - Loss 0.166	MAE 0.255	RMSE 0.511
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.044
+Epoch: [146/512]
+Train 		: bandgap - Loss 0.164	MAE 0.252	RMSE 0.505
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.043
+Epoch: [147/512]
+Train 		: bandgap - Loss 0.180	MAE 0.276	RMSE 0.525
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.060
+Epoch: [148/512]
+Train 		: bandgap - Loss 0.171	MAE 0.262	RMSE 0.508
+Validation 	: bandgap - Loss 0.399	MAE 0.614	RMSE 1.035
+Epoch: [149/512]
+Train 		: bandgap - Loss 0.177	MAE 0.273	RMSE 0.512
+Validation 	: bandgap - Loss 0.396	MAE 0.610	RMSE 1.004
+Epoch: [150/512]
+Train 		: bandgap - Loss 0.200	MAE 0.307	RMSE 0.546
+Validation 	: bandgap - Loss 0.436	MAE 0.671	RMSE 1.085
+Epoch: [151/512]
+Train 		: bandgap - Loss 0.189	MAE 0.290	RMSE 0.532
+Validation 	: bandgap - Loss 0.421	MAE 0.647	RMSE 1.055
+Epoch: [152/512]
+Train 		: bandgap - Loss 0.177	MAE 0.273	RMSE 0.511
+Validation 	: bandgap - Loss 0.421	MAE 0.648	RMSE 1.056
+Epoch: [153/512]
+Train 		: bandgap - Loss 0.166	MAE 0.256	RMSE 0.499
+Validation 	: bandgap - Loss 0.422	MAE 0.649	RMSE 1.071
+Epoch: [154/512]
+Train 		: bandgap - Loss 0.169	MAE 0.260	RMSE 0.505
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.046
+Epoch: [155/512]
+Train 		: bandgap - Loss 0.166	MAE 0.256	RMSE 0.496
+Validation 	: bandgap - Loss 0.429	MAE 0.660	RMSE 1.081
+Epoch: [156/512]
+Train 		: bandgap - Loss 0.163	MAE 0.250	RMSE 0.491
+Validation 	: bandgap - Loss 0.417	MAE 0.641	RMSE 1.044
+Epoch: [157/512]
+Train 		: bandgap - Loss 0.164	MAE 0.253	RMSE 0.493
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.047
+Epoch: [158/512]
+Train 		: bandgap - Loss 0.161	MAE 0.247	RMSE 0.497
+Validation 	: bandgap - Loss 0.418	MAE 0.643	RMSE 1.055
+Epoch: [159/512]
+Train 		: bandgap - Loss 0.158	MAE 0.242	RMSE 0.487
+Validation 	: bandgap - Loss 0.401	MAE 0.617	RMSE 1.031
+Epoch: [160/512]
+Train 		: bandgap - Loss 0.167	MAE 0.256	RMSE 0.494
+Validation 	: bandgap - Loss 0.399	MAE 0.614	RMSE 1.029
+Epoch: [161/512]
+Train 		: bandgap - Loss 0.182	MAE 0.280	RMSE 0.511
+Validation 	: bandgap - Loss 0.414	MAE 0.637	RMSE 1.034
+Epoch: [162/512]
+Train 		: bandgap - Loss 0.175	MAE 0.270	RMSE 0.497
+Validation 	: bandgap - Loss 0.403	MAE 0.620	RMSE 1.036
+Epoch: [163/512]
+Train 		: bandgap - Loss 0.169	MAE 0.260	RMSE 0.494
+Validation 	: bandgap - Loss 0.417	MAE 0.641	RMSE 1.070
+Epoch: [164/512]
+Train 		: bandgap - Loss 0.157	MAE 0.242	RMSE 0.482
+Validation 	: bandgap - Loss 0.401	MAE 0.617	RMSE 1.026
+Epoch: [165/512]
+Train 		: bandgap - Loss 0.153	MAE 0.236	RMSE 0.467
+Validation 	: bandgap - Loss 0.399	MAE 0.613	RMSE 1.031
+Epoch: [166/512]
+Train 		: bandgap - Loss 0.155	MAE 0.239	RMSE 0.478
+Validation 	: bandgap - Loss 0.398	MAE 0.612	RMSE 1.040
+Epoch: [167/512]
+Train 		: bandgap - Loss 0.170	MAE 0.261	RMSE 0.504
+Validation 	: bandgap - Loss 0.399	MAE 0.615	RMSE 1.007
+Epoch: [168/512]
+Train 		: bandgap - Loss 0.160	MAE 0.246	RMSE 0.486
+Validation 	: bandgap - Loss 0.396	MAE 0.610	RMSE 1.013
+Epoch: [169/512]
+Train 		: bandgap - Loss 0.161	MAE 0.248	RMSE 0.481
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.052
+Epoch: [170/512]
+Train 		: bandgap - Loss 0.194	MAE 0.298	RMSE 0.508
+Validation 	: bandgap - Loss 0.428	MAE 0.658	RMSE 1.065
+Epoch: [171/512]
+Train 		: bandgap - Loss 0.192	MAE 0.295	RMSE 0.518
+Validation 	: bandgap - Loss 0.421	MAE 0.648	RMSE 1.052
+Epoch: [172/512]
+Train 		: bandgap - Loss 0.168	MAE 0.259	RMSE 0.480
+Validation 	: bandgap - Loss 0.403	MAE 0.621	RMSE 1.027
+Epoch: [173/512]
+Train 		: bandgap - Loss 0.155	MAE 0.239	RMSE 0.475
+Validation 	: bandgap - Loss 0.393	MAE 0.605	RMSE 1.024
+Epoch: [174/512]
+Train 		: bandgap - Loss 0.153	MAE 0.235	RMSE 0.463
+Validation 	: bandgap - Loss 0.394	MAE 0.606	RMSE 1.013
+Epoch: [175/512]
+Train 		: bandgap - Loss 0.153	MAE 0.236	RMSE 0.470
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.042
+Epoch: [176/512]
+Train 		: bandgap - Loss 0.145	MAE 0.223	RMSE 0.457
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.048
+Epoch: [177/512]
+Train 		: bandgap - Loss 0.146	MAE 0.225	RMSE 0.457
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.046
+Epoch: [178/512]
+Train 		: bandgap - Loss 0.139	MAE 0.213	RMSE 0.458
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.046
+Epoch: [179/512]
+Train 		: bandgap - Loss 0.145	MAE 0.223	RMSE 0.461
+Validation 	: bandgap - Loss 0.406	MAE 0.625	RMSE 1.040
+Epoch: [180/512]
+Train 		: bandgap - Loss 0.145	MAE 0.224	RMSE 0.464
+Validation 	: bandgap - Loss 0.396	MAE 0.610	RMSE 1.022
+Epoch: [181/512]
+Train 		: bandgap - Loss 0.147	MAE 0.226	RMSE 0.451
+Validation 	: bandgap - Loss 0.435	MAE 0.670	RMSE 1.093
+Epoch: [182/512]
+Train 		: bandgap - Loss 0.159	MAE 0.244	RMSE 0.467
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.057
+Epoch: [183/512]
+Train 		: bandgap - Loss 0.158	MAE 0.244	RMSE 0.470
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.020
+Epoch: [184/512]
+Train 		: bandgap - Loss 0.152	MAE 0.234	RMSE 0.463
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.044
+Epoch: [185/512]
+Train 		: bandgap - Loss 0.145	MAE 0.223	RMSE 0.455
+Validation 	: bandgap - Loss 0.408	MAE 0.627	RMSE 1.033
+Epoch: [186/512]
+Train 		: bandgap - Loss 0.139	MAE 0.214	RMSE 0.453
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.037
+Epoch: [187/512]
+Train 		: bandgap - Loss 0.146	MAE 0.224	RMSE 0.452
+Validation 	: bandgap - Loss 0.401	MAE 0.618	RMSE 1.023
+Epoch: [188/512]
+Train 		: bandgap - Loss 0.155	MAE 0.238	RMSE 0.462
+Validation 	: bandgap - Loss 0.399	MAE 0.614	RMSE 1.021
+Epoch: [189/512]
+Train 		: bandgap - Loss 0.162	MAE 0.249	RMSE 0.456
+Validation 	: bandgap - Loss 0.407	MAE 0.627	RMSE 1.051
+Epoch: [190/512]
+Train 		: bandgap - Loss 0.152	MAE 0.234	RMSE 0.454
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.075
+Epoch: [191/512]
+Train 		: bandgap - Loss 0.155	MAE 0.239	RMSE 0.459
+Validation 	: bandgap - Loss 0.418	MAE 0.643	RMSE 1.055
+Epoch: [192/512]
+Train 		: bandgap - Loss 0.150	MAE 0.231	RMSE 0.458
+Validation 	: bandgap - Loss 0.402	MAE 0.619	RMSE 1.026
+Epoch: [193/512]
+Train 		: bandgap - Loss 0.141	MAE 0.217	RMSE 0.447
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.030
+Epoch: [194/512]
+Train 		: bandgap - Loss 0.140	MAE 0.215	RMSE 0.452
+Validation 	: bandgap - Loss 0.430	MAE 0.662	RMSE 1.090
+Epoch: [195/512]
+Train 		: bandgap - Loss 0.136	MAE 0.209	RMSE 0.428
+Validation 	: bandgap - Loss 0.397	MAE 0.611	RMSE 1.006
+Epoch: [196/512]
+Train 		: bandgap - Loss 0.137	MAE 0.211	RMSE 0.431
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.034
+Epoch: [197/512]
+Train 		: bandgap - Loss 0.133	MAE 0.205	RMSE 0.438
+Validation 	: bandgap - Loss 0.414	MAE 0.637	RMSE 1.035
+Epoch: [198/512]
+Train 		: bandgap - Loss 0.129	MAE 0.198	RMSE 0.428
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.034
+Epoch: [199/512]
+Train 		: bandgap - Loss 0.125	MAE 0.192	RMSE 0.425
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.062
+Epoch: [200/512]
+Train 		: bandgap - Loss 0.128	MAE 0.198	RMSE 0.428
+Validation 	: bandgap - Loss 0.392	MAE 0.603	RMSE 1.027
+Epoch: [201/512]
+Train 		: bandgap - Loss 0.144	MAE 0.222	RMSE 0.435
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.057
+Epoch: [202/512]
+Train 		: bandgap - Loss 0.156	MAE 0.240	RMSE 0.442
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.070
+Epoch: [203/512]
+Train 		: bandgap - Loss 0.153	MAE 0.235	RMSE 0.442
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.066
+Epoch: [204/512]
+Train 		: bandgap - Loss 0.146	MAE 0.225	RMSE 0.443
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.036
+Epoch: [205/512]
+Train 		: bandgap - Loss 0.139	MAE 0.215	RMSE 0.428
+Validation 	: bandgap - Loss 0.435	MAE 0.669	RMSE 1.091
+Epoch: [206/512]
+Train 		: bandgap - Loss 0.141	MAE 0.216	RMSE 0.435
+Validation 	: bandgap - Loss 0.421	MAE 0.649	RMSE 1.081
+Epoch: [207/512]
+Train 		: bandgap - Loss 0.143	MAE 0.220	RMSE 0.430
+Validation 	: bandgap - Loss 0.408	MAE 0.627	RMSE 1.048
+Epoch: [208/512]
+Train 		: bandgap - Loss 0.152	MAE 0.233	RMSE 0.440
+Validation 	: bandgap - Loss 0.430	MAE 0.661	RMSE 1.055
+Epoch: [209/512]
+Train 		: bandgap - Loss 0.140	MAE 0.216	RMSE 0.434
+Validation 	: bandgap - Loss 0.396	MAE 0.609	RMSE 1.039
+Epoch: [210/512]
+Train 		: bandgap - Loss 0.137	MAE 0.211	RMSE 0.432
+Validation 	: bandgap - Loss 0.414	MAE 0.638	RMSE 1.030
+Epoch: [211/512]
+Train 		: bandgap - Loss 0.147	MAE 0.226	RMSE 0.439
+Validation 	: bandgap - Loss 0.419	MAE 0.645	RMSE 1.061
+Epoch: [212/512]
+Train 		: bandgap - Loss 0.151	MAE 0.232	RMSE 0.449
+Validation 	: bandgap - Loss 0.432	MAE 0.665	RMSE 1.060
+Epoch: [213/512]
+Train 		: bandgap - Loss 0.162	MAE 0.249	RMSE 0.453
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.069
+Epoch: [214/512]
+Train 		: bandgap - Loss 0.146	MAE 0.225	RMSE 0.433
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.048
+Epoch: [215/512]
+Train 		: bandgap - Loss 0.139	MAE 0.214	RMSE 0.424
+Validation 	: bandgap - Loss 0.400	MAE 0.616	RMSE 1.021
+Epoch: [216/512]
+Train 		: bandgap - Loss 0.136	MAE 0.209	RMSE 0.430
+Validation 	: bandgap - Loss 0.419	MAE 0.644	RMSE 1.047
+Epoch: [217/512]
+Train 		: bandgap - Loss 0.126	MAE 0.194	RMSE 0.420
+Validation 	: bandgap - Loss 0.408	MAE 0.627	RMSE 1.048
+Epoch: [218/512]
+Train 		: bandgap - Loss 0.128	MAE 0.197	RMSE 0.419
+Validation 	: bandgap - Loss 0.409	MAE 0.630	RMSE 1.056
+Epoch: [219/512]
+Train 		: bandgap - Loss 0.130	MAE 0.201	RMSE 0.413
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.048
+Epoch: [220/512]
+Train 		: bandgap - Loss 0.129	MAE 0.199	RMSE 0.421
+Validation 	: bandgap - Loss 0.400	MAE 0.616	RMSE 1.050
+Epoch: [221/512]
+Train 		: bandgap - Loss 0.127	MAE 0.196	RMSE 0.414
+Validation 	: bandgap - Loss 0.403	MAE 0.620	RMSE 1.041
+Epoch: [222/512]
+Train 		: bandgap - Loss 0.125	MAE 0.192	RMSE 0.420
+Validation 	: bandgap - Loss 0.412	MAE 0.635	RMSE 1.065
+Epoch: [223/512]
+Train 		: bandgap - Loss 0.123	MAE 0.189	RMSE 0.397
+Validation 	: bandgap - Loss 0.399	MAE 0.614	RMSE 1.028
+Epoch: [224/512]
+Train 		: bandgap - Loss 0.129	MAE 0.199	RMSE 0.417
+Validation 	: bandgap - Loss 0.399	MAE 0.614	RMSE 1.035
+Epoch: [225/512]
+Train 		: bandgap - Loss 0.125	MAE 0.193	RMSE 0.411
+Validation 	: bandgap - Loss 0.414	MAE 0.638	RMSE 1.057
+Epoch: [226/512]
+Train 		: bandgap - Loss 0.122	MAE 0.188	RMSE 0.410
+Validation 	: bandgap - Loss 0.412	MAE 0.635	RMSE 1.064
+Epoch: [227/512]
+Train 		: bandgap - Loss 0.130	MAE 0.200	RMSE 0.416
+Validation 	: bandgap - Loss 0.410	MAE 0.630	RMSE 1.039
+Epoch: [228/512]
+Train 		: bandgap - Loss 0.129	MAE 0.198	RMSE 0.407
+Validation 	: bandgap - Loss 0.398	MAE 0.613	RMSE 1.036
+Epoch: [229/512]
+Train 		: bandgap - Loss 0.138	MAE 0.213	RMSE 0.421
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.027
+Epoch: [230/512]
+Train 		: bandgap - Loss 0.133	MAE 0.205	RMSE 0.404
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.053
+Epoch: [231/512]
+Train 		: bandgap - Loss 0.134	MAE 0.207	RMSE 0.415
+Validation 	: bandgap - Loss 0.418	MAE 0.644	RMSE 1.076
+Epoch: [232/512]
+Train 		: bandgap - Loss 0.129	MAE 0.199	RMSE 0.406
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.037
+Epoch: [233/512]
+Train 		: bandgap - Loss 0.119	MAE 0.183	RMSE 0.402
+Validation 	: bandgap - Loss 0.397	MAE 0.611	RMSE 1.028
+Epoch: [234/512]
+Train 		: bandgap - Loss 0.120	MAE 0.185	RMSE 0.399
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.039
+Epoch: [235/512]
+Train 		: bandgap - Loss 0.124	MAE 0.190	RMSE 0.401
+Validation 	: bandgap - Loss 0.402	MAE 0.618	RMSE 1.037
+Epoch: [236/512]
+Train 		: bandgap - Loss 0.122	MAE 0.187	RMSE 0.405
+Validation 	: bandgap - Loss 0.427	MAE 0.657	RMSE 1.069
+Epoch: [237/512]
+Train 		: bandgap - Loss 0.120	MAE 0.185	RMSE 0.391
+Validation 	: bandgap - Loss 0.416	MAE 0.641	RMSE 1.051
+Epoch: [238/512]
+Train 		: bandgap - Loss 0.122	MAE 0.188	RMSE 0.397
+Validation 	: bandgap - Loss 0.402	MAE 0.619	RMSE 1.011
+Epoch: [239/512]
+Train 		: bandgap - Loss 0.124	MAE 0.190	RMSE 0.405
+Validation 	: bandgap - Loss 0.403	MAE 0.620	RMSE 1.023
+Epoch: [240/512]
+Train 		: bandgap - Loss 0.126	MAE 0.194	RMSE 0.407
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.039
+Epoch: [241/512]
+Train 		: bandgap - Loss 0.118	MAE 0.182	RMSE 0.391
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.034
+Epoch: [242/512]
+Train 		: bandgap - Loss 0.120	MAE 0.185	RMSE 0.385
+Validation 	: bandgap - Loss 0.422	MAE 0.649	RMSE 1.058
+Epoch: [243/512]
+Train 		: bandgap - Loss 0.125	MAE 0.193	RMSE 0.394
+Validation 	: bandgap - Loss 0.419	MAE 0.645	RMSE 1.057
+Epoch: [244/512]
+Train 		: bandgap - Loss 0.129	MAE 0.198	RMSE 0.410
+Validation 	: bandgap - Loss 0.423	MAE 0.652	RMSE 1.080
+Epoch: [245/512]
+Train 		: bandgap - Loss 0.127	MAE 0.195	RMSE 0.403
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.049
+Epoch: [246/512]
+Train 		: bandgap - Loss 0.126	MAE 0.194	RMSE 0.396
+Validation 	: bandgap - Loss 0.430	MAE 0.662	RMSE 1.085
+Epoch: [247/512]
+Train 		: bandgap - Loss 0.124	MAE 0.191	RMSE 0.396
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.039
+Epoch: [248/512]
+Train 		: bandgap - Loss 0.111	MAE 0.171	RMSE 0.383
+Validation 	: bandgap - Loss 0.403	MAE 0.620	RMSE 1.035
+Epoch: [249/512]
+Train 		: bandgap - Loss 0.120	MAE 0.185	RMSE 0.383
+Validation 	: bandgap - Loss 0.406	MAE 0.624	RMSE 1.035
+Epoch: [250/512]
+Train 		: bandgap - Loss 0.127	MAE 0.196	RMSE 0.392
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.048
+Epoch: [251/512]
+Train 		: bandgap - Loss 0.124	MAE 0.191	RMSE 0.389
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.027
+Epoch: [252/512]
+Train 		: bandgap - Loss 0.133	MAE 0.204	RMSE 0.396
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.047
+Epoch: [253/512]
+Train 		: bandgap - Loss 0.116	MAE 0.178	RMSE 0.389
+Validation 	: bandgap - Loss 0.406	MAE 0.625	RMSE 1.040
+Epoch: [254/512]
+Train 		: bandgap - Loss 0.110	MAE 0.170	RMSE 0.372
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.068
+Epoch: [255/512]
+Train 		: bandgap - Loss 0.112	MAE 0.172	RMSE 0.381
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.039
+Epoch: [256/512]
+Train 		: bandgap - Loss 0.117	MAE 0.180	RMSE 0.380
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.037
+Epoch: [257/512]
+Train 		: bandgap - Loss 0.125	MAE 0.192	RMSE 0.394
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.058
+Epoch: [258/512]
+Train 		: bandgap - Loss 0.129	MAE 0.198	RMSE 0.409
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.077
+Epoch: [259/512]
+Train 		: bandgap - Loss 0.120	MAE 0.184	RMSE 0.385
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.061
+Epoch: [260/512]
+Train 		: bandgap - Loss 0.115	MAE 0.177	RMSE 0.381
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.044
+Epoch: [261/512]
+Train 		: bandgap - Loss 0.108	MAE 0.166	RMSE 0.367
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.047
+Epoch: [262/512]
+Train 		: bandgap - Loss 0.128	MAE 0.197	RMSE 0.387
+Validation 	: bandgap - Loss 0.421	MAE 0.647	RMSE 1.042
+Epoch: [263/512]
+Train 		: bandgap - Loss 0.128	MAE 0.197	RMSE 0.387
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.045
+Epoch: [264/512]
+Train 		: bandgap - Loss 0.114	MAE 0.176	RMSE 0.381
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.061
+Epoch: [265/512]
+Train 		: bandgap - Loss 0.108	MAE 0.166	RMSE 0.372
+Validation 	: bandgap - Loss 0.414	MAE 0.636	RMSE 1.055
+Epoch: [266/512]
+Train 		: bandgap - Loss 0.114	MAE 0.175	RMSE 0.363
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.048
+Epoch: [267/512]
+Train 		: bandgap - Loss 0.108	MAE 0.166	RMSE 0.373
+Validation 	: bandgap - Loss 0.420	MAE 0.647	RMSE 1.047
+Epoch: [268/512]
+Train 		: bandgap - Loss 0.120	MAE 0.185	RMSE 0.387
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.029
+Epoch: [269/512]
+Train 		: bandgap - Loss 0.118	MAE 0.181	RMSE 0.380
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.054
+Epoch: [270/512]
+Train 		: bandgap - Loss 0.122	MAE 0.187	RMSE 0.399
+Validation 	: bandgap - Loss 0.399	MAE 0.614	RMSE 1.016
+Epoch: [271/512]
+Train 		: bandgap - Loss 0.128	MAE 0.198	RMSE 0.395
+Validation 	: bandgap - Loss 0.403	MAE 0.620	RMSE 1.027
+Epoch: [272/512]
+Train 		: bandgap - Loss 0.119	MAE 0.183	RMSE 0.380
+Validation 	: bandgap - Loss 0.396	MAE 0.609	RMSE 1.016
+Epoch: [273/512]
+Train 		: bandgap - Loss 0.110	MAE 0.170	RMSE 0.371
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.054
+Epoch: [274/512]
+Train 		: bandgap - Loss 0.106	MAE 0.162	RMSE 0.361
+Validation 	: bandgap - Loss 0.398	MAE 0.613	RMSE 1.027
+Epoch: [275/512]
+Train 		: bandgap - Loss 0.121	MAE 0.186	RMSE 0.382
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.052
+Epoch: [276/512]
+Train 		: bandgap - Loss 0.114	MAE 0.175	RMSE 0.368
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.063
+Epoch: [277/512]
+Train 		: bandgap - Loss 0.110	MAE 0.170	RMSE 0.367
+Validation 	: bandgap - Loss 0.416	MAE 0.641	RMSE 1.057
+Epoch: [278/512]
+Train 		: bandgap - Loss 0.110	MAE 0.169	RMSE 0.359
+Validation 	: bandgap - Loss 0.429	MAE 0.661	RMSE 1.086
+Epoch: [279/512]
+Train 		: bandgap - Loss 0.112	MAE 0.173	RMSE 0.377
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.031
+Epoch: [280/512]
+Train 		: bandgap - Loss 0.110	MAE 0.170	RMSE 0.357
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.076
+Epoch: [281/512]
+Train 		: bandgap - Loss 0.116	MAE 0.179	RMSE 0.368
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.039
+Epoch: [282/512]
+Train 		: bandgap - Loss 0.116	MAE 0.178	RMSE 0.373
+Validation 	: bandgap - Loss 0.412	MAE 0.635	RMSE 1.038
+Epoch: [283/512]
+Train 		: bandgap - Loss 0.125	MAE 0.192	RMSE 0.374
+Validation 	: bandgap - Loss 0.421	MAE 0.648	RMSE 1.062
+Epoch: [284/512]
+Train 		: bandgap - Loss 0.122	MAE 0.188	RMSE 0.375
+Validation 	: bandgap - Loss 0.438	MAE 0.674	RMSE 1.098
+Epoch: [285/512]
+Train 		: bandgap - Loss 0.112	MAE 0.173	RMSE 0.372
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.052
+Epoch: [286/512]
+Train 		: bandgap - Loss 0.107	MAE 0.165	RMSE 0.363
+Validation 	: bandgap - Loss 0.408	MAE 0.629	RMSE 1.030
+Epoch: [287/512]
+Train 		: bandgap - Loss 0.109	MAE 0.167	RMSE 0.363
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.032
+Epoch: [288/512]
+Train 		: bandgap - Loss 0.109	MAE 0.167	RMSE 0.361
+Validation 	: bandgap - Loss 0.409	MAE 0.630	RMSE 1.026
+Epoch: [289/512]
+Train 		: bandgap - Loss 0.113	MAE 0.174	RMSE 0.370
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.036
+Epoch: [290/512]
+Train 		: bandgap - Loss 0.109	MAE 0.167	RMSE 0.362
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.053
+Epoch: [291/512]
+Train 		: bandgap - Loss 0.111	MAE 0.171	RMSE 0.364
+Validation 	: bandgap - Loss 0.406	MAE 0.624	RMSE 1.033
+Epoch: [292/512]
+Train 		: bandgap - Loss 0.112	MAE 0.173	RMSE 0.368
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.075
+Epoch: [293/512]
+Train 		: bandgap - Loss 0.112	MAE 0.172	RMSE 0.369
+Validation 	: bandgap - Loss 0.414	MAE 0.637	RMSE 1.047
+Epoch: [294/512]
+Train 		: bandgap - Loss 0.099	MAE 0.153	RMSE 0.344
+Validation 	: bandgap - Loss 0.402	MAE 0.618	RMSE 1.031
+Epoch: [295/512]
+Train 		: bandgap - Loss 0.101	MAE 0.156	RMSE 0.352
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.045
+Epoch: [296/512]
+Train 		: bandgap - Loss 0.106	MAE 0.162	RMSE 0.354
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.045
+Epoch: [297/512]
+Train 		: bandgap - Loss 0.110	MAE 0.169	RMSE 0.349
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.057
+Epoch: [298/512]
+Train 		: bandgap - Loss 0.105	MAE 0.161	RMSE 0.349
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.041
+Epoch: [299/512]
+Train 		: bandgap - Loss 0.100	MAE 0.153	RMSE 0.351
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.041
+Epoch: [300/512]
+Train 		: bandgap - Loss 0.104	MAE 0.160	RMSE 0.360
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.053
+Epoch: [301/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.350
+Validation 	: bandgap - Loss 0.408	MAE 0.627	RMSE 1.049
+Epoch: [302/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.349
+Validation 	: bandgap - Loss 0.406	MAE 0.625	RMSE 1.036
+Epoch: [303/512]
+Train 		: bandgap - Loss 0.096	MAE 0.147	RMSE 0.346
+Validation 	: bandgap - Loss 0.405	MAE 0.624	RMSE 1.049
+Epoch: [304/512]
+Train 		: bandgap - Loss 0.100	MAE 0.154	RMSE 0.345
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.024
+Epoch: [305/512]
+Train 		: bandgap - Loss 0.100	MAE 0.154	RMSE 0.344
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.045
+Epoch: [306/512]
+Train 		: bandgap - Loss 0.103	MAE 0.159	RMSE 0.350
+Validation 	: bandgap - Loss 0.408	MAE 0.629	RMSE 1.041
+Epoch: [307/512]
+Train 		: bandgap - Loss 0.096	MAE 0.147	RMSE 0.340
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.073
+Epoch: [308/512]
+Train 		: bandgap - Loss 0.105	MAE 0.161	RMSE 0.342
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.043
+Epoch: [309/512]
+Train 		: bandgap - Loss 0.099	MAE 0.152	RMSE 0.339
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.044
+Epoch: [310/512]
+Train 		: bandgap - Loss 0.095	MAE 0.146	RMSE 0.332
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.041
+Epoch: [311/512]
+Train 		: bandgap - Loss 0.104	MAE 0.160	RMSE 0.344
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.034
+Epoch: [312/512]
+Train 		: bandgap - Loss 0.117	MAE 0.179	RMSE 0.362
+Validation 	: bandgap - Loss 0.403	MAE 0.620	RMSE 1.048
+Epoch: [313/512]
+Train 		: bandgap - Loss 0.105	MAE 0.162	RMSE 0.348
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.034
+Epoch: [314/512]
+Train 		: bandgap - Loss 0.096	MAE 0.148	RMSE 0.342
+Validation 	: bandgap - Loss 0.418	MAE 0.643	RMSE 1.057
+Epoch: [315/512]
+Train 		: bandgap - Loss 0.103	MAE 0.159	RMSE 0.348
+Validation 	: bandgap - Loss 0.421	MAE 0.647	RMSE 1.043
+Epoch: [316/512]
+Train 		: bandgap - Loss 0.118	MAE 0.181	RMSE 0.362
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.036
+Epoch: [317/512]
+Train 		: bandgap - Loss 0.104	MAE 0.160	RMSE 0.346
+Validation 	: bandgap - Loss 0.400	MAE 0.616	RMSE 1.026
+Epoch: [318/512]
+Train 		: bandgap - Loss 0.102	MAE 0.158	RMSE 0.349
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.052
+Epoch: [319/512]
+Train 		: bandgap - Loss 0.097	MAE 0.150	RMSE 0.346
+Validation 	: bandgap - Loss 0.420	MAE 0.646	RMSE 1.063
+Epoch: [320/512]
+Train 		: bandgap - Loss 0.097	MAE 0.149	RMSE 0.341
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.058
+Epoch: [321/512]
+Train 		: bandgap - Loss 0.108	MAE 0.166	RMSE 0.343
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.040
+Epoch: [322/512]
+Train 		: bandgap - Loss 0.121	MAE 0.187	RMSE 0.362
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.040
+Epoch: [323/512]
+Train 		: bandgap - Loss 0.114	MAE 0.175	RMSE 0.359
+Validation 	: bandgap - Loss 0.418	MAE 0.644	RMSE 1.065
+Epoch: [324/512]
+Train 		: bandgap - Loss 0.100	MAE 0.153	RMSE 0.334
+Validation 	: bandgap - Loss 0.414	MAE 0.636	RMSE 1.049
+Epoch: [325/512]
+Train 		: bandgap - Loss 0.099	MAE 0.152	RMSE 0.332
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.040
+Epoch: [326/512]
+Train 		: bandgap - Loss 0.112	MAE 0.172	RMSE 0.349
+Validation 	: bandgap - Loss 0.404	MAE 0.621	RMSE 1.013
+Epoch: [327/512]
+Train 		: bandgap - Loss 0.108	MAE 0.166	RMSE 0.356
+Validation 	: bandgap - Loss 0.399	MAE 0.614	RMSE 1.004
+Epoch: [328/512]
+Train 		: bandgap - Loss 0.117	MAE 0.179	RMSE 0.355
+Validation 	: bandgap - Loss 0.427	MAE 0.658	RMSE 1.073
+Epoch: [329/512]
+Train 		: bandgap - Loss 0.110	MAE 0.170	RMSE 0.351
+Validation 	: bandgap - Loss 0.419	MAE 0.645	RMSE 1.038
+Epoch: [330/512]
+Train 		: bandgap - Loss 0.100	MAE 0.154	RMSE 0.336
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.059
+Epoch: [331/512]
+Train 		: bandgap - Loss 0.103	MAE 0.158	RMSE 0.341
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.052
+Epoch: [332/512]
+Train 		: bandgap - Loss 0.099	MAE 0.152	RMSE 0.343
+Validation 	: bandgap - Loss 0.406	MAE 0.624	RMSE 1.042
+Epoch: [333/512]
+Train 		: bandgap - Loss 0.097	MAE 0.149	RMSE 0.332
+Validation 	: bandgap - Loss 0.401	MAE 0.618	RMSE 1.039
+Epoch: [334/512]
+Train 		: bandgap - Loss 0.102	MAE 0.156	RMSE 0.335
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.055
+Epoch: [335/512]
+Train 		: bandgap - Loss 0.101	MAE 0.156	RMSE 0.340
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.053
+Epoch: [336/512]
+Train 		: bandgap - Loss 0.101	MAE 0.156	RMSE 0.322
+Validation 	: bandgap - Loss 0.421	MAE 0.648	RMSE 1.064
+Epoch: [337/512]
+Train 		: bandgap - Loss 0.094	MAE 0.144	RMSE 0.333
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.034
+Epoch: [338/512]
+Train 		: bandgap - Loss 0.095	MAE 0.146	RMSE 0.335
+Validation 	: bandgap - Loss 0.412	MAE 0.633	RMSE 1.045
+Epoch: [339/512]
+Train 		: bandgap - Loss 0.100	MAE 0.153	RMSE 0.333
+Validation 	: bandgap - Loss 0.427	MAE 0.657	RMSE 1.064
+Epoch: [340/512]
+Train 		: bandgap - Loss 0.100	MAE 0.154	RMSE 0.330
+Validation 	: bandgap - Loss 0.418	MAE 0.643	RMSE 1.073
+Epoch: [341/512]
+Train 		: bandgap - Loss 0.113	MAE 0.173	RMSE 0.344
+Validation 	: bandgap - Loss 0.397	MAE 0.611	RMSE 1.019
+Epoch: [342/512]
+Train 		: bandgap - Loss 0.110	MAE 0.170	RMSE 0.334
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.048
+Epoch: [343/512]
+Train 		: bandgap - Loss 0.090	MAE 0.139	RMSE 0.319
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.057
+Epoch: [344/512]
+Train 		: bandgap - Loss 0.086	MAE 0.132	RMSE 0.320
+Validation 	: bandgap - Loss 0.412	MAE 0.633	RMSE 1.042
+Epoch: [345/512]
+Train 		: bandgap - Loss 0.090	MAE 0.139	RMSE 0.320
+Validation 	: bandgap - Loss 0.409	MAE 0.630	RMSE 1.030
+Epoch: [346/512]
+Train 		: bandgap - Loss 0.089	MAE 0.137	RMSE 0.312
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.047
+Epoch: [347/512]
+Train 		: bandgap - Loss 0.090	MAE 0.139	RMSE 0.327
+Validation 	: bandgap - Loss 0.418	MAE 0.644	RMSE 1.060
+Epoch: [348/512]
+Train 		: bandgap - Loss 0.098	MAE 0.152	RMSE 0.327
+Validation 	: bandgap - Loss 0.414	MAE 0.637	RMSE 1.060
+Epoch: [349/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.313
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.039
+Epoch: [350/512]
+Train 		: bandgap - Loss 0.097	MAE 0.149	RMSE 0.327
+Validation 	: bandgap - Loss 0.412	MAE 0.633	RMSE 1.055
+Epoch: [351/512]
+Train 		: bandgap - Loss 0.092	MAE 0.142	RMSE 0.320
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.023
+Epoch: [352/512]
+Train 		: bandgap - Loss 0.095	MAE 0.146	RMSE 0.325
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.055
+Epoch: [353/512]
+Train 		: bandgap - Loss 0.102	MAE 0.156	RMSE 0.315
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.055
+Epoch: [354/512]
+Train 		: bandgap - Loss 0.095	MAE 0.146	RMSE 0.321
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.025
+Epoch: [355/512]
+Train 		: bandgap - Loss 0.094	MAE 0.145	RMSE 0.328
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.065
+Epoch: [356/512]
+Train 		: bandgap - Loss 0.097	MAE 0.149	RMSE 0.321
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.036
+Epoch: [357/512]
+Train 		: bandgap - Loss 0.101	MAE 0.156	RMSE 0.336
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.061
+Epoch: [358/512]
+Train 		: bandgap - Loss 0.094	MAE 0.145	RMSE 0.316
+Validation 	: bandgap - Loss 0.425	MAE 0.655	RMSE 1.069
+Epoch: [359/512]
+Train 		: bandgap - Loss 0.095	MAE 0.146	RMSE 0.319
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.019
+Epoch: [360/512]
+Train 		: bandgap - Loss 0.091	MAE 0.140	RMSE 0.319
+Validation 	: bandgap - Loss 0.420	MAE 0.646	RMSE 1.076
+Epoch: [361/512]
+Train 		: bandgap - Loss 0.086	MAE 0.132	RMSE 0.311
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.046
+Epoch: [362/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.323
+Validation 	: bandgap - Loss 0.424	MAE 0.652	RMSE 1.075
+Epoch: [363/512]
+Train 		: bandgap - Loss 0.104	MAE 0.160	RMSE 0.322
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.041
+Epoch: [364/512]
+Train 		: bandgap - Loss 0.104	MAE 0.160	RMSE 0.324
+Validation 	: bandgap - Loss 0.410	MAE 0.632	RMSE 1.055
+Epoch: [365/512]
+Train 		: bandgap - Loss 0.095	MAE 0.146	RMSE 0.319
+Validation 	: bandgap - Loss 0.414	MAE 0.637	RMSE 1.026
+Epoch: [366/512]
+Train 		: bandgap - Loss 0.099	MAE 0.152	RMSE 0.318
+Validation 	: bandgap - Loss 0.426	MAE 0.656	RMSE 1.082
+Epoch: [367/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.306
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.038
+Epoch: [368/512]
+Train 		: bandgap - Loss 0.089	MAE 0.137	RMSE 0.305
+Validation 	: bandgap - Loss 0.407	MAE 0.627	RMSE 1.051
+Epoch: [369/512]
+Train 		: bandgap - Loss 0.085	MAE 0.131	RMSE 0.291
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.038
+Epoch: [370/512]
+Train 		: bandgap - Loss 0.093	MAE 0.144	RMSE 0.311
+Validation 	: bandgap - Loss 0.437	MAE 0.672	RMSE 1.089
+Epoch: [371/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.314
+Validation 	: bandgap - Loss 0.427	MAE 0.656	RMSE 1.053
+Epoch: [372/512]
+Train 		: bandgap - Loss 0.087	MAE 0.134	RMSE 0.302
+Validation 	: bandgap - Loss 0.422	MAE 0.649	RMSE 1.082
+Epoch: [373/512]
+Train 		: bandgap - Loss 0.089	MAE 0.136	RMSE 0.305
+Validation 	: bandgap - Loss 0.409	MAE 0.630	RMSE 1.036
+Epoch: [374/512]
+Train 		: bandgap - Loss 0.090	MAE 0.138	RMSE 0.299
+Validation 	: bandgap - Loss 0.421	MAE 0.648	RMSE 1.065
+Epoch: [375/512]
+Train 		: bandgap - Loss 0.093	MAE 0.143	RMSE 0.301
+Validation 	: bandgap - Loss 0.401	MAE 0.617	RMSE 1.017
+Epoch: [376/512]
+Train 		: bandgap - Loss 0.095	MAE 0.147	RMSE 0.308
+Validation 	: bandgap - Loss 0.408	MAE 0.629	RMSE 1.033
+Epoch: [377/512]
+Train 		: bandgap - Loss 0.088	MAE 0.136	RMSE 0.300
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.051
+Epoch: [378/512]
+Train 		: bandgap - Loss 0.088	MAE 0.135	RMSE 0.307
+Validation 	: bandgap - Loss 0.419	MAE 0.644	RMSE 1.060
+Epoch: [379/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.310
+Validation 	: bandgap - Loss 0.406	MAE 0.625	RMSE 1.012
+Epoch: [380/512]
+Train 		: bandgap - Loss 0.092	MAE 0.141	RMSE 0.299
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.039
+Epoch: [381/512]
+Train 		: bandgap - Loss 0.090	MAE 0.138	RMSE 0.300
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.042
+Epoch: [382/512]
+Train 		: bandgap - Loss 0.093	MAE 0.144	RMSE 0.301
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.048
+Epoch: [383/512]
+Train 		: bandgap - Loss 0.091	MAE 0.141	RMSE 0.291
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.044
+Epoch: [384/512]
+Train 		: bandgap - Loss 0.101	MAE 0.156	RMSE 0.311
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.038
+Epoch: [385/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.303
+Validation 	: bandgap - Loss 0.402	MAE 0.618	RMSE 1.015
+Epoch: [386/512]
+Train 		: bandgap - Loss 0.104	MAE 0.161	RMSE 0.316
+Validation 	: bandgap - Loss 0.412	MAE 0.635	RMSE 1.033
+Epoch: [387/512]
+Train 		: bandgap - Loss 0.097	MAE 0.149	RMSE 0.309
+Validation 	: bandgap - Loss 0.423	MAE 0.650	RMSE 1.071
+Epoch: [388/512]
+Train 		: bandgap - Loss 0.094	MAE 0.144	RMSE 0.294
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.038
+Epoch: [389/512]
+Train 		: bandgap - Loss 0.096	MAE 0.148	RMSE 0.305
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.042
+Epoch: [390/512]
+Train 		: bandgap - Loss 0.092	MAE 0.141	RMSE 0.292
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.047
+Epoch: [391/512]
+Train 		: bandgap - Loss 0.090	MAE 0.139	RMSE 0.296
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.026
+Epoch: [392/512]
+Train 		: bandgap - Loss 0.094	MAE 0.145	RMSE 0.300
+Validation 	: bandgap - Loss 0.404	MAE 0.621	RMSE 1.018
+Epoch: [393/512]
+Train 		: bandgap - Loss 0.096	MAE 0.148	RMSE 0.300
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.048
+Epoch: [394/512]
+Train 		: bandgap - Loss 0.100	MAE 0.154	RMSE 0.310
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.062
+Epoch: [395/512]
+Train 		: bandgap - Loss 0.099	MAE 0.153	RMSE 0.307
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.057
+Epoch: [396/512]
+Train 		: bandgap - Loss 0.094	MAE 0.145	RMSE 0.302
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.047
+Epoch: [397/512]
+Train 		: bandgap - Loss 0.088	MAE 0.135	RMSE 0.292
+Validation 	: bandgap - Loss 0.429	MAE 0.660	RMSE 1.076
+Epoch: [398/512]
+Train 		: bandgap - Loss 0.095	MAE 0.145	RMSE 0.297
+Validation 	: bandgap - Loss 0.409	MAE 0.630	RMSE 1.038
+Epoch: [399/512]
+Train 		: bandgap - Loss 0.088	MAE 0.135	RMSE 0.285
+Validation 	: bandgap - Loss 0.414	MAE 0.637	RMSE 1.050
+Epoch: [400/512]
+Train 		: bandgap - Loss 0.091	MAE 0.140	RMSE 0.289
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.039
+Epoch: [401/512]
+Train 		: bandgap - Loss 0.084	MAE 0.129	RMSE 0.293
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.025
+Epoch: [402/512]
+Train 		: bandgap - Loss 0.087	MAE 0.135	RMSE 0.292
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.045
+Epoch: [403/512]
+Train 		: bandgap - Loss 0.085	MAE 0.130	RMSE 0.288
+Validation 	: bandgap - Loss 0.418	MAE 0.644	RMSE 1.048
+Epoch: [404/512]
+Train 		: bandgap - Loss 0.084	MAE 0.130	RMSE 0.289
+Validation 	: bandgap - Loss 0.421	MAE 0.649	RMSE 1.039
+Epoch: [405/512]
+Train 		: bandgap - Loss 0.083	MAE 0.128	RMSE 0.288
+Validation 	: bandgap - Loss 0.414	MAE 0.637	RMSE 1.052
+Epoch: [406/512]
+Train 		: bandgap - Loss 0.086	MAE 0.133	RMSE 0.289
+Validation 	: bandgap - Loss 0.418	MAE 0.643	RMSE 1.042
+Epoch: [407/512]
+Train 		: bandgap - Loss 0.085	MAE 0.131	RMSE 0.276
+Validation 	: bandgap - Loss 0.406	MAE 0.625	RMSE 1.036
+Epoch: [408/512]
+Train 		: bandgap - Loss 0.096	MAE 0.148	RMSE 0.295
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.051
+Epoch: [409/512]
+Train 		: bandgap - Loss 0.089	MAE 0.137	RMSE 0.291
+Validation 	: bandgap - Loss 0.399	MAE 0.614	RMSE 1.019
+Epoch: [410/512]
+Train 		: bandgap - Loss 0.078	MAE 0.120	RMSE 0.277
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.038
+Epoch: [411/512]
+Train 		: bandgap - Loss 0.079	MAE 0.122	RMSE 0.282
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.032
+Epoch: [412/512]
+Train 		: bandgap - Loss 0.083	MAE 0.128	RMSE 0.283
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.035
+Epoch: [413/512]
+Train 		: bandgap - Loss 0.083	MAE 0.128	RMSE 0.282
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.047
+Epoch: [414/512]
+Train 		: bandgap - Loss 0.085	MAE 0.131	RMSE 0.286
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.057
+Epoch: [415/512]
+Train 		: bandgap - Loss 0.087	MAE 0.133	RMSE 0.293
+Validation 	: bandgap - Loss 0.422	MAE 0.650	RMSE 1.062
+Epoch: [416/512]
+Train 		: bandgap - Loss 0.085	MAE 0.130	RMSE 0.286
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.049
+Epoch: [417/512]
+Train 		: bandgap - Loss 0.086	MAE 0.132	RMSE 0.291
+Validation 	: bandgap - Loss 0.419	MAE 0.644	RMSE 1.046
+Epoch: [418/512]
+Train 		: bandgap - Loss 0.092	MAE 0.141	RMSE 0.291
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.027
+Epoch: [419/512]
+Train 		: bandgap - Loss 0.087	MAE 0.134	RMSE 0.292
+Validation 	: bandgap - Loss 0.426	MAE 0.656	RMSE 1.066
+Epoch: [420/512]
+Train 		: bandgap - Loss 0.087	MAE 0.134	RMSE 0.285
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.049
+Epoch: [421/512]
+Train 		: bandgap - Loss 0.081	MAE 0.124	RMSE 0.283
+Validation 	: bandgap - Loss 0.419	MAE 0.645	RMSE 1.053
+Epoch: [422/512]
+Train 		: bandgap - Loss 0.083	MAE 0.128	RMSE 0.282
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.059
+Epoch: [423/512]
+Train 		: bandgap - Loss 0.077	MAE 0.119	RMSE 0.280
+Validation 	: bandgap - Loss 0.409	MAE 0.630	RMSE 1.046
+Epoch: [424/512]
+Train 		: bandgap - Loss 0.078	MAE 0.120	RMSE 0.284
+Validation 	: bandgap - Loss 0.402	MAE 0.619	RMSE 1.017
+Epoch: [425/512]
+Train 		: bandgap - Loss 0.081	MAE 0.125	RMSE 0.281
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.036
+Epoch: [426/512]
+Train 		: bandgap - Loss 0.086	MAE 0.132	RMSE 0.289
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.039
+Epoch: [427/512]
+Train 		: bandgap - Loss 0.098	MAE 0.151	RMSE 0.303
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.022
+Epoch: [428/512]
+Train 		: bandgap - Loss 0.093	MAE 0.143	RMSE 0.298
+Validation 	: bandgap - Loss 0.407	MAE 0.627	RMSE 1.038
+Epoch: [429/512]
+Train 		: bandgap - Loss 0.085	MAE 0.131	RMSE 0.288
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.024
+Epoch: [430/512]
+Train 		: bandgap - Loss 0.079	MAE 0.121	RMSE 0.278
+Validation 	: bandgap - Loss 0.418	MAE 0.644	RMSE 1.051
+Epoch: [431/512]
+Train 		: bandgap - Loss 0.081	MAE 0.125	RMSE 0.286
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.026
+Epoch: [432/512]
+Train 		: bandgap - Loss 0.083	MAE 0.128	RMSE 0.281
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.047
+Epoch: [433/512]
+Train 		: bandgap - Loss 0.084	MAE 0.129	RMSE 0.282
+Validation 	: bandgap - Loss 0.402	MAE 0.619	RMSE 1.027
+Epoch: [434/512]
+Train 		: bandgap - Loss 0.083	MAE 0.128	RMSE 0.281
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.060
+Epoch: [435/512]
+Train 		: bandgap - Loss 0.084	MAE 0.129	RMSE 0.288
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.035
+Epoch: [436/512]
+Train 		: bandgap - Loss 0.079	MAE 0.122	RMSE 0.276
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.027
+Epoch: [437/512]
+Train 		: bandgap - Loss 0.074	MAE 0.114	RMSE 0.274
+Validation 	: bandgap - Loss 0.400	MAE 0.615	RMSE 1.021
+Epoch: [438/512]
+Train 		: bandgap - Loss 0.080	MAE 0.123	RMSE 0.286
+Validation 	: bandgap - Loss 0.426	MAE 0.655	RMSE 1.059
+Epoch: [439/512]
+Train 		: bandgap - Loss 0.086	MAE 0.132	RMSE 0.277
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.051
+Epoch: [440/512]
+Train 		: bandgap - Loss 0.084	MAE 0.129	RMSE 0.284
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.057
+Epoch: [441/512]
+Train 		: bandgap - Loss 0.081	MAE 0.124	RMSE 0.282
+Validation 	: bandgap - Loss 0.408	MAE 0.627	RMSE 1.020
+Epoch: [442/512]
+Train 		: bandgap - Loss 0.081	MAE 0.125	RMSE 0.278
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.047
+Epoch: [443/512]
+Train 		: bandgap - Loss 0.081	MAE 0.125	RMSE 0.275
+Validation 	: bandgap - Loss 0.403	MAE 0.621	RMSE 1.021
+Epoch: [444/512]
+Train 		: bandgap - Loss 0.089	MAE 0.138	RMSE 0.294
+Validation 	: bandgap - Loss 0.410	MAE 0.630	RMSE 1.035
+Epoch: [445/512]
+Train 		: bandgap - Loss 0.082	MAE 0.127	RMSE 0.285
+Validation 	: bandgap - Loss 0.404	MAE 0.621	RMSE 1.020
+Epoch: [446/512]
+Train 		: bandgap - Loss 0.086	MAE 0.132	RMSE 0.280
+Validation 	: bandgap - Loss 0.418	MAE 0.643	RMSE 1.051
+Epoch: [447/512]
+Train 		: bandgap - Loss 0.082	MAE 0.127	RMSE 0.285
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.050
+Epoch: [448/512]
+Train 		: bandgap - Loss 0.078	MAE 0.120	RMSE 0.276
+Validation 	: bandgap - Loss 0.424	MAE 0.652	RMSE 1.056
+Epoch: [449/512]
+Train 		: bandgap - Loss 0.081	MAE 0.125	RMSE 0.281
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.038
+Epoch: [450/512]
+Train 		: bandgap - Loss 0.076	MAE 0.117	RMSE 0.281
+Validation 	: bandgap - Loss 0.396	MAE 0.610	RMSE 1.008
+Epoch: [451/512]
+Train 		: bandgap - Loss 0.076	MAE 0.117	RMSE 0.279
+Validation 	: bandgap - Loss 0.407	MAE 0.627	RMSE 1.029
+Epoch: [452/512]
+Train 		: bandgap - Loss 0.079	MAE 0.121	RMSE 0.284
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.036
+Epoch: [453/512]
+Train 		: bandgap - Loss 0.079	MAE 0.122	RMSE 0.278
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.028
+Epoch: [454/512]
+Train 		: bandgap - Loss 0.074	MAE 0.113	RMSE 0.278
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.035
+Epoch: [455/512]
+Train 		: bandgap - Loss 0.078	MAE 0.119	RMSE 0.282
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.049
+Epoch: [456/512]
+Train 		: bandgap - Loss 0.079	MAE 0.122	RMSE 0.280
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.026
+Epoch: [457/512]
+Train 		: bandgap - Loss 0.085	MAE 0.131	RMSE 0.291
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.023
+Epoch: [458/512]
+Train 		: bandgap - Loss 0.089	MAE 0.137	RMSE 0.282
+Validation 	: bandgap - Loss 0.415	MAE 0.638	RMSE 1.037
+Epoch: [459/512]
+Train 		: bandgap - Loss 0.082	MAE 0.127	RMSE 0.284
+Validation 	: bandgap - Loss 0.422	MAE 0.650	RMSE 1.044
+Epoch: [460/512]
+Train 		: bandgap - Loss 0.087	MAE 0.134	RMSE 0.279
+Validation 	: bandgap - Loss 0.441	MAE 0.678	RMSE 1.085
+Epoch: [461/512]
+Train 		: bandgap - Loss 0.095	MAE 0.147	RMSE 0.292
+Validation 	: bandgap - Loss 0.420	MAE 0.647	RMSE 1.052
+Epoch: [462/512]
+Train 		: bandgap - Loss 0.087	MAE 0.133	RMSE 0.291
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.058
+Epoch: [463/512]
+Train 		: bandgap - Loss 0.082	MAE 0.126	RMSE 0.282
+Validation 	: bandgap - Loss 0.414	MAE 0.637	RMSE 1.044
+Epoch: [464/512]
+Train 		: bandgap - Loss 0.079	MAE 0.121	RMSE 0.276
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.034
+Epoch: [465/512]
+Train 		: bandgap - Loss 0.080	MAE 0.122	RMSE 0.274
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.055
+Epoch: [466/512]
+Train 		: bandgap - Loss 0.076	MAE 0.117	RMSE 0.270
+Validation 	: bandgap - Loss 0.410	MAE 0.632	RMSE 1.039
+Epoch: [467/512]
+Train 		: bandgap - Loss 0.082	MAE 0.127	RMSE 0.274
+Validation 	: bandgap - Loss 0.419	MAE 0.645	RMSE 1.028
+Epoch: [468/512]
+Train 		: bandgap - Loss 0.095	MAE 0.146	RMSE 0.295
+Validation 	: bandgap - Loss 0.418	MAE 0.644	RMSE 1.047
+Epoch: [469/512]
+Train 		: bandgap - Loss 0.093	MAE 0.143	RMSE 0.290
+Validation 	: bandgap - Loss 0.389	MAE 0.599	RMSE 1.008
+Epoch: [470/512]
+Train 		: bandgap - Loss 0.086	MAE 0.133	RMSE 0.288
+Validation 	: bandgap - Loss 0.415	MAE 0.639	RMSE 1.043
+Epoch: [471/512]
+Train 		: bandgap - Loss 0.085	MAE 0.131	RMSE 0.286
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.035
+Epoch: [472/512]
+Train 		: bandgap - Loss 0.091	MAE 0.140	RMSE 0.283
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.011
+Epoch: [473/512]
+Train 		: bandgap - Loss 0.091	MAE 0.140	RMSE 0.288
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.023
+Epoch: [474/512]
+Train 		: bandgap - Loss 0.082	MAE 0.127	RMSE 0.286
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.045
+Epoch: [475/512]
+Train 		: bandgap - Loss 0.080	MAE 0.123	RMSE 0.277
+Validation 	: bandgap - Loss 0.413	MAE 0.635	RMSE 1.031
+Epoch: [476/512]
+Train 		: bandgap - Loss 0.078	MAE 0.120	RMSE 0.275
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.035
+Epoch: [477/512]
+Train 		: bandgap - Loss 0.080	MAE 0.123	RMSE 0.277
+Validation 	: bandgap - Loss 0.416	MAE 0.640	RMSE 1.043
+Epoch: [478/512]
+Train 		: bandgap - Loss 0.081	MAE 0.125	RMSE 0.286
+Validation 	: bandgap - Loss 0.405	MAE 0.623	RMSE 1.028
+Epoch: [479/512]
+Train 		: bandgap - Loss 0.077	MAE 0.119	RMSE 0.287
+Validation 	: bandgap - Loss 0.423	MAE 0.651	RMSE 1.072
+Epoch: [480/512]
+Train 		: bandgap - Loss 0.074	MAE 0.114	RMSE 0.272
+Validation 	: bandgap - Loss 0.404	MAE 0.621	RMSE 1.044
+Epoch: [481/512]
+Train 		: bandgap - Loss 0.075	MAE 0.115	RMSE 0.275
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.029
+Epoch: [482/512]
+Train 		: bandgap - Loss 0.074	MAE 0.114	RMSE 0.270
+Validation 	: bandgap - Loss 0.407	MAE 0.627	RMSE 1.020
+Epoch: [483/512]
+Train 		: bandgap - Loss 0.075	MAE 0.115	RMSE 0.273
+Validation 	: bandgap - Loss 0.412	MAE 0.634	RMSE 1.045
+Epoch: [484/512]
+Train 		: bandgap - Loss 0.075	MAE 0.115	RMSE 0.276
+Validation 	: bandgap - Loss 0.419	MAE 0.645	RMSE 1.059
+Epoch: [485/512]
+Train 		: bandgap - Loss 0.073	MAE 0.112	RMSE 0.266
+Validation 	: bandgap - Loss 0.404	MAE 0.622	RMSE 1.015
+Epoch: [486/512]
+Train 		: bandgap - Loss 0.074	MAE 0.114	RMSE 0.270
+Validation 	: bandgap - Loss 0.417	MAE 0.641	RMSE 1.044
+Epoch: [487/512]
+Train 		: bandgap - Loss 0.085	MAE 0.131	RMSE 0.284
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.051
+Epoch: [488/512]
+Train 		: bandgap - Loss 0.083	MAE 0.127	RMSE 0.289
+Validation 	: bandgap - Loss 0.421	MAE 0.648	RMSE 1.052
+Epoch: [489/512]
+Train 		: bandgap - Loss 0.082	MAE 0.127	RMSE 0.281
+Validation 	: bandgap - Loss 0.418	MAE 0.644	RMSE 1.044
+Epoch: [490/512]
+Train 		: bandgap - Loss 0.080	MAE 0.124	RMSE 0.286
+Validation 	: bandgap - Loss 0.407	MAE 0.626	RMSE 1.024
+Epoch: [491/512]
+Train 		: bandgap - Loss 0.085	MAE 0.131	RMSE 0.273
+Validation 	: bandgap - Loss 0.420	MAE 0.647	RMSE 1.040
+Epoch: [492/512]
+Train 		: bandgap - Loss 0.095	MAE 0.146	RMSE 0.292
+Validation 	: bandgap - Loss 0.409	MAE 0.629	RMSE 1.029
+Epoch: [493/512]
+Train 		: bandgap - Loss 0.089	MAE 0.137	RMSE 0.279
+Validation 	: bandgap - Loss 0.408	MAE 0.628	RMSE 1.023
+Epoch: [494/512]
+Train 		: bandgap - Loss 0.082	MAE 0.127	RMSE 0.279
+Validation 	: bandgap - Loss 0.414	MAE 0.638	RMSE 1.034
+Epoch: [495/512]
+Train 		: bandgap - Loss 0.075	MAE 0.115	RMSE 0.279
+Validation 	: bandgap - Loss 0.401	MAE 0.618	RMSE 1.014
+Epoch: [496/512]
+Train 		: bandgap - Loss 0.076	MAE 0.116	RMSE 0.280
+Validation 	: bandgap - Loss 0.410	MAE 0.630	RMSE 1.023
+Epoch: [497/512]
+Train 		: bandgap - Loss 0.079	MAE 0.121	RMSE 0.285
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.027
+Epoch: [498/512]
+Train 		: bandgap - Loss 0.075	MAE 0.116	RMSE 0.276
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.053
+Epoch: [499/512]
+Train 		: bandgap - Loss 0.076	MAE 0.118	RMSE 0.273
+Validation 	: bandgap - Loss 0.418	MAE 0.643	RMSE 1.041
+Epoch: [500/512]
+Train 		: bandgap - Loss 0.073	MAE 0.112	RMSE 0.275
+Validation 	: bandgap - Loss 0.409	MAE 0.630	RMSE 1.019
+Epoch: [501/512]
+Train 		: bandgap - Loss 0.079	MAE 0.122	RMSE 0.270
+Validation 	: bandgap - Loss 0.411	MAE 0.632	RMSE 1.033
+Epoch: [502/512]
+Train 		: bandgap - Loss 0.078	MAE 0.119	RMSE 0.281
+Validation 	: bandgap - Loss 0.427	MAE 0.657	RMSE 1.080
+Epoch: [503/512]
+Train 		: bandgap - Loss 0.074	MAE 0.114	RMSE 0.263
+Validation 	: bandgap - Loss 0.410	MAE 0.630	RMSE 1.018
+Epoch: [504/512]
+Train 		: bandgap - Loss 0.072	MAE 0.111	RMSE 0.268
+Validation 	: bandgap - Loss 0.421	MAE 0.648	RMSE 1.059
+Epoch: [505/512]
+Train 		: bandgap - Loss 0.073	MAE 0.113	RMSE 0.269
+Validation 	: bandgap - Loss 0.417	MAE 0.642	RMSE 1.041
+Epoch: [506/512]
+Train 		: bandgap - Loss 0.073	MAE 0.112	RMSE 0.266
+Validation 	: bandgap - Loss 0.410	MAE 0.630	RMSE 1.036
+Epoch: [507/512]
+Train 		: bandgap - Loss 0.075	MAE 0.115	RMSE 0.263
+Validation 	: bandgap - Loss 0.413	MAE 0.636	RMSE 1.034
+Epoch: [508/512]
+Train 		: bandgap - Loss 0.071	MAE 0.109	RMSE 0.266
+Validation 	: bandgap - Loss 0.411	MAE 0.633	RMSE 1.038
+Epoch: [509/512]
+Train 		: bandgap - Loss 0.072	MAE 0.111	RMSE 0.269
+Validation 	: bandgap - Loss 0.426	MAE 0.655	RMSE 1.070
+Epoch: [510/512]
+Train 		: bandgap - Loss 0.070	MAE 0.107	RMSE 0.264
+Validation 	: bandgap - Loss 0.422	MAE 0.649	RMSE 1.043
+Epoch: [511/512]
+Train 		: bandgap - Loss 0.068	MAE 0.105	RMSE 0.264
+Validation 	: bandgap - Loss 0.410	MAE 0.631	RMSE 1.030
+Epoch: [512/512]
+Train 		: bandgap - Loss 0.070	MAE 0.107	RMSE 0.262
+Validation 	: bandgap - Loss 0.424	MAE 0.653	RMSE 1.066
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------Evaluate model on Test Set------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Evaluating Model
+
+Task: 'bandgap' on Test Set
+Model Performance Metrics:
+R2 Score: 0.5066
+MAE: 0.6532
+RMSE: 1.0661
