@@ -454,7 +454,7 @@ DigitalEcosystem.utils.figures.save_parity_plot_publication_quality(train_y_true
 # # Regression - Results
 # DigitalEcosystem
 
-# In[]:
+# In[ ]:
 
 
 def rmse(y_true, y_pred):
@@ -472,9 +472,13 @@ metrics = {
 }
 
 y_pred_test = best_reg.predict(test_x_reg)
-for key, fun in metrics.items():
-    value = fun(y_true=test_y_reg, y_pred=y_pred_test)
-    print(key,np.round(value,3))
+y_pred_train = best_reg.predict(train_x_reg)
+
+for set_name, y_true, y_pred in (("Training Set", train_y_reg, y_pred_train), ("Test Set", test_y_reg, y_pred_test)):
+    for key, fun in metrics.items():
+        print(set_name)
+        value = fun(y_true=y_true, y_pred=y_pred)
+        print(key,np.round(value,3))
 
 
 # # Regression - Feature Importances
