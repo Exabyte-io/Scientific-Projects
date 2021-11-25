@@ -7,7 +7,6 @@ from matplotlib import pyplot as plt
 
 
 def plot_roc(x, y, label, classifier):
-    plt.rcParams['figure.figsize'] = [10, 10]
     probabilities = classifier.predict_proba(x)[:, 1]
 
     # ROC curve function in sklearn prefers the positive class
@@ -21,7 +20,7 @@ def plot_roc(x, y, label, classifier):
     points = np.array([false_positive_rate, true_positive_rate]).T.reshape(-1, 1, 2)
     segments = np.concatenate([points[:-1], points[1:]], axis=1)
     norm = plt.Normalize(thresholds.min(), thresholds.max())
-    lc = matplotlib.collections.LineCollection(segments, cmap='jet', norm=norm, linewidths=2)
+    lc = matplotlib.collections.LineCollection(segments, cmap='viridis', norm=norm, linewidths=4)
     lc.set_array(thresholds)
     line = ax.add_collection(lc)
     fig.colorbar(line, ax=ax).set_label('Threshold')
