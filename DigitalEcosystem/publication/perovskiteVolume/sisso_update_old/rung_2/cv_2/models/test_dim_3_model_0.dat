@@ -1,0 +1,42 @@
+# c0 + a0 * ((ave:covalent_radius_pyykko - ave:covalent_radius_slater) * (min:fusion_enthalpy / min:gs_volume_per)) + a1 * ((ave:gs_volume_per * ave:atomic_number) / (ave:heat_capacity_mass * min:Polarizability)) + a2 * ((ave:gs_volume_per + min:gs_volume_per) * (ave:covalent_radius_pyykko_triple * min:fusion_enthalpy))
+# Property Label: $Volume$; Unit of the Property: AA^3
+# RMSE: 7.50569476198284; Max AE: 17.5678257812116
+# Coefficients
+# Task   a0                      a1                      a2                      c0
+# all ,  6.773135354812053e+00,  1.760256612374006e-02,  6.446943283337468e-03,  5.125587434898326e+01, 
+# Feature Rung, Units, and Expressions
+# 0;  2; KJ * cm^-3 * pm;                                  25|23|sub|4|7|div|mult; ((ave:covalent_radius_pyykko - ave:covalent_radius_slater) * (min:fusion_enthalpy / min:gs_volume_per)); $\left(\left(ave:covalent_{radius, pyykko} - ave:covalent_{radius, slater}\right) \left(\frac{ min:fusion_{enthalpy} }{ min:gs_{volume, per} } \right)\right)$; ((ave:covalent_radius_pyykko - ave:covalent_radius_slater) .* (min:fusion_enthalpy ./ min:gs_volume_per)); ave:covalent_radius_pyykko,ave:covalent_radius_slater,min:fusion_enthalpy,min:gs_volume_per
+# 1;  2; AA_polar^-1 * J^-1 * K * cm^3 * g * mol^-1;       22|20|mult|21|2|mult|div; ((ave:gs_volume_per * ave:atomic_number) / (ave:heat_capacity_mass * min:Polarizability)); $\left(\frac{ \left(ave:gs_{volume, per} ave:atomic_{number}\right) }{ \left(ave:heat_{capacity, mass} min:Polarizability\right) } \right)$; ((ave:gs_volume_per .* ave:atomic_number) ./ (ave:heat_capacity_mass .* min:Polarizability)); ave:gs_volume_per,ave:atomic_number,ave:heat_capacity_mass,min:Polarizability
+# 2;  2; KJ * cm^3 * mol^-2 * pm;                          22|7|add|18|4|mult|mult; ((ave:gs_volume_per + min:gs_volume_per) * (ave:covalent_radius_pyykko_triple * min:fusion_enthalpy)); $\left(\left(ave:gs_{volume, per} + min:gs_{volume, per}\right) \left(ave:covalent_{radius, pyykko, triple} min:fusion_{enthalpy}\right)\right)$; ((ave:gs_volume_per + min:gs_volume_per) .* (ave:covalent_radius_pyykko_triple .* min:fusion_enthalpy)); ave:gs_volume_per,min:gs_volume_per,ave:covalent_radius_pyykko_triple,min:fusion_enthalpy
+# Number of Samples Per Task
+# Task,   n_mats_test             
+# all,    26                    
+# Test Indexes: [ 19, 105, 64, 80, 119, 78, 127, 15, 96, 33, 98, 73, 123, 76, 94, 101, 54, 61, 41, 110, 59, 115, 23, 74, 60, 51 ]
+
+# Sample ID , Property Value        ,  Property Value (EST) ,  Feature 0 Value      ,  Feature 1 Value      ,  Feature 2 Value      
+10          ,  1.071503545301096e+02,  1.013815739199775e+02, -1.523564254442444e-01,  2.577849211483342e+03,  8.966837160608817e+02
+138         ,  6.719447744045841e+01,  7.036869545432344e+01, -2.626834921452485e-02,  8.442569242741422e+02,  6.870933495886874e+02
+131         ,  7.332445965687805e+01,  7.725256161517501e+01, -7.248764415156507e-02,  1.264084686243575e+03,  6.571364799999999e+02
+120         ,  2.717063705144595e+02,  2.735922040395660e+02, -6.219225851447175e-01,  2.367331500824630e+03,  2.867678186928244e+04
+87          ,  1.073098314779565e+02,  8.974200569674493e+01, -1.256452498627129e-01,  1.908355280024239e+03,  8.911500187080404e+02
+38          ,  2.142336089710759e+02,  2.089981191460221e+02, -4.530380729835347e-01,  2.054945629329094e+03,  1.933294759819268e+04
+92          ,  7.315017953780705e+01,  7.159239683985949e+01, -8.698517298187795e-02,  9.621289912735261e+02,  6.188585004612055e+02
+31          ,  8.459240483249847e+01,  7.851777568076744e+01, -1.891321143445786e-01,  1.420083347471468e+03,  5.499982800000000e+02
+58          ,  2.413589823761019e+02,  2.433323720452333e+02, -6.418850939899386e-01,  1.614575288278994e+03,  2.605938918070024e+04
+25          ,  1.397570909097410e+02,  1.549932662732707e+02, -1.612614819350887e+00,  1.507716559776826e+03,  1.366851949191945e+04
+48          ,  1.506649136932021e+02,  1.607682337298462e+02, -1.072069761477302e+00,  1.544160862673519e+03,  1.389688653315828e+04
+13          ,  6.359044555550145e+01,  5.929586541840080e+01, -6.765513454146066e-02,  3.335265164778190e+02,  4.075273780651707e+02
+20          ,  1.126975075036733e+02,  1.085759323354611e+02, -5.253669842904672e-03,  2.840916927247435e+03,  1.139798105328442e+03
+3           ,  1.766257549836612e+02,  1.847303975159952e+02, -1.313848351872641e+00,  2.051195629008687e+03,  1.648332931239586e+04
+91          ,  7.059248384925451e+01,  7.301636545375298e+01, -1.418490857584344e-01,  1.105463136768715e+03,  5.060175120000000e+02
+21          ,  7.298106977000764e+01,  7.442092103426295e+01,  3.157432028015632e-02,  1.137945262339528e+03,  4.529949600000000e+02
+139         ,  7.773399964038569e+01,  6.736189717944019e+01,  4.202935874323961e-02,  7.274792620203800e+02,  4.677954107715360e+02
+35          ,  1.142981641844795e+02,  1.087426105770557e+02,  4.728302858614503e-02,  2.871404528436876e+03,  1.027214527041413e+03
+22          ,  8.942508557141944e+01,  8.015672904786886e+01, -1.208344063868142e-01,  1.493864680643885e+03,  5.310160982424213e+02
+29          ,  7.604393505755419e+01,  6.902393381379636e+01, -1.576100952871476e-02,  7.749646505958293e+02,  6.566591676007101e+02
+109         ,  1.156360400954843e+02,  1.213699782647295e+02,  7.635542690443642e-02,  3.582027235516770e+03,  1.015065080677824e+03
+130         ,  7.583037174302696e+01,  7.864772765070553e+01,  8.405871748647922e-02,  1.248564382425189e+03,  7.514530400119230e+02
+118         ,  5.345461156622450e+01,  5.923357529545659e+01, -1.159802306425040e-01,  3.437542507367943e+02,  4.207100480000000e+02
+108         ,  2.276117669121919e+02,  2.132532178281814e+02, -9.630080417300582e-01,  2.045595367466700e+03,  2.055426793001972e+04
+49          ,  7.517971112473752e+01,  7.040731064931636e+01,  4.123933950036513e-02,  9.052731864204134e+02,  4.555624920000001e+02
+81          ,  6.779890223639997e+01,  6.954654961995162e+01, -3.677568890033495e-02,  8.141939587860562e+02,  6.526905554530026e+02

@@ -1,0 +1,41 @@
+# c0 + a0 * (|(min:vdw_radius / ave:atomic_number) - (min:covalent_radius_cordero - min:covalent_radius_pyykko_triple)|) + a1 * ((ave:atomic_number * min:covalent_radius_pyykko_double) / (ave:covalent_radius_slater - ave:covalent_radius_pyykko_triple)) + a2 * ((min:vdw_radius * max:mendeleev_number) * (ave:gs_volume_per + min:gs_volume_per))
+# Property Label: $Volume$; Unit of the Property: AA^3
+# RMSE: 12.7770263357478; Max AE: 28.0201916983167
+# Coefficients
+# Task   a0                      a1                      a2                      c0
+# all , -2.289358075802443e+00,  1.836196269348964e-01,  1.297653339082589e-04,  1.061249738068766e+01, 
+# Feature Rung, Units, and Expressions
+# 0;  2; pm;                                               29|20|div|14|8|sub|abd; (|(min:vdw_radius / ave:atomic_number) - (min:covalent_radius_cordero - min:covalent_radius_pyykko_triple)|); $\left(\left|\left(\frac{ min:vdw_{radius} }{ ave:atomic_{number} } \right) - \left(min:covalent_{radius, cordero} - min:covalent_{radius, pyykko, triple}\right)\right|\right)$; abs((min:vdw_radius ./ ave:atomic_number) - (min:covalent_radius_cordero - min:covalent_radius_pyykko_triple)); min:vdw_radius,ave:atomic_number,min:covalent_radius_cordero,min:covalent_radius_pyykko_triple
+# 1;  2; Unitless;                                         20|11|mult|23|18|sub|div; ((ave:atomic_number * min:covalent_radius_pyykko_double) / (ave:covalent_radius_slater - ave:covalent_radius_pyykko_triple)); $\left(\frac{ \left(ave:atomic_{number} min:covalent_{radius, pyykko, double}\right) }{ \left(ave:covalent_{radius, slater} - ave:covalent_{radius, pyykko, triple}\right) } \right)$; ((ave:atomic_number .* min:covalent_radius_pyykko_double) ./ (ave:covalent_radius_slater - ave:covalent_radius_pyykko_triple)); ave:atomic_number,min:covalent_radius_pyykko_double,ave:covalent_radius_slater,ave:covalent_radius_pyykko_triple
+# 2;  2; cm^3 * mol^-1 * pm;                               29|24|mult|22|7|add|mult; ((min:vdw_radius * max:mendeleev_number) * (ave:gs_volume_per + min:gs_volume_per)); $\left(\left(min:vdw_{radius} max:mendeleev_{number}\right) \left(ave:gs_{volume, per} + min:gs_{volume, per}\right)\right)$; ((min:vdw_radius .* max:mendeleev_number) .* (ave:gs_volume_per + min:gs_volume_per)); min:vdw_radius,max:mendeleev_number,ave:gs_volume_per,min:gs_volume_per
+# Number of Samples Per Task
+# Task,   n_mats_test             
+# all,    25                    
+# Test Indexes: [ 114, 26, 97, 84, 124, 0, 67, 22, 62, 25, 53, 49, 85, 109, 17, 83, 118, 79, 90, 75, 108, 52, 99, 82, 106 ]
+
+# Sample ID , Property Value        ,  Property Value (EST) ,  Feature 0 Value      ,  Feature 1 Value      ,  Feature 2 Value      
+52          ,  1.685536482338435e+02,  1.690294884173300e+02,  2.659420289855072e+00,  9.446062835826119e+01,  1.134051187500000e+06
+60          ,  6.700355961656858e+01,  7.357932265866111e+01,  3.952380952380953e+00,  3.606373528531897e+01,  5.039345173435680e+05
+90          ,  1.323141358213091e+02,  1.275714043354834e+02,  4.111731843575418e+00,  2.024404761904762e+02,  6.873953624999999e+05
+122         ,  2.014000729838491e+02,  1.996031684063551e+02,  5.182291666666666e+00,  1.717467367062867e+02,  1.304807035000000e+06
+71          ,  2.033361364024827e+02,  2.100876398231594e+02,  5.595238095238095e+00,  1.698222618909505e+02,  1.395611140000000e+06
+64          ,  9.806170819706537e+01,  9.642168788506014e+01,  1.104166666666667e+00,  7.075304743621128e+01,  5.806279145265480e+05
+70          ,  5.876522370994315e+01,  5.311149362755776e+01,  6.090909090909091e+00,  5.408485608907780e+01,  3.584333786564320e+05
+42          ,  1.922420330482679e+02,  2.040399798643521e+02,  4.861111111111111e+00,  1.162405033410271e+02,  1.411873750000000e+06
+77          ,  1.735436897724758e+02,  1.903953899215960e+02,  8.231958762886599e+00,  1.599377666584071e+02,  1.304362850000000e+06
+96          ,  9.458888504929534e+01,  7.050394074188718e+01,  8.189873417721518e+00,  1.185000000000000e+02,  4.383456560000000e+05
+62          ,  1.284855607921225e+02,  1.565057524904392e+02,  3.499999999999996e-01,  6.891356634875184e+01,  1.032946497000000e+06
+137         ,  2.091771198782973e+02,  2.342153881579128e+02,  5.465686274509804e+00,  6.009729729729736e+02,  9.691754100000000e+05
+54          ,  8.998190321387162e+01,  7.356273236325470e+01,  7.136363636363637e+00,  3.224445512295654e+01,  5.653837560099959e+05
+37          ,  6.740982957627959e+01,  6.645198972882507e+01,  6.770491803278689e+00,  5.843697478991598e+01,  4.670692480000000e+05
+36          ,  1.804786609572536e+02,  1.781941283982942e+02,  4.683908045977011e+00,  1.582427348532337e+02,  1.150140005000000e+06
+2           ,  5.771548700058894e+01,  6.514742742741620e+01,  4.058823529411764e+00,  4.364864864864865e+01,  4.301016320000000e+05
+116         ,  6.928383831454539e+01,  7.942200529133757e+01,  2.125000000000000e+00,  1.311111111111111e+02,  3.822270480000000e+05
+72          ,  1.505744324222536e+02,  1.622906823211552e+02,  5.509708737864078e+00,  1.499052172384879e+02,  1.053951290000000e+06
+61          ,  1.513414191693852e+02,  1.491641305191194e+02,  3.664634146341463e+00,  2.163888888888888e+02,  8.261686124999999e+05
+114         ,  1.245825633863354e+02,  1.247853705059835e+02,  1.187499999999999e+00,  7.006737363422810e+01,  8.016450750000001e+05
+128         ,  1.127928271848657e+02,  1.020282683797721e+02,  1.034246575342466e+00,  9.432752324346380e+01,  5.892417090000000e+05
+142         ,  6.217869364696995e+01,  7.016069150806072e+01,  6.504273504273505e+00,  5.388439956451987e+01,  4.973945653435681e+05
+88          ,  1.252802886728060e+02,  1.445610773015971e+02,  1.548780487804878e+00,  6.145231801372866e+01,  9.726052215114180e+05
+101         ,  6.465769186928596e+01,  8.279413584499049e+01,  3.135922330097087e+00,  2.095517241379312e+02,  3.150539280000000e+05
+59          ,  7.370978119031361e+01,  8.148924250113789e+01,  3.819148936170213e+00,  4.718086303057967e+01,  5.468086890000001e+05

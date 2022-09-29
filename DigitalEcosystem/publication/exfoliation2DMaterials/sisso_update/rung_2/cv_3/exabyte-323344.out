@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------
+                                                   Wed Jan 19 09:22:53 2022
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 1.00243 s
+time to generate feat sapce: 1.35205 s
+Projection time: 0.215249 s
+Time to get best features on rank : 0.007164 s
+Complete final combination/selection from all ranks: 0.099319 s
+Time for SIS: 0.380397 s
+Time for l0-norm: 0.0113852 s
+Projection time: 0.385816 s
+Time to get best features on rank : 0.0116699 s
+Complete final combination/selection from all ranks: 0.0479739 s
+Time for SIS: 0.506352 s
+Time for l0-norm: 0.332936 s
+Projection time: 0.370967 s
+Time to get best features on rank : 0.0104742 s
+Complete final combination/selection from all ranks: 0.051816 s
+Time for SIS: 0.524254 s
+Time for l0-norm: 493.066 s
+Train RMSE: 0.487303 J * m^-2; Test RMSE: 0.574903 J * m^-2
+c0 + a0 * ((ave:mendeleev_number * min:evaporation_heat) * (exp(-1.0 * ave:num_p_valence)))
+
+Train RMSE: 0.461897 J * m^-2; Test RMSE: 0.561976 J * m^-2
+c0 + a0 * ((perimeter_area_ratio * ave:bulk_modulus) / (max:icsd_volume * min:num_valance)) + a1 * ((perimeter_area_ratio * min:evaporation_heat) * sqrt(sum:thermal_conductivity))
+
+Train RMSE: 0.451504 J * m^-2; Test RMSE: 0.554184 J * m^-2
+c0 + a0 * ((perimeter_area_ratio * ave:bulk_modulus) / (max:icsd_volume * min:num_valance)) + a1 * ((min:boiling_point * ave:num_p_valence) * (var:electron_affinity + ave:electron_affinity)) + a2 * ((perimeter_area_ratio * min:evaporation_heat) * cbrt(sum:thermal_conductivity))
+
+JobID         MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+323344.batch    397028K      7061K   talos021 

@@ -1,0 +1,40 @@
+# c0 + a0 * ((ave:atomic_number / ave:heat_capacity_mass) / (ave:covalent_radius_slater - ave:covalent_radius_pyykko_triple)) + a1 * ((ave:gs_volume_per + min:gs_volume_per) * (ave:covalent_radius_pyykko_triple / ave:covalent_radius_pyykko))
+# Property Label: $Volume$; Unit of the Property: AA^3
+# RMSE: 10.6307586488842; Max AE: 23.6834685417637
+# Coefficients
+# Task   a0                      a1                      c0
+# all ,  4.703055176025950e+00,  3.087823476703262e+00, -1.160552846696167e+01, 
+# Feature Rung, Units, and Expressions
+# 0;  2; J^-1 * K * g * pm^-1;                             20|21|div|23|18|sub|div; ((ave:atomic_number / ave:heat_capacity_mass) / (ave:covalent_radius_slater - ave:covalent_radius_pyykko_triple)); $\left(\frac{ \left(\frac{ ave:atomic_{number} }{ ave:heat_{capacity, mass} } \right) }{ \left(ave:covalent_{radius, slater} - ave:covalent_{radius, pyykko, triple}\right) } \right)$; ((ave:atomic_number ./ ave:heat_capacity_mass) ./ (ave:covalent_radius_slater - ave:covalent_radius_pyykko_triple)); ave:atomic_number,ave:heat_capacity_mass,ave:covalent_radius_slater,ave:covalent_radius_pyykko_triple
+# 1;  2; cm^3 * mol^-1;                                    22|7|add|18|25|div|mult; ((ave:gs_volume_per + min:gs_volume_per) * (ave:covalent_radius_pyykko_triple / ave:covalent_radius_pyykko)); $\left(\left(ave:gs_{volume, per} + min:gs_{volume, per}\right) \left(\frac{ ave:covalent_{radius, pyykko, triple} }{ ave:covalent_{radius, pyykko} } \right)\right)$; ((ave:gs_volume_per + min:gs_volume_per) .* (ave:covalent_radius_pyykko_triple ./ ave:covalent_radius_pyykko)); ave:gs_volume_per,min:gs_volume_per,ave:covalent_radius_pyykko_triple,ave:covalent_radius_pyykko
+# Number of Samples Per Task
+# Task,   n_mats_test             
+# all,    25                    
+# Test Indexes: [ 114, 26, 97, 84, 124, 0, 67, 22, 62, 25, 53, 49, 85, 109, 17, 83, 118, 79, 90, 75, 108, 52, 99, 82, 106 ]
+
+# Sample ID , Property Value        ,  Property Value (EST) ,  Feature 0 Value      ,  Feature 1 Value      
+52          ,  1.685536482338435e+02,  1.699389432751071e+02,  2.487049534195024e+00,  5.500565101557527e+01
+60          ,  6.700355961656858e+01,  7.087535487896858e+01,  8.377874871143457e-01,  2.543562582537974e+01
+90          ,  1.323141358213091e+02,  1.380859500920513e+02,  5.916025488485234e+00,  3.946730931458699e+01
+122         ,  2.014000729838491e+02,  2.005045548615382e+02,  3.915651428727787e+00,  6.272850765935225e+01
+71          ,  2.033361364024827e+02,  2.125762207488799e+02,  4.119519837835195e+00,  6.632743797208038e+01
+64          ,  9.806170819706537e+01,  9.060836961204176e+01,  2.015469233334604e+00,  3.003249239106677e+01
+70          ,  5.876522370994315e+01,  5.134526310290646e+01,  1.151805200740211e+00,  1.863247319441319e+01
+42          ,  1.922420330482679e+02,  1.981410071750781e+02,  2.307283938027287e+00,  6.441276629812111e+01
+77          ,  1.735436897724758e+02,  1.961275218543690e+02,  3.765101971760331e+00,  6.154029511028267e+01
+96          ,  9.458888504929534e+01,  8.629201766040633e+01,  3.356389035229339e+00,  2.659227896995708e+01
+62          ,  1.284855607921225e+02,  1.521690293338862e+02,  1.284813959556870e+00,  5.108193782713489e+01
+137         ,  2.091771198782973e+02,  2.181182263448615e+02,  1.464801677341530e+01,  5.208630769230770e+01
+54          ,  8.998190321387162e+01,  8.111509523970220e+01,  7.050002431949007e-01,  2.895404136225444e+01
+37          ,  6.740982957627959e+01,  7.152930130871300e+01,  1.597398074218781e+00,  2.449044741873805e+01
+36          ,  1.804786609572536e+02,  1.749280872551124e+02,  3.448380545517089e+00,  5.515719827689490e+01
+2           ,  5.771548700058894e+01,  6.226641821580515e+01,  1.078847232693386e+00,  2.228044094488189e+01
+116         ,  6.928383831454539e+01,  7.506584113352037e+01,  3.065979887171941e+00,  2.339897263157895e+01
+72          ,  1.505744324222536e+02,  1.592969088195426e+02,  3.603975949610715e+00,  4.985801186626878e+01
+61          ,  1.513414191693852e+02,  1.590639392654631e+02,  6.038647342995167e+00,  4.607432295373665e+01
+114         ,  1.245825633863354e+02,  1.149383122582359e+02,  1.639731661656131e+00,  3.848409507314972e+01
+128         ,  1.127928271848657e+02,  9.822865083426836e+01,  2.696073491395770e+00,  3.146371469922965e+01
+142         ,  6.217869364696995e+01,  7.331143762260842e+01,  1.297475079930265e+00,  2.552440895464875e+01
+88          ,  1.252802886728060e+02,  1.438454976880870e+02,  1.005387792054197e+00,  4.881193275226828e+01
+101         ,  6.465769186928596e+01,  7.788437509692132e+01,  5.743409019940227e+00,  2.023377777777778e+01
+59          ,  7.370978119031361e+01,  8.138179863367327e+01,  1.240576550707564e+00,  2.822467922474075e+01

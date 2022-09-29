@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------
+                                                   Wed Jan 19 10:21:46 2022
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 1.02387 s
+time to generate feat sapce: 0.00999093 s
+Projection time: 0.00653911 s
+Time to get best features on rank : 0.003438 s
+Complete final combination/selection from all ranks: 0.083246 s
+Time for SIS: 0.0982111 s
+Time for l0-norm: 0.0119131 s
+Projection time: 0.00595999 s
+Time to get best features on rank : 0.0036459 s
+Complete final combination/selection from all ranks: 0.028852 s
+Time for SIS: 0.0480611 s
+Time for l0-norm: 0.123852 s
+Projection time: 0.00233912 s
+Time to get best features on rank : 0.00333905 s
+Complete final combination/selection from all ranks: 0.028836 s
+Time for SIS: 0.0575809 s
+Time for l0-norm: 104.697 s
+Train RMSE: 0.485283 J * m^-2; Test RMSE: 0.60946 J * m^-2
+c0 + a0 * (ave:thermal_conductivity * min:evaporation_heat)
+
+Train RMSE: 0.466124 J * m^-2; Test RMSE: 0.596196 J * m^-2
+c0 + a0 * (ave:num_p_valence * min:evaporation_heat) + a1 * (ave:mendeleev_number * min:evaporation_heat)
+
+Train RMSE: 0.458346 J * m^-2; Test RMSE: 0.59145 J * m^-2
+c0 + a0 * (ave:num_p_valence * min:evaporation_heat) + a1 * cbrt(max:electron_affinity) + a2 * (ave:mendeleev_number * min:evaporation_heat)
+
+JobID         MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+323376.batch    397028K      6990K   talos023 

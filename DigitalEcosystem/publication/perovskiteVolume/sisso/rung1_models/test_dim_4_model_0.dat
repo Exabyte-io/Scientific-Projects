@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:41d90a278f29f91db9cac552903d802e210b03b6b7a1076879a0626b523e8932
-size 3818
+# c0 + a0 * (var:melting_point + ave:boiling_point) + a1 * (var:melting_point * ave:atomic_radius_rahm) + a2 * sqrt(var:melting_point) + a3 * (ave:atomic_radius_rahm^3)
+# Property Label: $Volume$; Unit of the Property: length^3
+# RMSE: 18.3403730939636; Max AE: 48.2860778050698
+# Coefficients
+# Task   a0                      a1                      a2                      a3                      c0
+# all ,  4.156799948231139e-04, -1.912204993566662e-06, -9.310746788328456e-02,  2.171628749439707e-05, -4.891999568544996e+01, 
+# Feature Rung, Units, and Expressions
+# 0;  1; temperature;                                      14|5|add; (var:melting_point + ave:boiling_point); $\left(var:melting_{point} + ave:boiling_{point}\right)$; (var:melting_point + ave:boiling_point); var:melting_point,ave:boiling_point
+# 1;  1; length * temperature;                             14|2|mult; (var:melting_point * ave:atomic_radius_rahm); $\left(var:melting_{point} ave:atomic_{radius, rahm}\right)$; (var:melting_point .* ave:atomic_radius_rahm); var:melting_point,ave:atomic_radius_rahm
+# 2;  1; temperature^0.5;                                  14|sqrt; sqrt(var:melting_point); $\left(\sqrt{ var:melting_{point} }\right)$; sqrt(var:melting_point); var:melting_point
+# 3;  1; length^3;                                         2|cb; (ave:atomic_radius_rahm^3); $\left(ave:atomic_{radius, rahm}^3\right)$; (ave:atomic_radius_rahm).^3; ave:atomic_radius_rahm
+# Number of Samples Per Task
+# Task,   n_mats_test             
+# all,    13                    
+# Test Indexes: [ 4, 9, 10, 21, 59, 62, 64, 81, 82, 85, 98, 102, 127 ]
+
+# Sample ID , Property Value        ,  Property Value (EST) ,  Feature 0 Value      ,  Feature 1 Value      ,  Feature 2 Value      ,  Feature 3 Value      
+73          ,  1.013508525385564e+02,  1.031665205616701e+02,  2.569524381600000e+04,  4.916716946188801e+06,  1.580611205072266e+02,  7.622111232000002e+06
+55          ,  1.465164071687489e+02,  1.290739638608634e+02,  3.845688736000000e+05,  8.528927323264000e+07,  6.192696776041921e+02,  1.100029542400000e+07
+45          ,  6.922252251530169e+01,  8.312221494270105e+01,  1.139280847760000e+05,  2.197929962678880e+07,  3.367673956546269e+02,  7.278825672000001e+06
+111         ,  9.534692245017716e+01,  7.477033671778634e+01,  2.105854311760000e+05,  4.044659025896800e+07,  4.577857852489524e+02,  7.189057000000000e+06
+109         ,  1.156360400954843e+02,  1.000215944750394e+02,  4.752664441600000e+04,  9.254648615318399e+06,  2.165241751306306e+02,  7.692038424000001e+06
+77          ,  1.735436897724758e+02,  1.937547503270403e+02,  8.180298400000002e+03,  1.717423358400000e+06,  8.717349597211300e+01,  1.154317600000000e+07
+131         ,  7.332445965687805e+01,  1.216105374619478e+02,  1.428160500000000e+05,  2.990647762880000e+07,  3.766581155371539e+02,  9.367243712000001e+06
+6           ,  1.752395240612576e+02,  1.741559671274405e+02,  1.798306560000000e+04,  3.791170158720000e+06,  1.309164069167803e+02,  1.082319212800000e+07
+101         ,  6.465769186928596e+01,  5.713179542715821e+01,  3.729983867760000e+05,  6.924449930049118e+07,  6.098215974988094e+02,  6.455635927999998e+06
+54          ,  8.998190321387162e+01,  8.930445825570931e+01,  1.687212836560000e+05,  3.338654226248160e+07,  4.100115579541630e+02,  7.833173256000003e+06
+48          ,  1.506649136932021e+02,  1.702822442768637e+02,  2.733260640000000e+04,  5.920927334400001e+06,  1.636811730163246e+02,  1.079386100000000e+07
+57          ,  1.280373015126955e+02,  1.292228170344983e+02,  2.767840656000001e+05,  6.038540982528003e+07,  5.253422747124013e+02,  1.047470867200000e+07
+92          ,  7.315017953780705e+01,  6.864379987922872e+01,  9.178392803999999e+05,  1.853126131660800e+08,  9.573305418715105e+02,  8.266914647999998e+06

@@ -1,0 +1,35 @@
+----------------------------------------------------------------------------
+                                                   Wed Jan 19 10:39:52 2022
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 1.00138 s
+time to generate feat sapce: 0.030622 s
+Projection time: 0.285322 s
+Time to get best features on rank : 0.00802803 s
+Complete final combination/selection from all ranks: 0.0135751 s
+Time for SIS: 0.319687 s
+Time for l0-norm: 0.396585 s
+Projection time: 0.0263729 s
+Time to get best features on rank : 0.00573611 s
+Complete final combination/selection from all ranks: 0.00801802 s
+Time for SIS: 0.0542469 s
+Time for l0-norm: 0.218455 s
+Projection time: 0.0115309 s
+Time to get best features on rank : 0.00585699 s
+JobID         MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+323386.batch    201616K      3104K   talos006 

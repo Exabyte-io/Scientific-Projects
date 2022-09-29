@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------
+                                                   Wed Jan 19 10:10:04 2022
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 0.0821681 s
+time to generate feat sapce: 0.767463 s
+Projection time: 0.123969 s
+Time to get best features on rank : 0.00878906 s
+Complete final combination/selection from all ranks: 0.106238 s
+Time for SIS: 0.271009 s
+Time for l0-norm: 0.012897 s
+Projection time: 0.223483 s
+Time to get best features on rank : 0.0104251 s
+Complete final combination/selection from all ranks: 0.0498319 s
+Time for SIS: 0.32362 s
+Time for l0-norm: 0.417118 s
+Projection time: 0.211632 s
+Time to get best features on rank : 0.0109222 s
+Complete final combination/selection from all ranks: 0.05353 s
+Time for SIS: 0.350927 s
+Time for l0-norm: 622.201 s
+Train RMSE: 0.50604 J * m^-2
+c0 + a0 * ((ave:mendeleev_number * min:evaporation_heat) / exp(ave:num_p_valence))
+
+Train RMSE: 0.484088 J * m^-2
+c0 + a0 * ((max:electron_affinity * ave:num_p_valence) * sqrt(min:boiling_point)) + a1 * ((min:evaporation_heat / ave:icsd_volume) * sqrt(max:thermal_conductivity))
+
+Train RMSE: 0.476569 J * m^-2
+c0 + a0 * ((|max:mendeleev_number - ave:mendeleev_number|) / (ave:icsd_volume^2)) + a1 * ((min:heat_of_formation * max:num_p_valence) * (var:electron_affinity + ave:electron_affinity)) + a2 * ((min:evaporation_heat / min:vdw_radius_uff) * (ave:thermal_conductivity * min:evaporation_heat))
+
+JobID         MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+323361.batch    397028K      7055K   talos023 

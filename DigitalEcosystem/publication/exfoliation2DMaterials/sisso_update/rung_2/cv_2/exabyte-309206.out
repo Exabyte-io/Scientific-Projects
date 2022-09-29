@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------
+                                                   Wed Dec  1 09:48:38 2021
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 1.05868 s
+time to generate feat sapce: 1.26872 s
+Projection time: 0.208736 s
+Time to get best features on rank : 0.00702 s
+Complete final combination/selection from all ranks: 0.101181 s
+Time for SIS: 0.377641 s
+Time for l0-norm: 0.0118661 s
+Projection time: 0.37205 s
+Time to get best features on rank : 0.00789213 s
+Complete final combination/selection from all ranks: 0.0478551 s
+Time for SIS: 0.493441 s
+Time for l0-norm: 0.333162 s
+Projection time: 0.36785 s
+Time to get best features on rank : 0.00847101 s
+Complete final combination/selection from all ranks: 0.0509081 s
+Time for SIS: 0.523131 s
+Time for l0-norm: 493.148 s
+Train RMSE: 0.475939 J * m^-2; Test RMSE: 0.612199 J * m^-2
+c0 + a0 * ((ave:mendeleev_number * min:evaporation_heat) * (exp(-1.0 * ave:num_p_valence)))
+
+Train RMSE: 0.454821 J * m^-2; Test RMSE: 0.582495 J * m^-2
+c0 + a0 * (cbrt(max:electron_affinity) * (ave:vdw_radius_uff^2)) + a1 * ((min:evaporation_heat / max:icsd_volume) * sqrt(max:thermal_conductivity))
+
+Train RMSE: 0.447698 J * m^-2; Test RMSE: 0.556529 J * m^-2
+c0 + a0 * ((min:heat_of_formation * max:num_p_valence) * (var:electron_affinity + ave:electron_affinity)) + a1 * ((perimeter_area_ratio / min:num_valance) / (max:icsd_volume^2)) + a2 * ((min:evaporation_heat^2) * (max:thermal_conductivity / min:vdw_radius_uff))
+
+       JobID  MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+309206.batch    392736K      7125K   talos047 

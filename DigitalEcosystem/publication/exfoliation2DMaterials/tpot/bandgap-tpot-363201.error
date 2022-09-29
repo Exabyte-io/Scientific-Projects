@@ -1,0 +1,5 @@
+Exception ignored in: <function Booster.__del__ at 0x154d2c3a4790>
+Traceback (most recent call last):
+  File "/u/tpurcell/conda-envs/exabyte_wf/lib/python3.8/site-packages/xgboost/core.py", line 1239, in __del__
+    def __del__(self):
+stopit.utils.TimeoutException: 

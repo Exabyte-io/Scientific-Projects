@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------
+                                                   Wed Jan 19 09:22:43 2022
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 0.081682 s
+time to generate feat sapce: 1.56633 s
+Projection time: 0.28117 s
+Time to get best features on rank : 0.00890398 s
+Complete final combination/selection from all ranks: 0.108387 s
+Time for SIS: 0.457781 s
+Time for l0-norm: 0.0124462 s
+Projection time: 0.476462 s
+Time to get best features on rank : 0.0112331 s
+Complete final combination/selection from all ranks: 0.0539441 s
+Time for SIS: 0.606014 s
+Time for l0-norm: 0.417798 s
+Projection time: 0.462026 s
+Time to get best features on rank : 0.010529 s
+Complete final combination/selection from all ranks: 0.0595028 s
+Time for SIS: 0.633691 s
+Time for l0-norm: 623.645 s
+Train RMSE: 0.505685 J * m^-2
+c0 + a0 * ((perimeter_area_ratio * min:evaporation_heat) * (perimeter_area_ratio * sum:thermal_conductivity))
+
+Train RMSE: 0.482304 J * m^-2
+c0 + a0 * ((max:electron_affinity * ave:num_p_valence) * sqrt(min:boiling_point)) + a1 * ((min:evaporation_heat / max:icsd_volume) * sqrt(max:thermal_conductivity))
+
+Train RMSE: 0.470665 J * m^-2
+c0 + a0 * ((min:heat_of_formation * max:num_p_valence) * (var:electron_affinity + ave:electron_affinity)) + a1 * ((perimeter_area_ratio / max:icsd_volume) / (max:icsd_volume * min:num_valance)) + a2 * ((min:evaporation_heat / min:vdw_radius_uff) * (max:thermal_conductivity * min:heat_of_formation))
+
+JobID         MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+323346.batch    397028K      7119K   talos023 

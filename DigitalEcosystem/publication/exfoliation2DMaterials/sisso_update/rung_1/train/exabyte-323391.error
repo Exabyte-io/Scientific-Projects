@@ -1,0 +1,17 @@
+terminate called after throwing an instance of 'std::logic_error'
+  what():  SIS went through all features and did not select enough (251 not 400).
+
+sisso++:61075 terminated with signal 6 at PC=1481933cb360 SP=7ffcec6aebc0.  Backtrace:
+/lib64/libc.so.6(gsignal+0x110)[0x1481933cb360]
+/lib64/libc.so.6(abort+0x151)[0x1481933cc941]
+/usr/lib64/libstdc++.so.6(+0xa5016)[0x148193a0b016]
+/usr/lib64/libstdc++.so.6(+0xb08dc)[0x148193a168dc]
+/usr/lib64/libstdc++.so.6(+0xb0947)[0x148193a16947]
+/usr/lib64/libstdc++.so.6(+0xb0be9)[0x148193a16be9]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN12FeatureSpace3sisESt10shared_ptrI12LossFunctionE+0x201d)[0x1481a0e1fd8d]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11SISSOSolver3fitEv+0x7b)[0x1481a0def79b]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x4080f1]
+/lib64/libc.so.6(__libc_start_main+0xea)[0x1481933b63ea]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407c2a]
+srun: error: talos026: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=323391.0

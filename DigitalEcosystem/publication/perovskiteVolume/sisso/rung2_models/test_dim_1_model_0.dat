@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:39b77b5457f2bc7b6af60698260e52e3c6874bb0d1ed14d9ee78f742b440506c
-size 2036
+# c0 + a0 * ((ave:atomic_radius_rahm^6) / cbrt(ave:boiling_point))
+# Property Label: $Volume$; Unit of the Property: length^3
+# RMSE: 22.2608124500485; Max AE: 32.2742914512409
+# Coefficients
+# Task   a0                      c0
+# all ,  1.110330538545055e-11,  1.001962366216614e+01, 
+# Feature Rung, Units, and Expressions
+# 0;  2; length^6 * temperature^-0.333333;                 2|sp|5|cbrt|div; ((ave:atomic_radius_rahm^6) / cbrt(ave:boiling_point)); $\left(\frac{ \left(ave:atomic_{radius, rahm}^6\right) }{ \left(\sqrt[3]{ ave:boiling_{point} }\right) } \right)$; ((ave:atomic_radius_rahm).^6 ./ nthroot(ave:boiling_point, 3)); ave:atomic_radius_rahm,ave:boiling_point
+# Number of Samples Per Task
+# Task,   n_mats_test             
+# all,    13                    
+# Test Indexes: [ 4, 10, 14, 17, 41, 53, 59, 69, 70, 90, 93, 100, 120 ]
+
+# Sample ID , Property Value        ,  Property Value (EST) ,  Feature 0 Value      
+73          ,  1.013508525385564e+02,  8.226186828961140e+01,  6.506372843001275e+12
+45          ,  6.922252251530169e+01,  8.337176410167353e+01,  6.606333690112308e+12
+124         ,  1.885207260436857e+02,  2.082233387900152e+02,  1.785087487439277e+13
+36          ,  1.804786609572536e+02,  1.581655227426518e+02,  1.334250423073221e+13
+22          ,  8.942508557141944e+01,  7.958889215609901e+01,  6.265635869575777e+12
+62          ,  1.284855607921225e+02,  1.570096826027130e+02,  1.323840548717668e+13
+109         ,  1.156360400954843e+02,  8.609717418454426e+01,  6.851793036519372e+12
+83          ,  8.685815788108755e+01,  1.156129621534829e+02,  9.510081442025654e+12
+123         ,  2.218543389191891e+02,  2.042935153333353e+02,  1.749694212011317e+13
+61          ,  1.513414191693852e+02,  1.276880201182789e+02,  1.059760065775566e+13
+136         ,  1.878481455563482e+02,  1.944470651688784e+02,  1.661013861227132e+13
+126         ,  7.603223118739854e+01,  1.083065226386394e+02,  8.852039601222316e+12
+74          ,  1.634935249887072e+02,  1.841963881867143e+02,  1.568692911507093e+13

@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------
+                                                   Wed Dec  1 09:55:49 2021
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 1.00855 s
+time to generate feat sapce: 0.0144448 s
+Projection time: 0.00970197 s
+Time to get best features on rank : 0.00418496 s
+Complete final combination/selection from all ranks: 0.0981429 s
+Time for SIS: 0.11879 s
+Time for l0-norm: 0.012809 s
+Projection time: 0.00423598 s
+Time to get best features on rank : 0.00494695 s
+Complete final combination/selection from all ranks: 0.0331891 s
+Time for SIS: 0.05426 s
+Time for l0-norm: 0.166868 s
+Projection time: 0.00186515 s
+Time to get best features on rank : 0.00464606 s
+Complete final combination/selection from all ranks: 0.03321 s
+Time for SIS: 0.069329 s
+Time for l0-norm: 167.944 s
+Train RMSE: 0.529095 J * m^-2; Test RMSE: 0.440175 J * m^-2
+c0 + a0 * (ave:thermal_conductivity * min:evaporation_heat)
+
+Train RMSE: 0.511663 J * m^-2; Test RMSE: 0.413516 J * m^-2
+c0 + a0 * (min:boiling_point * ave:num_p_valence) + a1 * (min:evaporation_heat / max:icsd_volume)
+
+Train RMSE: 0.499564 J * m^-2; Test RMSE: 0.403525 J * m^-2
+c0 + a0 * (min:boiling_point * ave:num_p_valence) + a1 * (var:electron_affinity + ave:electron_affinity) + a2 * (min:evaporation_heat / max:icsd_volume)
+
+       JobID  MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+309218.batch    392736K      7046K   talos049 

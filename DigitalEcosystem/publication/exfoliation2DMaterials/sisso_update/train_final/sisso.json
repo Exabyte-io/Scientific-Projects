@@ -1,0 +1,30 @@
+{
+    "desc_dim": 3,
+    "n_sis_select": 350,
+    "max_rung": 1,
+    "n_residual": 10,
+    "n_models_store": 1,
+    "data_file": "../../train_sisso.csv",
+    "property_key": "exfoliation_energy",
+    "opset": [
+        "add",
+        "sub",
+        "mult",
+        "div",
+        "abs_diff",
+        "inv",
+        "abs",
+        "cos",
+        "sin",
+        "exp",
+        "neg_exp",
+        "log",
+        "sq",
+        "sqrt",
+        "cb",
+        "cbrt",
+        "six_pow"
+    ],
+    "calc_type": "regression",
+    "fix_intercept": false
+}

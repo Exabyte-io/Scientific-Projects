@@ -1,0 +1,14 @@
+exfoliation/rung_2/feature_space/selected_features.txt filter=lfs diff=lfs merge=lfs -text
+exfoliation/rung_2/feature_space/SIS_summary.txt filter=lfs diff=lfs merge=lfs -text
+exfoliation/rung_2/models/train_dim_3_model_0.dat filter=lfs diff=lfs merge=lfs -text
+perov_V/rung_2/feature_space/SIS_summary.txt filter=lfs diff=lfs merge=lfs -text
+bandgap/rung_2/models/train_dim_1_model_0.dat filter=lfs diff=lfs merge=lfs -text
+perov_V/rung_2/models/train_dim_1_model_0.dat filter=lfs diff=lfs merge=lfs -text
+perov_V/rung_2/feature_space/selected_features.txt filter=lfs diff=lfs merge=lfs -text
+exfoliation/rung_2/models/train_dim_2_model_0.dat filter=lfs diff=lfs merge=lfs -text
+perov_V/rung_2/models/train_dim_2_model_0.dat filter=lfs diff=lfs merge=lfs -text
+perov_V/rung_2/models/train_dim_3_model_0.dat filter=lfs diff=lfs merge=lfs -text
+bandgap/rung_2/feature_space/SIS_summary.txt filter=lfs diff=lfs merge=lfs -text
+bandgap/rung_2/models/train_dim_2_model_0.dat filter=lfs diff=lfs merge=lfs -text
+exfoliation/rung_2/models/train_dim_1_model_0.dat filter=lfs diff=lfs merge=lfs -text
+bandgap/rung_2/feature_space/selected_features.txt filter=lfs diff=lfs merge=lfs -text

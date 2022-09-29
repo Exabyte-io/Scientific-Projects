@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------
+                                                   Wed Jan 19 10:40:36 2022
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 1.02338 s
+time to generate feat sapce: 0.657834 s
+Projection time: 0.094064 s
+Time to get best features on rank : 0.00702715 s
+Complete final combination/selection from all ranks: 0.0951409 s
+Time for SIS: 0.226014 s
+Time for l0-norm: 0.0121529 s
+Projection time: 0.180797 s
+Time to get best features on rank : 0.00983119 s
+Complete final combination/selection from all ranks: 0.047893 s
+Time for SIS: 0.276303 s
+Time for l0-norm: 0.33407 s
+Projection time: 0.175078 s
+Time to get best features on rank : 0.00997519 s
+Complete final combination/selection from all ranks: 0.0492539 s
+Time for SIS: 0.296797 s
+Time for l0-norm: 492.094 s
+Train RMSE: 0.475939 J * m^-2; Test RMSE: 0.612199 J * m^-2
+c0 + a0 * ((ave:mendeleev_number * min:evaporation_heat) / exp(ave:num_p_valence))
+
+Train RMSE: 0.456711 J * m^-2; Test RMSE: 0.591702 J * m^-2
+c0 + a0 * (cbrt(max:electron_affinity) * (ave:vdw_radius_uff + min:vdw_radius_uff)) + a1 * ((ave:mendeleev_number * min:evaporation_heat) / exp(ave:num_p_valence))
+
+Train RMSE: 0.449026 J * m^-2; Test RMSE: 0.593363 J * m^-2
+c0 + a0 * ((min:heat_of_formation / max:thermal_conductivity) - (min:heat_of_formation / sum:thermal_conductivity)) + a1 * ((ave:num_p_valence * min:evaporation_heat) * (var:electron_affinity + ave:electron_affinity)) + a2 * ((ave:heat_capacity_molar * min:evaporation_heat) / (min:vdw_radius_uff * ave:icsd_volume))
+
+JobID         MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+323394.batch    397028K      7073K   talos023 

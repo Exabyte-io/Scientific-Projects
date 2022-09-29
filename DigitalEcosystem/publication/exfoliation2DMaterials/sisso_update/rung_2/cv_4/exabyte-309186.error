@@ -1,0 +1,66 @@
+terminate called after throwing an instance of 'std::logic_error'
+  what():  _propkey not found in data_file
+
+sisso++:27915 terminated with signal 6 at PC=1549ef145420 SP=7ffdb6c293c0.  Backtrace:
+terminate called after throwing an instance of 'std::logic_error'
+  what():  _propkey not found in data_file
+
+sisso++:27917 terminated with signal 6 at PC=14f260f7f420 SP=7ffdfa1e1140.  Backtrace:
+/lib64/libc.so.6(gsignal+0x110)[0x14f260f7f420]
+/lib64/libc.so.6(abort+0x151)[0x14f260f80a01]
+/lib64/libc.so.6(gsignal+0x110)[0x1549ef145420]
+/lib64/libc.so.6(abort+0x151)[0x1549ef146a01]
+/usr/lib64/libstdc++.so.6(+0xa2016)[0x1549ef782016]
+/usr/lib64/libstdc++.so.6(+0xa2016)[0x14f2615bc016]
+/usr/lib64/libstdc++.so.6(+0xad88c)[0x1549ef78d88c]
+/usr/lib64/libstdc++.so.6(+0xad8f7)[0x1549ef78d8f7]
+/usr/lib64/libstdc++.so.6(+0xad88c)[0x14f2615c788c]
+/usr/lib64/libstdc++.so.6(+0xad8f7)[0x14f2615c78f7]
+/usr/lib64/libstdc++.so.6(+0xadba9)[0x14f2615c7ba9]
+/usr/lib64/libstdc++.so.6(+0xadba9)[0x1549ef78dba9]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParser14generate_phi_0ESt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES0_I4UnitSaIS9_EES0_I6DomainSaISC_EESt3mapIS6_S0_IiSaIiEESt4lessIS6_ESaISt4pairIKS6_SH_EEEi+0x163f)[0x1549fcdfe43f]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParser14generate_phi_0ESt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES0_I4UnitSaIS9_EES0_I6DomainSaISC_EESt3mapIS6_S0_IiSaIiEESt4lessIS6_ESaISt4pairIKS6_SH_EEEi+0x163f)[0x14f26ec3843f]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParserC1EN5boost13property_tree11basic_ptreeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_St4lessIS8_EEES8_St10shared_ptrI13MPI_InterfaceE+0x20c7)[0x1549fcdfb667]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParserC1EN5boost13property_tree11basic_ptreeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_St4lessIS8_EEES8_St10shared_ptrI13MPI_InterfaceE+0x20c7)[0x14f26ec35667]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x1e4)[0x1549fcdf5af4]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407e9e]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x1e4)[0x14f26ec2faf4]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407e9e]
+/lib64/libc.so.6(__libc_start_main+0xea)[0x14f260f6a34a]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407c2a]
+/lib64/libc.so.6(__libc_start_main+0xea)[0x1549ef13034a]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407c2a]
+terminate called after throwing an instance of 'std::logic_error'
+  what():  _propkey not found in data_file
+
+sisso++:27914 terminated with signal 6 at PC=14ff320c1420 SP=7ffd23851640.  Backtrace:
+/lib64/libc.so.6(gsignal+0x110)[0x14ff320c1420]
+/lib64/libc.so.6(abort+0x151)[0x14ff320c2a01]
+/usr/lib64/libstdc++.so.6(+0xa2016)[0x14ff326fe016]
+/usr/lib64/libstdc++.so.6(+0xad88c)[0x14ff3270988c]
+/usr/lib64/libstdc++.so.6(+0xad8f7)[0x14ff327098f7]
+/usr/lib64/libstdc++.so.6(+0xadba9)[0x14ff32709ba9]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParser14generate_phi_0ESt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES0_I4UnitSaIS9_EES0_I6DomainSaISC_EESt3mapIS6_S0_IiSaIiEESt4lessIS6_ESaISt4pairIKS6_SH_EEEi+0x163f)[0x14ff3fd7a43f]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParserC1EN5boost13property_tree11basic_ptreeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_St4lessIS8_EEES8_St10shared_ptrI13MPI_InterfaceE+0x20c7)[0x14ff3fd77667]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x1e4)[0x14ff3fd71af4]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407e9e]
+/lib64/libc.so.6(__libc_start_main+0xea)[0x14ff320ac34a]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407c2a]
+terminate called after throwing an instance of 'std::logic_error'
+  what():  _propkey not found in data_file
+
+sisso++:27913 terminated with signal 6 at PC=146231129420 SP=7ffe3f803240.  Backtrace:
+/lib64/libc.so.6(gsignal+0x110)[0x146231129420]
+/lib64/libc.so.6(abort+0x151)[0x14623112aa01]
+/usr/lib64/libstdc++.so.6(+0xa2016)[0x146231766016]
+/usr/lib64/libstdc++.so.6(+0xad88c)[0x14623177188c]
+/usr/lib64/libstdc++.so.6(+0xad8f7)[0x1462317718f7]
+/usr/lib64/libstdc++.so.6(+0xadba9)[0x146231771ba9]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParser14generate_phi_0ESt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES0_I4UnitSaIS9_EES0_I6DomainSaISC_EESt3mapIS6_S0_IiSaIiEESt4lessIS6_ESaISt4pairIKS6_SH_EEEi+0x163f)[0x14623ede243f]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParserC1EN5boost13property_tree11basic_ptreeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_St4lessIS8_EEES8_St10shared_ptrI13MPI_InterfaceE+0x20c7)[0x14623eddf667]
+/u/tpurcell/git/cpp_sisso/lib/libsisso.so(_ZN11InputParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x1e4)[0x14623edd9af4]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407e9e]
+/lib64/libc.so.6(__libc_start_main+0xea)[0x14623111434a]
+/u/tpurcell/git/cpp_sisso/bin/sisso++[0x407c2a]
+srun: error: talos033: tasks 0-3: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=309186.0

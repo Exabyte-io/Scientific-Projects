@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------
+                                                   Wed Dec  1 09:48:50 2021
+
+ Hello Thomas Purcell,
+
+                                                       
+ Welcome to TALOS. 
+
+ 
+============================================================================
+
+	https://docs.mpcdf.mpg.de/doc/computing/clusters/index.html
+
+- IMPORTANT: /talos/scratch is NOT backed up on this system. 
+        You have to archive your data in those directory by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+time input_parsing: 1.02837 s
+time to generate feat sapce: 1.29413 s
+Projection time: 0.209545 s
+Time to get best features on rank : 0.00700092 s
+Complete final combination/selection from all ranks: 0.284764 s
+Time for SIS: 0.561691 s
+Time for l0-norm: 0.0122528 s
+Projection time: 0.375387 s
+Time to get best features on rank : 0.00799704 s
+Complete final combination/selection from all ranks: 0.0482872 s
+Time for SIS: 0.498887 s
+Time for l0-norm: 0.333056 s
+Projection time: 0.363823 s
+Time to get best features on rank : 0.00798512 s
+Complete final combination/selection from all ranks: 0.0515158 s
+Time for SIS: 0.520504 s
+Time for l0-norm: 493.58 s
+Train RMSE: 0.52157 J * m^-2; Test RMSE: 0.436637 J * m^-2
+c0 + a0 * ((perimeter_area_ratio^2) * (sum:thermal_conductivity * min:evaporation_heat))
+
+Train RMSE: 0.495762 J * m^-2; Test RMSE: 0.47903 J * m^-2
+c0 + a0 * ((perimeter_area_ratio / min:num_valance) / (ave:icsd_volume^2)) + a1 * ((perimeter_area_ratio * min:evaporation_heat) * sqrt(sum:thermal_conductivity))
+
+Train RMSE: 0.483328 J * m^-2; Test RMSE: 0.426227 J * m^-2
+c0 + a0 * ((perimeter_area_ratio * min:heat_of_formation) * (var:electron_affinity + ave:electron_affinity)) + a1 * ((perimeter_area_ratio / ave:icsd_volume) / cbrt(min:num_valance)) + a2 * ((perimeter_area_ratio * min:evaporation_heat) * sqrt(sum:thermal_conductivity))
+
+       JobID  MaxVMSize     MaxRSS MaxRSSNode 
+------------ ---------- ---------- ---------- 
+309204.batch    392736K      7160K   talos044 

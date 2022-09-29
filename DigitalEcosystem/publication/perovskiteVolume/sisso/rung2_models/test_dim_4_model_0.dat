@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9f2737412a01d4dad1e2f872de85f3466dc72ed5f9b215375e54921890850f33
-size 4545
+# c0 + a0 * (cbrt(var:c6_gb) / (ave:atomic_volume * ave:atomic_radius_rahm)) + a1 * (cbrt(var:c6_gb) / ave:atomic_volume) + a2 * ((var:melting_point * ave:atomic_radius_rahm) / (var:melting_point + var:boiling_point)) + a3 * ((ave:atomic_radius_rahm^2) * cbrt(ave:atomic_volume))
+# Property Label: $Volume$; Unit of the Property: length^3
+# RMSE: 6.49564026257411; Max AE: 13.2605338049502
+# Coefficients
+# Task   a0                      a1                      a2                      a3                      c0
+# all ,  5.625990315322635e+03, -3.567568953522600e+01, -5.442067807826219e-01,  2.187059985842607e-03, -8.843615884778849e+01, 
+# Feature Rung, Units, and Expressions
+# 0;  2; energy^0.333333 * length^-6;                      11|cbrt|3|2|mult|div; (cbrt(var:c6_gb) / (ave:atomic_volume * ave:atomic_radius_rahm)); $\left(\frac{ \left(\sqrt[3]{ var:c6_{gb} }\right) }{ \left(ave:atomic_{volume} ave:atomic_{radius, rahm}\right) } \right)$; (nthroot(var:c6_gb, 3) ./ (ave:atomic_volume .* ave:atomic_radius_rahm)); var:c6_gb,ave:atomic_volume,ave:atomic_radius_rahm
+# 1;  2; energy^0.333333 * length^-5;                      11|cbrt|3|div; (cbrt(var:c6_gb) / ave:atomic_volume); $\left(\frac{ \left(\sqrt[3]{ var:c6_{gb} }\right) }{ ave:atomic_{volume} } \right)$; (nthroot(var:c6_gb, 3) ./ ave:atomic_volume); var:c6_gb,ave:atomic_volume
+# 2;  2; length;                                           14|2|mult|14|10|add|div; ((var:melting_point * ave:atomic_radius_rahm) / (var:melting_point + var:boiling_point)); $\left(\frac{ \left(var:melting_{point} ave:atomic_{radius, rahm}\right) }{ \left(var:melting_{point} + var:boiling_{point}\right) } \right)$; ((var:melting_point .* ave:atomic_radius_rahm) ./ (var:melting_point + var:boiling_point)); var:melting_point,ave:atomic_radius_rahm,var:melting_point,var:boiling_point
+# 3;  2; length^3;                                         2|sq|3|cbrt|mult; ((ave:atomic_radius_rahm^2) * cbrt(ave:atomic_volume)); $\left(\left(ave:atomic_{radius, rahm}^2\right) \left(\sqrt[3]{ ave:atomic_{volume} }\right)\right)$; ((ave:atomic_radius_rahm).^2 .* nthroot(ave:atomic_volume, 3)); ave:atomic_radius_rahm,ave:atomic_volume
+# Number of Samples Per Task
+# Task,   n_mats_test             
+# all,    13                    
+# Test Indexes: [ 4, 10, 14, 17, 41, 53, 59, 69, 70, 90, 93, 100, 120 ]
+
+# Sample ID , Property Value        ,  Property Value (EST) ,  Feature 0 Value      ,  Feature 1 Value      ,  Feature 2 Value      ,  Feature 3 Value      
+73          ,  1.013508525385564e+02,  1.146113863435066e+02,  3.513846243019972e-02,  6.915249406263305e+00,  6.063201538145973e+00,  1.167616909383010e+05
+45          ,  6.922252251530169e+01,  7.919226360575124e+01,  3.166133170574043e-02,  6.135966084572495e+00,  5.387737307887081e+01,  1.086972150914273e+05
+124         ,  1.885207260436857e+02,  1.995416175945091e+02,  2.006598480182373e-02,  4.683400852745659e+00,  6.089847705849252e+01,  1.716055625613595e+05
+36          ,  1.804786609572536e+02,  1.815494199777405e+02,  2.312665863216889e-02,  5.231250182596604e+00,  2.444474667503163e+01,  1.553714474341378e+05
+22          ,  8.942508557141944e+01,  9.126685112076463e+01,  1.156920890729594e-02,  2.242112686233952e+00,  2.527242541731395e+01,  9.526812041046403e+04
+62          ,  1.284855607921225e+02,  1.289487663417096e+02,  2.657958485258041e-02,  5.836876833626657e+00,  6.087899998296773e+01,  1.413833230889951e+05
+109         ,  1.156360400954843e+02,  1.133005458612525e+02,  3.444279260191341e-02,  6.799007259617707e+00,  1.473387785028976e+01,  1.182132347291894e+05
+83          ,  8.685815788108755e+01,  8.644996275573078e+01,  3.876772154168667e-02,  8.187742789604226e+00,  3.295902927339453e+01,  1.219990280855822e+05
+123         ,  2.218543389191891e+02,  2.210911726466011e+02,  2.053336050584331e-02,  4.878726456188370e+00,  2.326954517404911e+01,  1.740794588441620e+05
+61          ,  1.513414191693852e+02,  1.518254041774917e+02,  8.152945912833621e-03,  1.783864565727996e+00,  2.421130385345787e+01,  1.240065312256551e+05
+136         ,  1.878481455563482e+02,  1.774013551072989e+02,  2.588469758129881e-02,  5.932772685633687e+00,  6.016318854784963e+01,  1.667112150488879e+05
+126         ,  7.603223118739854e+01,  7.780368718511517e+01,  4.063733126047946e-02,  8.728898754750988e+00,  3.736757349959672e+01,  1.231606743771608e+05
+74          ,  1.634935249887072e+02,  1.688181295963723e+02,  2.630359249864311e-02,  5.981436934191444e+00,  6.132403006490248e+01,  1.627917725706172e+05
