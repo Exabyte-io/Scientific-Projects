@@ -1,0 +1,44 @@
+0             2|0|mult|4|cb|div
+1             2|sp|4|cb|div
+2             0|3|div|4|sq|div
+3             0|sq|4|cb|div
+4             3|0|mult|4|cb|div
+5             0|4|cb|div
+6             0|4|div|4|div
+7             4|0|add|4|sq|div
+8             2|0|mult|4|sq|div
+9             0|3|div|4|cb|div
+#-----------------------------------------------------------------------
+10            3|2|sub|10|cbrt|mult
+11            3|2|sub|10|sqrt|mult
+12            8|cbrt|3|2|sub|mult
+13            3|sq|10|cbrt|mult
+14            3|cb|10|cbrt|mult
+15            3|cb|10|sqrt|mult
+16            8|sqrt|3|2|sub|mult
+17            3|sq|10|sqrt|mult
+18            8|cbrt|3|cb|mult
+19            8|sqrt|3|cb|mult
+#-----------------------------------------------------------------------
+20            7|sin|11|1|abd|div
+21            7|sin|11|1|add|div
+22            7|sin|11|1|sub|div
+23            1|nexp|11|1|sub|div
+24            1|nexp|11|1|add|div
+25            11|nexp|1|exp|div
+26            11|nexp|5|sp|div
+27            11|nexp|1|sp|div
+28            1|cos|11|1|sub|div
+29            1|cos|11|1|abd|div
+#-----------------------------------------------------------------------
+30            15|9|mult|11|7|mult|mult
+31            6|7|div|3|sp|mult
+32            15|11|mult|12|9|mult|mult
+33            14|4|div|4|sp|div
+34            6|7|div|2|cb|mult
+35            6|7|div|2|sq|mult
+36            1|sin|4|sp|div
+37            6|7|div|3|cb|mult
+38            6|7|div|3|2|mult|mult
+39            14|sqrt|4|sp|div
+#-----------------------------------------------------------------------

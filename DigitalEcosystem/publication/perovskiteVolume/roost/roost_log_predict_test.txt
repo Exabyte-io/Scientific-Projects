@@ -1,0 +1,16 @@
+The model will run on the cpu device
+['volume']
+['regression']
+['L1']
+using independent test set: ./sisso_data/roost_test.csv
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------Evaluate model on Test Set------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Evaluating Model
+
+Task: 'volume' on Test Set
+Model Performance Metrics:
+R2 Score: 0.9347
+MAE: 8.8345
+RMSE: 12.0021
